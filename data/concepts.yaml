@@ -1,0 +1,2061 @@
+- id: linear_algebra
+  name: 线性代数
+  aliases:
+  - Linear Algebra
+  cluster: math_foundation
+  importance: high
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 2
+    confidence: high
+  requires: []
+  note: ''
+- id: matrix_multiplication
+  name: 矩阵乘法
+  aliases:
+  - Matrix Multiplication
+  cluster: math_foundation
+  importance: high
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 2.2
+    confidence: high
+  requires:
+  - linear_algebra
+  note: ''
+- id: eigendecomposition
+  name: 特征分解
+  aliases:
+  - Eigendecomposition
+  cluster: math_foundation
+  importance: high
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 2.7
+    confidence: high
+  requires:
+  - matrix_multiplication
+  note: ''
+- id: svd
+  name: 奇异值分解
+  aliases:
+  - Singular Value Decomposition
+  cluster: math_foundation
+  importance: high
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 2.8
+    confidence: high
+  requires:
+  - matrix_multiplication
+  note: ''
+- id: calculus
+  name: 微积分
+  aliases:
+  - Calculus
+  cluster: math_foundation
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 2.4
+    confidence: high
+  requires: []
+  note: ''
+- id: chain_rule
+  name: 链式法则
+  aliases:
+  - Chain Rule
+  cluster: math_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 22.3
+    confidence: high
+  requires:
+  - calculus
+  note: ''
+- id: gradient
+  name: 梯度
+  aliases:
+  - Gradient
+  cluster: math_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 22.4
+    confidence: high
+  requires:
+  - calculus
+  note: ''
+- id: probability
+  name: 概率论
+  aliases:
+  - Probability Theory
+  cluster: math_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 3
+    confidence: high
+  requires: []
+  note: ''
+- id: conditional_probability
+  name: 条件概率
+  aliases:
+  - Conditional Probability
+  cluster: math_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 3.5
+    confidence: high
+  requires:
+  - probability
+  note: ''
+- id: bayes_rule
+  name: 贝叶斯法则
+  aliases:
+  - Bayes’ Rule
+  cluster: math_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 3.8
+    confidence: high
+  requires:
+  - conditional_probability
+  note: ''
+- id: expectation
+  name: 期望
+  aliases:
+  - Expectation
+  cluster: math_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 3.9
+    confidence: high
+  requires:
+  - probability
+  note: ''
+- id: entropy
+  name: 熵
+  aliases:
+  - Entropy
+  cluster: math_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 3.13
+    confidence: high
+  requires:
+  - expectation
+  note: ''
+- id: kl_divergence
+  name: KL 散度
+  aliases:
+  - Kullback–Leibler Divergence
+  cluster: math_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 3.13
+    confidence: high
+  requires:
+  - entropy
+  note: ''
+- id: maximum_likelihood
+  name: 最大似然估计
+  aliases:
+  - Maximum Likelihood Estimation
+  cluster: math_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 5.5
+    confidence: high
+  requires:
+  - conditional_probability
+  note: ''
+- id: convexity
+  name: 凸性
+  aliases:
+  - Convexity
+  cluster: math_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 12.2
+    confidence: high
+  requires:
+  - calculus
+  note: ''
+- id: linear_regression
+  name: 线性回归
+  aliases:
+  - Linear Regression
+  cluster: dl_foundation
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 3.1
+    confidence: high
+  requires:
+  - matrix_multiplication
+  note: ''
+- id: logistic_regression
+  name: 逻辑回归
+  aliases:
+  - Logistic Regression
+  cluster: dl_foundation
+  importance: high
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 5.7.1
+    confidence: high
+  requires:
+  - matrix_multiplication
+  - conditional_probability
+  note: ''
+- id: mlp
+  name: 多层感知机
+  aliases:
+  - Multilayer Perceptron
+  cluster: dl_foundation
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 5.1
+    confidence: high
+  requires:
+  - matrix_multiplication
+  note: ''
+- id: activation
+  name: 激活函数
+  aliases:
+  - Activation Function
+  cluster: dl_foundation
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 5.1
+    confidence: high
+  requires:
+  - calculus
+  note: ''
+- id: backpropagation
+  name: 反向传播
+  aliases:
+  - Backpropagation
+  cluster: dl_foundation
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 5.3
+    confidence: high
+  requires:
+  - chain_rule
+  - mlp
+  note: ''
+- id: computational_graph
+  name: 计算图
+  aliases:
+  - Computational Graph
+  cluster: dl_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 5.3
+    confidence: high
+  requires: []
+  note: ''
+- id: autodiff
+  name: 自动微分
+  aliases:
+  - Automatic Differentiation
+  cluster: dl_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 2.5
+    confidence: high
+  requires:
+  - chain_rule
+  - computational_graph
+  note: ''
+- id: softmax
+  name: Softmax 函数
+  aliases:
+  - Softmax Function
+  cluster: dl_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 4.1
+    confidence: high
+  requires:
+  - matrix_multiplication
+  note: ''
+- id: cross_entropy
+  name: 交叉熵损失
+  aliases:
+  - Cross-Entropy Loss
+  cluster: dl_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 4.1
+    confidence: high
+  requires:
+  - entropy
+  - conditional_probability
+  note: ''
+- id: representation_learning
+  name: 表示学习
+  aliases:
+  - Representation Learning
+  cluster: dl_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 15
+    confidence: high
+  requires:
+  - mlp
+  note: ''
+- id: generalization
+  name: 泛化
+  aliases:
+  - Generalization
+  cluster: dl_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 5.2
+    confidence: high
+  requires:
+  - probability
+  note: ''
+- id: bias_variance
+  name: 偏差方差分解
+  aliases:
+  - Bias–Variance Decomposition
+  cluster: dl_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 5.4
+    confidence: high
+  requires:
+  - expectation
+  note: ''
+- id: overfitting
+  name: 过拟合
+  aliases:
+  - Overfitting
+  cluster: dl_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 5.2
+    confidence: high
+  requires:
+  - generalization
+  note: ''
+- id: universal_approximation
+  name: 通用逼近定理
+  aliases:
+  - Universal Approximation Theorem
+  cluster: dl_foundation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 6.4.1
+    confidence: high
+  requires:
+  - mlp
+  - activation
+  note: ''
+- id: cnn
+  name: 卷积神经网络
+  aliases:
+  - Convolutional Neural Network
+  cluster: architecture
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 7.6
+    confidence: high
+  requires:
+  - convolution
+  - activation
+  note: ''
+- id: rnn
+  name: 循环神经网络
+  aliases:
+  - Recurrent Neural Network
+  cluster: architecture
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 9.4
+    confidence: high
+  requires:
+  - mlp
+  note: ''
+- id: attn_scaled_dot_product
+  name: 缩放点积注意力
+  aliases:
+  - Scaled Dot-Product Attention
+  cluster: architecture
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 11.3
+    confidence: high
+  requires:
+  - matrix_multiplication
+  - softmax
+  note: ''
+- id: multihead_attention
+  name: 多头注意力
+  aliases:
+  - Multi-Head Attention
+  cluster: architecture
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 11.5
+    confidence: high
+  requires:
+  - attn_scaled_dot_product
+  note: ''
+- id: transformer
+  name: Transformer 架构
+  aliases:
+  - Transformer
+  cluster: architecture
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 11.7
+    confidence: high
+  requires:
+  - multihead_attention
+  - positional_encoding
+  - mlp
+  note: ''
+- id: lstm
+  name: 长短期记忆网络
+  aliases:
+  - Long Short-Term Memory
+  cluster: architecture
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 10.1
+    confidence: high
+  requires:
+  - rnn
+  note: ''
+- id: gru
+  name: 门控循环单元
+  aliases:
+  - Gated Recurrent Unit
+  cluster: architecture
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 10.2
+    confidence: high
+  requires:
+  - rnn
+  note: ''
+- id: encoder_decoder
+  name: 编码器解码器架构
+  aliases:
+  - Encoder–Decoder Architecture
+  cluster: architecture
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 10.6
+    confidence: high
+  requires:
+  - representation_learning
+  note: ''
+- id: positional_encoding
+  name: 位置编码
+  aliases:
+  - Positional Encoding
+  cluster: architecture
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 11.6
+    confidence: high
+  requires:
+  - matrix_multiplication
+  note: ''
+- id: resnet
+  name: 残差网络
+  aliases:
+  - Residual Network
+  cluster: architecture
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 8.6
+    confidence: high
+  requires:
+  - cnn
+  note: ''
+- id: batch_norm
+  name: 批量归一化
+  aliases:
+  - Batch Normalization
+  cluster: architecture
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 8.5
+    confidence: high
+  requires:
+  - expectation
+  - mlp
+  note: ''
+- id: layer_norm
+  name: 层归一化
+  aliases:
+  - Layer Normalization
+  cluster: architecture
+  importance: medium
+  source:
+    type: course
+    ref: https://web.stanford.edu/class/cs224n/#schedule — Transformers; reading Layer Normalization
+    confidence: medium
+  requires:
+  - expectation
+  - mlp
+  note: ''
+- id: vae
+  name: 变分自编码器
+  aliases:
+  - Variational Autoencoder
+  cluster: architecture
+  importance: medium
+  source:
+    type: course
+    ref: https://cs231n.stanford.edu/schedule.html — Lecture 13 Generative Models 1
+    confidence: medium
+  requires:
+  - kl_divergence
+  - representation_learning
+  note: ''
+- id: gan
+  name: 生成对抗网络
+  aliases:
+  - Generative Adversarial Network
+  cluster: architecture
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 20.1
+    confidence: high
+  requires:
+  - mlp
+  - conditional_probability
+  note: ''
+- id: gradient_descent
+  name: 梯度下降
+  aliases:
+  - Gradient Descent
+  cluster: training_optimization
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 12.3
+    confidence: high
+  requires:
+  - gradient
+  note: ''
+- id: sgd
+  name: 随机梯度下降
+  aliases:
+  - Stochastic Gradient Descent
+  cluster: training_optimization
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 12.4
+    confidence: high
+  requires:
+  - gradient_descent
+  - expectation
+  note: ''
+- id: minibatch_sgd
+  name: 小批量随机梯度下降
+  aliases:
+  - Minibatch Stochastic Gradient Descent
+  cluster: training_optimization
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 12.5
+    confidence: high
+  requires:
+  - sgd
+  note: ''
+- id: adam
+  name: Adam 优化器
+  aliases:
+  - Adam
+  cluster: training_optimization
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 12.10
+    confidence: high
+  requires:
+  - momentum
+  - gradient
+  note: ''
+- id: learning_rate_schedule
+  name: 学习率调度
+  aliases:
+  - Learning Rate Scheduling
+  cluster: training_optimization
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 12.11
+    confidence: high
+  requires:
+  - gradient_descent
+  note: ''
+- id: momentum
+  name: 动量法
+  aliases:
+  - Momentum
+  cluster: training_optimization
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 12.6
+    confidence: high
+  requires:
+  - gradient_descent
+  note: ''
+- id: weight_decay
+  name: 权重衰减
+  aliases:
+  - Weight Decay
+  cluster: training_optimization
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 3.7
+    confidence: high
+  requires:
+  - linear_regression
+  - gradient_descent
+  note: ''
+- id: dropout
+  name: 暂退法
+  aliases:
+  - Dropout
+  cluster: training_optimization
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 5.6
+    confidence: high
+  requires:
+  - mlp
+  - probability
+  note: ''
+- id: initialization
+  name: 参数初始化
+  aliases:
+  - Parameter Initialization
+  cluster: training_optimization
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 5.4
+    confidence: high
+  requires:
+  - mlp
+  - expectation
+  note: ''
+- id: gradient_clipping
+  name: 梯度裁剪
+  aliases:
+  - Gradient Clipping
+  cluster: training_optimization
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 9.5
+    confidence: high
+  requires:
+  - gradient
+  note: ''
+- id: vanishing_gradient
+  name: 梯度消失
+  aliases:
+  - Vanishing Gradient
+  cluster: training_optimization
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 5.4
+    confidence: high
+  requires:
+  - backpropagation
+  note: ''
+- id: early_stopping
+  name: 早停
+  aliases:
+  - Early Stopping
+  cluster: training_optimization
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 7.8
+    confidence: high
+  requires:
+  - overfitting
+  - validation_split
+  note: ''
+- id: hyperparameter_optimization
+  name: 超参数优化
+  aliases:
+  - Hyperparameter Optimization
+  cluster: training_optimization
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 19.1
+    confidence: high
+  requires:
+  - validation_split
+  note: ''
+- id: fine_tuning
+  name: 微调
+  aliases:
+  - Fine-Tuning
+  cluster: training_optimization
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 14.2
+    confidence: high
+  requires:
+  - backpropagation
+  - representation_learning
+  note: ''
+- id: train_test_split
+  name: 训练测试划分
+  aliases:
+  - Train–Test Split
+  cluster: data
+  importance: high
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 5.3
+    confidence: high
+  requires:
+  - generalization
+  note: ''
+- id: validation_split
+  name: 验证集划分
+  aliases:
+  - Validation Set
+  cluster: data
+  importance: high
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 5.3
+    confidence: high
+  requires:
+  - train_test_split
+  note: ''
+- id: data_preprocessing
+  name: 数据预处理
+  aliases:
+  - Data Preprocessing
+  cluster: data
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 2.2
+    confidence: high
+  requires: []
+  note: ''
+- id: feature_engineering
+  name: 特征工程
+  aliases:
+  - Feature Engineering
+  cluster: data
+  importance: high
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Feature engineering
+    confidence: medium
+  requires:
+  - data_preprocessing
+  note: ''
+- id: distribution_shift
+  name: 分布偏移
+  aliases:
+  - Distribution Shift
+  cluster: data
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 4.7
+    confidence: high
+  requires:
+  - conditional_probability
+  - generalization
+  note: ''
+- id: missing_values
+  name: 缺失值处理
+  aliases:
+  - Missing Values
+  cluster: data
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 2.2
+    confidence: high
+  requires:
+  - data_preprocessing
+  note: ''
+- id: categorical_encoding
+  name: 类别特征编码
+  aliases:
+  - Categorical Feature Encoding
+  cluster: data
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 2.2
+    confidence: high
+  requires:
+  - data_preprocessing
+  note: ''
+- id: data_augmentation
+  name: 数据增强
+  aliases:
+  - Data Augmentation
+  cluster: data
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 14.1
+    confidence: high
+  requires:
+  - train_test_split
+  note: ''
+- id: covariate_shift
+  name: 协变量偏移
+  aliases:
+  - Covariate Shift
+  cluster: data
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 4.7
+    confidence: high
+  requires:
+  - distribution_shift
+  note: ''
+- id: label_shift
+  name: 标签偏移
+  aliases:
+  - Label Shift
+  cluster: data
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 4.7
+    confidence: high
+  requires:
+  - distribution_shift
+  note: ''
+- id: concept_shift
+  name: 概念偏移
+  aliases:
+  - Concept Shift
+  cluster: data
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 4.7
+    confidence: high
+  requires:
+  - distribution_shift
+  note: ''
+- id: importance_weighting
+  name: 重要性加权
+  aliases:
+  - Importance Weighting
+  cluster: data
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 4.7
+    confidence: high
+  requires:
+  - covariate_shift
+  - expectation
+  note: ''
+- id: supervised_learning
+  name: 监督学习
+  aliases:
+  - Supervised Learning
+  cluster: data
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 5.7
+    confidence: high
+  requires:
+  - conditional_probability
+  note: ''
+- id: unsupervised_learning
+  name: 无监督学习
+  aliases:
+  - Unsupervised Learning
+  cluster: data
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 5.8
+    confidence: high
+  requires:
+  - probability
+  note: ''
+- id: precision_recall
+  name: 精确率与召回率
+  aliases:
+  - Precision and Recall
+  cluster: evaluation
+  importance: high
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 11.1
+    confidence: high
+  requires:
+  - conditional_probability
+  note: ''
+- id: accuracy
+  name: 准确率
+  aliases:
+  - Accuracy
+  cluster: evaluation
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 4.6
+    confidence: high
+  requires:
+  - expectation
+  note: ''
+- id: cross_validation
+  name: 交叉验证
+  aliases:
+  - Cross-Validation
+  cluster: evaluation
+  importance: high
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 5.3.1
+    confidence: high
+  requires:
+  - validation_split
+  note: ''
+- id: perplexity
+  name: 困惑度
+  aliases:
+  - Perplexity
+  cluster: evaluation
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 9.3
+    confidence: high
+  requires:
+  - cross_entropy
+  note: ''
+- id: model_calibration
+  name: 概率校准
+  aliases:
+  - Probability Calibration
+  cluster: evaluation
+  importance: high
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Offline evaluation; lecture note
+    confidence: low
+  requires:
+  - conditional_probability
+  note: verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。
+- id: f1_score
+  name: F1 分数
+  aliases:
+  - F1 Score
+  cluster: evaluation
+  importance: medium
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Offline evaluation; lecture note
+    confidence: low
+  requires:
+  - precision_recall
+  note: verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。
+- id: roc_auc
+  name: ROC 曲线下面积
+  aliases:
+  - ROC AUC
+  cluster: evaluation
+  importance: medium
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Offline evaluation; lecture note
+    confidence: low
+  requires:
+  - conditional_probability
+  note: verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。
+- id: confusion_matrix
+  name: 混淆矩阵
+  aliases:
+  - Confusion Matrix
+  cluster: evaluation
+  importance: medium
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Offline evaluation; lecture note
+    confidence: low
+  requires:
+  - supervised_learning
+  note: verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。
+- id: offline_evaluation
+  name: 离线评估
+  aliases:
+  - Offline Evaluation
+  cluster: evaluation
+  importance: medium
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Offline evaluation
+    confidence: medium
+  requires:
+  - train_test_split
+  note: ''
+- id: online_experiment
+  name: 在线实验
+  aliases:
+  - Online Experimentation
+  cluster: evaluation
+  importance: medium
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note
+    confidence: low
+  requires:
+  - offline_evaluation
+  note: verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。
+- id: ab_testing
+  name: A/B 测试
+  aliases:
+  - A/B Testing
+  cluster: evaluation
+  importance: medium
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note
+    confidence: low
+  requires:
+  - online_experiment
+  - expectation
+  note: verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。
+- id: benchmarking
+  name: 基准评测
+  aliases:
+  - Benchmarking
+  cluster: evaluation
+  importance: medium
+  source:
+    type: course
+    ref: https://web.stanford.edu/class/cs224n/#schedule — Benchmarking and Evaluation
+    confidence: medium
+  requires:
+  - offline_evaluation
+  note: ''
+- id: robustness
+  name: 鲁棒性
+  aliases:
+  - Robustness
+  cluster: evaluation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 7.13
+    confidence: high
+  requires:
+  - generalization
+  note: ''
+- id: iou
+  name: 交并比
+  aliases:
+  - Intersection over Union
+  cluster: evaluation
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 14.4
+    confidence: high
+  requires:
+  - probability
+  note: ''
+- id: model_deployment
+  name: 模型部署
+  aliases:
+  - Model Deployment
+  cluster: inference_serving
+  importance: high
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Deployment
+    confidence: medium
+  requires:
+  - offline_evaluation
+  note: ''
+- id: batch_prediction
+  name: 批量预测
+  aliases:
+  - Batch Prediction
+  cluster: inference_serving
+  importance: high
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note
+    confidence: low
+  requires:
+  - model_deployment
+  note: verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。
+- id: online_prediction
+  name: 在线预测
+  aliases:
+  - Online Prediction
+  cluster: inference_serving
+  importance: high
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note
+    confidence: low
+  requires:
+  - model_deployment
+  note: verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。
+- id: model_compression
+  name: 模型压缩
+  aliases:
+  - Model Compression
+  cluster: inference_serving
+  importance: high
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 7.17.1
+    confidence: high
+  requires:
+  - representation_learning
+  note: ''
+- id: beam_search
+  name: 束搜索
+  aliases:
+  - Beam Search
+  cluster: inference_serving
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 10.8
+    confidence: high
+  requires:
+  - conditional_probability
+  note: ''
+- id: knowledge_distillation
+  name: 知识蒸馏
+  aliases:
+  - Knowledge Distillation
+  cluster: inference_serving
+  importance: medium
+  source:
+    type: textbook
+    ref: https://www.deeplearningbook.org/ — ch./§ 7.17.1
+    confidence: high
+  requires:
+  - model_compression
+  - softmax
+  note: ''
+- id: latency
+  name: 推理延迟
+  aliases:
+  - Inference Latency
+  cluster: inference_serving
+  importance: medium
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note
+    confidence: low
+  requires:
+  - online_prediction
+  note: verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。
+- id: throughput
+  name: 推理吞吐量
+  aliases:
+  - Inference Throughput
+  cluster: inference_serving
+  importance: medium
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note
+    confidence: low
+  requires:
+  - model_deployment
+  note: verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。
+- id: shadow_deployment
+  name: 影子部署
+  aliases:
+  - Shadow Deployment
+  cluster: inference_serving
+  importance: medium
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note
+    confidence: low
+  requires:
+  - online_prediction
+  note: verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。
+- id: canary_release
+  name: 金丝雀发布
+  aliases:
+  - Canary Release
+  cluster: inference_serving
+  importance: medium
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note
+    confidence: low
+  requires:
+  - online_prediction
+  note: verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。
+- id: model_monitoring
+  name: 模型监控
+  aliases:
+  - Model Monitoring
+  cluster: inference_serving
+  importance: medium
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Diagnosis of ML system failures & data distribution shifts & monitoring
+    confidence: medium
+  requires:
+  - model_deployment
+  - distribution_shift
+  note: ''
+- id: continual_learning
+  name: 持续学习
+  aliases:
+  - Continual Learning
+  cluster: inference_serving
+  importance: medium
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Monitoring & Continual Learning
+    confidence: medium
+  requires:
+  - model_monitoring
+  - backpropagation
+  note: ''
+- id: speculative_decoding
+  name: 推测解码
+  aliases:
+  - Speculative Decoding
+  cluster: inference_serving
+  importance: medium
+  source:
+    type: course
+    ref: https://web.stanford.edu/class/cs224n/#schedule — Reasoning 2; reading Fast Inference from Transformers via Speculative
+      Decoding
+    confidence: medium
+  requires:
+  - language_model
+  - conditional_probability
+  note: ''
+- id: autoregressive_decoding
+  name: 自回归解码
+  aliases:
+  - Autoregressive Decoding
+  cluster: inference_serving
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 9.3
+    confidence: high
+  requires:
+  - language_model
+  note: ''
+- id: convolution
+  name: 卷积
+  aliases:
+  - Convolution
+  cluster: vision
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 7.2
+    confidence: high
+  requires:
+  - matrix_multiplication
+  note: ''
+- id: image_classification
+  name: 图像分类
+  aliases:
+  - Image Classification
+  cluster: vision
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 14.13
+    confidence: high
+  requires:
+  - supervised_learning
+  note: ''
+- id: object_detection
+  name: 目标检测
+  aliases:
+  - Object Detection
+  cluster: vision
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 14.3
+    confidence: high
+  requires:
+  - image_classification
+  note: ''
+- id: semantic_segmentation
+  name: 语义分割
+  aliases:
+  - Semantic Segmentation
+  cluster: vision
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 14.9
+    confidence: high
+  requires:
+  - image_classification
+  note: ''
+- id: vision_transformer
+  name: 视觉 Transformer
+  aliases:
+  - Vision Transformer
+  cluster: vision
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 11.8
+    confidence: high
+  requires:
+  - transformer
+  note: ''
+- id: pooling
+  name: 池化
+  aliases:
+  - Pooling
+  cluster: vision
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 7.5
+    confidence: high
+  requires:
+  - matrix_multiplication
+  note: ''
+- id: padding_stride
+  name: 填充与步幅
+  aliases:
+  - Padding and Stride
+  cluster: vision
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 7.3
+    confidence: high
+  requires:
+  - convolution
+  note: ''
+- id: anchor_boxes
+  name: 锚框
+  aliases:
+  - Anchor Boxes
+  cluster: vision
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 14.4
+    confidence: high
+  requires:
+  - object_detection
+  - iou
+  note: ''
+- id: nonmaximum_suppression
+  name: 非极大值抑制
+  aliases:
+  - Non-Maximum Suppression
+  cluster: vision
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 14.4
+    confidence: high
+  requires:
+  - object_detection
+  - iou
+  note: ''
+- id: rcnn
+  name: 区域卷积神经网络
+  aliases:
+  - Region-based Convolutional Neural Network
+  cluster: vision
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 14.8
+    confidence: high
+  requires:
+  - cnn
+  - object_detection
+  note: ''
+- id: fcn
+  name: 全卷积网络
+  aliases:
+  - Fully Convolutional Network
+  cluster: vision
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 14.11
+    confidence: high
+  requires:
+  - cnn
+  - semantic_segmentation
+  note: ''
+- id: contrastive_learning
+  name: 对比学习
+  aliases:
+  - Contrastive Learning
+  cluster: vision
+  importance: medium
+  source:
+    type: course
+    ref: https://cs231n.stanford.edu/schedule.html — Lecture 12 Self-supervised Learning
+    confidence: medium
+  requires:
+  - representation_learning
+  note: ''
+- id: instance_segmentation
+  name: 实例分割
+  aliases:
+  - Instance Segmentation
+  cluster: vision
+  importance: medium
+  source:
+    type: course
+    ref: https://cs231n.stanford.edu/schedule.html — Lecture 9 Object Detection, Image Segmentation, Visualizing and Understanding
+    confidence: medium
+  requires:
+  - object_detection
+  - semantic_segmentation
+  note: ''
+- id: diffusion_model
+  name: 扩散模型
+  aliases:
+  - Diffusion Model
+  cluster: vision
+  importance: medium
+  source:
+    type: course
+    ref: https://cs231n.stanford.edu/schedule.html — Lecture 14 Generative Models 2
+    confidence: medium
+  requires:
+  - conditional_probability
+  - mlp
+  note: ''
+- id: tokenization
+  name: 分词
+  aliases:
+  - Tokenization
+  cluster: language
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 9.2
+    confidence: high
+  requires: []
+  note: ''
+- id: word_embedding
+  name: 词嵌入
+  aliases:
+  - Word Embedding
+  cluster: language
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 15.1
+    confidence: high
+  requires:
+  - matrix_multiplication
+  note: ''
+- id: language_model
+  name: 语言模型
+  aliases:
+  - Language Model
+  cluster: language
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 9.3
+    confidence: high
+  requires:
+  - conditional_probability
+  - tokenization
+  note: ''
+- id: bert
+  name: BERT 模型
+  aliases:
+  - BERT
+  cluster: language
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 15.8
+    confidence: high
+  requires:
+  - transformer
+  note: ''
+- id: retrieval_augmented_generation
+  name: 检索增强生成
+  aliases:
+  - Retrieval-Augmented Generation
+  cluster: language
+  importance: high
+  source:
+    type: course
+    ref: https://web.stanford.edu/class/cs224n/#schedule — Agents, Tool Use, and RAG
+    confidence: medium
+  requires:
+  - language_model
+  note: ''
+- id: subword_tokenization
+  name: 子词分词
+  aliases:
+  - Subword Tokenization
+  cluster: language
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 15.6
+    confidence: high
+  requires:
+  - tokenization
+  note: ''
+- id: word2vec
+  name: 词向量模型 word2vec
+  aliases:
+  - word2vec
+  cluster: language
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 15.1
+    confidence: high
+  requires:
+  - word_embedding
+  note: ''
+- id: negative_sampling
+  name: 负采样
+  aliases:
+  - Negative Sampling
+  cluster: language
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 15.2
+    confidence: high
+  requires:
+  - conditional_probability
+  note: ''
+- id: masked_language_modeling
+  name: 掩码语言建模
+  aliases:
+  - Masked Language Modeling
+  cluster: language
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 15.8
+    confidence: high
+  requires:
+  - language_model
+  note: ''
+- id: supervised_fine_tuning
+  name: 监督微调
+  aliases:
+  - Supervised Fine-Tuning
+  cluster: language
+  importance: medium
+  source:
+    type: course
+    ref: https://web.stanford.edu/class/cs224n/#schedule — Post-training (RLHF, SFT, DPO)
+    confidence: medium
+  requires:
+  - fine_tuning
+  - language_model
+  note: ''
+- id: rlhf
+  name: 人类反馈强化学习
+  aliases:
+  - Reinforcement Learning from Human Feedback
+  cluster: language
+  importance: medium
+  source:
+    type: course
+    ref: https://web.stanford.edu/class/cs224n/#schedule — Post-training (RLHF, SFT, DPO)
+    confidence: medium
+  requires:
+  - language_model
+  - policy_gradient
+  note: ''
+- id: lora
+  name: 低秩适配
+  aliases:
+  - Low-Rank Adaptation
+  cluster: language
+  importance: medium
+  source:
+    type: course
+    ref: https://web.stanford.edu/class/cs224n/#schedule — Efficient Adaptation (Prompting + PEFT); reading LoRA
+    confidence: medium
+  requires:
+  - matrix_multiplication
+  - fine_tuning
+  note: ''
+- id: in_context_learning
+  name: 上下文学习
+  aliases:
+  - In-Context Learning
+  cluster: language
+  importance: medium
+  source:
+    type: course
+    ref: https://web.stanford.edu/class/cs224n/#schedule — Efficient Adaptation (Prompting + PEFT); reading Language Models
+      are Few-Shot Learners
+    confidence: medium
+  requires:
+  - language_model
+  note: ''
+- id: direct_preference_optimization
+  name: 直接偏好优化
+  aliases:
+  - Direct Preference Optimization
+  cluster: language
+  importance: medium
+  source:
+    type: course
+    ref: https://web.stanford.edu/class/cs224n/#schedule — Post-training (RLHF, SFT, DPO); reading Direct Preference Optimization
+    confidence: medium
+  requires:
+  - language_model
+  - maximum_likelihood
+  note: ''
+- id: mdp
+  name: 马尔可夫决策过程
+  aliases:
+  - Markov Decision Process
+  cluster: rl
+  importance: high
+  source:
+    type: textbook
+    ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 3
+    confidence: medium
+  requires:
+  - conditional_probability
+  note: verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。
+- id: bellman_equation
+  name: 贝尔曼方程
+  aliases:
+  - Bellman Equation
+  cluster: rl
+  importance: high
+  source:
+    type: textbook
+    ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 3.5
+    confidence: medium
+  requires:
+  - mdp
+  - expectation
+  note: verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。
+- id: value_iteration
+  name: 价值迭代
+  aliases:
+  - Value Iteration
+  cluster: rl
+  importance: high
+  source:
+    type: textbook
+    ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 4.4
+    confidence: medium
+  requires:
+  - bellman_equation
+  note: verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。
+- id: q_learning
+  name: Q 学习
+  aliases:
+  - Q-Learning
+  cluster: rl
+  importance: high
+  source:
+    type: textbook
+    ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 6.5
+    confidence: medium
+  requires:
+  - temporal_difference
+  note: verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。
+- id: policy_gradient
+  name: 策略梯度
+  aliases:
+  - Policy Gradient
+  cluster: rl
+  importance: high
+  source:
+    type: textbook
+    ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 13.1
+    confidence: medium
+  requires:
+  - mdp
+  - gradient
+  - expectation
+  note: verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。
+- id: return_discount
+  name: 回报与折扣
+  aliases:
+  - Return and Discounting
+  cluster: rl
+  importance: medium
+  source:
+    type: textbook
+    ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 3.3
+    confidence: medium
+  requires:
+  - expectation
+  note: verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。
+- id: state_action_value
+  name: 状态动作价值
+  aliases:
+  - Action-Value Function
+  cluster: rl
+  importance: medium
+  source:
+    type: textbook
+    ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 3.5
+    confidence: medium
+  requires:
+  - mdp
+  - return_discount
+  note: verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。
+- id: policy_iteration
+  name: 策略迭代
+  aliases:
+  - Policy Iteration
+  cluster: rl
+  importance: medium
+  source:
+    type: textbook
+    ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 4.3
+    confidence: medium
+  requires:
+  - bellman_equation
+  note: verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。
+- id: monte_carlo_rl
+  name: 蒙特卡洛强化学习
+  aliases:
+  - Monte Carlo Methods
+  cluster: rl
+  importance: medium
+  source:
+    type: textbook
+    ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 5
+    confidence: medium
+  requires:
+  - mdp
+  - return_discount
+  note: verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。
+- id: temporal_difference
+  name: 时序差分学习
+  aliases:
+  - Temporal-Difference Learning
+  cluster: rl
+  importance: medium
+  source:
+    type: textbook
+    ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 6.1
+    confidence: medium
+  requires:
+  - bellman_equation
+  note: verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。
+- id: sarsa
+  name: SARSA 算法
+  aliases:
+  - Sarsa
+  cluster: rl
+  importance: medium
+  source:
+    type: textbook
+    ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 6.4
+    confidence: medium
+  requires:
+  - temporal_difference
+  note: verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。
+- id: exploration_exploitation
+  name: 探索与利用
+  aliases:
+  - Exploration and Exploitation
+  cluster: rl
+  importance: medium
+  source:
+    type: textbook
+    ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 2
+    confidence: medium
+  requires:
+  - expectation
+  note: verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。
+- id: actor_critic
+  name: 演员评论家方法
+  aliases:
+  - Actor–Critic Methods
+  cluster: rl
+  importance: medium
+  source:
+    type: textbook
+    ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 13.5
+    confidence: medium
+  requires:
+  - policy_gradient
+  - state_action_value
+  note: verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。
+- id: off_policy_learning
+  name: 离策略学习
+  aliases:
+  - Off-Policy Learning
+  cluster: rl
+  importance: medium
+  source:
+    type: textbook
+    ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 5.5
+    confidence: medium
+  requires:
+  - mdp
+  - conditional_probability
+  note: verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。
+- id: gpu_compute
+  name: GPU 计算
+  aliases:
+  - GPU Computing
+  cluster: systems_harness
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 6.7
+    confidence: high
+  requires:
+  - matrix_multiplication
+  note: ''
+- id: data_parallelism
+  name: 数据并行
+  aliases:
+  - Data Parallelism
+  cluster: systems_harness
+  importance: high
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 13.5
+    confidence: high
+  requires:
+  - backpropagation
+  - gpu_compute
+  note: ''
+- id: experiment_tracking
+  name: 实验跟踪
+  aliases:
+  - Experiment Tracking
+  cluster: systems_harness
+  importance: high
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Experiment tracking & versioning with Weights & Biases
+    confidence: medium
+  requires:
+  - offline_evaluation
+  note: ''
+- id: model_versioning
+  name: 模型版本管理
+  aliases:
+  - Model Versioning
+  cluster: systems_harness
+  importance: high
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — Experiment tracking & versioning with Weights & Biases
+    confidence: medium
+  requires:
+  - model_deployment
+  note: ''
+- id: agent_tool_use
+  name: 智能体工具使用
+  aliases:
+  - Agent Tool Use
+  cluster: systems_harness
+  importance: high
+  source:
+    type: course
+    ref: https://web.stanford.edu/class/cs224n/#schedule — Agents, Tool Use, and RAG; reading ReAct
+    confidence: medium
+  requires:
+  - language_model
+  note: ''
+- id: parameter_server
+  name: 参数服务器
+  aliases:
+  - Parameter Server
+  cluster: systems_harness
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 13.7
+    confidence: high
+  requires:
+  - data_parallelism
+  note: ''
+- id: allreduce
+  name: 全归约
+  aliases:
+  - AllReduce
+  cluster: systems_harness
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 13.7
+    confidence: high
+  requires:
+  - data_parallelism
+  note: ''
+- id: asynchronous_computation
+  name: 异步计算
+  aliases:
+  - Asynchronous Computation
+  cluster: systems_harness
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 13.2
+    confidence: high
+  requires: []
+  note: ''
+- id: model_parallelism
+  name: 模型并行
+  aliases:
+  - Model Parallelism
+  cluster: systems_harness
+  importance: medium
+  source:
+    type: textbook
+    ref: https://d2l.ai/ — ch./§ 13.5
+    confidence: high
+  requires:
+  - gpu_compute
+  - backpropagation
+  note: ''
+- id: activation_checkpointing
+  name: 激活检查点
+  aliases:
+  - Activation Checkpointing
+  cluster: systems_harness
+  importance: medium
+  source:
+    type: course
+    ref: https://cs231n.stanford.edu/schedule.html — Lecture 11 Large Scale Distributed Training
+    confidence: medium
+  requires:
+  - backpropagation
+  note: ''
+- id: ml_pipeline
+  name: 机器学习流水线
+  aliases:
+  - ML Pipeline
+  cluster: systems_harness
+  importance: medium
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — ML Infrastructure and Platform
+    confidence: medium
+  requires:
+  - data_preprocessing
+  - model_deployment
+  note: ''
+- id: feature_store
+  name: 特征存储
+  aliases:
+  - Feature Store
+  cluster: systems_harness
+  importance: medium
+  source:
+    type: course
+    ref: https://stanford-cs329s.github.io/syllabus.html — ML Infrastructure and Platform; lecture slides
+    confidence: low
+  requires:
+  - feature_engineering
+  note: verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。
+- id: chain_of_thought
+  name: 思维链提示
+  aliases:
+  - Chain-of-Thought Prompting
+  cluster: systems_harness
+  importance: medium
+  source:
+    type: course
+    ref: https://web.stanford.edu/class/cs224n/#schedule — Efficient Adaptation (Prompting + PEFT); reading Chain-of-Thought
+      Prompting Elicits Reasoning
+    confidence: medium
+  requires:
+  - language_model
+  note: ''
+- id: self_consistency
+  name: 自一致性解码
+  aliases:
+  - Self-Consistency
+  cluster: systems_harness
+  importance: medium
+  source:
+    type: course
+    ref: https://web.stanford.edu/class/cs224n/#schedule — Reasoning 1; reading Self-Consistency Improves Chain of Thought
+      Reasoning
+    confidence: medium
+  requires:
+  - chain_of_thought
+  - probability
+  note: ''

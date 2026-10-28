@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "state.schema.json",
+  "title": "Socratic Mirror state v1",
+  "type": "object",
+  "required": [
+    "version",
+    "nodes",
+    "scenarios",
+    "history"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "nodes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "concept",
+          "level",
+          "evidence"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "concept": {
+            "type": "object"
+          },
+          "level": {
+            "type": "object",
+            "required": [
+              "unknown",
+              "aware",
+              "operable",
+              "deep"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "unknown": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "aware": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "operable": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "deep": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          },
+          "evidence": {
+            "type": "object",
+            "required": [
+              "count",
+              "question_types",
+              "sharpness",
+              "propagated"
+            ],
+            "properties": {
+              "count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "question_types": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "sharpness": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "propagated": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "$ref": "scenario.schema.json"
+      }
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "nodes",
+          "question_type",
+          "scores",
+          "quotes",
+          "probe",
+          "total",
+          "row",
+          "before",
+          "after"
+        ],
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "question_type": {
+            "type": "string"
+          },
+          "scores": {
+            "type": "object"
+          },
+          "quotes": {
+            "type": "object"
+          },
+          "probe": {
+            "enum": [
+              "direct",
+              "after_prompt"
+            ]
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 12
+          },
+          "row": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 11
+          },
+          "before": {
+            "type": "object"
+          },
+          "after": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

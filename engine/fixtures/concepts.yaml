@@ -1,0 +1,168 @@
+[
+  {
+    "id": "n0",
+    "name": "Fixture 0",
+    "aliases": [
+      "F0"
+    ],
+    "cluster": "foundation",
+    "importance": "high",
+    "source": {
+      "type": "fixture",
+      "ref": "https://example.org/fixture/0",
+      "confidence": "high"
+    },
+    "requires": []
+  },
+  {
+    "id": "n1",
+    "name": "Fixture 1",
+    "aliases": [
+      "F1"
+    ],
+    "cluster": "foundation",
+    "importance": "medium",
+    "source": {
+      "type": "fixture",
+      "ref": "https://example.org/fixture/1",
+      "confidence": "high"
+    },
+    "requires": []
+  },
+  {
+    "id": "n2",
+    "name": "Fixture 2",
+    "aliases": [
+      "F2"
+    ],
+    "cluster": "foundation",
+    "importance": "low",
+    "source": {
+      "type": "fixture",
+      "ref": "https://example.org/fixture/2",
+      "confidence": "high"
+    },
+    "requires": [
+      "n0"
+    ]
+  },
+  {
+    "id": "n3",
+    "name": "Fixture 3",
+    "aliases": [
+      "F3"
+    ],
+    "cluster": "foundation",
+    "importance": "high",
+    "source": {
+      "type": "fixture",
+      "ref": "https://example.org/fixture/3",
+      "confidence": "high"
+    },
+    "requires": [
+      "n1"
+    ]
+  },
+  {
+    "id": "n4",
+    "name": "Fixture 4",
+    "aliases": [
+      "F4"
+    ],
+    "cluster": "foundation",
+    "importance": "medium",
+    "source": {
+      "type": "fixture",
+      "ref": "https://example.org/fixture/4",
+      "confidence": "high"
+    },
+    "requires": [
+      "n2"
+    ]
+  },
+  {
+    "id": "n5",
+    "name": "Fixture 5",
+    "aliases": [
+      "F5"
+    ],
+    "cluster": "systems",
+    "importance": "low",
+    "source": {
+      "type": "fixture",
+      "ref": "https://example.org/fixture/5",
+      "confidence": "high"
+    },
+    "requires": [
+      "n3"
+    ]
+  },
+  {
+    "id": "n6",
+    "name": "Fixture 6",
+    "aliases": [
+      "F6"
+    ],
+    "cluster": "systems",
+    "importance": "high",
+    "source": {
+      "type": "fixture",
+      "ref": "https://example.org/fixture/6",
+      "confidence": "high"
+    },
+    "requires": [
+      "n4"
+    ]
+  },
+  {
+    "id": "n7",
+    "name": "Fixture 7",
+    "aliases": [
+      "F7"
+    ],
+    "cluster": "systems",
+    "importance": "medium",
+    "source": {
+      "type": "fixture",
+      "ref": "https://example.org/fixture/7",
+      "confidence": "high"
+    },
+    "requires": [
+      "n5"
+    ]
+  },
+  {
+    "id": "n8",
+    "name": "Fixture 8",
+    "aliases": [
+      "F8"
+    ],
+    "cluster": "systems",
+    "importance": "low",
+    "source": {
+      "type": "fixture",
+      "ref": "https://example.org/fixture/8",
+      "confidence": "high"
+    },
+    "requires": [
+      "n6"
+    ]
+  },
+  {
+    "id": "n9",
+    "name": "Fixture 9",
+    "aliases": [
+      "F9"
+    ],
+    "cluster": "systems",
+    "importance": "high",
+    "source": {
+      "type": "fixture",
+      "ref": "https://example.org/fixture/9",
+      "confidence": "high"
+    },
+    "requires": [
+      "n7"
+    ]
+  }
+]

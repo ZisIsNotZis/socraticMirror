@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "scenario.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "brief",
+    "asks",
+    "instantiates",
+    "expected_elements",
+    "difficulty",
+    "source"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "brief": {
+      "type": "string",
+      "minLength": 1
+    },
+    "asks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "instantiates": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "expected_elements": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string"
+      }
+    },
+    "difficulty": {
+      "type": [
+        "string",
+        "number"
+      ]
+    },
+    "source": {
+      "type": [
+        "object",
+        "string"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

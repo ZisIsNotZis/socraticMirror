@@ -1,0 +1,812 @@
+# 情景层种子：全部为有出处的教学改写，不冒充生产事故或原文数字。
+# brief 中数字是明确的出题约束；source.ref 区分改写与来源事实。
+# 来源正文/习题已读取；论文仅核验公开摘要，故机制细节仍需后续内容审计。
+- id: scen_rank_deficient
+  title: 重复特征让房价回归不可逆
+  brief: |-
+    沿 D2L 线性回归的秩亏习题：训练矩阵 1000×4，其中面积一列同时以平方米和平方英尺出现；同事直接求 (XᵀX)⁻¹，报奇异矩阵。只能用 CPU，要求保留可解释系数。
+  asks:
+  - type: diagnosis
+    angle: 如何验证秩亏并稳定求解，而不是只加一行逆矩阵调用？
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - linear_algebra
+  - matrix_multiplication
+  - linear_regression
+  - svd
+  expected_elements:
+  - 机制: XᵀX 的秩受重复列限制；病态时正规方程会放大条件数。
+  - 应用: 检查奇异值，用 SVD 最小范数解或有说明的正则；核对矩阵维数。
+  - 边界: 最小范数只是在多解中选一解，不能从共线数据识别各特征独立因果贡献。
+  difficulty: high
+  source:
+    type: exercise
+    ref: |-
+      https://d2l.ai/chapter_linear-regression/linear-regression.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_pca_budget
+  title: 不显式构造协方差的降维
+  brief: |-
+    沿 scikit-learn PCA 的截断 SVD 实现：有 10000 条、2048 维图像特征；内存只剩 512 MiB，要输出 64 维特征用于近邻检索，有同事省掉中心化。
+  asks:
+  - type: diagnosis
+    angle: 比较中心化后协方差特征分解与直接截断 SVD 的关系及内存。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - eigendecomposition
+  - svd
+  - matrix_multiplication
+  - linear_algebra
+  expected_elements:
+  - 机制: 中心化 X 的右奇异向量对应 XᵀX 的特征向量，特征值与奇异值平方相关。
+  - 应用: 以训练均值中心化，估算矩阵及工作区内存，采用分批或随机化截断算法。
+  - 边界: 最大方差方向不保证最利于分类；不中心化得到的分解不是通常定义的 PCA。
+  difficulty: high
+  source:
+    type: engineering
+    ref: |-
+      https://scikit-learn.org/stable/modules/decomposition.html#pca — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_robust_constant
+  title: 长尾房价的常数基线
+  brief: |-
+    改写 D2L 线性回归习题：先只拟合常数 b，观测房价为 100、110、120、130、1540（单位万元）；竞赛使用对数尺度误差，团队却按原价平方误差选基线。
+  asks:
+  - type: application
+    angle: 推导平方损失与绝对损失最优常数，并解释目标尺度。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - calculus
+  - linear_regression
+  - maximum_likelihood
+  - data_preprocessing
+  expected_elements:
+  - 机制: 平方损失导数给出均值；绝对损失给出中位数；不同噪声假设对应不同负对数似然。
+  - 应用: 分别算出均值 400 与中位数 120，明确先做对数变换还是在原尺度拟合。
+  - 边界: 原尺度最优不等于对数尺度最优；存在零或负目标时不能直接取对数。
+  difficulty: medium
+  source:
+    type: exercise
+    ref: |-
+      https://d2l.ai/chapter_linear-regression/linear-regression.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_xor_mlp
+  title: 两层线性网络仍学不会 XOR
+  brief: |-
+    沿 D2L MLP 非线性示例：四个二进制输入的 XOR 标签各重复 100 次；网络 Linear(2,8) 接 Linear(8,1)，训练 200 轮仍不能全对。
+  asks:
+  - type: application
+    angle: 从表达能力和梯度而非调大训练轮数入手定位。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - mlp
+  - activation
+  - logistic_regression
+  - backpropagation
+  expected_elements:
+  - 机制: 无激活的仿射层复合仍是仿射映射；单一线性分界无法实现 XOR。
+  - 应用: 隐藏层加入非线性，输出用二分类 logits 损失，检查四个输入的预测和梯度。
+  - 边界: 表达能力足够不保证优化成功；饱和激活或不当初始化仍会学不动。
+  difficulty: medium
+  source:
+    type: engineering
+    ref: |-
+      https://d2l.ai/chapter_multilayer-perceptrons/mlp.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_gradient_graph
+  title: 共享参数的梯度验算
+  brief: |-
+    改写 D2L 反向传播习题：单批 16×32 输入，经共享 W 的两个分支求和后接标量损失；手写反向仅保留最后分支梯度，有限差分误差约 50%。
+  asks:
+  - type: diagnosis
+    angle: 画出共享节点并说明梯度形状和累加位置。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - backpropagation
+  - computational_graph
+  - chain_rule
+  - calculus
+  - autodiff
+  expected_elements:
+  - 机制: 链式法则沿所有路径传播，同一 W 的总梯度为各路径贡献之和，形状与 W 一致。
+  - 应用: 用小规模 float64 中心差分核验，清零旧梯度但不覆盖同一次图的分支贡献。
+  - 边界: ReLU 拐点处数值差分未必匹配某个次梯度；训练时禁用随机层再检查。
+  difficulty: high
+  source:
+    type: exercise
+    ref: |-
+      https://d2l.ai/chapter_multilayer-perceptrons/backprop.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_batch_timing
+  title: 数据翻倍后学习率日程失真
+  brief: |-
+    改写 D2L minibatch SGD 的重复数据习题：原 10000 样本，batch=100，每 10 epoch 降学习率十倍；数据被逐条复制成 20000 条，同事保持 epoch 数比较 SGD 与全批梯度下降。
+  asks:
+  - type: diagnosis
+    angle: 区分经验目标、更新次数与墙钟时间，给出公平对照。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - gradient_descent
+  - sgd
+  - minibatch_sgd
+  - learning_rate_schedule
+  expected_elements:
+  - 机制: 复制不改变平均经验损失，但改变每 epoch 的更新步数；小批梯度有抽样噪声。
+  - 应用: 同时记录 optimizer steps、样本数和耗时，以相同更新或计算预算比较并重设 scheduler。
+  - 边界: 重复样本不增加独立信息；按 epoch 或按 step 衰减不是等价实验。
+  difficulty: high
+  source:
+    type: exercise
+    ref: |-
+      https://d2l.ai/chapter_optimization/minibatch-sgd.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_adam_sparse
+  title: 稀疏词向量的自适应步长
+  brief: |-
+    沿 D2L Adam 的一二阶矩更新：词表 50000，embedding 维数 128，常见词每步更新而罕见词隔 1000 步才出现；从 SGD 改 Adam 后前十步损失跳变。
+  asks:
+  - type: diagnosis
+    angle: 追踪前几步矩估计与偏差校正，而不是断言 Adam 总比 SGD 稳。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - adam
+  - sgd
+  - learning_rate_schedule
+  - word_embedding
+  expected_elements:
+  - 机制: Adam 维护梯度一阶矩和平方梯度二阶矩，初始化为零导致早期偏差需校正。
+  - 应用: 核对 beta、epsilon、偏差校正和学习率；对常见与罕见词分别记录更新范数。
+  - 边界: Adam 不保证相同学习率下更好泛化；稀疏更新语义和优化器实现兼容性必须核验。
+  difficulty: high
+  source:
+    type: engineering
+    ref: |-
+      https://d2l.ai/chapter_optimization/adam.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_bn_small_batch
+  title: 显存限制下的 BN 统计量
+  brief: |-
+    改写 D2L BN 的训练/推理讨论：8 卡图像分类，每卡只能 batch=2；训练 loss 降低，验证时切 eval 后显著变差；有人建议累积 16 次梯度即可修复 BN。
+  asks:
+  - type: diagnosis
+    angle: 先审计运行统计量、每卡统计与推理模式。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - batch_norm
+  - minibatch_sgd
+  - data_parallelism
+  - layer_norm
+  expected_elements:
+  - 机制: BN 使用批统计并在推理使用运行统计；小批和跨卡统计范围会改变估计噪声。
+  - 应用: 比对 train/eval 输出与运行均值方差，尝试同步 BN、冻结可靠统计或不依赖批维的归一化。
+  - 边界: 梯度累积不会自动合并 BN 每次前向的统计量；batch=2 本身也不必然使所有卷积 BN 失效。
+  difficulty: high
+  source:
+    type: exercise
+    ref: |-
+      https://d2l.ai/chapter_convolutional-modern/batch-norm.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_house_leak
+  title: 房价表格中的预处理泄漏
+  brief: |-
+    沿 D2L 房价竞赛案例：1460 行训练记录，80 个原始字段，车库类别和面积有缺失；用五折选超参时，先在全量训练表做目标编码，再分折，线下分数异常好。
+  asks:
+  - type: diagnosis
+    angle: 设计不读取留出标签的特征与验证流水线。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - train_test_split
+  - validation_split
+  - data_preprocessing
+  - feature_engineering
+  - cross_validation
+  expected_elements:
+  - 机制: 目标编码若见到验证标签会泄漏；预处理拟合也必须限定在训练折。
+  - 应用: 每折单独拟合填补、类别词表及交叉拟合目标编码，独立保留最终测试集。
+  - 边界: 无标签联合统计与目标泄漏风险不同；竞赛允许的传导式处理不必符合线上未知数据条件。
+  difficulty: high
+  source:
+    type: exercise
+    ref: |-
+      https://d2l.ai/chapter_multilayer-perceptrons/kaggle-house-price.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_shift_monitor
+  title: 上线后词表和标签比例都变了
+  brief: |-
+    改写 ML Test Score 的监控检查：客服分类器每分钟 1000 请求，部署两周后新产品工单占 30%，标签延迟 7 天，未知 token 比率从 1% 到 12%；不能立即重训。
+  asks:
+  - type: diagnosis
+    angle: 区分输入漂移警报与性能已经下降的证据。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - distribution_shift
+  - model_monitoring
+  - model_deployment
+  - data_preprocessing
+  expected_elements:
+  - 机制: 输入分布变化不自动等于条件标签关系变化；标签延迟使真实线上质量暂不可直接观测。
+  - 应用: 监控未知词、缺失率、分群输出，保留版本与回放样本，待标签到齐做分时段验证。
+  - 边界: 无标签漂移指标不能证明准确率下降；回滚旧模型也不保证适应新产品。
+  difficulty: high
+  source:
+    type: engineering
+    ref: |-
+      https://arxiv.org/abs/1607.00673 — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_rare_fraud
+  title: 99.5% 准确率的欺诈检测器
+  brief: |-
+    沿 scikit-learn 不平衡分类评估：每天 100000 笔交易，500 笔欺诈；全判正常已有 99.5% accuracy，人工每天最多审核 1000 笔。
+  asks:
+  - type: application
+    angle: 根据审核容量选阈值并用混淆矩阵量化漏报。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - precision_recall
+  - accuracy
+  - confusion_matrix
+  - f1_score
+  expected_elements:
+  - 机制: accuracy 被多数类支配；precision 与 recall 的分母不同，阈值改变两者取舍。
+  - 应用: 在验证集按 top-1000 或阈值计算 TP/FP/FN，报告召回和审核命中率。
+  - 边界: F1 隐含等权且不直接表达审核成本；跨日期基础欺诈率变动会改变 precision。
+  difficulty: medium
+  source:
+    type: engineering
+    ref: |-
+      https://scikit-learn.org/stable/modules/model_evaluation.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_calibrate
+  title: 正确率不变却风险定价错误
+  brief: |-
+    沿 scikit-learn 温度缩放例子：三分类模型准确率 85%，声称置信度 0.9 的 1000 条记录实际仅 700 条正确；另留出 2000 条校准数据。
+  asks:
+  - type: diagnosis
+    angle: 解释为何提高概率可信度不一定提升 argmax 正确率。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - model_calibration
+  - accuracy
+  - validation_split
+  - softmax
+  expected_elements:
+  - 机制: 正温度缩放 logits 不改变类别排序；校准关注预测概率与经验频率的一致性。
+  - 应用: 仅在独立校准集拟合温度，以可靠性图、Brier 或 log loss 检查留出集表现。
+  - 边界: 温度缩放不能修复错误类别排序；总体校准掩盖分群偏差且漂移后可能失效。
+  difficulty: high
+  source:
+    type: engineering
+    ref: |-
+      https://scikit-learn.org/stable/modules/calibration.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_perplexity_tokens
+  title: 不同 tokenizer 的困惑度不能直比
+  brief: |-
+    沿 D2L 语言模型：同一 10000 字符测试文本，模型 A 切成 5000 token，模型 B 为 8000 token；两者报告 token perplexity 18 与 12，团队欲宣布 B 更强。
+  asks:
+  - type: diagnosis
+    angle: 将归一化单位与测试文本固定后再比较。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - perplexity
+  - language_model
+  - tokenization
+  - cross_entropy
+  expected_elements:
+  - 机制: 困惑度为平均 token 负对数似然的指数，token 单位改变会改变分母。
+  - 应用: 使用一致文本和切分协议，或转为每字节负对数似然并披露边界符处理。
+  - 边界: 低困惑度不直接等于事实性或下游任务质量；不同支持集及未知词处理仍会妨碍比较。
+  difficulty: high
+  source:
+    type: engineering
+    ref: |-
+      https://d2l.ai/chapter_recurrent-neural-networks/rnn.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_batch_online
+  title: 离线批量特征搬到在线失败
+  brief: |-
+    改写 ML Test Score 的训练服务一致性检查：原先每晚批量给 100 万用户评分，改为单请求 50 ms 内响应；离线特征含次日聚合，线上只能读取截至当前的事件。
+  asks:
+  - type: diagnosis
+    angle: 划定特征可用时间并验证训练和服务语义一致。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - batch_prediction
+  - online_prediction
+  - model_deployment
+  - feature_engineering
+  - latency
+  expected_elements:
+  - 机制: 批量和在线有不同新鲜度与延迟约束；未来聚合造成时间泄漏而非单纯推理性能差。
+  - 应用: 按事件时间回放构造特征，抽样比对离线/在线值，测 p95/p99 并设超时降级。
+  - 边界: 离线高分不证明线上有效；缓存能降延迟但可能损失新鲜度，不能缓存未来信息。
+  difficulty: high
+  source:
+    type: engineering
+    ref: |-
+      https://arxiv.org/abs/1607.00673 — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_distill_edge
+  title: 端侧压缩不是只看参数量
+  brief: |-
+    改写蒸馏论文的集成到单模型任务：教师为 5 模型集成，学生要在 4 GiB 手机上运行，模型文件上限 50 MiB、单条 p95 低于 80 ms；只能用现有带标签训练集。
+  asks:
+  - type: diagnosis
+    angle: 设计学生训练与真实端侧验收，不把压缩率当延迟加速率。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - model_compression
+  - knowledge_distillation
+  - model_deployment
+  - latency
+  expected_elements:
+  - 机制: 软目标包含类别间相对信息；温度与硬标签损失权重影响学生学习信号。
+  - 应用: 混合软硬损失，比较相同数据下学生基线，实测设备峰值内存、尾延迟和分群质量。
+  - 边界: 参数更少不必然更快；教师错误可被继承，未代表的端侧输入分布不能靠蒸馏修复。
+  difficulty: high
+  source:
+    type: engineering
+    ref: |-
+      https://arxiv.org/abs/1503.02531 — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_beam_translation
+  title: 翻译 beam 加宽反而偏短
+  brief: |-
+    沿 D2L beam search：中英翻译最长输出 64 token，beam 从 1 改 8，单请求预算 200 ms；总 log 概率更优但译文常提前输出 EOS。
+  asks:
+  - type: application
+    angle: 解释搜索目标、长度偏置和延迟，而不是只加宽 beam。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - beam_search
+  - autoregressive_decoding
+  - language_model
+  expected_elements:
+  - 机制: 自回归序列概率为条件概率乘积；直接求和 log 概率常偏好较短输出，beam 是近似搜索。
+  - 应用: 核对 EOS 与长度处理，在验证集试长度归一化并同时测质量及耗时。
+  - 边界: 更宽 beam 不保证任务指标提升；归一化改变目标而非证明找到了真实最优译文。
+  difficulty: medium
+  source:
+    type: engineering
+    ref: |-
+      https://d2l.ai/chapter_recurrent-modern/beam-search.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_lenet_shapes
+  title: 卷积下采样把细小数字抹掉
+  brief: |-
+    沿 D2L LeNet 的 Fashion-MNIST 实验：28×28 单通道输入，首层 5×5 卷积误设 stride=2 且 padding=0，再接 2×2 pooling；工程师仍按原展平维数连接全连接层。
+  asks:
+  - type: application
+    angle: 逐层计算形状，区分参数共享与下采样损失。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - convolution
+  - cnn
+  - image_classification
+  - padding_stride
+  - pooling
+  expected_elements:
+  - 机制: 卷积输出边长按 floor((n+2p-k)/s)+1 计算；池化继续缩小空间维，卷积权重跨位置共享。
+  - 应用: 首层输出 12×12，池化后 6×6；据通道数修正展平维数并比较分类精度。
+  - 边界: 能跑通不说明保留了辨识细节；平移等变受步幅和边界处理限制。
+  difficulty: medium
+  source:
+    type: engineering
+    ref: |-
+      https://d2l.ai/chapter_convolutional-neural-networks/lenet.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_crowded_nms
+  title: 拥挤行人的 NMS 误杀
+  brief: |-
+    改写 D2L anchor 习题：一张 1280×720 图里两个相邻行人的真框 IoU=0.6，检测器预测分数 0.91 和 0.88；NMS 阈值 0.5 后只剩一个。
+  asks:
+  - type: diagnosis
+    angle: 说明重叠不一定是重复目标，并选择可验证的修复方向。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - object_detection
+  - anchor_boxes
+  - nonmaximum_suppression
+  - iou
+  expected_elements:
+  - 机制: 贪心 NMS 按分数压制高重叠框，不知道其是否属于不同实例。
+  - 应用: 检查匹配标注、阈值与尺度，尝试 Soft-NMS 并按拥挤子集测漏检和重复框。
+  - 边界: 一味提高阈值会保留重复预测；IoU 相同并不代表目标身份相同。
+  difficulty: high
+  source:
+    type: exercise
+    ref: |-
+      https://d2l.ai/chapter_computer-vision/anchor.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_segmentation_crop
+  title: 图像和分割掩码不同步增广
+  brief: |-
+    改写 D2L VOC2012 分割习题：训练每张图随机裁成 320×480，但掩码独立随机裁剪并用双线性插值；21 类像素标签中出现非整数值。
+  asks:
+  - type: diagnosis
+    angle: 从标签几何和离散类别语义解释训练失败。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - semantic_segmentation
+  - data_augmentation
+  - data_preprocessing
+  - iou
+  expected_elements:
+  - 机制: 逐像素监督要求图像与掩码空间对齐；插值类别 ID 会制造无意义标签。
+  - 应用: 共用裁剪/翻转参数，掩码最近邻插值并保留 ignore 索引，用可视化叠加验收。
+  - 边界: 颜色增广通常只施加到图像；像素 accuracy 会被背景主导，需检查逐类 IoU。
+  difficulty: high
+  source:
+    type: exercise
+    ref: |-
+      https://d2l.ai/chapter_computer-vision/semantic-segmentation-and-dataset.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_vit_resolution
+  title: ViT 分辨率翻倍的预算
+  brief: |-
+    改写 D2L ViT 的 img_size 习题：patch=16，输入从 224² 改为 448²，12 层、12 头、单卡 16 GiB，batch=32 原本刚能运行；位置嵌入长度固定。
+  asks:
+  - type: diagnosis
+    angle: 估算 token 数、注意力矩阵与位置编码迁移成本。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - vision_transformer
+  - transformer
+  - multihead_attention
+  - image_classification
+  expected_elements:
+  - 机制: 不计 CLS 时 token 从 196 到 784；稠密注意力的成对矩阵元素约增加 16 倍。
+  - 应用: 核对 CLS 与位置嵌入长度，插值二维位置网格，减 batch 或采用高效注意力并重新测峰值。
+  - 边界: 总运行内存不必恰好 16 倍，投影/MLP 与实现影响常数；更高分辨率不保证更好精度。
+  difficulty: high
+  source:
+    type: exercise
+    ref: |-
+      https://d2l.ai/chapter_attention-mechanisms-and-transformers/vision-transformer.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_rnn_detach
+  title: 长序列 RNN 的状态和梯度
+  brief: |-
+    沿 D2L 字符语言模型：训练文本分为长 32 的片段，hidden 跨片段传递，运行第 100 个片段时显存持续增长；采样器还会随机重排片段。
+  asks:
+  - type: diagnosis
+    angle: 分别定位计算图增长与随机片段的状态污染。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - rnn
+  - backpropagation
+  - language_model
+  - gradient_clipping
+  expected_elements:
+  - 机制: 不 detach 隐状态会连接跨片段计算图；随机片段不代表连续上下文。
+  - 应用: 连续采样时截断梯度但保留状态值；随机采样时重置状态，记录梯度范数并按需裁剪。
+  - 边界: detach 会截断跨片段依赖学习；梯度裁剪不能修复错误的采样/状态对应关系。
+  difficulty: high
+  source:
+    type: engineering
+    ref: |-
+      https://d2l.ai/chapter_recurrent-neural-networks/rnn.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_attention_scale
+  title: 高维注意力 logits 饱和
+  brief: |-
+    沿 D2L scaled dot-product attention：Q 为 2×8×128×64，K/V 长 256；实现遗漏除以 sqrt(64)，同时给 padding 的 mask 填 0，注意力几乎 one-hot。
+  asks:
+  - type: diagnosis
+    angle: 推导张量形状并区分缩放与 mask 两个问题。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - attn_scaled_dot_product
+  - multihead_attention
+  - softmax
+  - matrix_multiplication
+  expected_elements:
+  - 机制: QKᵀ 得 2×8×128×256；独立分量假设下点积方差随键维度增大，缩放缓解 softmax 饱和。
+  - 应用: 除以 8，在 softmax 前将无效位置设为足够负值，并检查每行概率与 padding 权重。
+  - 边界: 整行都被 mask 时可能出现 NaN；缩放推导的独立假设不意味着训练后 logits 必服从标准正态。
+  difficulty: high
+  source:
+    type: engineering
+    ref: |-
+      https://d2l.ai/chapter_attention-mechanisms-and-transformers/attention-scoring-functions.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_causal_mask
+  title: 训练能偷看答案的 Transformer
+  brief: |-
+    改写 D2L Transformer 语言建模习题：decoder-only 序列长 1024，训练 loss=0.02，但逐 token 生成失败；实现用了双向 encoder mask，并未右移标签。
+  asks:
+  - type: diagnosis
+    angle: 审计因果可见性与标签对齐并给最小泄漏测试。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - transformer
+  - attn_scaled_dot_product
+  - positional_encoding
+  - language_model
+  expected_elements:
+  - 机制: 自回归位置 t 只能依赖已知前缀；未移位标签和双向注意力均可泄漏待预测 token。
+  - 应用: 右移输入/标签并使用因果 mask，扰动未来 token 检查过去位置 logits 是否不变。
+  - 边界: 低 teacher-forced loss 不证明自由生成质量；位置编码也不替代因果 mask。
+  difficulty: high
+  source:
+    type: exercise
+    ref: |-
+      https://d2l.ai/chapter_attention-mechanisms-and-transformers/transformer.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_word_vectors
+  title: 罕见词与负采样预算
+  brief: |-
+    沿 D2L word2vec：100 万条句子，词表 50000，向量 100 维，每正样本取 5 个负样本；团队直接做全词表 softmax 超出训练预算，罕见产品名仍无可靠近邻。
+  asks:
+  - type: application
+    angle: 说明负采样降低什么成本，如何处理低频和未登录词。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - word_embedding
+  - tokenization
+  - negative_sampling
+  - word2vec
+  expected_elements:
+  - 机制: skip-gram 通过上下文学习嵌入；负采样将全词表归一化问题替换为采样二分类目标。
+  - 应用: 固定词表与切分，检查频次阈值和负采样分布；对罕见产品名考虑子词表示。
+  - 边界: 负采样分数不直接是归一化条件概率；分布式相似不保证事实同义或可靠处理未登录词。
+  difficulty: medium
+  source:
+    type: engineering
+    ref: |-
+      https://d2l.ai/chapter_natural-language-processing-pretraining/word2vec.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_bert_mask
+  title: 把 BERT 当自由生成模型
+  brief: |-
+    沿 D2L BERT：512 token 上限的双向编码器，客服要在 800 token 工单后续写 100 token；团队把最后一个隐藏向量接词表 softmax 循环生成。
+  asks:
+  - type: application
+    angle: 比较预训练目标、可见上下文和目标任务。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - bert
+  - masked_language_modeling
+  - language_model
+  - tokenization
+  expected_elements:
+  - 机制: BERT 的掩码预测使用左右上下文，不是标准左到右自回归训练；输入还受长度限制。
+  - 应用: 按分类/抽取任务使用编码器，长工单分段聚合；需要续写时用适配生成目标的模型。
+  - 边界: 重复填 MASK 可定义一种生成过程，但不能直接声称等价于训练好的自回归分布。
+  difficulty: medium
+  source:
+    type: engineering
+    ref: |-
+      https://d2l.ai/chapter_natural-language-processing-pretraining/bert.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_rag_freshness
+  title: 知识更新后 RAG 仍答旧政策
+  brief: |-
+    改写 RAG 论文的检索加生成结构：10 万条公司政策段落，日更新一次，每次检索 top-5，答案需 2 秒内给出处；新政策已入库但检索仍返回旧版。
+  asks:
+  - type: diagnosis
+    angle: 区分检索召回、索引新鲜度与生成器使用证据的问题。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - retrieval_augmented_generation
+  - word_embedding
+  - model_versioning
+  - language_model
+  expected_elements:
+  - 机制: 参数记忆和外部检索记忆分离；索引、embedding 版本和过滤逻辑决定能否取得正确证据。
+  - 应用: 记录查询、检索段落版本与答案引用，先检查新旧文档召回，再用固定正确上下文测试生成。
+  - 边界: 增加 top-k 会增时延且可能引入冲突；有引用并不保证引用支持结论。
+  difficulty: high
+  source:
+    type: engineering
+    ref: |-
+      https://arxiv.org/abs/2005.11401 — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_grid_value
+  title: FrozenLake 扩大网格后不收敛
+  brief: |-
+    改写 D2L value iteration 习题：把 4×4 FrozenLake 改 8×8，转移概率已知，滑动概率非零；gamma 从 0.9 改 1，仍用差值阈值 1e-6 判断收敛。
+  asks:
+  - type: diagnosis
+    angle: 写出 Bellman 最优备份并解释 gamma 与终止条件。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - mdp
+  - bellman_equation
+  - value_iteration
+  - return_discount
+  expected_elements:
+  - 机制: 价值迭代对每个状态最大化期望即时奖励加折扣后继价值，需按随机转移求和。
+  - 应用: 比较 gamma=0、0.5、0.9 的策略及迭代数，明确吸收终点与终止状态价值。
+  - 边界: gamma=1 时不能直接套用折扣收缩保证；有环且不终止的任务需额外条件。
+  difficulty: high
+  source:
+    type: exercise
+    ref: |-
+      https://d2l.ai/chapter_reinforcement-learning/value-iter.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_grid_q
+  title: 只读回放的 Q-learning 没见过新动作
+  brief: |-
+    改写 D2L Q-learning 的 epsilon 习题：8×8 FrozenLake，固定 10000 条由 epsilon=0 策略采集的转移；离线把 epsilon 改成 1，但不再与环境交互，成功率没有变化。
+  asks:
+  - type: diagnosis
+    angle: 分开数据采集策略、训练目标及测试策略。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - q_learning
+  - mdp
+  - bellman_equation
+  - exploration_exploitation
+  - off_policy_learning
+  expected_elements:
+  - 机制: Q-learning 目标用 max_a Q(s′,a) 而非行为下一动作；改 epsilon 不会凭空产生缺失的转移。
+  - 应用: 检查状态动作覆盖、终止位及 TD 目标，另行采集探索轨迹并固定评估策略。
+  - 边界: off-policy 不代表能可靠外推完全未覆盖动作；随机探索也不保证有限预算内学好。
+  difficulty: high
+  source:
+    type: exercise
+    ref: |-
+      https://d2l.ai/chapter_reinforcement-learning/qlearning.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_pg_baseline
+  title: 策略梯度的高方差回报
+  brief: |-
+    沿 Spinning Up policy gradient 的 reward-to-go 与 baseline 推导：机器人模拟每回合 200 步，每轮 20 条轨迹；奖励大多为 0、成功时 100，梯度方向波动很大。
+  asks:
+  - type: diagnosis
+    angle: 说明为何可减状态基线并如何避免引入动作相关偏差。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - policy_gradient
+  - expectation
+  - return_discount
+  - actor_critic
+  expected_elements:
+  - 机制: log-prob 梯度乘回报的估计方差高；与动作无关的状态基线在期望中不改变梯度。
+  - 应用: 用 reward-to-go 和价值基线估计优势，区分策略与价值损失，记录方差及成功率。
+  - 边界: 不恰当的动作相关基线或错误的梯度回流可引入偏差；有限样本改善不等于每轮必增益。
+  difficulty: high
+  source:
+    type: engineering
+    ref: |-
+      https://spinningup.openai.com/en/latest/spinningup/rl_intro3.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_gpu_graph_memory
+  title: 反向图超出单卡显存
+  brief: |-
+    改写 D2L 反向传播的显存习题：MLP 三层各 8192 宽，batch=128，单卡 16 GiB；前向能跑而 backward OOM，另有一张同规格卡可用。
+  asks:
+  - type: diagnosis
+    angle: 将参数、梯度、优化器状态和激活分开估算。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - gpu_compute
+  - backpropagation
+  - activation_checkpointing
+  - model_parallelism
+  expected_elements:
+  - 机制: 训练保存中间激活并分配梯度/优化器状态，推理内存不能直接当训练需求。
+  - 应用: 测峰值并按张量估算，减小微批或检查点重算；跨卡分层时评估激活传输。
+  - 边界: 两卡数据并行复制模型不解决模型自身放不下；检查点以额外计算换激活内存。
+  difficulty: high
+  source:
+    type: exercise
+    ref: |-
+      https://d2l.ai/chapter_multilayer-perceptrons/backprop.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_ddp_small_batch
+  title: 两卡训练不是两倍有效吞吐
+  brief: |-
+    改写 D2L 反向传播的多 GPU 习题：两卡各处理 32 样本，模型含 1 亿 float32 参数；每步计算 20 ms，互联有效 10 GB/s，同事认为复制模型无需同步即可等价 batch=64。
+  asks:
+  - type: diagnosis
+    angle: 从平均损失梯度定义推导同步需求并估算通信数量级。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - data_parallelism
+  - gpu_compute
+  - allreduce
+  - minibatch_sgd
+  expected_elements:
+  - 机制: 同步数据并行复制模型，对各卡局部梯度聚合，才能实现全局批损失的梯度。
+  - 应用: 核对 loss 归约和梯度缩放；仅 400 MB 梯度传输的简单带宽下界已约 40 ms，实际集体通信另有拓扑开销。
+  - 边界: 下界不是 allreduce 的精确用时；BN、随机性与浮点归约使其不严格等同单卡大批。
+  difficulty: high
+  source:
+    type: exercise
+    ref: |-
+      https://d2l.ai/chapter_multilayer-perceptrons/backprop.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_run_lineage
+  title: 调参结果无法找到对应制品
+  brief: |-
+    改写 ML Test Score 的可复现性检查：一周跑 40 次模型，最佳验证分 0.91，但文件均名 model.pt；预处理词表昨天更新，线上预测无法复现，只有一张旧 GPU 可回放。
+  asks:
+  - type: application
+    angle: 定义一次实验必须绑定的输入与发布制品。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - experiment_tracking
+  - model_versioning
+  - validation_split
+  - model_deployment
+  expected_elements:
+  - 机制: 指标必须关联代码、数据切分、配置及预处理/权重版本，否则无法定位性能变化来源。
+  - 应用: 为每次 run 保存不可变标识、随机种子、环境和指标，发布绑定模型与特征处理版本并做固定样本回归。
+  - 边界: 固定种子不保证跨硬件逐位一致；反复根据同一验证集选模型会造成选择偏差。
+  difficulty: medium
+  source:
+    type: engineering
+    ref: |-
+      https://arxiv.org/abs/1607.00673 — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_agent_webshop
+  title: 购物 agent 的失败动作与预算
+  brief: |-
+    改写 ReAct 的 WebShop 交互任务：只有 10 次工具调用和 30 秒预算，要买价格低于 50 美元、蓝色且 M 码的商品；搜索返回商品摘要，详情页却显示 M 码缺货。
+  asks:
+  - type: diagnosis
+    angle: 解释思考、行动与观察循环，如何证明完成而非仅输出意图。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - agent_tool_use
+  - language_model
+  - experiment_tracking
+  expected_elements:
+  - 机制: 工具观察可修正模型先验计划；摘要与详情冲突时需要以任务相关的可验证状态为准。
+  - 应用: 记录每步调用与返回，核验库存、颜色、尺码和总价；预算不足时明确未完成而非捏造成功。
+  - 边界: 论文中的模拟购物任务不意味着有真实支付授权；工具返回也可能不完整或含不可信指令。
+  difficulty: high
+  source:
+    type: engineering
+    ref: |-
+      https://arxiv.org/abs/2210.03629 — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_logistic_stability
+  title: 大幅度 logits 的二分类数值溢出
+  brief: |-
+    沿 D2L softmax 的数值稳定讨论：二分类 logits 为 1000 与 -1000，float32 直接 exp 后得 inf；10000 条记录中正类仅 1%，训练 loss 变 NaN。
+  asks:
+  - type: application
+    angle: 分开数值稳定性和类别不平衡，不能把 NaN 归因于低正例率。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - logistic_regression
+  - activation
+  - cross_entropy
+  - accuracy
+  expected_elements:
+  - 机制: |-
+      sigmoid 对应二类 softmax；直接指数可能溢出，log-sum-exp 或 fused logits loss 避免显式不稳定概率。
+  - 应用: 用带 logits 的稳定损失，检查非有限梯度，并另行报告少数类召回而非只看 accuracy。
+  - 边界: 加权损失或重采样会改变最优概率解释；稳定计算不能修复标签错误。
+  difficulty: medium
+  source:
+    type: engineering
+    ref: |-
+      https://d2l.ai/chapter_linear-classification/softmax-regression.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
+- id: scen_transfer_resolution
+  title: 小样本迁移时冻结不等于 eval
+  brief: |-
+    改写 D2L BN/ViT 训练讨论：用预训练图像模型迁移 400 张工业缺陷图，输入 224²，每卡 batch=2；已冻结骨干参数，但 BN 运行统计仍随训练更新。
+  asks:
+  - type: application
+    angle: 区分 requires_grad、训练模式和验证集选择。
+  - type: boundary
+    angle: 指出该方案成立的条件以及一个失效反例
+  instantiates:
+  - image_classification
+  - batch_norm
+  - fine_tuning
+  - vision_transformer
+  expected_elements:
+  - 机制: 冻结权重梯度与是否更新 BN buffers 是两套机制；不同架构归一化行为不同。
+  - 应用: 显式设置需冻结模块模式，保存初始统计作对照；小验证集采用固定切分并报告波动。
+  - 边界: ViT 通常用 LayerNorm，不能照搬 BN 修法；小样本验证提升可能只是抽样噪声。
+  difficulty: medium
+  source:
+    type: exercise
+    ref: |-
+      https://d2l.ai/chapter_convolutional-modern/batch-norm.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。

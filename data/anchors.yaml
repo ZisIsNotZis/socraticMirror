@@ -1,0 +1,775 @@
+- id: linear_algebra
+  name: Linear Algebra
+  aliases:
+  - 线性代数
+  cluster: math_foundation
+- id: matrix_multiplication
+  name: Matrix Multiplication
+  aliases:
+  - 矩阵乘法
+  cluster: math_foundation
+- id: eigendecomposition
+  name: Eigendecomposition
+  aliases:
+  - 特征分解
+  cluster: math_foundation
+- id: svd
+  name: Singular Value Decomposition
+  aliases:
+  - 奇异值分解
+  cluster: math_foundation
+- id: calculus
+  name: Calculus
+  aliases:
+  - 微积分
+  cluster: math_foundation
+- id: chain_rule
+  name: Chain Rule
+  aliases:
+  - 链式法则
+  cluster: math_foundation
+- id: gradient
+  name: Gradient
+  aliases:
+  - 梯度
+  cluster: math_foundation
+- id: probability
+  name: Probability Theory
+  aliases:
+  - 概率论
+  cluster: math_foundation
+- id: conditional_probability
+  name: Conditional Probability
+  aliases:
+  - 条件概率
+  cluster: math_foundation
+- id: bayes_rule
+  name: Bayes’ Rule
+  aliases:
+  - 贝叶斯法则
+  cluster: math_foundation
+- id: expectation
+  name: Expectation
+  aliases:
+  - 期望
+  cluster: math_foundation
+- id: entropy
+  name: Entropy
+  aliases:
+  - 熵
+  cluster: math_foundation
+- id: kl_divergence
+  name: Kullback–Leibler Divergence
+  aliases:
+  - KL 散度
+  cluster: math_foundation
+- id: maximum_likelihood
+  name: Maximum Likelihood Estimation
+  aliases:
+  - 最大似然估计
+  cluster: math_foundation
+- id: convexity
+  name: Convexity
+  aliases:
+  - 凸性
+  cluster: math_foundation
+- id: linear_regression
+  name: Linear Regression
+  aliases:
+  - 线性回归
+  cluster: dl_foundation
+- id: logistic_regression
+  name: Logistic Regression
+  aliases:
+  - 逻辑回归
+  cluster: dl_foundation
+- id: mlp
+  name: Multilayer Perceptron
+  aliases:
+  - 多层感知机
+  cluster: dl_foundation
+- id: activation
+  name: Activation Function
+  aliases:
+  - 激活函数
+  cluster: dl_foundation
+- id: backpropagation
+  name: Backpropagation
+  aliases:
+  - 反向传播
+  cluster: dl_foundation
+- id: computational_graph
+  name: Computational Graph
+  aliases:
+  - 计算图
+  cluster: dl_foundation
+- id: autodiff
+  name: Automatic Differentiation
+  aliases:
+  - 自动微分
+  cluster: dl_foundation
+- id: softmax
+  name: Softmax Function
+  aliases:
+  - Softmax 函数
+  cluster: dl_foundation
+- id: cross_entropy
+  name: Cross-Entropy Loss
+  aliases:
+  - 交叉熵损失
+  cluster: dl_foundation
+- id: representation_learning
+  name: Representation Learning
+  aliases:
+  - 表示学习
+  cluster: dl_foundation
+- id: generalization
+  name: Generalization
+  aliases:
+  - 泛化
+  cluster: dl_foundation
+- id: bias_variance
+  name: Bias–Variance Decomposition
+  aliases:
+  - 偏差方差分解
+  cluster: dl_foundation
+- id: overfitting
+  name: Overfitting
+  aliases:
+  - 过拟合
+  cluster: dl_foundation
+- id: universal_approximation
+  name: Universal Approximation Theorem
+  aliases:
+  - 通用逼近定理
+  cluster: dl_foundation
+- id: cnn
+  name: Convolutional Neural Network
+  aliases:
+  - 卷积神经网络
+  cluster: architecture
+- id: rnn
+  name: Recurrent Neural Network
+  aliases:
+  - 循环神经网络
+  cluster: architecture
+- id: attn_scaled_dot_product
+  name: Scaled Dot-Product Attention
+  aliases:
+  - 缩放点积注意力
+  cluster: architecture
+- id: multihead_attention
+  name: Multi-Head Attention
+  aliases:
+  - 多头注意力
+  cluster: architecture
+- id: transformer
+  name: Transformer
+  aliases:
+  - Transformer 架构
+  cluster: architecture
+- id: lstm
+  name: Long Short-Term Memory
+  aliases:
+  - 长短期记忆网络
+  cluster: architecture
+- id: gru
+  name: Gated Recurrent Unit
+  aliases:
+  - 门控循环单元
+  cluster: architecture
+- id: encoder_decoder
+  name: Encoder–Decoder Architecture
+  aliases:
+  - 编码器解码器架构
+  cluster: architecture
+- id: positional_encoding
+  name: Positional Encoding
+  aliases:
+  - 位置编码
+  cluster: architecture
+- id: resnet
+  name: Residual Network
+  aliases:
+  - 残差网络
+  cluster: architecture
+- id: batch_norm
+  name: Batch Normalization
+  aliases:
+  - 批量归一化
+  cluster: architecture
+- id: layer_norm
+  name: Layer Normalization
+  aliases:
+  - 层归一化
+  cluster: architecture
+- id: vae
+  name: Variational Autoencoder
+  aliases:
+  - 变分自编码器
+  cluster: architecture
+- id: gan
+  name: Generative Adversarial Network
+  aliases:
+  - 生成对抗网络
+  cluster: architecture
+- id: gradient_descent
+  name: Gradient Descent
+  aliases:
+  - 梯度下降
+  cluster: training_optimization
+- id: sgd
+  name: Stochastic Gradient Descent
+  aliases:
+  - 随机梯度下降
+  cluster: training_optimization
+- id: minibatch_sgd
+  name: Minibatch Stochastic Gradient Descent
+  aliases:
+  - 小批量随机梯度下降
+  cluster: training_optimization
+- id: adam
+  name: Adam
+  aliases:
+  - Adam 优化器
+  cluster: training_optimization
+- id: learning_rate_schedule
+  name: Learning Rate Scheduling
+  aliases:
+  - 学习率调度
+  cluster: training_optimization
+- id: momentum
+  name: Momentum
+  aliases:
+  - 动量法
+  cluster: training_optimization
+- id: weight_decay
+  name: Weight Decay
+  aliases:
+  - 权重衰减
+  cluster: training_optimization
+- id: dropout
+  name: Dropout
+  aliases:
+  - 暂退法
+  cluster: training_optimization
+- id: initialization
+  name: Parameter Initialization
+  aliases:
+  - 参数初始化
+  cluster: training_optimization
+- id: gradient_clipping
+  name: Gradient Clipping
+  aliases:
+  - 梯度裁剪
+  cluster: training_optimization
+- id: vanishing_gradient
+  name: Vanishing Gradient
+  aliases:
+  - 梯度消失
+  cluster: training_optimization
+- id: early_stopping
+  name: Early Stopping
+  aliases:
+  - 早停
+  cluster: training_optimization
+- id: hyperparameter_optimization
+  name: Hyperparameter Optimization
+  aliases:
+  - 超参数优化
+  cluster: training_optimization
+- id: fine_tuning
+  name: Fine-Tuning
+  aliases:
+  - 微调
+  cluster: training_optimization
+- id: train_test_split
+  name: Train–Test Split
+  aliases:
+  - 训练测试划分
+  cluster: data
+- id: validation_split
+  name: Validation Set
+  aliases:
+  - 验证集划分
+  cluster: data
+- id: data_preprocessing
+  name: Data Preprocessing
+  aliases:
+  - 数据预处理
+  cluster: data
+- id: feature_engineering
+  name: Feature Engineering
+  aliases:
+  - 特征工程
+  cluster: data
+- id: distribution_shift
+  name: Distribution Shift
+  aliases:
+  - 分布偏移
+  cluster: data
+- id: missing_values
+  name: Missing Values
+  aliases:
+  - 缺失值处理
+  cluster: data
+- id: categorical_encoding
+  name: Categorical Feature Encoding
+  aliases:
+  - 类别特征编码
+  cluster: data
+- id: data_augmentation
+  name: Data Augmentation
+  aliases:
+  - 数据增强
+  cluster: data
+- id: covariate_shift
+  name: Covariate Shift
+  aliases:
+  - 协变量偏移
+  cluster: data
+- id: label_shift
+  name: Label Shift
+  aliases:
+  - 标签偏移
+  cluster: data
+- id: concept_shift
+  name: Concept Shift
+  aliases:
+  - 概念偏移
+  cluster: data
+- id: importance_weighting
+  name: Importance Weighting
+  aliases:
+  - 重要性加权
+  cluster: data
+- id: supervised_learning
+  name: Supervised Learning
+  aliases:
+  - 监督学习
+  cluster: data
+- id: unsupervised_learning
+  name: Unsupervised Learning
+  aliases:
+  - 无监督学习
+  cluster: data
+- id: precision_recall
+  name: Precision and Recall
+  aliases:
+  - 精确率与召回率
+  cluster: evaluation
+- id: accuracy
+  name: Accuracy
+  aliases:
+  - 准确率
+  cluster: evaluation
+- id: cross_validation
+  name: Cross-Validation
+  aliases:
+  - 交叉验证
+  cluster: evaluation
+- id: perplexity
+  name: Perplexity
+  aliases:
+  - 困惑度
+  cluster: evaluation
+- id: model_calibration
+  name: Probability Calibration
+  aliases:
+  - 概率校准
+  cluster: evaluation
+- id: f1_score
+  name: F1 Score
+  aliases:
+  - F1 分数
+  cluster: evaluation
+- id: roc_auc
+  name: ROC AUC
+  aliases:
+  - ROC 曲线下面积
+  cluster: evaluation
+- id: confusion_matrix
+  name: Confusion Matrix
+  aliases:
+  - 混淆矩阵
+  cluster: evaluation
+- id: offline_evaluation
+  name: Offline Evaluation
+  aliases:
+  - 离线评估
+  cluster: evaluation
+- id: online_experiment
+  name: Online Experimentation
+  aliases:
+  - 在线实验
+  cluster: evaluation
+- id: ab_testing
+  name: A/B Testing
+  aliases:
+  - A/B 测试
+  cluster: evaluation
+- id: benchmarking
+  name: Benchmarking
+  aliases:
+  - 基准评测
+  cluster: evaluation
+- id: robustness
+  name: Robustness
+  aliases:
+  - 鲁棒性
+  cluster: evaluation
+- id: iou
+  name: Intersection over Union
+  aliases:
+  - 交并比
+  cluster: evaluation
+- id: model_deployment
+  name: Model Deployment
+  aliases:
+  - 模型部署
+  cluster: inference_serving
+- id: batch_prediction
+  name: Batch Prediction
+  aliases:
+  - 批量预测
+  cluster: inference_serving
+- id: online_prediction
+  name: Online Prediction
+  aliases:
+  - 在线预测
+  cluster: inference_serving
+- id: model_compression
+  name: Model Compression
+  aliases:
+  - 模型压缩
+  cluster: inference_serving
+- id: beam_search
+  name: Beam Search
+  aliases:
+  - 束搜索
+  cluster: inference_serving
+- id: knowledge_distillation
+  name: Knowledge Distillation
+  aliases:
+  - 知识蒸馏
+  cluster: inference_serving
+- id: latency
+  name: Inference Latency
+  aliases:
+  - 推理延迟
+  cluster: inference_serving
+- id: throughput
+  name: Inference Throughput
+  aliases:
+  - 推理吞吐量
+  cluster: inference_serving
+- id: shadow_deployment
+  name: Shadow Deployment
+  aliases:
+  - 影子部署
+  cluster: inference_serving
+- id: canary_release
+  name: Canary Release
+  aliases:
+  - 金丝雀发布
+  cluster: inference_serving
+- id: model_monitoring
+  name: Model Monitoring
+  aliases:
+  - 模型监控
+  cluster: inference_serving
+- id: continual_learning
+  name: Continual Learning
+  aliases:
+  - 持续学习
+  cluster: inference_serving
+- id: speculative_decoding
+  name: Speculative Decoding
+  aliases:
+  - 推测解码
+  cluster: inference_serving
+- id: autoregressive_decoding
+  name: Autoregressive Decoding
+  aliases:
+  - 自回归解码
+  cluster: inference_serving
+- id: convolution
+  name: Convolution
+  aliases:
+  - 卷积
+  cluster: vision
+- id: image_classification
+  name: Image Classification
+  aliases:
+  - 图像分类
+  cluster: vision
+- id: object_detection
+  name: Object Detection
+  aliases:
+  - 目标检测
+  cluster: vision
+- id: semantic_segmentation
+  name: Semantic Segmentation
+  aliases:
+  - 语义分割
+  cluster: vision
+- id: vision_transformer
+  name: Vision Transformer
+  aliases:
+  - 视觉 Transformer
+  cluster: vision
+- id: pooling
+  name: Pooling
+  aliases:
+  - 池化
+  cluster: vision
+- id: padding_stride
+  name: Padding and Stride
+  aliases:
+  - 填充与步幅
+  cluster: vision
+- id: anchor_boxes
+  name: Anchor Boxes
+  aliases:
+  - 锚框
+  cluster: vision
+- id: nonmaximum_suppression
+  name: Non-Maximum Suppression
+  aliases:
+  - 非极大值抑制
+  cluster: vision
+- id: rcnn
+  name: Region-based Convolutional Neural Network
+  aliases:
+  - 区域卷积神经网络
+  cluster: vision
+- id: fcn
+  name: Fully Convolutional Network
+  aliases:
+  - 全卷积网络
+  cluster: vision
+- id: contrastive_learning
+  name: Contrastive Learning
+  aliases:
+  - 对比学习
+  cluster: vision
+- id: instance_segmentation
+  name: Instance Segmentation
+  aliases:
+  - 实例分割
+  cluster: vision
+- id: diffusion_model
+  name: Diffusion Model
+  aliases:
+  - 扩散模型
+  cluster: vision
+- id: tokenization
+  name: Tokenization
+  aliases:
+  - 分词
+  cluster: language
+- id: word_embedding
+  name: Word Embedding
+  aliases:
+  - 词嵌入
+  cluster: language
+- id: language_model
+  name: Language Model
+  aliases:
+  - 语言模型
+  cluster: language
+- id: bert
+  name: BERT
+  aliases:
+  - BERT 模型
+  cluster: language
+- id: retrieval_augmented_generation
+  name: Retrieval-Augmented Generation
+  aliases:
+  - 检索增强生成
+  cluster: language
+- id: subword_tokenization
+  name: Subword Tokenization
+  aliases:
+  - 子词分词
+  cluster: language
+- id: word2vec
+  name: word2vec
+  aliases:
+  - 词向量模型 word2vec
+  cluster: language
+- id: negative_sampling
+  name: Negative Sampling
+  aliases:
+  - 负采样
+  cluster: language
+- id: masked_language_modeling
+  name: Masked Language Modeling
+  aliases:
+  - 掩码语言建模
+  cluster: language
+- id: supervised_fine_tuning
+  name: Supervised Fine-Tuning
+  aliases:
+  - 监督微调
+  cluster: language
+- id: rlhf
+  name: Reinforcement Learning from Human Feedback
+  aliases:
+  - 人类反馈强化学习
+  cluster: language
+- id: lora
+  name: Low-Rank Adaptation
+  aliases:
+  - 低秩适配
+  cluster: language
+- id: in_context_learning
+  name: In-Context Learning
+  aliases:
+  - 上下文学习
+  cluster: language
+- id: direct_preference_optimization
+  name: Direct Preference Optimization
+  aliases:
+  - 直接偏好优化
+  cluster: language
+- id: mdp
+  name: Markov Decision Process
+  aliases:
+  - 马尔可夫决策过程
+  cluster: rl
+- id: bellman_equation
+  name: Bellman Equation
+  aliases:
+  - 贝尔曼方程
+  cluster: rl
+- id: value_iteration
+  name: Value Iteration
+  aliases:
+  - 价值迭代
+  cluster: rl
+- id: q_learning
+  name: Q-Learning
+  aliases:
+  - Q 学习
+  cluster: rl
+- id: policy_gradient
+  name: Policy Gradient
+  aliases:
+  - 策略梯度
+  cluster: rl
+- id: return_discount
+  name: Return and Discounting
+  aliases:
+  - 回报与折扣
+  cluster: rl
+- id: state_action_value
+  name: Action-Value Function
+  aliases:
+  - 状态动作价值
+  cluster: rl
+- id: policy_iteration
+  name: Policy Iteration
+  aliases:
+  - 策略迭代
+  cluster: rl
+- id: monte_carlo_rl
+  name: Monte Carlo Methods
+  aliases:
+  - 蒙特卡洛强化学习
+  cluster: rl
+- id: temporal_difference
+  name: Temporal-Difference Learning
+  aliases:
+  - 时序差分学习
+  cluster: rl
+- id: sarsa
+  name: Sarsa
+  aliases:
+  - SARSA 算法
+  cluster: rl
+- id: exploration_exploitation
+  name: Exploration and Exploitation
+  aliases:
+  - 探索与利用
+  cluster: rl
+- id: actor_critic
+  name: Actor–Critic Methods
+  aliases:
+  - 演员评论家方法
+  cluster: rl
+- id: off_policy_learning
+  name: Off-Policy Learning
+  aliases:
+  - 离策略学习
+  cluster: rl
+- id: gpu_compute
+  name: GPU Computing
+  aliases:
+  - GPU 计算
+  cluster: systems_harness
+- id: data_parallelism
+  name: Data Parallelism
+  aliases:
+  - 数据并行
+  cluster: systems_harness
+- id: experiment_tracking
+  name: Experiment Tracking
+  aliases:
+  - 实验跟踪
+  cluster: systems_harness
+- id: model_versioning
+  name: Model Versioning
+  aliases:
+  - 模型版本管理
+  cluster: systems_harness
+- id: agent_tool_use
+  name: Agent Tool Use
+  aliases:
+  - 智能体工具使用
+  cluster: systems_harness
+- id: parameter_server
+  name: Parameter Server
+  aliases:
+  - 参数服务器
+  cluster: systems_harness
+- id: allreduce
+  name: AllReduce
+  aliases:
+  - 全归约
+  cluster: systems_harness
+- id: asynchronous_computation
+  name: Asynchronous Computation
+  aliases:
+  - 异步计算
+  cluster: systems_harness
+- id: model_parallelism
+  name: Model Parallelism
+  aliases:
+  - 模型并行
+  cluster: systems_harness
+- id: activation_checkpointing
+  name: Activation Checkpointing
+  aliases:
+  - 激活检查点
+  cluster: systems_harness
+- id: ml_pipeline
+  name: ML Pipeline
+  aliases:
+  - 机器学习流水线
+  cluster: systems_harness
+- id: feature_store
+  name: Feature Store
+  aliases:
+  - 特征存储
+  cluster: systems_harness
+- id: chain_of_thought
+  name: Chain-of-Thought Prompting
+  aliases:
+  - 思维链提示
+  cluster: systems_harness
+- id: self_consistency
+  name: Self-Consistency
+  aliases:
+  - 自一致性解码
+  cluster: systems_harness

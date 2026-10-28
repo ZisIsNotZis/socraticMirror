@@ -1,0 +1,75 @@
+[
+  {
+    "id": "s0",
+    "title": "Fixture scenario 0",
+    "brief": "Synthetic engine-only scenario.",
+    "asks": [
+      "application",
+      "diagnosis"
+    ],
+    "instantiates": [
+      "n2",
+      "n3",
+      "n4",
+      "n5"
+    ],
+    "expected_elements": [
+      "mechanism",
+      "application",
+      "boundary"
+    ],
+    "difficulty": "hard",
+    "source": {
+      "type": "fixture",
+      "ref": "https://example.org/fixture/scenario/0"
+    }
+  },
+  {
+    "id": "s1",
+    "title": "Fixture scenario 1",
+    "brief": "Synthetic engine-only scenario.",
+    "asks": [
+      "application",
+      "diagnosis"
+    ],
+    "instantiates": [
+      "n0",
+      "n1"
+    ],
+    "expected_elements": [
+      "mechanism",
+      "application",
+      "boundary"
+    ],
+    "difficulty": "hard",
+    "source": {
+      "type": "fixture",
+      "ref": "https://example.org/fixture/scenario/1"
+    }
+  },
+  {
+    "id": "s2",
+    "title": "Fixture scenario 2",
+    "brief": "Synthetic engine-only scenario.",
+    "asks": [
+      "application",
+      "diagnosis"
+    ],
+    "instantiates": [
+      "n6",
+      "n7",
+      "n8",
+      "n9"
+    ],
+    "expected_elements": [
+      "mechanism",
+      "application",
+      "boundary"
+    ],
+    "difficulty": "hard",
+    "source": {
+      "type": "fixture",
+      "ref": "https://example.org/fixture/scenario/2"
+    }
+  }
+]
