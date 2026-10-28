@@ -1,0 +1,6441 @@
+{
+  "history": [],
+  "nodes": {
+    "ab_testing": {
+      "concept": {
+        "aliases": [
+          "A/B Testing"
+        ],
+        "cluster": "evaluation",
+        "id": "ab_testing",
+        "importance": "medium",
+        "name": "A/B 测试",
+        "note": "verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。",
+        "requires": [
+          "online_experiment",
+          "expectation"
+        ],
+        "source": {
+          "confidence": "low",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31016147722079274,
+        "deep": 0.11849645700463195,
+        "operable": 0.30548937101389584,
+        "unknown": 0.26585269476067946
+      }
+    },
+    "accuracy": {
+      "concept": {
+        "aliases": [
+          "Accuracy"
+        ],
+        "cluster": "evaluation",
+        "id": "accuracy",
+        "importance": "high",
+        "name": "准确率",
+        "note": "",
+        "requires": [
+          "expectation"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 4.6",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "activation": {
+      "concept": {
+        "aliases": [
+          "Activation Function"
+        ],
+        "cluster": "dl_foundation",
+        "id": "activation",
+        "importance": "high",
+        "name": "激活函数",
+        "note": "",
+        "requires": [
+          "calculus"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 5.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      }
+    },
+    "activation_checkpointing": {
+      "concept": {
+        "aliases": [
+          "Activation Checkpointing"
+        ],
+        "cluster": "systems_harness",
+        "id": "activation_checkpointing",
+        "importance": "medium",
+        "name": "激活检查点",
+        "note": "",
+        "requires": [
+          "backpropagation"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://cs231n.stanford.edu/schedule.html — Lecture 11 Large Scale Distributed Training",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      }
+    },
+    "actor_critic": {
+      "concept": {
+        "aliases": [
+          "Actor–Critic Methods"
+        ],
+        "cluster": "rl",
+        "id": "actor_critic",
+        "importance": "medium",
+        "name": "演员评论家方法",
+        "note": "verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。",
+        "requires": [
+          "policy_gradient",
+          "state_action_value"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 13.5",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3072832927716937,
+        "deep": 0.11983275692742795,
+        "operable": 0.3094982707822838,
+        "unknown": 0.26338567951859465
+      }
+    },
+    "adam": {
+      "concept": {
+        "aliases": [
+          "Adam"
+        ],
+        "cluster": "training_optimization",
+        "id": "adam",
+        "importance": "high",
+        "name": "Adam 优化器",
+        "note": "",
+        "requires": [
+          "momentum",
+          "gradient"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 12.10",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101639937674593,
+        "deep": 0.11849528860796532,
+        "operable": 0.3054858658238959,
+        "unknown": 0.2658548518006794
+      }
+    },
+    "agent_tool_use": {
+      "concept": {
+        "aliases": [
+          "Agent Tool Use"
+        ],
+        "cluster": "systems_harness",
+        "id": "agent_tool_use",
+        "importance": "high",
+        "name": "智能体工具使用",
+        "note": "",
+        "requires": [
+          "language_model"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://web.stanford.edu/class/cs224n/#schedule — Agents, Tool Use, and RAG; reading ReAct",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      }
+    },
+    "allreduce": {
+      "concept": {
+        "aliases": [
+          "AllReduce"
+        ],
+        "cluster": "systems_harness",
+        "id": "allreduce",
+        "importance": "medium",
+        "name": "全归约",
+        "note": "",
+        "requires": [
+          "data_parallelism"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 13.7",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3231447612359536,
+        "deep": 0.11246850371187869,
+        "operable": 0.28740551113563606,
+        "unknown": 0.2769812239165316
+      }
+    },
+    "anchor_boxes": {
+      "concept": {
+        "aliases": [
+          "Anchor Boxes"
+        ],
+        "cluster": "vision",
+        "id": "anchor_boxes",
+        "importance": "medium",
+        "name": "锚框",
+        "note": "",
+        "requires": [
+          "object_detection",
+          "iou"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 14.4",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31016147722079274,
+        "deep": 0.11849645700463195,
+        "operable": 0.30548937101389584,
+        "unknown": 0.26585269476067946
+      }
+    },
+    "asynchronous_computation": {
+      "concept": {
+        "aliases": [
+          "Asynchronous Computation"
+        ],
+        "cluster": "systems_harness",
+        "id": "asynchronous_computation",
+        "importance": "medium",
+        "name": "异步计算",
+        "note": "",
+        "requires": [],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 13.2",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.35,
+        "deep": 0.1,
+        "operable": 0.25,
+        "unknown": 0.3
+      }
+    },
+    "attn_scaled_dot_product": {
+      "concept": {
+        "aliases": [
+          "Scaled Dot-Product Attention"
+        ],
+        "cluster": "architecture",
+        "id": "attn_scaled_dot_product",
+        "importance": "high",
+        "name": "缩放点积注意力",
+        "note": "",
+        "requires": [
+          "matrix_multiplication",
+          "softmax"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 11.3",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      }
+    },
+    "autodiff": {
+      "concept": {
+        "aliases": [
+          "Automatic Differentiation"
+        ],
+        "cluster": "dl_foundation",
+        "id": "autodiff",
+        "importance": "medium",
+        "name": "自动微分",
+        "note": "",
+        "requires": [
+          "chain_rule",
+          "computational_graph"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 2.5",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31194059749999997,
+        "deep": 0.117670436875,
+        "operable": 0.303011310625,
+        "unknown": 0.267377655
+      }
+    },
+    "autoregressive_decoding": {
+      "concept": {
+        "aliases": [
+          "Autoregressive Decoding"
+        ],
+        "cluster": "inference_serving",
+        "id": "autoregressive_decoding",
+        "importance": "medium",
+        "name": "自回归解码",
+        "note": "",
+        "requires": [
+          "language_model"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 9.3",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      }
+    },
+    "backpropagation": {
+      "concept": {
+        "aliases": [
+          "Backpropagation"
+        ],
+        "cluster": "dl_foundation",
+        "id": "backpropagation",
+        "importance": "high",
+        "name": "反向传播",
+        "note": "",
+        "requires": [
+          "chain_rule",
+          "mlp"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 5.3",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      }
+    },
+    "batch_norm": {
+      "concept": {
+        "aliases": [
+          "Batch Normalization"
+        ],
+        "cluster": "architecture",
+        "id": "batch_norm",
+        "importance": "medium",
+        "name": "批量归一化",
+        "note": "",
+        "requires": [
+          "expectation",
+          "mlp"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 8.5",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      }
+    },
+    "batch_prediction": {
+      "concept": {
+        "aliases": [
+          "Batch Prediction"
+        ],
+        "cluster": "inference_serving",
+        "id": "batch_prediction",
+        "importance": "high",
+        "name": "批量预测",
+        "note": "verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。",
+        "requires": [
+          "model_deployment"
+        ],
+        "source": {
+          "confidence": "low",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502886006205195,
+        "deep": 0.11159374354261875,
+        "operable": 0.2847812306278562,
+        "unknown": 0.2785961657674731
+      }
+    },
+    "bayes_rule": {
+      "concept": {
+        "aliases": [
+          "Bayes’ Rule"
+        ],
+        "cluster": "math_foundation",
+        "id": "bayes_rule",
+        "importance": "medium",
+        "name": "贝叶斯法则",
+        "note": "",
+        "requires": [
+          "conditional_probability"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 3.8",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "beam_search": {
+      "concept": {
+        "aliases": [
+          "Beam Search"
+        ],
+        "cluster": "inference_serving",
+        "id": "beam_search",
+        "importance": "high",
+        "name": "束搜索",
+        "note": "",
+        "requires": [
+          "conditional_probability"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 10.8",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "bellman_equation": {
+      "concept": {
+        "aliases": [
+          "Bellman Equation"
+        ],
+        "cluster": "rl",
+        "id": "bellman_equation",
+        "importance": "high",
+        "name": "贝尔曼方程",
+        "note": "verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。",
+        "requires": [
+          "mdp",
+          "expectation"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 3.5",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      }
+    },
+    "benchmarking": {
+      "concept": {
+        "aliases": [
+          "Benchmarking"
+        ],
+        "cluster": "evaluation",
+        "id": "benchmarking",
+        "importance": "medium",
+        "name": "基准评测",
+        "note": "",
+        "requires": [
+          "offline_evaluation"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://web.stanford.edu/class/cs224n/#schedule — Benchmarking and Evaluation",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      }
+    },
+    "bert": {
+      "concept": {
+        "aliases": [
+          "BERT"
+        ],
+        "cluster": "language",
+        "id": "bert",
+        "importance": "high",
+        "name": "BERT 模型",
+        "note": "",
+        "requires": [
+          "transformer"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 15.8",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32219489197157447,
+        "deep": 0.112909514441769,
+        "operable": 0.28872854332530695,
+        "unknown": 0.2761670502613496
+      }
+    },
+    "bias_variance": {
+      "concept": {
+        "aliases": [
+          "Bias–Variance Decomposition"
+        ],
+        "cluster": "dl_foundation",
+        "id": "bias_variance",
+        "importance": "medium",
+        "name": "偏差方差分解",
+        "note": "",
+        "requires": [
+          "expectation"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 5.4",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "calculus": {
+      "concept": {
+        "aliases": [
+          "Calculus"
+        ],
+        "cluster": "math_foundation",
+        "id": "calculus",
+        "importance": "high",
+        "name": "微积分",
+        "note": "",
+        "requires": [],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 2.4",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.35,
+        "deep": 0.1,
+        "operable": 0.25,
+        "unknown": 0.3
+      }
+    },
+    "canary_release": {
+      "concept": {
+        "aliases": [
+          "Canary Release"
+        ],
+        "cluster": "inference_serving",
+        "id": "canary_release",
+        "importance": "medium",
+        "name": "金丝雀发布",
+        "note": "verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。",
+        "requires": [
+          "online_prediction"
+        ],
+        "source": {
+          "confidence": "low",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502837662726003,
+        "deep": 0.1115939679944864,
+        "operable": 0.28478190398345915,
+        "unknown": 0.27859575139479437
+      }
+    },
+    "categorical_encoding": {
+      "concept": {
+        "aliases": [
+          "Categorical Feature Encoding"
+        ],
+        "cluster": "data",
+        "id": "categorical_encoding",
+        "importance": "medium",
+        "name": "类别特征编码",
+        "note": "",
+        "requires": [
+          "data_preprocessing"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 2.2",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      }
+    },
+    "chain_of_thought": {
+      "concept": {
+        "aliases": [
+          "Chain-of-Thought Prompting"
+        ],
+        "cluster": "systems_harness",
+        "id": "chain_of_thought",
+        "importance": "medium",
+        "name": "思维链提示",
+        "note": "",
+        "requires": [
+          "language_model"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://web.stanford.edu/class/cs224n/#schedule — Efficient Adaptation (Prompting + PEFT); reading Chain-of-Thought Prompting Elicits Reasoning",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      }
+    },
+    "chain_rule": {
+      "concept": {
+        "aliases": [
+          "Chain Rule"
+        ],
+        "cluster": "math_foundation",
+        "id": "chain_rule",
+        "importance": "medium",
+        "name": "链式法则",
+        "note": "",
+        "requires": [
+          "calculus"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 22.3",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      }
+    },
+    "cnn": {
+      "concept": {
+        "aliases": [
+          "Convolutional Neural Network"
+        ],
+        "cluster": "architecture",
+        "id": "cnn",
+        "importance": "high",
+        "name": "卷积神经网络",
+        "note": "",
+        "requires": [
+          "convolution",
+          "activation"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 7.6",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      }
+    },
+    "computational_graph": {
+      "concept": {
+        "aliases": [
+          "Computational Graph"
+        ],
+        "cluster": "dl_foundation",
+        "id": "computational_graph",
+        "importance": "medium",
+        "name": "计算图",
+        "note": "",
+        "requires": [],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 5.3",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.35,
+        "deep": 0.1,
+        "operable": 0.25,
+        "unknown": 0.3
+      }
+    },
+    "concept_shift": {
+      "concept": {
+        "aliases": [
+          "Concept Shift"
+        ],
+        "cluster": "data",
+        "id": "concept_shift",
+        "importance": "medium",
+        "name": "概念偏移",
+        "note": "",
+        "requires": [
+          "distribution_shift"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 4.7",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3233132127633275,
+        "deep": 0.11239029407416938,
+        "operable": 0.28717088222250814,
+        "unknown": 0.277125610939995
+      }
+    },
+    "conditional_probability": {
+      "concept": {
+        "aliases": [
+          "Conditional Probability"
+        ],
+        "cluster": "math_foundation",
+        "id": "conditional_probability",
+        "importance": "medium",
+        "name": "条件概率",
+        "note": "",
+        "requires": [
+          "probability"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 3.5",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      }
+    },
+    "confusion_matrix": {
+      "concept": {
+        "aliases": [
+          "Confusion Matrix"
+        ],
+        "cluster": "evaluation",
+        "id": "confusion_matrix",
+        "importance": "medium",
+        "name": "混淆矩阵",
+        "note": "verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。",
+        "requires": [
+          "supervised_learning"
+        ],
+        "source": {
+          "confidence": "low",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Offline evaluation; lecture note",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      }
+    },
+    "continual_learning": {
+      "concept": {
+        "aliases": [
+          "Continual Learning"
+        ],
+        "cluster": "inference_serving",
+        "id": "continual_learning",
+        "importance": "medium",
+        "name": "持续学习",
+        "note": "",
+        "requires": [
+          "model_monitoring",
+          "backpropagation"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Monitoring & Continual Learning",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30782085094621414,
+        "deep": 0.11958317634640057,
+        "operable": 0.3087495290392017,
+        "unknown": 0.26384644366818355
+      }
+    },
+    "contrastive_learning": {
+      "concept": {
+        "aliases": [
+          "Contrastive Learning"
+        ],
+        "cluster": "vision",
+        "id": "contrastive_learning",
+        "importance": "medium",
+        "name": "对比学习",
+        "note": "",
+        "requires": [
+          "representation_learning"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://cs231n.stanford.edu/schedule.html — Lecture 12 Self-supervised Learning",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      }
+    },
+    "convexity": {
+      "concept": {
+        "aliases": [
+          "Convexity"
+        ],
+        "cluster": "math_foundation",
+        "id": "convexity",
+        "importance": "medium",
+        "name": "凸性",
+        "note": "",
+        "requires": [
+          "calculus"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 12.2",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      }
+    },
+    "convolution": {
+      "concept": {
+        "aliases": [
+          "Convolution"
+        ],
+        "cluster": "vision",
+        "id": "convolution",
+        "importance": "high",
+        "name": "卷积",
+        "note": "",
+        "requires": [
+          "matrix_multiplication"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 7.2",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "covariate_shift": {
+      "concept": {
+        "aliases": [
+          "Covariate Shift"
+        ],
+        "cluster": "data",
+        "id": "covariate_shift",
+        "importance": "medium",
+        "name": "协变量偏移",
+        "note": "",
+        "requires": [
+          "distribution_shift"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 4.7",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3233132127633275,
+        "deep": 0.11239029407416938,
+        "operable": 0.28717088222250814,
+        "unknown": 0.277125610939995
+      }
+    },
+    "cross_entropy": {
+      "concept": {
+        "aliases": [
+          "Cross-Entropy Loss"
+        ],
+        "cluster": "dl_foundation",
+        "id": "cross_entropy",
+        "importance": "medium",
+        "name": "交叉熵损失",
+        "note": "",
+        "requires": [
+          "entropy",
+          "conditional_probability"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 4.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      }
+    },
+    "cross_validation": {
+      "concept": {
+        "aliases": [
+          "Cross-Validation"
+        ],
+        "cluster": "evaluation",
+        "id": "cross_validation",
+        "importance": "high",
+        "name": "交叉验证",
+        "note": "",
+        "requires": [
+          "validation_split"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 5.3.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      }
+    },
+    "data_augmentation": {
+      "concept": {
+        "aliases": [
+          "Data Augmentation"
+        ],
+        "cluster": "data",
+        "id": "data_augmentation",
+        "importance": "medium",
+        "name": "数据增强",
+        "note": "",
+        "requires": [
+          "train_test_split"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 14.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      }
+    },
+    "data_parallelism": {
+      "concept": {
+        "aliases": [
+          "Data Parallelism"
+        ],
+        "cluster": "systems_harness",
+        "id": "data_parallelism",
+        "importance": "high",
+        "name": "数据并行",
+        "note": "",
+        "requires": [
+          "backpropagation",
+          "gpu_compute"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 13.5",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30892958321327857,
+        "deep": 0.11906840779383496,
+        "operable": 0.30720522338150485,
+        "unknown": 0.26479678561138165
+      }
+    },
+    "data_preprocessing": {
+      "concept": {
+        "aliases": [
+          "Data Preprocessing"
+        ],
+        "cluster": "data",
+        "id": "data_preprocessing",
+        "importance": "high",
+        "name": "数据预处理",
+        "note": "",
+        "requires": [],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 2.2",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.35,
+        "deep": 0.1,
+        "operable": 0.25,
+        "unknown": 0.3
+      }
+    },
+    "diffusion_model": {
+      "concept": {
+        "aliases": [
+          "Diffusion Model"
+        ],
+        "cluster": "vision",
+        "id": "diffusion_model",
+        "importance": "medium",
+        "name": "扩散模型",
+        "note": "",
+        "requires": [
+          "conditional_probability",
+          "mlp"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://cs231n.stanford.edu/schedule.html — Lecture 14 Generative Models 2",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      }
+    },
+    "direct_preference_optimization": {
+      "concept": {
+        "aliases": [
+          "Direct Preference Optimization"
+        ],
+        "cluster": "language",
+        "id": "direct_preference_optimization",
+        "importance": "medium",
+        "name": "直接偏好优化",
+        "note": "",
+        "requires": [
+          "language_model",
+          "maximum_likelihood"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://web.stanford.edu/class/cs224n/#schedule — Post-training (RLHF, SFT, DPO); reading Direct Preference Optimization",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30905366540549856,
+        "deep": 0.11901079820458996,
+        "operable": 0.30703239461376985,
+        "unknown": 0.2649031417761416
+      }
+    },
+    "distribution_shift": {
+      "concept": {
+        "aliases": [
+          "Distribution Shift"
+        ],
+        "cluster": "data",
+        "id": "distribution_shift",
+        "importance": "high",
+        "name": "分布偏移",
+        "note": "",
+        "requires": [
+          "conditional_probability",
+          "generalization"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 4.7",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3103693398575,
+        "deep": 0.118399949351875,
+        "operable": 0.305199848055625,
+        "unknown": 0.266030862735
+      }
+    },
+    "dropout": {
+      "concept": {
+        "aliases": [
+          "Dropout"
+        ],
+        "cluster": "training_optimization",
+        "id": "dropout",
+        "importance": "medium",
+        "name": "暂退法",
+        "note": "",
+        "requires": [
+          "mlp",
+          "probability"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 5.6",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31174439990749997,
+        "deep": 0.117761528614375,
+        "operable": 0.303284585843125,
+        "unknown": 0.267209485635
+      }
+    },
+    "early_stopping": {
+      "concept": {
+        "aliases": [
+          "Early Stopping"
+        ],
+        "cluster": "training_optimization",
+        "id": "early_stopping",
+        "importance": "medium",
+        "name": "早停",
+        "note": "",
+        "requires": [
+          "overfitting",
+          "validation_split"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 7.8",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30998177199791827,
+        "deep": 0.11857989157239508,
+        "operable": 0.3057396747171852,
+        "unknown": 0.2656986617125014
+      }
+    },
+    "eigendecomposition": {
+      "concept": {
+        "aliases": [
+          "Eigendecomposition"
+        ],
+        "cluster": "math_foundation",
+        "id": "eigendecomposition",
+        "importance": "high",
+        "name": "特征分解",
+        "note": "",
+        "requires": [
+          "matrix_multiplication"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 2.7",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "encoder_decoder": {
+      "concept": {
+        "aliases": [
+          "Encoder–Decoder Architecture"
+        ],
+        "cluster": "architecture",
+        "id": "encoder_decoder",
+        "importance": "medium",
+        "name": "编码器解码器架构",
+        "note": "",
+        "requires": [
+          "representation_learning"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 10.6",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      }
+    },
+    "entropy": {
+      "concept": {
+        "aliases": [
+          "Entropy"
+        ],
+        "cluster": "math_foundation",
+        "id": "entropy",
+        "importance": "medium",
+        "name": "熵",
+        "note": "",
+        "requires": [
+          "expectation"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 3.13",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "expectation": {
+      "concept": {
+        "aliases": [
+          "Expectation"
+        ],
+        "cluster": "math_foundation",
+        "id": "expectation",
+        "importance": "medium",
+        "name": "期望",
+        "note": "",
+        "requires": [
+          "probability"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 3.9",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      }
+    },
+    "experiment_tracking": {
+      "concept": {
+        "aliases": [
+          "Experiment Tracking"
+        ],
+        "cluster": "systems_harness",
+        "id": "experiment_tracking",
+        "importance": "high",
+        "name": "实验跟踪",
+        "note": "",
+        "requires": [
+          "offline_evaluation"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Experiment tracking & versioning with Weights & Biases",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      }
+    },
+    "exploration_exploitation": {
+      "concept": {
+        "aliases": [
+          "Exploration and Exploitation"
+        ],
+        "cluster": "rl",
+        "id": "exploration_exploitation",
+        "importance": "medium",
+        "name": "探索与利用",
+        "note": "verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。",
+        "requires": [
+          "expectation"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 2",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "f1_score": {
+      "concept": {
+        "aliases": [
+          "F1 Score"
+        ],
+        "cluster": "evaluation",
+        "id": "f1_score",
+        "importance": "medium",
+        "name": "F1 分数",
+        "note": "verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。",
+        "requires": [
+          "precision_recall"
+        ],
+        "source": {
+          "confidence": "low",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Offline evaluation; lecture note",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      }
+    },
+    "fcn": {
+      "concept": {
+        "aliases": [
+          "Fully Convolutional Network"
+        ],
+        "cluster": "vision",
+        "id": "fcn",
+        "importance": "medium",
+        "name": "全卷积网络",
+        "note": "",
+        "requires": [
+          "cnn",
+          "semantic_segmentation"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 14.11",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30890685914107296,
+        "deep": 0.11907895825593041,
+        "operable": 0.3072368747677912,
+        "unknown": 0.26477730783520537
+      }
+    },
+    "feature_engineering": {
+      "concept": {
+        "aliases": [
+          "Feature Engineering"
+        ],
+        "cluster": "data",
+        "id": "feature_engineering",
+        "importance": "high",
+        "name": "特征工程",
+        "note": "",
+        "requires": [
+          "data_preprocessing"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Feature engineering",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      }
+    },
+    "feature_store": {
+      "concept": {
+        "aliases": [
+          "Feature Store"
+        ],
+        "cluster": "systems_harness",
+        "id": "feature_store",
+        "importance": "medium",
+        "name": "特征存储",
+        "note": "verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。",
+        "requires": [
+          "feature_engineering"
+        ],
+        "source": {
+          "confidence": "low",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — ML Infrastructure and Platform; lecture slides",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "fine_tuning": {
+      "concept": {
+        "aliases": [
+          "Fine-Tuning"
+        ],
+        "cluster": "training_optimization",
+        "id": "fine_tuning",
+        "importance": "medium",
+        "name": "微调",
+        "note": "",
+        "requires": [
+          "backpropagation",
+          "representation_learning"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 14.2",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3089092393706594,
+        "deep": 0.11907785314933671,
+        "operable": 0.3072335594480101,
+        "unknown": 0.26477934803199377
+      }
+    },
+    "gan": {
+      "concept": {
+        "aliases": [
+          "Generative Adversarial Network"
+        ],
+        "cluster": "architecture",
+        "id": "gan",
+        "importance": "medium",
+        "name": "生成对抗网络",
+        "note": "",
+        "requires": [
+          "mlp",
+          "conditional_probability"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 20.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      }
+    },
+    "generalization": {
+      "concept": {
+        "aliases": [
+          "Generalization"
+        ],
+        "cluster": "dl_foundation",
+        "id": "generalization",
+        "importance": "medium",
+        "name": "泛化",
+        "note": "",
+        "requires": [
+          "probability"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 5.2",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      }
+    },
+    "gpu_compute": {
+      "concept": {
+        "aliases": [
+          "GPU Computing"
+        ],
+        "cluster": "systems_harness",
+        "id": "gpu_compute",
+        "importance": "high",
+        "name": "GPU 计算",
+        "note": "",
+        "requires": [
+          "matrix_multiplication"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 6.7",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "gradient": {
+      "concept": {
+        "aliases": [
+          "Gradient"
+        ],
+        "cluster": "math_foundation",
+        "id": "gradient",
+        "importance": "medium",
+        "name": "梯度",
+        "note": "",
+        "requires": [
+          "calculus"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 22.4",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      }
+    },
+    "gradient_clipping": {
+      "concept": {
+        "aliases": [
+          "Gradient Clipping"
+        ],
+        "cluster": "training_optimization",
+        "id": "gradient_clipping",
+        "importance": "medium",
+        "name": "梯度裁剪",
+        "note": "",
+        "requires": [
+          "gradient"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 9.5",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "gradient_descent": {
+      "concept": {
+        "aliases": [
+          "Gradient Descent"
+        ],
+        "cluster": "training_optimization",
+        "id": "gradient_descent",
+        "importance": "high",
+        "name": "梯度下降",
+        "note": "",
+        "requires": [
+          "gradient"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 12.3",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "gru": {
+      "concept": {
+        "aliases": [
+          "Gated Recurrent Unit"
+        ],
+        "cluster": "architecture",
+        "id": "gru",
+        "importance": "medium",
+        "name": "门控循环单元",
+        "note": "",
+        "requires": [
+          "rnn"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 10.2",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      }
+    },
+    "hyperparameter_optimization": {
+      "concept": {
+        "aliases": [
+          "Hyperparameter Optimization"
+        ],
+        "cluster": "training_optimization",
+        "id": "hyperparameter_optimization",
+        "importance": "medium",
+        "name": "超参数优化",
+        "note": "",
+        "requires": [
+          "validation_split"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 19.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      }
+    },
+    "image_classification": {
+      "concept": {
+        "aliases": [
+          "Image Classification"
+        ],
+        "cluster": "vision",
+        "id": "image_classification",
+        "importance": "high",
+        "name": "图像分类",
+        "note": "",
+        "requires": [
+          "supervised_learning"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 14.13",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      }
+    },
+    "importance_weighting": {
+      "concept": {
+        "aliases": [
+          "Importance Weighting"
+        ],
+        "cluster": "data",
+        "id": "importance_weighting",
+        "importance": "medium",
+        "name": "重要性加权",
+        "note": "",
+        "requires": [
+          "covariate_shift",
+          "expectation"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 4.7",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31003892773132,
+        "deep": 0.11855335498188713,
+        "operable": 0.30566006494566134,
+        "unknown": 0.26574765234113146
+      }
+    },
+    "in_context_learning": {
+      "concept": {
+        "aliases": [
+          "In-Context Learning"
+        ],
+        "cluster": "language",
+        "id": "in_context_learning",
+        "importance": "medium",
+        "name": "上下文学习",
+        "note": "",
+        "requires": [
+          "language_model"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://web.stanford.edu/class/cs224n/#schedule — Efficient Adaptation (Prompting + PEFT); reading Language Models are Few-Shot Learners",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      }
+    },
+    "initialization": {
+      "concept": {
+        "aliases": [
+          "Parameter Initialization"
+        ],
+        "cluster": "training_optimization",
+        "id": "initialization",
+        "importance": "medium",
+        "name": "参数初始化",
+        "note": "",
+        "requires": [
+          "mlp",
+          "expectation"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 5.4",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      }
+    },
+    "instance_segmentation": {
+      "concept": {
+        "aliases": [
+          "Instance Segmentation"
+        ],
+        "cluster": "vision",
+        "id": "instance_segmentation",
+        "importance": "medium",
+        "name": "实例分割",
+        "note": "",
+        "requires": [
+          "object_detection",
+          "semantic_segmentation"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://cs231n.stanford.edu/schedule.html — Lecture 9 Object Detection, Image Segmentation, Visualizing and Understanding",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3099554634542719,
+        "deep": 0.11859210625337377,
+        "operable": 0.3057763187601213,
+        "unknown": 0.26567611153223303
+      }
+    },
+    "iou": {
+      "concept": {
+        "aliases": [
+          "Intersection over Union"
+        ],
+        "cluster": "evaluation",
+        "id": "iou",
+        "importance": "medium",
+        "name": "交并比",
+        "note": "",
+        "requires": [
+          "probability"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 14.4",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      }
+    },
+    "kl_divergence": {
+      "concept": {
+        "aliases": [
+          "Kullback–Leibler Divergence"
+        ],
+        "cluster": "math_foundation",
+        "id": "kl_divergence",
+        "importance": "medium",
+        "name": "KL 散度",
+        "note": "",
+        "requires": [
+          "entropy"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 3.13",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      }
+    },
+    "knowledge_distillation": {
+      "concept": {
+        "aliases": [
+          "Knowledge Distillation"
+        ],
+        "cluster": "inference_serving",
+        "id": "knowledge_distillation",
+        "importance": "medium",
+        "name": "知识蒸馏",
+        "note": "",
+        "requires": [
+          "model_compression",
+          "softmax"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 7.17.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3099792752479064,
+        "deep": 0.11858105077775773,
+        "operable": 0.3057431523332732,
+        "unknown": 0.26569652164106267
+      }
+    },
+    "label_shift": {
+      "concept": {
+        "aliases": [
+          "Label Shift"
+        ],
+        "cluster": "data",
+        "id": "label_shift",
+        "importance": "medium",
+        "name": "标签偏移",
+        "note": "",
+        "requires": [
+          "distribution_shift"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 4.7",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3233132127633275,
+        "deep": 0.11239029407416938,
+        "operable": 0.28717088222250814,
+        "unknown": 0.277125610939995
+      }
+    },
+    "language_model": {
+      "concept": {
+        "aliases": [
+          "Language Model"
+        ],
+        "cluster": "language",
+        "id": "language_model",
+        "importance": "high",
+        "name": "语言模型",
+        "note": "",
+        "requires": [
+          "conditional_probability",
+          "tokenization"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 9.3",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31194059749999997,
+        "deep": 0.117670436875,
+        "operable": 0.303011310625,
+        "unknown": 0.267377655
+      }
+    },
+    "latency": {
+      "concept": {
+        "aliases": [
+          "Inference Latency"
+        ],
+        "cluster": "inference_serving",
+        "id": "latency",
+        "importance": "medium",
+        "name": "推理延迟",
+        "note": "verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。",
+        "requires": [
+          "online_prediction"
+        ],
+        "source": {
+          "confidence": "low",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502837662726003,
+        "deep": 0.1115939679944864,
+        "operable": 0.28478190398345915,
+        "unknown": 0.27859575139479437
+      }
+    },
+    "layer_norm": {
+      "concept": {
+        "aliases": [
+          "Layer Normalization"
+        ],
+        "cluster": "architecture",
+        "id": "layer_norm",
+        "importance": "medium",
+        "name": "层归一化",
+        "note": "",
+        "requires": [
+          "expectation",
+          "mlp"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://web.stanford.edu/class/cs224n/#schedule — Transformers; reading Layer Normalization",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      }
+    },
+    "learning_rate_schedule": {
+      "concept": {
+        "aliases": [
+          "Learning Rate Scheduling"
+        ],
+        "cluster": "training_optimization",
+        "id": "learning_rate_schedule",
+        "importance": "high",
+        "name": "学习率调度",
+        "note": "",
+        "requires": [
+          "gradient_descent"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 12.11",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      }
+    },
+    "linear_algebra": {
+      "concept": {
+        "aliases": [
+          "Linear Algebra"
+        ],
+        "cluster": "math_foundation",
+        "id": "linear_algebra",
+        "importance": "high",
+        "name": "线性代数",
+        "note": "",
+        "requires": [],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 2",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.35,
+        "deep": 0.1,
+        "operable": 0.25,
+        "unknown": 0.3
+      }
+    },
+    "linear_regression": {
+      "concept": {
+        "aliases": [
+          "Linear Regression"
+        ],
+        "cluster": "dl_foundation",
+        "id": "linear_regression",
+        "importance": "high",
+        "name": "线性回归",
+        "note": "",
+        "requires": [
+          "matrix_multiplication"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 3.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "logistic_regression": {
+      "concept": {
+        "aliases": [
+          "Logistic Regression"
+        ],
+        "cluster": "dl_foundation",
+        "id": "logistic_regression",
+        "importance": "high",
+        "name": "逻辑回归",
+        "note": "",
+        "requires": [
+          "matrix_multiplication",
+          "conditional_probability"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 5.7.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3103693398575,
+        "deep": 0.118399949351875,
+        "operable": 0.305199848055625,
+        "unknown": 0.266030862735
+      }
+    },
+    "lora": {
+      "concept": {
+        "aliases": [
+          "Low-Rank Adaptation"
+        ],
+        "cluster": "language",
+        "id": "lora",
+        "importance": "medium",
+        "name": "低秩适配",
+        "note": "",
+        "requires": [
+          "matrix_multiplication",
+          "fine_tuning"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://web.stanford.edu/class/cs224n/#schedule — Efficient Adaptation (Prompting + PEFT); reading LoRA",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3090125171519279,
+        "deep": 0.11902990275089062,
+        "operable": 0.30708970825267184,
+        "unknown": 0.26486787184450966
+      }
+    },
+    "lstm": {
+      "concept": {
+        "aliases": [
+          "Long Short-Term Memory"
+        ],
+        "cluster": "architecture",
+        "id": "lstm",
+        "importance": "medium",
+        "name": "长短期记忆网络",
+        "note": "",
+        "requires": [
+          "rnn"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 10.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      }
+    },
+    "masked_language_modeling": {
+      "concept": {
+        "aliases": [
+          "Masked Language Modeling"
+        ],
+        "cluster": "language",
+        "id": "masked_language_modeling",
+        "importance": "medium",
+        "name": "掩码语言建模",
+        "note": "",
+        "requires": [
+          "language_model"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 15.8",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      }
+    },
+    "matrix_multiplication": {
+      "concept": {
+        "aliases": [
+          "Matrix Multiplication"
+        ],
+        "cluster": "math_foundation",
+        "id": "matrix_multiplication",
+        "importance": "high",
+        "name": "矩阵乘法",
+        "note": "",
+        "requires": [
+          "linear_algebra"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 2.2",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      }
+    },
+    "maximum_likelihood": {
+      "concept": {
+        "aliases": [
+          "Maximum Likelihood Estimation"
+        ],
+        "cluster": "math_foundation",
+        "id": "maximum_likelihood",
+        "importance": "medium",
+        "name": "最大似然估计",
+        "note": "",
+        "requires": [
+          "conditional_probability"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 5.5",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "mdp": {
+      "concept": {
+        "aliases": [
+          "Markov Decision Process"
+        ],
+        "cluster": "rl",
+        "id": "mdp",
+        "importance": "high",
+        "name": "马尔可夫决策过程",
+        "note": "verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。",
+        "requires": [
+          "conditional_probability"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 3",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "minibatch_sgd": {
+      "concept": {
+        "aliases": [
+          "Minibatch Stochastic Gradient Descent"
+        ],
+        "cluster": "training_optimization",
+        "id": "minibatch_sgd",
+        "importance": "high",
+        "name": "小批量随机梯度下降",
+        "note": "",
+        "requires": [
+          "sgd"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 12.5",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      }
+    },
+    "missing_values": {
+      "concept": {
+        "aliases": [
+          "Missing Values"
+        ],
+        "cluster": "data",
+        "id": "missing_values",
+        "importance": "medium",
+        "name": "缺失值处理",
+        "note": "",
+        "requires": [
+          "data_preprocessing"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 2.2",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      }
+    },
+    "ml_pipeline": {
+      "concept": {
+        "aliases": [
+          "ML Pipeline"
+        ],
+        "cluster": "systems_harness",
+        "id": "ml_pipeline",
+        "importance": "medium",
+        "name": "机器学习流水线",
+        "note": "",
+        "requires": [
+          "data_preprocessing",
+          "model_deployment"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — ML Infrastructure and Platform",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31171875904033375,
+        "deep": 0.11777343330270218,
+        "operable": 0.30332029990810655,
+        "unknown": 0.2671875077488575
+      }
+    },
+    "mlp": {
+      "concept": {
+        "aliases": [
+          "Multilayer Perceptron"
+        ],
+        "cluster": "dl_foundation",
+        "id": "mlp",
+        "importance": "high",
+        "name": "多层感知机",
+        "note": "",
+        "requires": [
+          "matrix_multiplication"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 5.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "model_calibration": {
+      "concept": {
+        "aliases": [
+          "Probability Calibration"
+        ],
+        "cluster": "evaluation",
+        "id": "model_calibration",
+        "importance": "high",
+        "name": "概率校准",
+        "note": "verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。",
+        "requires": [
+          "conditional_probability"
+        ],
+        "source": {
+          "confidence": "low",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Offline evaluation; lecture note",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "model_compression": {
+      "concept": {
+        "aliases": [
+          "Model Compression"
+        ],
+        "cluster": "inference_serving",
+        "id": "model_compression",
+        "importance": "high",
+        "name": "模型压缩",
+        "note": "",
+        "requires": [
+          "representation_learning"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 7.17.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      }
+    },
+    "model_deployment": {
+      "concept": {
+        "aliases": [
+          "Model Deployment"
+        ],
+        "cluster": "inference_serving",
+        "id": "model_deployment",
+        "importance": "high",
+        "name": "模型部署",
+        "note": "",
+        "requires": [
+          "offline_evaluation"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Deployment",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      }
+    },
+    "model_monitoring": {
+      "concept": {
+        "aliases": [
+          "Model Monitoring"
+        ],
+        "cluster": "inference_serving",
+        "id": "model_monitoring",
+        "importance": "medium",
+        "name": "模型监控",
+        "note": "",
+        "requires": [
+          "model_deployment",
+          "distribution_shift"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Diagnosis of ML system failures & data distribution shifts & monitoring",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3089198426441286,
+        "deep": 0.11907293020094031,
+        "operable": 0.3072187906028209,
+        "unknown": 0.2647884365521102
+      }
+    },
+    "model_parallelism": {
+      "concept": {
+        "aliases": [
+          "Model Parallelism"
+        ],
+        "cluster": "systems_harness",
+        "id": "model_parallelism",
+        "importance": "medium",
+        "name": "模型并行",
+        "note": "",
+        "requires": [
+          "gpu_compute",
+          "backpropagation"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 13.5",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30892958321327857,
+        "deep": 0.11906840779383496,
+        "operable": 0.30720522338150485,
+        "unknown": 0.26479678561138165
+      }
+    },
+    "model_versioning": {
+      "concept": {
+        "aliases": [
+          "Model Versioning"
+        ],
+        "cluster": "systems_harness",
+        "id": "model_versioning",
+        "importance": "high",
+        "name": "模型版本管理",
+        "note": "",
+        "requires": [
+          "model_deployment"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Experiment tracking & versioning with Weights & Biases",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502886006205195,
+        "deep": 0.11159374354261875,
+        "operable": 0.2847812306278562,
+        "unknown": 0.2785961657674731
+      }
+    },
+    "momentum": {
+      "concept": {
+        "aliases": [
+          "Momentum"
+        ],
+        "cluster": "training_optimization",
+        "id": "momentum",
+        "importance": "medium",
+        "name": "动量法",
+        "note": "",
+        "requires": [
+          "gradient_descent"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 12.6",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      }
+    },
+    "monte_carlo_rl": {
+      "concept": {
+        "aliases": [
+          "Monte Carlo Methods"
+        ],
+        "cluster": "rl",
+        "id": "monte_carlo_rl",
+        "importance": "medium",
+        "name": "蒙特卡洛强化学习",
+        "note": "verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。",
+        "requires": [
+          "mdp",
+          "return_discount"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 5",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31000311174160927,
+        "deep": 0.11856998383425282,
+        "operable": 0.3057099515027585,
+        "unknown": 0.2657169529213794
+      }
+    },
+    "multihead_attention": {
+      "concept": {
+        "aliases": [
+          "Multi-Head Attention"
+        ],
+        "cluster": "architecture",
+        "id": "multihead_attention",
+        "importance": "high",
+        "name": "多头注意力",
+        "note": "",
+        "requires": [
+          "attn_scaled_dot_product"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 11.5",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      }
+    },
+    "negative_sampling": {
+      "concept": {
+        "aliases": [
+          "Negative Sampling"
+        ],
+        "cluster": "language",
+        "id": "negative_sampling",
+        "importance": "medium",
+        "name": "负采样",
+        "note": "",
+        "requires": [
+          "conditional_probability"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 15.2",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "nonmaximum_suppression": {
+      "concept": {
+        "aliases": [
+          "Non-Maximum Suppression"
+        ],
+        "cluster": "vision",
+        "id": "nonmaximum_suppression",
+        "importance": "medium",
+        "name": "非极大值抑制",
+        "note": "",
+        "requires": [
+          "object_detection",
+          "iou"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 14.4",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31016147722079274,
+        "deep": 0.11849645700463195,
+        "operable": 0.30548937101389584,
+        "unknown": 0.26585269476067946
+      }
+    },
+    "object_detection": {
+      "concept": {
+        "aliases": [
+          "Object Detection"
+        ],
+        "cluster": "vision",
+        "id": "object_detection",
+        "importance": "high",
+        "name": "目标检测",
+        "note": "",
+        "requires": [
+          "image_classification"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 14.3",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      }
+    },
+    "off_policy_learning": {
+      "concept": {
+        "aliases": [
+          "Off-Policy Learning"
+        ],
+        "cluster": "rl",
+        "id": "off_policy_learning",
+        "importance": "medium",
+        "name": "离策略学习",
+        "note": "verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。",
+        "requires": [
+          "mdp",
+          "conditional_probability"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 5.5",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      }
+    },
+    "offline_evaluation": {
+      "concept": {
+        "aliases": [
+          "Offline Evaluation"
+        ],
+        "cluster": "evaluation",
+        "id": "offline_evaluation",
+        "importance": "medium",
+        "name": "离线评估",
+        "note": "",
+        "requires": [
+          "train_test_split"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Offline evaluation",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      }
+    },
+    "online_experiment": {
+      "concept": {
+        "aliases": [
+          "Online Experimentation"
+        ],
+        "cluster": "evaluation",
+        "id": "online_experiment",
+        "importance": "medium",
+        "name": "在线实验",
+        "note": "verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。",
+        "requires": [
+          "offline_evaluation"
+        ],
+        "source": {
+          "confidence": "low",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      }
+    },
+    "online_prediction": {
+      "concept": {
+        "aliases": [
+          "Online Prediction"
+        ],
+        "cluster": "inference_serving",
+        "id": "online_prediction",
+        "importance": "high",
+        "name": "在线预测",
+        "note": "verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。",
+        "requires": [
+          "model_deployment"
+        ],
+        "source": {
+          "confidence": "low",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502886006205195,
+        "deep": 0.11159374354261875,
+        "operable": 0.2847812306278562,
+        "unknown": 0.2785961657674731
+      }
+    },
+    "overfitting": {
+      "concept": {
+        "aliases": [
+          "Overfitting"
+        ],
+        "cluster": "dl_foundation",
+        "id": "overfitting",
+        "importance": "medium",
+        "name": "过拟合",
+        "note": "",
+        "requires": [
+          "generalization"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 5.2",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "padding_stride": {
+      "concept": {
+        "aliases": [
+          "Padding and Stride"
+        ],
+        "cluster": "vision",
+        "id": "padding_stride",
+        "importance": "medium",
+        "name": "填充与步幅",
+        "note": "",
+        "requires": [
+          "convolution"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 7.3",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      }
+    },
+    "parameter_server": {
+      "concept": {
+        "aliases": [
+          "Parameter Server"
+        ],
+        "cluster": "systems_harness",
+        "id": "parameter_server",
+        "importance": "medium",
+        "name": "参数服务器",
+        "note": "",
+        "requires": [
+          "data_parallelism"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 13.7",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3231447612359536,
+        "deep": 0.11246850371187869,
+        "operable": 0.28740551113563606,
+        "unknown": 0.2769812239165316
+      }
+    },
+    "perplexity": {
+      "concept": {
+        "aliases": [
+          "Perplexity"
+        ],
+        "cluster": "evaluation",
+        "id": "perplexity",
+        "importance": "high",
+        "name": "困惑度",
+        "note": "",
+        "requires": [
+          "cross_entropy"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 9.3",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      }
+    },
+    "policy_gradient": {
+      "concept": {
+        "aliases": [
+          "Policy Gradient"
+        ],
+        "cluster": "rl",
+        "id": "policy_gradient",
+        "importance": "high",
+        "name": "策略梯度",
+        "note": "verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。",
+        "requires": [
+          "mdp",
+          "gradient",
+          "expectation"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 13.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3011211304275521,
+        "deep": 0.12269376087292223,
+        "operable": 0.31808128261876667,
+        "unknown": 0.25810382608075894
+      }
+    },
+    "policy_iteration": {
+      "concept": {
+        "aliases": [
+          "Policy Iteration"
+        ],
+        "cluster": "rl",
+        "id": "policy_iteration",
+        "importance": "medium",
+        "name": "策略迭代",
+        "note": "verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。",
+        "requires": [
+          "bellman_equation"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 4.3",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      }
+    },
+    "pooling": {
+      "concept": {
+        "aliases": [
+          "Pooling"
+        ],
+        "cluster": "vision",
+        "id": "pooling",
+        "importance": "medium",
+        "name": "池化",
+        "note": "",
+        "requires": [
+          "matrix_multiplication"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 7.5",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "positional_encoding": {
+      "concept": {
+        "aliases": [
+          "Positional Encoding"
+        ],
+        "cluster": "architecture",
+        "id": "positional_encoding",
+        "importance": "medium",
+        "name": "位置编码",
+        "note": "",
+        "requires": [
+          "matrix_multiplication"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 11.6",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "precision_recall": {
+      "concept": {
+        "aliases": [
+          "Precision and Recall"
+        ],
+        "cluster": "evaluation",
+        "id": "precision_recall",
+        "importance": "high",
+        "name": "精确率与召回率",
+        "note": "",
+        "requires": [
+          "conditional_probability"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 11.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "probability": {
+      "concept": {
+        "aliases": [
+          "Probability Theory"
+        ],
+        "cluster": "math_foundation",
+        "id": "probability",
+        "importance": "medium",
+        "name": "概率论",
+        "note": "",
+        "requires": [],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 3",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.35,
+        "deep": 0.1,
+        "operable": 0.25,
+        "unknown": 0.3
+      }
+    },
+    "q_learning": {
+      "concept": {
+        "aliases": [
+          "Q-Learning"
+        ],
+        "cluster": "rl",
+        "id": "q_learning",
+        "importance": "high",
+        "name": "Q 学习",
+        "note": "verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。",
+        "requires": [
+          "temporal_difference"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 6.5",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248251293466427,
+        "deep": 0.11168833280334445,
+        "operable": 0.2850649984100333,
+        "unknown": 0.2784215394399795
+      }
+    },
+    "rcnn": {
+      "concept": {
+        "aliases": [
+          "Region-based Convolutional Neural Network"
+        ],
+        "cluster": "vision",
+        "id": "rcnn",
+        "importance": "medium",
+        "name": "区域卷积神经网络",
+        "note": "",
+        "requires": [
+          "cnn",
+          "object_detection"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 14.8",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30890685914107296,
+        "deep": 0.11907895825593041,
+        "operable": 0.3072368747677912,
+        "unknown": 0.26477730783520537
+      }
+    },
+    "representation_learning": {
+      "concept": {
+        "aliases": [
+          "Representation Learning"
+        ],
+        "cluster": "dl_foundation",
+        "id": "representation_learning",
+        "importance": "medium",
+        "name": "表示学习",
+        "note": "",
+        "requires": [
+          "mlp"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 15",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      }
+    },
+    "resnet": {
+      "concept": {
+        "aliases": [
+          "Residual Network"
+        ],
+        "cluster": "architecture",
+        "id": "resnet",
+        "importance": "medium",
+        "name": "残差网络",
+        "note": "",
+        "requires": [
+          "cnn"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 8.6",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      }
+    },
+    "retrieval_augmented_generation": {
+      "concept": {
+        "aliases": [
+          "Retrieval-Augmented Generation"
+        ],
+        "cluster": "language",
+        "id": "retrieval_augmented_generation",
+        "importance": "high",
+        "name": "检索增强生成",
+        "note": "",
+        "requires": [
+          "language_model"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://web.stanford.edu/class/cs224n/#schedule — Agents, Tool Use, and RAG",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      }
+    },
+    "return_discount": {
+      "concept": {
+        "aliases": [
+          "Return and Discounting"
+        ],
+        "cluster": "rl",
+        "id": "return_discount",
+        "importance": "medium",
+        "name": "回报与折扣",
+        "note": "verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。",
+        "requires": [
+          "expectation"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 3.3",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "rlhf": {
+      "concept": {
+        "aliases": [
+          "Reinforcement Learning from Human Feedback"
+        ],
+        "cluster": "language",
+        "id": "rlhf",
+        "importance": "medium",
+        "name": "人类反馈强化学习",
+        "note": "",
+        "requires": [
+          "language_model",
+          "policy_gradient"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://web.stanford.edu/class/cs224n/#schedule — Post-training (RLHF, SFT, DPO)",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3074100611472033,
+        "deep": 0.1197739001816556,
+        "operable": 0.30932170054496677,
+        "unknown": 0.2634943381261743
+      }
+    },
+    "rnn": {
+      "concept": {
+        "aliases": [
+          "Recurrent Neural Network"
+        ],
+        "cluster": "architecture",
+        "id": "rnn",
+        "importance": "high",
+        "name": "循环神经网络",
+        "note": "",
+        "requires": [
+          "mlp"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 9.4",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      }
+    },
+    "robustness": {
+      "concept": {
+        "aliases": [
+          "Robustness"
+        ],
+        "cluster": "evaluation",
+        "id": "robustness",
+        "importance": "medium",
+        "name": "鲁棒性",
+        "note": "",
+        "requires": [
+          "generalization"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 7.13",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "roc_auc": {
+      "concept": {
+        "aliases": [
+          "ROC AUC"
+        ],
+        "cluster": "evaluation",
+        "id": "roc_auc",
+        "importance": "medium",
+        "name": "ROC 曲线下面积",
+        "note": "verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。",
+        "requires": [
+          "conditional_probability"
+        ],
+        "source": {
+          "confidence": "low",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Offline evaluation; lecture note",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "sarsa": {
+      "concept": {
+        "aliases": [
+          "Sarsa"
+        ],
+        "cluster": "rl",
+        "id": "sarsa",
+        "importance": "medium",
+        "name": "SARSA 算法",
+        "note": "verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。",
+        "requires": [
+          "temporal_difference"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 6.4",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248251293466427,
+        "deep": 0.11168833280334445,
+        "operable": 0.2850649984100333,
+        "unknown": 0.2784215394399795
+      }
+    },
+    "self_consistency": {
+      "concept": {
+        "aliases": [
+          "Self-Consistency"
+        ],
+        "cluster": "systems_harness",
+        "id": "self_consistency",
+        "importance": "medium",
+        "name": "自一致性解码",
+        "note": "",
+        "requires": [
+          "chain_of_thought",
+          "probability"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://web.stanford.edu/class/cs224n/#schedule — Reasoning 1; reading Self-Consistency Improves Chain of Thought Reasoning",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31160195064546536,
+        "deep": 0.11782766577174822,
+        "operable": 0.30348299731524464,
+        "unknown": 0.26708738626754175
+      }
+    },
+    "semantic_segmentation": {
+      "concept": {
+        "aliases": [
+          "Semantic Segmentation"
+        ],
+        "cluster": "vision",
+        "id": "semantic_segmentation",
+        "importance": "high",
+        "name": "语义分割",
+        "note": "",
+        "requires": [
+          "image_classification"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 14.9",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      }
+    },
+    "sgd": {
+      "concept": {
+        "aliases": [
+          "Stochastic Gradient Descent"
+        ],
+        "cluster": "training_optimization",
+        "id": "sgd",
+        "importance": "high",
+        "name": "随机梯度下降",
+        "note": "",
+        "requires": [
+          "gradient_descent",
+          "expectation"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 12.4",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      }
+    },
+    "shadow_deployment": {
+      "concept": {
+        "aliases": [
+          "Shadow Deployment"
+        ],
+        "cluster": "inference_serving",
+        "id": "shadow_deployment",
+        "importance": "medium",
+        "name": "影子部署",
+        "note": "verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。",
+        "requires": [
+          "online_prediction"
+        ],
+        "source": {
+          "confidence": "low",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502837662726003,
+        "deep": 0.1115939679944864,
+        "operable": 0.28478190398345915,
+        "unknown": 0.27859575139479437
+      }
+    },
+    "softmax": {
+      "concept": {
+        "aliases": [
+          "Softmax Function"
+        ],
+        "cluster": "dl_foundation",
+        "id": "softmax",
+        "importance": "medium",
+        "name": "Softmax 函数",
+        "note": "",
+        "requires": [
+          "matrix_multiplication"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 4.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "speculative_decoding": {
+      "concept": {
+        "aliases": [
+          "Speculative Decoding"
+        ],
+        "cluster": "inference_serving",
+        "id": "speculative_decoding",
+        "importance": "medium",
+        "name": "推测解码",
+        "note": "",
+        "requires": [
+          "language_model",
+          "conditional_probability"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://web.stanford.edu/class/cs224n/#schedule — Reasoning 2; reading Fast Inference from Transformers via Speculative Decoding",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30922852824616287,
+        "deep": 0.1189296118857101,
+        "operable": 0.3067888356571303,
+        "unknown": 0.26505302421099675
+      }
+    },
+    "state_action_value": {
+      "concept": {
+        "aliases": [
+          "Action-Value Function"
+        ],
+        "cluster": "rl",
+        "id": "state_action_value",
+        "importance": "medium",
+        "name": "状态动作价值",
+        "note": "verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。",
+        "requires": [
+          "mdp",
+          "return_discount"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 3.5",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31000311174160927,
+        "deep": 0.11856998383425282,
+        "operable": 0.3057099515027585,
+        "unknown": 0.2657169529213794
+      }
+    },
+    "subword_tokenization": {
+      "concept": {
+        "aliases": [
+          "Subword Tokenization"
+        ],
+        "cluster": "language",
+        "id": "subword_tokenization",
+        "importance": "medium",
+        "name": "子词分词",
+        "note": "",
+        "requires": [
+          "tokenization"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 15.6",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      }
+    },
+    "supervised_fine_tuning": {
+      "concept": {
+        "aliases": [
+          "Supervised Fine-Tuning"
+        ],
+        "cluster": "language",
+        "id": "supervised_fine_tuning",
+        "importance": "medium",
+        "name": "监督微调",
+        "note": "",
+        "requires": [
+          "fine_tuning",
+          "language_model"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://web.stanford.edu/class/cs224n/#schedule — Post-training (RLHF, SFT, DPO)",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3079379410057978,
+        "deep": 0.11952881310445101,
+        "operable": 0.30858643931335306,
+        "unknown": 0.26394680657639813
+      }
+    },
+    "supervised_learning": {
+      "concept": {
+        "aliases": [
+          "Supervised Learning"
+        ],
+        "cluster": "data",
+        "id": "supervised_learning",
+        "importance": "medium",
+        "name": "监督学习",
+        "note": "",
+        "requires": [
+          "conditional_probability"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 5.7",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "svd": {
+      "concept": {
+        "aliases": [
+          "Singular Value Decomposition"
+        ],
+        "cluster": "math_foundation",
+        "id": "svd",
+        "importance": "high",
+        "name": "奇异值分解",
+        "note": "",
+        "requires": [
+          "matrix_multiplication"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 2.8",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "temporal_difference": {
+      "concept": {
+        "aliases": [
+          "Temporal-Difference Learning"
+        ],
+        "cluster": "rl",
+        "id": "temporal_difference",
+        "importance": "medium",
+        "name": "时序差分学习",
+        "note": "verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。",
+        "requires": [
+          "bellman_equation"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 6.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      }
+    },
+    "throughput": {
+      "concept": {
+        "aliases": [
+          "Inference Throughput"
+        ],
+        "cluster": "inference_serving",
+        "id": "throughput",
+        "importance": "medium",
+        "name": "推理吞吐量",
+        "note": "verify_pending：课程目录已核验，所链讲义/幻灯片不可达；具体术语定位待复核。",
+        "requires": [
+          "model_deployment"
+        ],
+        "source": {
+          "confidence": "low",
+          "ref": "https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502886006205195,
+        "deep": 0.11159374354261875,
+        "operable": 0.2847812306278562,
+        "unknown": 0.2785961657674731
+      }
+    },
+    "tokenization": {
+      "concept": {
+        "aliases": [
+          "Tokenization"
+        ],
+        "cluster": "language",
+        "id": "tokenization",
+        "importance": "high",
+        "name": "分词",
+        "note": "",
+        "requires": [],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 9.2",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.35,
+        "deep": 0.1,
+        "operable": 0.25,
+        "unknown": 0.3
+      }
+    },
+    "train_test_split": {
+      "concept": {
+        "aliases": [
+          "Train–Test Split"
+        ],
+        "cluster": "data",
+        "id": "train_test_split",
+        "importance": "high",
+        "name": "训练测试划分",
+        "note": "",
+        "requires": [
+          "generalization"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 5.3",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    },
+    "transformer": {
+      "concept": {
+        "aliases": [
+          "Transformer"
+        ],
+        "cluster": "architecture",
+        "id": "transformer",
+        "importance": "high",
+        "name": "Transformer 架构",
+        "note": "",
+        "requires": [
+          "multihead_attention",
+          "positional_encoding",
+          "mlp"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 11.7",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3008110424920897,
+        "deep": 0.1228377302715298,
+        "operable": 0.3185131908145894,
+        "unknown": 0.25783803642179115
+      }
+    },
+    "universal_approximation": {
+      "concept": {
+        "aliases": [
+          "Universal Approximation Theorem"
+        ],
+        "cluster": "dl_foundation",
+        "id": "universal_approximation",
+        "importance": "medium",
+        "name": "通用逼近定理",
+        "note": "",
+        "requires": [
+          "mlp",
+          "activation"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 6.4.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      }
+    },
+    "unsupervised_learning": {
+      "concept": {
+        "aliases": [
+          "Unsupervised Learning"
+        ],
+        "cluster": "data",
+        "id": "unsupervised_learning",
+        "importance": "medium",
+        "name": "无监督学习",
+        "note": "",
+        "requires": [
+          "probability"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 5.8",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      }
+    },
+    "vae": {
+      "concept": {
+        "aliases": [
+          "Variational Autoencoder"
+        ],
+        "cluster": "architecture",
+        "id": "vae",
+        "importance": "medium",
+        "name": "变分自编码器",
+        "note": "",
+        "requires": [
+          "kl_divergence",
+          "representation_learning"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "https://cs231n.stanford.edu/schedule.html — Lecture 13 Generative Models 1",
+          "type": "course"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30996045205088196,
+        "deep": 0.11858979011923337,
+        "operable": 0.3057693703577001,
+        "unknown": 0.2656803874721846
+      }
+    },
+    "validation_split": {
+      "concept": {
+        "aliases": [
+          "Validation Set"
+        ],
+        "cluster": "data",
+        "id": "validation_split",
+        "importance": "high",
+        "name": "验证集划分",
+        "note": "",
+        "requires": [
+          "train_test_split"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://www.deeplearningbook.org/ — ch./§ 5.3",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      }
+    },
+    "value_iteration": {
+      "concept": {
+        "aliases": [
+          "Value Iteration"
+        ],
+        "cluster": "rl",
+        "id": "value_iteration",
+        "importance": "high",
+        "name": "价值迭代",
+        "note": "verify_pending：官方书页及 PDF 链接已核验，PDF 本次抓取超时；章节定位按已知第二版目录待复核。",
+        "requires": [
+          "bellman_equation"
+        ],
+        "source": {
+          "confidence": "medium",
+          "ref": "http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 4.4",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      }
+    },
+    "vanishing_gradient": {
+      "concept": {
+        "aliases": [
+          "Vanishing Gradient"
+        ],
+        "cluster": "training_optimization",
+        "id": "vanishing_gradient",
+        "importance": "medium",
+        "name": "梯度消失",
+        "note": "",
+        "requires": [
+          "backpropagation"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 5.4",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      }
+    },
+    "vision_transformer": {
+      "concept": {
+        "aliases": [
+          "Vision Transformer"
+        ],
+        "cluster": "vision",
+        "id": "vision_transformer",
+        "importance": "high",
+        "name": "视觉 Transformer",
+        "note": "",
+        "requires": [
+          "transformer"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 11.8",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32219489197157447,
+        "deep": 0.112909514441769,
+        "operable": 0.28872854332530695,
+        "unknown": 0.2761670502613496
+      }
+    },
+    "weight_decay": {
+      "concept": {
+        "aliases": [
+          "Weight Decay"
+        ],
+        "cluster": "training_optimization",
+        "id": "weight_decay",
+        "importance": "medium",
+        "name": "权重衰减",
+        "note": "",
+        "requires": [
+          "linear_regression",
+          "gradient_descent"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 3.7",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31000311174160927,
+        "deep": 0.11856998383425282,
+        "operable": 0.3057099515027585,
+        "unknown": 0.2657169529213794
+      }
+    },
+    "word2vec": {
+      "concept": {
+        "aliases": [
+          "word2vec"
+        ],
+        "cluster": "language",
+        "id": "word2vec",
+        "importance": "medium",
+        "name": "词向量模型 word2vec",
+        "note": "",
+        "requires": [
+          "word_embedding"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 15.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      }
+    },
+    "word_embedding": {
+      "concept": {
+        "aliases": [
+          "Word Embedding"
+        ],
+        "cluster": "language",
+        "id": "word_embedding",
+        "importance": "high",
+        "name": "词嵌入",
+        "note": "",
+        "requires": [
+          "matrix_multiplication"
+        ],
+        "source": {
+          "confidence": "high",
+          "ref": "https://d2l.ai/ — ch./§ 15.1",
+          "type": "textbook"
+        }
+      },
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      }
+    }
+  },
+  "scenarios": [
+    {
+      "ask_detail": [
+        {
+          "angle": "如何验证秩亏并稳定求解，而不是只加一行逆矩阵调用？",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 沿 D2L 线性回归的秩亏习题：训练矩阵 1000×4，其中面积一列同时以平方米和平方英尺出现；同事直接求 (XᵀX)⁻¹，报奇异矩阵。只能用 CPU，要求保留可解释系数。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "XᵀX 的秩受重复列限制；病态时正规方程会放大条件数。"
+        },
+        {
+          "应用": "检查奇异值，用 SVD 最小范数解或有说明的正则；核对矩阵维数。"
+        },
+        {
+          "边界": "最小范数只是在多解中选一解，不能从共线数据识别各特征独立因果贡献。"
+        }
+      ],
+      "id": "scen_rank_deficient",
+      "instantiates": [
+        "linear_algebra",
+        "matrix_multiplication",
+        "linear_regression",
+        "svd"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_linear-regression/linear-regression.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "exercise"
+      },
+      "title": "重复特征让房价回归不可逆"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "比较中心化后协方差特征分解与直接截断 SVD 的关系及内存。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 沿 scikit-learn PCA 的截断 SVD 实现：有 10000 条、2048 维图像特征；内存只剩 512 MiB，要输出 64 维特征用于近邻检索，有同事省掉中心化。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "中心化 X 的右奇异向量对应 XᵀX 的特征向量，特征值与奇异值平方相关。"
+        },
+        {
+          "应用": "以训练均值中心化，估算矩阵及工作区内存，采用分批或随机化截断算法。"
+        },
+        {
+          "边界": "最大方差方向不保证最利于分类；不中心化得到的分解不是通常定义的 PCA。"
+        }
+      ],
+      "id": "scen_pca_budget",
+      "instantiates": [
+        "eigendecomposition",
+        "svd",
+        "matrix_multiplication",
+        "linear_algebra"
+      ],
+      "source": {
+        "ref": "|- https://scikit-learn.org/stable/modules/decomposition.html#pca — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "不显式构造协方差的降维"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "推导平方损失与绝对损失最优常数，并解释目标尺度。",
+          "type": "application"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "application",
+        "boundary"
+      ],
+      "brief": "|- 改写 D2L 线性回归习题：先只拟合常数 b，观测房价为 100、110、120、130、1540（单位万元）；竞赛使用对数尺度误差，团队却按原价平方误差选基线。",
+      "difficulty": "medium",
+      "expected_elements": [
+        {
+          "机制": "平方损失导数给出均值；绝对损失给出中位数；不同噪声假设对应不同负对数似然。"
+        },
+        {
+          "应用": "分别算出均值 400 与中位数 120，明确先做对数变换还是在原尺度拟合。"
+        },
+        {
+          "边界": "原尺度最优不等于对数尺度最优；存在零或负目标时不能直接取对数。"
+        }
+      ],
+      "id": "scen_robust_constant",
+      "instantiates": [
+        "calculus",
+        "linear_regression",
+        "maximum_likelihood",
+        "data_preprocessing"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_linear-regression/linear-regression.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "exercise"
+      },
+      "title": "长尾房价的常数基线"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "从表达能力和梯度而非调大训练轮数入手定位。",
+          "type": "application"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "application",
+        "boundary"
+      ],
+      "brief": "|- 沿 D2L MLP 非线性示例：四个二进制输入的 XOR 标签各重复 100 次；网络 Linear(2,8) 接 Linear(8,1)，训练 200 轮仍不能全对。",
+      "difficulty": "medium",
+      "expected_elements": [
+        {
+          "机制": "无激活的仿射层复合仍是仿射映射；单一线性分界无法实现 XOR。"
+        },
+        {
+          "应用": "隐藏层加入非线性，输出用二分类 logits 损失，检查四个输入的预测和梯度。"
+        },
+        {
+          "边界": "表达能力足够不保证优化成功；饱和激活或不当初始化仍会学不动。"
+        }
+      ],
+      "id": "scen_xor_mlp",
+      "instantiates": [
+        "mlp",
+        "activation",
+        "logistic_regression",
+        "backpropagation"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_multilayer-perceptrons/mlp.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "两层线性网络仍学不会 XOR"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "画出共享节点并说明梯度形状和累加位置。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 改写 D2L 反向传播习题：单批 16×32 输入，经共享 W 的两个分支求和后接标量损失；手写反向仅保留最后分支梯度，有限差分误差约 50%。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "链式法则沿所有路径传播，同一 W 的总梯度为各路径贡献之和，形状与 W 一致。"
+        },
+        {
+          "应用": "用小规模 float64 中心差分核验，清零旧梯度但不覆盖同一次图的分支贡献。"
+        },
+        {
+          "边界": "ReLU 拐点处数值差分未必匹配某个次梯度；训练时禁用随机层再检查。"
+        }
+      ],
+      "id": "scen_gradient_graph",
+      "instantiates": [
+        "backpropagation",
+        "computational_graph",
+        "chain_rule",
+        "calculus",
+        "autodiff"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_multilayer-perceptrons/backprop.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "exercise"
+      },
+      "title": "共享参数的梯度验算"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "区分经验目标、更新次数与墙钟时间，给出公平对照。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 改写 D2L minibatch SGD 的重复数据习题：原 10000 样本，batch=100，每 10 epoch 降学习率十倍；数据被逐条复制成 20000 条，同事保持 epoch 数比较 SGD 与全批梯度下降。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "复制不改变平均经验损失，但改变每 epoch 的更新步数；小批梯度有抽样噪声。"
+        },
+        {
+          "应用": "同时记录 optimizer steps、样本数和耗时，以相同更新或计算预算比较并重设 scheduler。"
+        },
+        {
+          "边界": "重复样本不增加独立信息；按 epoch 或按 step 衰减不是等价实验。"
+        }
+      ],
+      "id": "scen_batch_timing",
+      "instantiates": [
+        "gradient_descent",
+        "sgd",
+        "minibatch_sgd",
+        "learning_rate_schedule"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_optimization/minibatch-sgd.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "exercise"
+      },
+      "title": "数据翻倍后学习率日程失真"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "追踪前几步矩估计与偏差校正，而不是断言 Adam 总比 SGD 稳。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 沿 D2L Adam 的一二阶矩更新：词表 50000，embedding 维数 128，常见词每步更新而罕见词隔 1000 步才出现；从 SGD 改 Adam 后前十步损失跳变。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "Adam 维护梯度一阶矩和平方梯度二阶矩，初始化为零导致早期偏差需校正。"
+        },
+        {
+          "应用": "核对 beta、epsilon、偏差校正和学习率；对常见与罕见词分别记录更新范数。"
+        },
+        {
+          "边界": "Adam 不保证相同学习率下更好泛化；稀疏更新语义和优化器实现兼容性必须核验。"
+        }
+      ],
+      "id": "scen_adam_sparse",
+      "instantiates": [
+        "adam",
+        "sgd",
+        "learning_rate_schedule",
+        "word_embedding"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_optimization/adam.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "稀疏词向量的自适应步长"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "先审计运行统计量、每卡统计与推理模式。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 改写 D2L BN 的训练/推理讨论：8 卡图像分类，每卡只能 batch=2；训练 loss 降低，验证时切 eval 后显著变差；有人建议累积 16 次梯度即可修复 BN。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "BN 使用批统计并在推理使用运行统计；小批和跨卡统计范围会改变估计噪声。"
+        },
+        {
+          "应用": "比对 train/eval 输出与运行均值方差，尝试同步 BN、冻结可靠统计或不依赖批维的归一化。"
+        },
+        {
+          "边界": "梯度累积不会自动合并 BN 每次前向的统计量；batch=2 本身也不必然使所有卷积 BN 失效。"
+        }
+      ],
+      "id": "scen_bn_small_batch",
+      "instantiates": [
+        "batch_norm",
+        "minibatch_sgd",
+        "data_parallelism",
+        "layer_norm"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_convolutional-modern/batch-norm.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "exercise"
+      },
+      "title": "显存限制下的 BN 统计量"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "设计不读取留出标签的特征与验证流水线。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 沿 D2L 房价竞赛案例：1460 行训练记录，80 个原始字段，车库类别和面积有缺失；用五折选超参时，先在全量训练表做目标编码，再分折，线下分数异常好。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "目标编码若见到验证标签会泄漏；预处理拟合也必须限定在训练折。"
+        },
+        {
+          "应用": "每折单独拟合填补、类别词表及交叉拟合目标编码，独立保留最终测试集。"
+        },
+        {
+          "边界": "无标签联合统计与目标泄漏风险不同；竞赛允许的传导式处理不必符合线上未知数据条件。"
+        }
+      ],
+      "id": "scen_house_leak",
+      "instantiates": [
+        "train_test_split",
+        "validation_split",
+        "data_preprocessing",
+        "feature_engineering",
+        "cross_validation"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_multilayer-perceptrons/kaggle-house-price.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "exercise"
+      },
+      "title": "房价表格中的预处理泄漏"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "区分输入漂移警报与性能已经下降的证据。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 改写 ML Test Score 的监控检查：客服分类器每分钟 1000 请求，部署两周后新产品工单占 30%，标签延迟 7 天，未知 token 比率从 1% 到 12%；不能立即重训。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "输入分布变化不自动等于条件标签关系变化；标签延迟使真实线上质量暂不可直接观测。"
+        },
+        {
+          "应用": "监控未知词、缺失率、分群输出，保留版本与回放样本，待标签到齐做分时段验证。"
+        },
+        {
+          "边界": "无标签漂移指标不能证明准确率下降；回滚旧模型也不保证适应新产品。"
+        }
+      ],
+      "id": "scen_shift_monitor",
+      "instantiates": [
+        "distribution_shift",
+        "model_monitoring",
+        "model_deployment",
+        "data_preprocessing"
+      ],
+      "source": {
+        "ref": "|- https://arxiv.org/abs/1607.00673 — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "上线后词表和标签比例都变了"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "根据审核容量选阈值并用混淆矩阵量化漏报。",
+          "type": "application"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "application",
+        "boundary"
+      ],
+      "brief": "|- 沿 scikit-learn 不平衡分类评估：每天 100000 笔交易，500 笔欺诈；全判正常已有 99.5% accuracy，人工每天最多审核 1000 笔。",
+      "difficulty": "medium",
+      "expected_elements": [
+        {
+          "机制": "accuracy 被多数类支配；precision 与 recall 的分母不同，阈值改变两者取舍。"
+        },
+        {
+          "应用": "在验证集按 top-1000 或阈值计算 TP/FP/FN，报告召回和审核命中率。"
+        },
+        {
+          "边界": "F1 隐含等权且不直接表达审核成本；跨日期基础欺诈率变动会改变 precision。"
+        }
+      ],
+      "id": "scen_rare_fraud",
+      "instantiates": [
+        "precision_recall",
+        "accuracy",
+        "confusion_matrix",
+        "f1_score"
+      ],
+      "source": {
+        "ref": "|- https://scikit-learn.org/stable/modules/model_evaluation.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "99.5% 准确率的欺诈检测器"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "解释为何提高概率可信度不一定提升 argmax 正确率。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 沿 scikit-learn 温度缩放例子：三分类模型准确率 85%，声称置信度 0.9 的 1000 条记录实际仅 700 条正确；另留出 2000 条校准数据。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "正温度缩放 logits 不改变类别排序；校准关注预测概率与经验频率的一致性。"
+        },
+        {
+          "应用": "仅在独立校准集拟合温度，以可靠性图、Brier 或 log loss 检查留出集表现。"
+        },
+        {
+          "边界": "温度缩放不能修复错误类别排序；总体校准掩盖分群偏差且漂移后可能失效。"
+        }
+      ],
+      "id": "scen_calibrate",
+      "instantiates": [
+        "model_calibration",
+        "accuracy",
+        "validation_split",
+        "softmax"
+      ],
+      "source": {
+        "ref": "|- https://scikit-learn.org/stable/modules/calibration.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "正确率不变却风险定价错误"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "将归一化单位与测试文本固定后再比较。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 沿 D2L 语言模型：同一 10000 字符测试文本，模型 A 切成 5000 token，模型 B 为 8000 token；两者报告 token perplexity 18 与 12，团队欲宣布 B 更强。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "困惑度为平均 token 负对数似然的指数，token 单位改变会改变分母。"
+        },
+        {
+          "应用": "使用一致文本和切分协议，或转为每字节负对数似然并披露边界符处理。"
+        },
+        {
+          "边界": "低困惑度不直接等于事实性或下游任务质量；不同支持集及未知词处理仍会妨碍比较。"
+        }
+      ],
+      "id": "scen_perplexity_tokens",
+      "instantiates": [
+        "perplexity",
+        "language_model",
+        "tokenization",
+        "cross_entropy"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_recurrent-neural-networks/rnn.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "不同 tokenizer 的困惑度不能直比"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "划定特征可用时间并验证训练和服务语义一致。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 改写 ML Test Score 的训练服务一致性检查：原先每晚批量给 100 万用户评分，改为单请求 50 ms 内响应；离线特征含次日聚合，线上只能读取截至当前的事件。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "批量和在线有不同新鲜度与延迟约束；未来聚合造成时间泄漏而非单纯推理性能差。"
+        },
+        {
+          "应用": "按事件时间回放构造特征，抽样比对离线/在线值，测 p95/p99 并设超时降级。"
+        },
+        {
+          "边界": "离线高分不证明线上有效；缓存能降延迟但可能损失新鲜度，不能缓存未来信息。"
+        }
+      ],
+      "id": "scen_batch_online",
+      "instantiates": [
+        "batch_prediction",
+        "online_prediction",
+        "model_deployment",
+        "feature_engineering",
+        "latency"
+      ],
+      "source": {
+        "ref": "|- https://arxiv.org/abs/1607.00673 — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "离线批量特征搬到在线失败"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "设计学生训练与真实端侧验收，不把压缩率当延迟加速率。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 改写蒸馏论文的集成到单模型任务：教师为 5 模型集成，学生要在 4 GiB 手机上运行，模型文件上限 50 MiB、单条 p95 低于 80 ms；只能用现有带标签训练集。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "软目标包含类别间相对信息；温度与硬标签损失权重影响学生学习信号。"
+        },
+        {
+          "应用": "混合软硬损失，比较相同数据下学生基线，实测设备峰值内存、尾延迟和分群质量。"
+        },
+        {
+          "边界": "参数更少不必然更快；教师错误可被继承，未代表的端侧输入分布不能靠蒸馏修复。"
+        }
+      ],
+      "id": "scen_distill_edge",
+      "instantiates": [
+        "model_compression",
+        "knowledge_distillation",
+        "model_deployment",
+        "latency"
+      ],
+      "source": {
+        "ref": "|- https://arxiv.org/abs/1503.02531 — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "端侧压缩不是只看参数量"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "解释搜索目标、长度偏置和延迟，而不是只加宽 beam。",
+          "type": "application"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "application",
+        "boundary"
+      ],
+      "brief": "|- 沿 D2L beam search：中英翻译最长输出 64 token，beam 从 1 改 8，单请求预算 200 ms；总 log 概率更优但译文常提前输出 EOS。",
+      "difficulty": "medium",
+      "expected_elements": [
+        {
+          "机制": "自回归序列概率为条件概率乘积；直接求和 log 概率常偏好较短输出，beam 是近似搜索。"
+        },
+        {
+          "应用": "核对 EOS 与长度处理，在验证集试长度归一化并同时测质量及耗时。"
+        },
+        {
+          "边界": "更宽 beam 不保证任务指标提升；归一化改变目标而非证明找到了真实最优译文。"
+        }
+      ],
+      "id": "scen_beam_translation",
+      "instantiates": [
+        "beam_search",
+        "autoregressive_decoding",
+        "language_model"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_recurrent-modern/beam-search.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "翻译 beam 加宽反而偏短"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "逐层计算形状，区分参数共享与下采样损失。",
+          "type": "application"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "application",
+        "boundary"
+      ],
+      "brief": "|- 沿 D2L LeNet 的 Fashion-MNIST 实验：28×28 单通道输入，首层 5×5 卷积误设 stride=2 且 padding=0，再接 2×2 pooling；工程师仍按原展平维数连接全连接层。",
+      "difficulty": "medium",
+      "expected_elements": [
+        {
+          "机制": "卷积输出边长按 floor((n+2p-k)/s)+1 计算；池化继续缩小空间维，卷积权重跨位置共享。"
+        },
+        {
+          "应用": "首层输出 12×12，池化后 6×6；据通道数修正展平维数并比较分类精度。"
+        },
+        {
+          "边界": "能跑通不说明保留了辨识细节；平移等变受步幅和边界处理限制。"
+        }
+      ],
+      "id": "scen_lenet_shapes",
+      "instantiates": [
+        "convolution",
+        "cnn",
+        "image_classification",
+        "padding_stride",
+        "pooling"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_convolutional-neural-networks/lenet.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "卷积下采样把细小数字抹掉"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "说明重叠不一定是重复目标，并选择可验证的修复方向。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 改写 D2L anchor 习题：一张 1280×720 图里两个相邻行人的真框 IoU=0.6，检测器预测分数 0.91 和 0.88；NMS 阈值 0.5 后只剩一个。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "贪心 NMS 按分数压制高重叠框，不知道其是否属于不同实例。"
+        },
+        {
+          "应用": "检查匹配标注、阈值与尺度，尝试 Soft-NMS 并按拥挤子集测漏检和重复框。"
+        },
+        {
+          "边界": "一味提高阈值会保留重复预测；IoU 相同并不代表目标身份相同。"
+        }
+      ],
+      "id": "scen_crowded_nms",
+      "instantiates": [
+        "object_detection",
+        "anchor_boxes",
+        "nonmaximum_suppression",
+        "iou"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_computer-vision/anchor.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "exercise"
+      },
+      "title": "拥挤行人的 NMS 误杀"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "从标签几何和离散类别语义解释训练失败。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 改写 D2L VOC2012 分割习题：训练每张图随机裁成 320×480，但掩码独立随机裁剪并用双线性插值；21 类像素标签中出现非整数值。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "逐像素监督要求图像与掩码空间对齐；插值类别 ID 会制造无意义标签。"
+        },
+        {
+          "应用": "共用裁剪/翻转参数，掩码最近邻插值并保留 ignore 索引，用可视化叠加验收。"
+        },
+        {
+          "边界": "颜色增广通常只施加到图像；像素 accuracy 会被背景主导，需检查逐类 IoU。"
+        }
+      ],
+      "id": "scen_segmentation_crop",
+      "instantiates": [
+        "semantic_segmentation",
+        "data_augmentation",
+        "data_preprocessing",
+        "iou"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_computer-vision/semantic-segmentation-and-dataset.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "exercise"
+      },
+      "title": "图像和分割掩码不同步增广"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "估算 token 数、注意力矩阵与位置编码迁移成本。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 改写 D2L ViT 的 img_size 习题：patch=16，输入从 224² 改为 448²，12 层、12 头、单卡 16 GiB，batch=32 原本刚能运行；位置嵌入长度固定。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "不计 CLS 时 token 从 196 到 784；稠密注意力的成对矩阵元素约增加 16 倍。"
+        },
+        {
+          "应用": "核对 CLS 与位置嵌入长度，插值二维位置网格，减 batch 或采用高效注意力并重新测峰值。"
+        },
+        {
+          "边界": "总运行内存不必恰好 16 倍，投影/MLP 与实现影响常数；更高分辨率不保证更好精度。"
+        }
+      ],
+      "id": "scen_vit_resolution",
+      "instantiates": [
+        "vision_transformer",
+        "transformer",
+        "multihead_attention",
+        "image_classification"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_attention-mechanisms-and-transformers/vision-transformer.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "exercise"
+      },
+      "title": "ViT 分辨率翻倍的预算"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "分别定位计算图增长与随机片段的状态污染。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 沿 D2L 字符语言模型：训练文本分为长 32 的片段，hidden 跨片段传递，运行第 100 个片段时显存持续增长；采样器还会随机重排片段。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "不 detach 隐状态会连接跨片段计算图；随机片段不代表连续上下文。"
+        },
+        {
+          "应用": "连续采样时截断梯度但保留状态值；随机采样时重置状态，记录梯度范数并按需裁剪。"
+        },
+        {
+          "边界": "detach 会截断跨片段依赖学习；梯度裁剪不能修复错误的采样/状态对应关系。"
+        }
+      ],
+      "id": "scen_rnn_detach",
+      "instantiates": [
+        "rnn",
+        "backpropagation",
+        "language_model",
+        "gradient_clipping"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_recurrent-neural-networks/rnn.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "长序列 RNN 的状态和梯度"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "推导张量形状并区分缩放与 mask 两个问题。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 沿 D2L scaled dot-product attention：Q 为 2×8×128×64，K/V 长 256；实现遗漏除以 sqrt(64)，同时给 padding 的 mask 填 0，注意力几乎 one-hot。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "QKᵀ 得 2×8×128×256；独立分量假设下点积方差随键维度增大，缩放缓解 softmax 饱和。"
+        },
+        {
+          "应用": "除以 8，在 softmax 前将无效位置设为足够负值，并检查每行概率与 padding 权重。"
+        },
+        {
+          "边界": "整行都被 mask 时可能出现 NaN；缩放推导的独立假设不意味着训练后 logits 必服从标准正态。"
+        }
+      ],
+      "id": "scen_attention_scale",
+      "instantiates": [
+        "attn_scaled_dot_product",
+        "multihead_attention",
+        "softmax",
+        "matrix_multiplication"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_attention-mechanisms-and-transformers/attention-scoring-functions.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "高维注意力 logits 饱和"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "审计因果可见性与标签对齐并给最小泄漏测试。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 改写 D2L Transformer 语言建模习题：decoder-only 序列长 1024，训练 loss=0.02，但逐 token 生成失败；实现用了双向 encoder mask，并未右移标签。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "自回归位置 t 只能依赖已知前缀；未移位标签和双向注意力均可泄漏待预测 token。"
+        },
+        {
+          "应用": "右移输入/标签并使用因果 mask，扰动未来 token 检查过去位置 logits 是否不变。"
+        },
+        {
+          "边界": "低 teacher-forced loss 不证明自由生成质量；位置编码也不替代因果 mask。"
+        }
+      ],
+      "id": "scen_causal_mask",
+      "instantiates": [
+        "transformer",
+        "attn_scaled_dot_product",
+        "positional_encoding",
+        "language_model"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_attention-mechanisms-and-transformers/transformer.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "exercise"
+      },
+      "title": "训练能偷看答案的 Transformer"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "说明负采样降低什么成本，如何处理低频和未登录词。",
+          "type": "application"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "application",
+        "boundary"
+      ],
+      "brief": "|- 沿 D2L word2vec：100 万条句子，词表 50000，向量 100 维，每正样本取 5 个负样本；团队直接做全词表 softmax 超出训练预算，罕见产品名仍无可靠近邻。",
+      "difficulty": "medium",
+      "expected_elements": [
+        {
+          "机制": "skip-gram 通过上下文学习嵌入；负采样将全词表归一化问题替换为采样二分类目标。"
+        },
+        {
+          "应用": "固定词表与切分，检查频次阈值和负采样分布；对罕见产品名考虑子词表示。"
+        },
+        {
+          "边界": "负采样分数不直接是归一化条件概率；分布式相似不保证事实同义或可靠处理未登录词。"
+        }
+      ],
+      "id": "scen_word_vectors",
+      "instantiates": [
+        "word_embedding",
+        "tokenization",
+        "negative_sampling",
+        "word2vec"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_natural-language-processing-pretraining/word2vec.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "罕见词与负采样预算"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "比较预训练目标、可见上下文和目标任务。",
+          "type": "application"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "application",
+        "boundary"
+      ],
+      "brief": "|- 沿 D2L BERT：512 token 上限的双向编码器，客服要在 800 token 工单后续写 100 token；团队把最后一个隐藏向量接词表 softmax 循环生成。",
+      "difficulty": "medium",
+      "expected_elements": [
+        {
+          "机制": "BERT 的掩码预测使用左右上下文，不是标准左到右自回归训练；输入还受长度限制。"
+        },
+        {
+          "应用": "按分类/抽取任务使用编码器，长工单分段聚合；需要续写时用适配生成目标的模型。"
+        },
+        {
+          "边界": "重复填 MASK 可定义一种生成过程，但不能直接声称等价于训练好的自回归分布。"
+        }
+      ],
+      "id": "scen_bert_mask",
+      "instantiates": [
+        "bert",
+        "masked_language_modeling",
+        "language_model",
+        "tokenization"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_natural-language-processing-pretraining/bert.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "把 BERT 当自由生成模型"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "区分检索召回、索引新鲜度与生成器使用证据的问题。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 改写 RAG 论文的检索加生成结构：10 万条公司政策段落，日更新一次，每次检索 top-5，答案需 2 秒内给出处；新政策已入库但检索仍返回旧版。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "参数记忆和外部检索记忆分离；索引、embedding 版本和过滤逻辑决定能否取得正确证据。"
+        },
+        {
+          "应用": "记录查询、检索段落版本与答案引用，先检查新旧文档召回，再用固定正确上下文测试生成。"
+        },
+        {
+          "边界": "增加 top-k 会增时延且可能引入冲突；有引用并不保证引用支持结论。"
+        }
+      ],
+      "id": "scen_rag_freshness",
+      "instantiates": [
+        "retrieval_augmented_generation",
+        "word_embedding",
+        "model_versioning",
+        "language_model"
+      ],
+      "source": {
+        "ref": "|- https://arxiv.org/abs/2005.11401 — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "知识更新后 RAG 仍答旧政策"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "写出 Bellman 最优备份并解释 gamma 与终止条件。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 改写 D2L value iteration 习题：把 4×4 FrozenLake 改 8×8，转移概率已知，滑动概率非零；gamma 从 0.9 改 1，仍用差值阈值 1e-6 判断收敛。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "价值迭代对每个状态最大化期望即时奖励加折扣后继价值，需按随机转移求和。"
+        },
+        {
+          "应用": "比较 gamma=0、0.5、0.9 的策略及迭代数，明确吸收终点与终止状态价值。"
+        },
+        {
+          "边界": "gamma=1 时不能直接套用折扣收缩保证；有环且不终止的任务需额外条件。"
+        }
+      ],
+      "id": "scen_grid_value",
+      "instantiates": [
+        "mdp",
+        "bellman_equation",
+        "value_iteration",
+        "return_discount"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_reinforcement-learning/value-iter.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "exercise"
+      },
+      "title": "FrozenLake 扩大网格后不收敛"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "分开数据采集策略、训练目标及测试策略。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 改写 D2L Q-learning 的 epsilon 习题：8×8 FrozenLake，固定 10000 条由 epsilon=0 策略采集的转移；离线把 epsilon 改成 1，但不再与环境交互，成功率没有变化。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "Q-learning 目标用 max_a Q(s′,a) 而非行为下一动作；改 epsilon 不会凭空产生缺失的转移。"
+        },
+        {
+          "应用": "检查状态动作覆盖、终止位及 TD 目标，另行采集探索轨迹并固定评估策略。"
+        },
+        {
+          "边界": "off-policy 不代表能可靠外推完全未覆盖动作；随机探索也不保证有限预算内学好。"
+        }
+      ],
+      "id": "scen_grid_q",
+      "instantiates": [
+        "q_learning",
+        "mdp",
+        "bellman_equation",
+        "exploration_exploitation",
+        "off_policy_learning"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_reinforcement-learning/qlearning.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "exercise"
+      },
+      "title": "只读回放的 Q-learning 没见过新动作"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "说明为何可减状态基线并如何避免引入动作相关偏差。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 沿 Spinning Up policy gradient 的 reward-to-go 与 baseline 推导：机器人模拟每回合 200 步，每轮 20 条轨迹；奖励大多为 0、成功时 100，梯度方向波动很大。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "log-prob 梯度乘回报的估计方差高；与动作无关的状态基线在期望中不改变梯度。"
+        },
+        {
+          "应用": "用 reward-to-go 和价值基线估计优势，区分策略与价值损失，记录方差及成功率。"
+        },
+        {
+          "边界": "不恰当的动作相关基线或错误的梯度回流可引入偏差；有限样本改善不等于每轮必增益。"
+        }
+      ],
+      "id": "scen_pg_baseline",
+      "instantiates": [
+        "policy_gradient",
+        "expectation",
+        "return_discount",
+        "actor_critic"
+      ],
+      "source": {
+        "ref": "|- https://spinningup.openai.com/en/latest/spinningup/rl_intro3.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "策略梯度的高方差回报"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "将参数、梯度、优化器状态和激活分开估算。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 改写 D2L 反向传播的显存习题：MLP 三层各 8192 宽，batch=128，单卡 16 GiB；前向能跑而 backward OOM，另有一张同规格卡可用。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "训练保存中间激活并分配梯度/优化器状态，推理内存不能直接当训练需求。"
+        },
+        {
+          "应用": "测峰值并按张量估算，减小微批或检查点重算；跨卡分层时评估激活传输。"
+        },
+        {
+          "边界": "两卡数据并行复制模型不解决模型自身放不下；检查点以额外计算换激活内存。"
+        }
+      ],
+      "id": "scen_gpu_graph_memory",
+      "instantiates": [
+        "gpu_compute",
+        "backpropagation",
+        "activation_checkpointing",
+        "model_parallelism"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_multilayer-perceptrons/backprop.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "exercise"
+      },
+      "title": "反向图超出单卡显存"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "从平均损失梯度定义推导同步需求并估算通信数量级。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 改写 D2L 反向传播的多 GPU 习题：两卡各处理 32 样本，模型含 1 亿 float32 参数；每步计算 20 ms，互联有效 10 GB/s，同事认为复制模型无需同步即可等价 batch=64。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "同步数据并行复制模型，对各卡局部梯度聚合，才能实现全局批损失的梯度。"
+        },
+        {
+          "应用": "核对 loss 归约和梯度缩放；仅 400 MB 梯度传输的简单带宽下界已约 40 ms，实际集体通信另有拓扑开销。"
+        },
+        {
+          "边界": "下界不是 allreduce 的精确用时；BN、随机性与浮点归约使其不严格等同单卡大批。"
+        }
+      ],
+      "id": "scen_ddp_small_batch",
+      "instantiates": [
+        "data_parallelism",
+        "gpu_compute",
+        "allreduce",
+        "minibatch_sgd"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_multilayer-perceptrons/backprop.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "exercise"
+      },
+      "title": "两卡训练不是两倍有效吞吐"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "定义一次实验必须绑定的输入与发布制品。",
+          "type": "application"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "application",
+        "boundary"
+      ],
+      "brief": "|- 改写 ML Test Score 的可复现性检查：一周跑 40 次模型，最佳验证分 0.91，但文件均名 model.pt；预处理词表昨天更新，线上预测无法复现，只有一张旧 GPU 可回放。",
+      "difficulty": "medium",
+      "expected_elements": [
+        {
+          "机制": "指标必须关联代码、数据切分、配置及预处理/权重版本，否则无法定位性能变化来源。"
+        },
+        {
+          "应用": "为每次 run 保存不可变标识、随机种子、环境和指标，发布绑定模型与特征处理版本并做固定样本回归。"
+        },
+        {
+          "边界": "固定种子不保证跨硬件逐位一致；反复根据同一验证集选模型会造成选择偏差。"
+        }
+      ],
+      "id": "scen_run_lineage",
+      "instantiates": [
+        "experiment_tracking",
+        "model_versioning",
+        "validation_split",
+        "model_deployment"
+      ],
+      "source": {
+        "ref": "|- https://arxiv.org/abs/1607.00673 — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "调参结果无法找到对应制品"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "解释思考、行动与观察循环，如何证明完成而非仅输出意图。",
+          "type": "diagnosis"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "diagnosis",
+        "boundary"
+      ],
+      "brief": "|- 改写 ReAct 的 WebShop 交互任务：只有 10 次工具调用和 30 秒预算，要买价格低于 50 美元、蓝色且 M 码的商品；搜索返回商品摘要，详情页却显示 M 码缺货。",
+      "difficulty": "high",
+      "expected_elements": [
+        {
+          "机制": "工具观察可修正模型先验计划；摘要与详情冲突时需要以任务相关的可验证状态为准。"
+        },
+        {
+          "应用": "记录每步调用与返回，核验库存、颜色、尺码和总价；预算不足时明确未完成而非捏造成功。"
+        },
+        {
+          "边界": "论文中的模拟购物任务不意味着有真实支付授权；工具返回也可能不完整或含不可信指令。"
+        }
+      ],
+      "id": "scen_agent_webshop",
+      "instantiates": [
+        "agent_tool_use",
+        "language_model",
+        "experiment_tracking"
+      ],
+      "source": {
+        "ref": "|- https://arxiv.org/abs/2210.03629 — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "购物 agent 的失败动作与预算"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "分开数值稳定性和类别不平衡，不能把 NaN 归因于低正例率。",
+          "type": "application"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "application",
+        "boundary"
+      ],
+      "brief": "|- 沿 D2L softmax 的数值稳定讨论：二分类 logits 为 1000 与 -1000，float32 直接 exp 后得 inf；10000 条记录中正类仅 1%，训练 loss 变 NaN。",
+      "difficulty": "medium",
+      "expected_elements": [
+        {
+          "机制": "|- sigmoid 对应二类 softmax；直接指数可能溢出，log-sum-exp 或 fused logits loss 避免显式不稳定概率。"
+        },
+        {
+          "应用": "用带 logits 的稳定损失，检查非有限梯度，并另行报告少数类召回而非只看 accuracy。"
+        },
+        {
+          "边界": "加权损失或重采样会改变最优概率解释；稳定计算不能修复标签错误。"
+        }
+      ],
+      "id": "scen_logistic_stability",
+      "instantiates": [
+        "logistic_regression",
+        "activation",
+        "cross_entropy",
+        "accuracy"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_linear-classification/softmax-regression.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "engineering"
+      },
+      "title": "大幅度 logits 的二分类数值溢出"
+    },
+    {
+      "ask_detail": [
+        {
+          "angle": "区分 requires_grad、训练模式和验证集选择。",
+          "type": "application"
+        },
+        {
+          "angle": "指出该方案成立的条件以及一个失效反例",
+          "type": "boundary"
+        }
+      ],
+      "asks": [
+        "application",
+        "boundary"
+      ],
+      "brief": "|- 改写 D2L BN/ViT 训练讨论：用预训练图像模型迁移 400 张工业缺陷图，输入 224²，每卡 batch=2；已冻结骨干参数，但 BN 运行统计仍随训练更新。",
+      "difficulty": "medium",
+      "expected_elements": [
+        {
+          "机制": "冻结权重梯度与是否更新 BN buffers 是两套机制；不同架构归一化行为不同。"
+        },
+        {
+          "应用": "显式设置需冻结模块模式，保存初始统计作对照；小验证集采用固定切分并报告波动。"
+        },
+        {
+          "边界": "ViT 通常用 LayerNorm，不能照搬 BN 修法；小样本验证提升可能只是抽样噪声。"
+        }
+      ],
+      "id": "scen_transfer_resolution",
+      "instantiates": [
+        "image_classification",
+        "batch_norm",
+        "fine_tuning",
+        "vision_transformer"
+      ],
+      "source": {
+        "ref": "|- https://d2l.ai/chapter_convolutional-modern/batch-norm.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。",
+        "type": "exercise"
+      },
+      "title": "小样本迁移时冻结不等于 eval"
+    }
+  ],
+  "version": 1
+}
