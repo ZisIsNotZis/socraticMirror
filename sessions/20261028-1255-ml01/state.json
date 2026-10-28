@@ -201,6 +201,158 @@
         "mechanism": 3
       },
       "total": 11
+    },
+    {
+      "after": {
+        "multihead_attention": {
+          "aware": 0.13025421786257974,
+          "deep": 0.3535581805557566,
+          "operable": 0.47779584032082517,
+          "unknown": 0.03839176126083854
+        },
+        "transformer": {
+          "aware": 0.012437058214108976,
+          "deep": 0.7098294111139556,
+          "operable": 0.2769398510456059,
+          "unknown": 0.0007936796263294833
+        },
+        "vision_transformer": {
+          "aware": 0.14373740408466407,
+          "deep": 0.34657510092536736,
+          "operable": 0.4680639353794584,
+          "unknown": 0.04162355961051017
+        },
+        "vlm": {
+          "aware": 0.133287539520109,
+          "deep": 0.3500461529598847,
+          "operable": 0.4775356189889948,
+          "unknown": 0.03913068853101145
+        }
+      },
+      "before": {
+        "multihead_attention": {
+          "aware": 0.3050093896900623,
+          "deep": 0.12195058391157042,
+          "operable": 0.3116034066640282,
+          "unknown": 0.2614366197343391
+        },
+        "transformer": {
+          "aware": 0.05364221900442789,
+          "deep": 0.5449416443778006,
+          "operable": 0.3932834194062079,
+          "unknown": 0.008132717211563672
+        },
+        "vision_transformer": {
+          "aware": 0.32219489197157447,
+          "deep": 0.112909514441769,
+          "operable": 0.28872854332530695,
+          "unknown": 0.2761670502613496
+        },
+        "vlm": {
+          "aware": 0.30883844566842367,
+          "deep": 0.11911072165394616,
+          "operable": 0.30733216496183846,
+          "unknown": 0.2647186677157917
+        }
+      },
+      "nodes": [
+        "vision_transformer",
+        "transformer",
+        "multihead_attention",
+        "vlm"
+      ],
+      "probe": "direct",
+      "question_type": "diagnosis",
+      "quotes": {
+        "application": "第一项就是 Flash Attention，改起来最简单，而且没有任何形式的损失，之前的算力和显存都是纯白费的",
+        "boundary": "我觉得这么一看的话 16G 相当的悬",
+        "identify": "每一层原则上是 QKV 对应 3 乘 token 数乘 head 数乘每个 head 的大小",
+        "mechanism": "Q 乘 K 算出那个矩阵，再算 softmax，再乘 V，这里面显存可多了去了"
+      },
+      "row": 7,
+      "scores": {
+        "application": 3,
+        "boundary": 2,
+        "identify": 2,
+        "mechanism": 2
+      },
+      "total": 9
+    },
+    {
+      "after": {
+        "attn_scaled_dot_product": {
+          "aware": 0.05804727042805697,
+          "deep": 0.5421880209471058,
+          "operable": 0.39098871460315765,
+          "unknown": 0.008775994021679544
+        },
+        "matrix_multiplication": {
+          "aware": 0.3137141783808546,
+          "deep": 0.11581077277358212,
+          "operable": 0.2981483937193695,
+          "unknown": 0.27232665512619375
+        },
+        "multihead_attention": {
+          "aware": 0.13277789990536643,
+          "deep": 0.35074023763234013,
+          "operable": 0.4770512530280977,
+          "unknown": 0.0394306094341957
+        },
+        "softmax": {
+          "aware": 0.31107236751570455,
+          "deep": 0.11704411750231361,
+          "operable": 0.30187555478190575,
+          "unknown": 0.27000796020007606
+        }
+      },
+      "before": {
+        "attn_scaled_dot_product": {
+          "aware": 0.05688328921892279,
+          "deep": 0.5443001297448605,
+          "operable": 0.3902737570435026,
+          "unknown": 0.008542823992714036
+        },
+        "matrix_multiplication": {
+          "aware": 0.3097835199323662,
+          "deep": 0.1197506476454516,
+          "operable": 0.30493710105158256,
+          "unknown": 0.2655287313705996
+        },
+        "multihead_attention": {
+          "aware": 0.13025421786257974,
+          "deep": 0.3535581805557566,
+          "operable": 0.47779584032082517,
+          "unknown": 0.03839176126083854
+        },
+        "softmax": {
+          "aware": 0.30713807381872865,
+          "deep": 0.12096967866263761,
+          "operable": 0.3086310413882948,
+          "unknown": 0.2632612061303389
+        }
+      },
+      "nodes": [
+        "attn_scaled_dot_product",
+        "multihead_attention",
+        "softmax",
+        "matrix_multiplication"
+      ],
+      "probe": "after_prompt",
+      "question_type": "diagnosis",
+      "quotes": {
+        "application": "这个代码有问题吧",
+        "boundary": "一个足够大的模型，经过合适的训练以后，本来就是每一层都会去精准地注意它该注意的内容",
+        "identify": "Padding 本来不应该是 Attention Mask 给他排除了吗",
+        "mechanism": "可能是初始引导的问题，比如说 Gumbel Softmax 之类的"
+      },
+      "row": 4,
+      "scores": {
+        "application": 2,
+        "boundary": 1,
+        "identify": 2,
+        "mechanism": 1
+      },
+      "total": 6
     }
   ],
   "nodes": {
@@ -711,18 +863,18 @@
         }
       },
       "evidence": {
-        "count": 1,
+        "count": 2,
         "propagated": 0,
         "question_types": {
-          "diagnosis": 1
+          "diagnosis": 2
         },
-        "sharpness": 0.28346868942621073
+        "sharpness": 0.486582880967408
       },
       "level": {
-        "aware": 0.05688328921892279,
-        "deep": 0.5443001297448605,
-        "operable": 0.3902737570435026,
-        "unknown": 0.008542823992714036
+        "aware": 0.05804727042805697,
+        "deep": 0.5421880209471058,
+        "operable": 0.39098871460315765,
+        "unknown": 0.008775994021679544
       }
     },
     "authorization_boundary": {
@@ -4671,16 +4823,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 1,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.3097835199323662,
-        "deep": 0.1197506476454516,
-        "operable": 0.30493710105158256,
-        "unknown": 0.2655287313705996
+        "aware": 0.3137141783808546,
+        "deep": 0.11581077277358212,
+        "operable": 0.2981483937193695,
+        "unknown": 0.27232665512619375
       }
     },
     "maximum_likelihood": {
@@ -5512,16 +5666,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 2,
         "propagated": 1,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 2
+        },
+        "sharpness": 0.486582880967408
       },
       "level": {
-        "aware": 0.3050093896900623,
-        "deep": 0.12195058391157042,
-        "operable": 0.3116034066640282,
-        "unknown": 0.2614366197343391
+        "aware": 0.13277789990536643,
+        "deep": 0.35074023763234013,
+        "operable": 0.4770512530280977,
+        "unknown": 0.0394306094341957
       }
     },
     "multimodal_benchmark": {
@@ -7687,16 +7843,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 1,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.30713807381872865,
-        "deep": 0.12096967866263761,
-        "operable": 0.3086310413882948,
-        "unknown": 0.2632612061303389
+        "aware": 0.31107236751570455,
+        "deep": 0.11704411750231361,
+        "operable": 0.30187555478190575,
+        "unknown": 0.27000796020007606
       }
     },
     "sparse_retrieval": {
@@ -8529,18 +8687,18 @@
         }
       },
       "evidence": {
-        "count": 1,
+        "count": 2,
         "propagated": 0,
         "question_types": {
-          "diagnosis": 1
+          "diagnosis": 2
         },
-        "sharpness": 0.28346868942621073
+        "sharpness": 0.486582880967408
       },
       "level": {
-        "aware": 0.05364221900442789,
-        "deep": 0.5449416443778006,
-        "operable": 0.3932834194062079,
-        "unknown": 0.008132717211563672
+        "aware": 0.012437058214108976,
+        "deep": 0.7098294111139556,
+        "operable": 0.2769398510456059,
+        "unknown": 0.0007936796263294833
       }
     },
     "turn_budget": {
@@ -8950,16 +9108,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.32219489197157447,
-        "deep": 0.112909514441769,
-        "operable": 0.28872854332530695,
-        "unknown": 0.2761670502613496
+        "aware": 0.14373740408466407,
+        "deep": 0.34657510092536736,
+        "operable": 0.4680639353794584,
+        "unknown": 0.04162355961051017
       }
     },
     "visual_grounding": {
@@ -9084,16 +9244,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.30883844566842367,
-        "deep": 0.11911072165394616,
-        "operable": 0.30733216496183846,
-        "unknown": 0.2647186677157917
+        "aware": 0.133287539520109,
+        "deep": 0.3500461529598847,
+        "operable": 0.4775356189889948,
+        "unknown": 0.03913068853101145
       }
     },
     "web_search": {
