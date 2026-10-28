@@ -442,8 +442,8 @@
     ref: https://d2l.ai/chapter_recurrent-neural-networks/rnn.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_attention_scale
   title: 高维注意力 logits 饱和
-  brief: 沿 D2L scaled dot-product attention：Q 为 2×8×128×64，K/V 长 256；实现遗漏除以 sqrt(64)，同时给 padding 的 mask 填 0，注意力几乎
-    one-hot。
+  brief: 沿 D2L scaled dot-product attention：Q 为 2×8×128×64，K/V 长 256，bf16；训练时打印 softmax 前的 logits，数值在 ±40 量级；
+    注意力权重几乎 one-hot，梯度很小、loss 不动；padding 位置上的权重也不为 0。
   asks:
   - type: diagnosis
     angle: 推导张量形状并区分缩放与 mask 两个问题。
