@@ -312,9 +312,13 @@ def candidate(state, scenario, coverage, question_type):
             'reason': 'Importance-weighted expected entropy reduction over %d nodes per unit cost.' % len(coverage)}
 
 
-def pick(state, top=5):
+def pick(state, top=5, exclude=()):
+    # A scenario already asked this session must not return: the same brief twice
+    # is a wasted question and reads as a bug to the user.
+    exclude = set(exclude)
     candidates = []
-    sources = [(s['id'], s['instantiates'], s['asks']) for s in state['scenarios']]
+    sources = [(s['id'], s['instantiates'], s['asks']) for s in state['scenarios']
+               if s['id'] not in exclude]
     if not sources:
         sources = [(None, [k], ['application']) for k in sorted(state['nodes'])]
     for sid, coverage, asks in sources:
@@ -398,6 +402,7 @@ def main(argv=None):
             cmd.add_argument('--probe', choices=('direct', 'after_prompt'), required=True)
         elif name == 'pick':
             cmd.add_argument('--top', type=int, default=5)
+            cmd.add_argument('--exclude', action='append', default=[])
         elif name == 'bisect':
             cmd.add_argument('--scenario', required=True)
     args = parser.parse_args(argv)
@@ -424,7 +429,7 @@ def main(argv=None):
             elif args.command == 'pick':
                 if args.top < 1:
                     raise ValueError('--top must be positive')
-                result = pick(state, args.top)
+                result = pick(state, args.top, args.exclude)
             elif args.command == 'bisect':
                 result = bisect(state, args.scenario)
             else:

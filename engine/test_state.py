@@ -227,6 +227,18 @@ class RealDataTests(unittest.TestCase):
         self.assertEqual(len(b), 2)
         engine.report(state)
 
+    def test_pick_exclude(self):
+        root = Path(__file__).resolve().parent.parent
+        graph, scenarios = root / 'data/concepts.yaml', root / 'data/scenarios.yaml'
+        if not (graph.exists() and scenarios.exists()):
+            self.skipTest('shipped data absent')
+        state = engine.initialize(graph, scenarios)
+        picked = engine.pick(state, 5)
+        self.assertTrue(picked)
+        excluded = {c['scenario'] for c in picked if c['scenario']}
+        again = engine.pick(state, 5, excluded)
+        self.assertFalse({c['scenario'] for c in again} & excluded)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
