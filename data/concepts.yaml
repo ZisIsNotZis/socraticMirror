@@ -2,8 +2,8 @@
   name: 线性代数
   aliases:
   - Linear Algebra
-  cluster: math_foundation
-  importance: high
+  cluster: llm_foundation
+  importance: medium
   source:
     type: textbook
     ref: https://www.deeplearningbook.org/ — ch./§ 2
@@ -14,8 +14,8 @@
   name: 矩阵乘法
   aliases:
   - Matrix Multiplication
-  cluster: math_foundation
-  importance: high
+  cluster: llm_foundation
+  importance: medium
   source:
     type: textbook
     ref: https://www.deeplearningbook.org/ — ch./§ 2.2
@@ -27,8 +27,8 @@
   name: 特征分解
   aliases:
   - Eigendecomposition
-  cluster: math_foundation
-  importance: high
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://www.deeplearningbook.org/ — ch./§ 2.7
@@ -40,8 +40,8 @@
   name: 奇异值分解
   aliases:
   - Singular Value Decomposition
-  cluster: math_foundation
-  importance: high
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://www.deeplearningbook.org/ — ch./§ 2.8
@@ -53,8 +53,8 @@
   name: 微积分
   aliases:
   - Calculus
-  cluster: math_foundation
-  importance: high
+  cluster: llm_foundation
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 2.4
@@ -65,7 +65,7 @@
   name: 链式法则
   aliases:
   - Chain Rule
-  cluster: math_foundation
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -78,7 +78,7 @@
   name: 梯度
   aliases:
   - Gradient
-  cluster: math_foundation
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -91,7 +91,7 @@
   name: 概率论
   aliases:
   - Probability Theory
-  cluster: math_foundation
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -103,7 +103,7 @@
   name: 条件概率
   aliases:
   - Conditional Probability
-  cluster: math_foundation
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -116,7 +116,7 @@
   name: 贝叶斯法则
   aliases:
   - Bayes’ Rule
-  cluster: math_foundation
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -129,7 +129,7 @@
   name: 期望
   aliases:
   - Expectation
-  cluster: math_foundation
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -142,7 +142,7 @@
   name: 熵
   aliases:
   - Entropy
-  cluster: math_foundation
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -155,7 +155,7 @@
   name: KL 散度
   aliases:
   - Kullback–Leibler Divergence
-  cluster: math_foundation
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -168,7 +168,7 @@
   name: 最大似然估计
   aliases:
   - Maximum Likelihood Estimation
-  cluster: math_foundation
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -181,8 +181,8 @@
   name: 凸性
   aliases:
   - Convexity
-  cluster: math_foundation
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 12.2
@@ -194,8 +194,8 @@
   name: 线性回归
   aliases:
   - Linear Regression
-  cluster: dl_foundation
-  importance: high
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 3.1
@@ -207,8 +207,8 @@
   name: 逻辑回归
   aliases:
   - Logistic Regression
-  cluster: dl_foundation
-  importance: high
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://www.deeplearningbook.org/ — ch./§ 5.7.1
@@ -221,8 +221,8 @@
   name: 多层感知机
   aliases:
   - Multilayer Perceptron
-  cluster: dl_foundation
-  importance: high
+  cluster: llm_foundation
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 5.1
@@ -234,8 +234,8 @@
   name: 激活函数
   aliases:
   - Activation Function
-  cluster: dl_foundation
-  importance: high
+  cluster: llm_foundation
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 5.1
@@ -247,8 +247,8 @@
   name: 反向传播
   aliases:
   - Backpropagation
-  cluster: dl_foundation
-  importance: high
+  cluster: llm_foundation
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 5.3
@@ -261,7 +261,7 @@
   name: 计算图
   aliases:
   - Computational Graph
-  cluster: dl_foundation
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -273,7 +273,7 @@
   name: 自动微分
   aliases:
   - Automatic Differentiation
-  cluster: dl_foundation
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -287,7 +287,7 @@
   name: Softmax 函数
   aliases:
   - Softmax Function
-  cluster: dl_foundation
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -300,7 +300,7 @@
   name: 交叉熵损失
   aliases:
   - Cross-Entropy Loss
-  cluster: dl_foundation
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -314,7 +314,7 @@
   name: 表示学习
   aliases:
   - Representation Learning
-  cluster: dl_foundation
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -327,7 +327,7 @@
   name: 泛化
   aliases:
   - Generalization
-  cluster: dl_foundation
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -340,8 +340,8 @@
   name: 偏差方差分解
   aliases:
   - Bias–Variance Decomposition
-  cluster: dl_foundation
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://www.deeplearningbook.org/ — ch./§ 5.4
@@ -353,7 +353,7 @@
   name: 过拟合
   aliases:
   - Overfitting
-  cluster: dl_foundation
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -366,8 +366,8 @@
   name: 通用逼近定理
   aliases:
   - Universal Approximation Theorem
-  cluster: dl_foundation
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://www.deeplearningbook.org/ — ch./§ 6.4.1
@@ -381,7 +381,7 @@
   aliases:
   - Convolutional Neural Network
   cluster: architecture
-  importance: high
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 7.6
@@ -394,8 +394,8 @@
   name: 循环神经网络
   aliases:
   - Recurrent Neural Network
-  cluster: architecture
-  importance: high
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 9.4
@@ -449,8 +449,8 @@
   name: 长短期记忆网络
   aliases:
   - Long Short-Term Memory
-  cluster: architecture
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 10.1
@@ -462,8 +462,8 @@
   name: 门控循环单元
   aliases:
   - Gated Recurrent Unit
-  cluster: architecture
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 10.2
@@ -514,8 +514,8 @@
   name: 批量归一化
   aliases:
   - Batch Normalization
-  cluster: architecture
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 8.5
@@ -542,7 +542,7 @@
   name: 变分自编码器
   aliases:
   - Variational Autoencoder
-  cluster: architecture
+  cluster: generative_media
   importance: medium
   source:
     type: course
@@ -556,7 +556,7 @@
   name: 生成对抗网络
   aliases:
   - Generative Adversarial Network
-  cluster: architecture
+  cluster: generative_media
   importance: medium
   source:
     type: textbook
@@ -570,8 +570,8 @@
   name: 梯度下降
   aliases:
   - Gradient Descent
-  cluster: training_optimization
-  importance: high
+  cluster: pretraining
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 12.3
@@ -583,8 +583,8 @@
   name: 随机梯度下降
   aliases:
   - Stochastic Gradient Descent
-  cluster: training_optimization
-  importance: high
+  cluster: pretraining
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 12.4
@@ -597,8 +597,8 @@
   name: 小批量随机梯度下降
   aliases:
   - Minibatch Stochastic Gradient Descent
-  cluster: training_optimization
-  importance: high
+  cluster: pretraining
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 12.5
@@ -610,8 +610,8 @@
   name: Adam 优化器
   aliases:
   - Adam
-  cluster: training_optimization
-  importance: high
+  cluster: pretraining
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 12.10
@@ -624,8 +624,8 @@
   name: 学习率调度
   aliases:
   - Learning Rate Scheduling
-  cluster: training_optimization
-  importance: high
+  cluster: pretraining
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 12.11
@@ -637,7 +637,7 @@
   name: 动量法
   aliases:
   - Momentum
-  cluster: training_optimization
+  cluster: pretraining
   importance: medium
   source:
     type: textbook
@@ -650,7 +650,7 @@
   name: 权重衰减
   aliases:
   - Weight Decay
-  cluster: training_optimization
+  cluster: pretraining
   importance: medium
   source:
     type: textbook
@@ -664,7 +664,7 @@
   name: 暂退法
   aliases:
   - Dropout
-  cluster: training_optimization
+  cluster: pretraining
   importance: medium
   source:
     type: textbook
@@ -678,7 +678,7 @@
   name: 参数初始化
   aliases:
   - Parameter Initialization
-  cluster: training_optimization
+  cluster: pretraining
   importance: medium
   source:
     type: textbook
@@ -692,7 +692,7 @@
   name: 梯度裁剪
   aliases:
   - Gradient Clipping
-  cluster: training_optimization
+  cluster: pretraining
   importance: medium
   source:
     type: textbook
@@ -705,7 +705,7 @@
   name: 梯度消失
   aliases:
   - Vanishing Gradient
-  cluster: training_optimization
+  cluster: pretraining
   importance: medium
   source:
     type: textbook
@@ -718,7 +718,7 @@
   name: 早停
   aliases:
   - Early Stopping
-  cluster: training_optimization
+  cluster: pretraining
   importance: medium
   source:
     type: textbook
@@ -732,7 +732,7 @@
   name: 超参数优化
   aliases:
   - Hyperparameter Optimization
-  cluster: training_optimization
+  cluster: pretraining
   importance: medium
   source:
     type: textbook
@@ -745,8 +745,8 @@
   name: 微调
   aliases:
   - Fine-Tuning
-  cluster: training_optimization
-  importance: medium
+  cluster: posttraining_alignment
+  importance: high
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 14.2
@@ -759,8 +759,8 @@
   name: 训练测试划分
   aliases:
   - Train–Test Split
-  cluster: data
-  importance: high
+  cluster: pretraining
+  importance: medium
   source:
     type: textbook
     ref: https://www.deeplearningbook.org/ — ch./§ 5.3
@@ -772,8 +772,8 @@
   name: 验证集划分
   aliases:
   - Validation Set
-  cluster: data
-  importance: high
+  cluster: pretraining
+  importance: medium
   source:
     type: textbook
     ref: https://www.deeplearningbook.org/ — ch./§ 5.3
@@ -785,8 +785,8 @@
   name: 数据预处理
   aliases:
   - Data Preprocessing
-  cluster: data
-  importance: high
+  cluster: pretraining
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 2.2
@@ -797,8 +797,8 @@
   name: 特征工程
   aliases:
   - Feature Engineering
-  cluster: data
-  importance: high
+  cluster: classical_ml
+  importance: low
   source:
     type: course
     ref: https://stanford-cs329s.github.io/syllabus.html — Feature engineering
@@ -810,8 +810,8 @@
   name: 分布偏移
   aliases:
   - Distribution Shift
-  cluster: data
-  importance: high
+  cluster: pretraining
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 4.7
@@ -824,8 +824,8 @@
   name: 缺失值处理
   aliases:
   - Missing Values
-  cluster: data
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 2.2
@@ -837,8 +837,8 @@
   name: 类别特征编码
   aliases:
   - Categorical Feature Encoding
-  cluster: data
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 2.2
@@ -850,7 +850,7 @@
   name: 数据增强
   aliases:
   - Data Augmentation
-  cluster: data
+  cluster: pretraining
   importance: medium
   source:
     type: textbook
@@ -863,7 +863,7 @@
   name: 协变量偏移
   aliases:
   - Covariate Shift
-  cluster: data
+  cluster: pretraining
   importance: medium
   source:
     type: textbook
@@ -876,7 +876,7 @@
   name: 标签偏移
   aliases:
   - Label Shift
-  cluster: data
+  cluster: pretraining
   importance: medium
   source:
     type: textbook
@@ -889,7 +889,7 @@
   name: 概念偏移
   aliases:
   - Concept Shift
-  cluster: data
+  cluster: pretraining
   importance: medium
   source:
     type: textbook
@@ -902,7 +902,7 @@
   name: 重要性加权
   aliases:
   - Importance Weighting
-  cluster: data
+  cluster: pretraining
   importance: medium
   source:
     type: textbook
@@ -916,7 +916,7 @@
   name: 监督学习
   aliases:
   - Supervised Learning
-  cluster: data
+  cluster: pretraining
   importance: medium
   source:
     type: textbook
@@ -929,7 +929,7 @@
   name: 无监督学习
   aliases:
   - Unsupervised Learning
-  cluster: data
+  cluster: pretraining
   importance: medium
   source:
     type: textbook
@@ -943,7 +943,7 @@
   aliases:
   - Precision and Recall
   cluster: evaluation
-  importance: high
+  importance: medium
   source:
     type: textbook
     ref: https://www.deeplearningbook.org/ — ch./§ 11.1
@@ -956,7 +956,7 @@
   aliases:
   - Accuracy
   cluster: evaluation
-  importance: high
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 4.6
@@ -969,7 +969,7 @@
   aliases:
   - Cross-Validation
   cluster: evaluation
-  importance: high
+  importance: medium
   source:
     type: textbook
     ref: https://www.deeplearningbook.org/ — ch./§ 5.3.1
@@ -982,7 +982,7 @@
   aliases:
   - Perplexity
   cluster: evaluation
-  importance: high
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 9.3
@@ -995,7 +995,7 @@
   aliases:
   - Probability Calibration
   cluster: evaluation
-  importance: high
+  importance: medium
   source:
     type: course
     ref: https://stanford-cs329s.github.io/syllabus.html — Offline evaluation; lecture note
@@ -1125,8 +1125,8 @@
   name: 模型部署
   aliases:
   - Model Deployment
-  cluster: inference_serving
-  importance: high
+  cluster: efficiency_serving
+  importance: medium
   source:
     type: course
     ref: https://stanford-cs329s.github.io/syllabus.html — Deployment
@@ -1138,8 +1138,8 @@
   name: 批量预测
   aliases:
   - Batch Prediction
-  cluster: inference_serving
-  importance: high
+  cluster: efficiency_serving
+  importance: medium
   source:
     type: course
     ref: https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note
@@ -1151,8 +1151,8 @@
   name: 在线预测
   aliases:
   - Online Prediction
-  cluster: inference_serving
-  importance: high
+  cluster: efficiency_serving
+  importance: medium
   source:
     type: course
     ref: https://stanford-cs329s.github.io/syllabus.html — Deployment; lecture note
@@ -1164,8 +1164,8 @@
   name: 模型压缩
   aliases:
   - Model Compression
-  cluster: inference_serving
-  importance: high
+  cluster: efficiency_serving
+  importance: medium
   source:
     type: textbook
     ref: https://www.deeplearningbook.org/ — ch./§ 7.17.1
@@ -1177,8 +1177,8 @@
   name: 束搜索
   aliases:
   - Beam Search
-  cluster: inference_serving
-  importance: high
+  cluster: efficiency_serving
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 10.8
@@ -1190,8 +1190,8 @@
   name: 知识蒸馏
   aliases:
   - Knowledge Distillation
-  cluster: inference_serving
-  importance: medium
+  cluster: efficiency_serving
+  importance: high
   source:
     type: textbook
     ref: https://www.deeplearningbook.org/ — ch./§ 7.17.1
@@ -1204,7 +1204,7 @@
   name: 推理延迟
   aliases:
   - Inference Latency
-  cluster: inference_serving
+  cluster: efficiency_serving
   importance: medium
   source:
     type: course
@@ -1217,7 +1217,7 @@
   name: 推理吞吐量
   aliases:
   - Inference Throughput
-  cluster: inference_serving
+  cluster: efficiency_serving
   importance: medium
   source:
     type: course
@@ -1230,7 +1230,7 @@
   name: 影子部署
   aliases:
   - Shadow Deployment
-  cluster: inference_serving
+  cluster: efficiency_serving
   importance: medium
   source:
     type: course
@@ -1243,7 +1243,7 @@
   name: 金丝雀发布
   aliases:
   - Canary Release
-  cluster: inference_serving
+  cluster: efficiency_serving
   importance: medium
   source:
     type: course
@@ -1256,11 +1256,12 @@
   name: 模型监控
   aliases:
   - Model Monitoring
-  cluster: inference_serving
+  cluster: efficiency_serving
   importance: medium
   source:
     type: course
-    ref: https://stanford-cs329s.github.io/syllabus.html — Diagnosis of ML system failures & data distribution shifts & monitoring
+    ref: https://stanford-cs329s.github.io/syllabus.html — Diagnosis of ML system failures & data distribution shifts
+      & monitoring
     confidence: medium
   requires:
   - model_deployment
@@ -1270,7 +1271,7 @@
   name: 持续学习
   aliases:
   - Continual Learning
-  cluster: inference_serving
+  cluster: efficiency_serving
   importance: medium
   source:
     type: course
@@ -1284,12 +1285,12 @@
   name: 推测解码
   aliases:
   - Speculative Decoding
-  cluster: inference_serving
-  importance: medium
+  cluster: efficiency_serving
+  importance: high
   source:
     type: course
-    ref: https://web.stanford.edu/class/cs224n/#schedule — Reasoning 2; reading Fast Inference from Transformers via Speculative
-      Decoding
+    ref: https://web.stanford.edu/class/cs224n/#schedule — Reasoning 2; reading Fast Inference from Transformers
+      via Speculative Decoding
     confidence: medium
   requires:
   - language_model
@@ -1299,8 +1300,8 @@
   name: 自回归解码
   aliases:
   - Autoregressive Decoding
-  cluster: inference_serving
-  importance: medium
+  cluster: efficiency_serving
+  importance: high
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 9.3
@@ -1312,8 +1313,8 @@
   name: 卷积
   aliases:
   - Convolution
-  cluster: vision
-  importance: high
+  cluster: multimodal_vision
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 7.2
@@ -1325,8 +1326,8 @@
   name: 图像分类
   aliases:
   - Image Classification
-  cluster: vision
-  importance: high
+  cluster: multimodal_vision
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 14.13
@@ -1338,8 +1339,8 @@
   name: 目标检测
   aliases:
   - Object Detection
-  cluster: vision
-  importance: high
+  cluster: multimodal_vision
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 14.3
@@ -1351,8 +1352,8 @@
   name: 语义分割
   aliases:
   - Semantic Segmentation
-  cluster: vision
-  importance: high
+  cluster: multimodal_vision
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 14.9
@@ -1364,7 +1365,8 @@
   name: 视觉 Transformer
   aliases:
   - Vision Transformer
-  cluster: vision
+  - ViT
+  cluster: multimodal_vision
   importance: high
   source:
     type: textbook
@@ -1377,8 +1379,8 @@
   name: 池化
   aliases:
   - Pooling
-  cluster: vision
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 7.5
@@ -1390,8 +1392,8 @@
   name: 填充与步幅
   aliases:
   - Padding and Stride
-  cluster: vision
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 7.3
@@ -1403,8 +1405,8 @@
   name: 锚框
   aliases:
   - Anchor Boxes
-  cluster: vision
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 14.4
@@ -1417,7 +1419,7 @@
   name: 非极大值抑制
   aliases:
   - Non-Maximum Suppression
-  cluster: vision
+  cluster: multimodal_vision
   importance: medium
   source:
     type: textbook
@@ -1431,8 +1433,8 @@
   name: 区域卷积神经网络
   aliases:
   - Region-based Convolutional Neural Network
-  cluster: vision
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 14.8
@@ -1445,8 +1447,8 @@
   name: 全卷积网络
   aliases:
   - Fully Convolutional Network
-  cluster: vision
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 14.11
@@ -1459,7 +1461,7 @@
   name: 对比学习
   aliases:
   - Contrastive Learning
-  cluster: vision
+  cluster: multimodal_vision
   importance: medium
   source:
     type: course
@@ -1472,11 +1474,12 @@
   name: 实例分割
   aliases:
   - Instance Segmentation
-  cluster: vision
+  cluster: multimodal_vision
   importance: medium
   source:
     type: course
-    ref: https://cs231n.stanford.edu/schedule.html — Lecture 9 Object Detection, Image Segmentation, Visualizing and Understanding
+    ref: https://cs231n.stanford.edu/schedule.html — Lecture 9 Object Detection, Image Segmentation, Visualizing
+      and Understanding
     confidence: medium
   requires:
   - object_detection
@@ -1486,8 +1489,8 @@
   name: 扩散模型
   aliases:
   - Diffusion Model
-  cluster: vision
-  importance: medium
+  cluster: generative_media
+  importance: high
   source:
     type: course
     ref: https://cs231n.stanford.edu/schedule.html — Lecture 14 Generative Models 2
@@ -1500,7 +1503,7 @@
   name: 分词
   aliases:
   - Tokenization
-  cluster: language
+  cluster: llm_foundation
   importance: high
   source:
     type: textbook
@@ -1512,8 +1515,8 @@
   name: 词嵌入
   aliases:
   - Word Embedding
-  cluster: language
-  importance: high
+  cluster: llm_foundation
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 15.1
@@ -1525,7 +1528,7 @@
   name: 语言模型
   aliases:
   - Language Model
-  cluster: language
+  cluster: llm_foundation
   importance: high
   source:
     type: textbook
@@ -1539,8 +1542,8 @@
   name: BERT 模型
   aliases:
   - BERT
-  cluster: language
-  importance: high
+  cluster: llm_foundation
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 15.8
@@ -1552,7 +1555,8 @@
   name: 检索增强生成
   aliases:
   - Retrieval-Augmented Generation
-  cluster: language
+  - RAG
+  cluster: retrieval_search
   importance: high
   source:
     type: course
@@ -1565,7 +1569,7 @@
   name: 子词分词
   aliases:
   - Subword Tokenization
-  cluster: language
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -1578,8 +1582,8 @@
   name: 词向量模型 word2vec
   aliases:
   - word2vec
-  cluster: language
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 15.1
@@ -1591,8 +1595,8 @@
   name: 负采样
   aliases:
   - Negative Sampling
-  cluster: language
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 15.2
@@ -1604,7 +1608,7 @@
   name: 掩码语言建模
   aliases:
   - Masked Language Modeling
-  cluster: language
+  cluster: llm_foundation
   importance: medium
   source:
     type: textbook
@@ -1617,8 +1621,9 @@
   name: 监督微调
   aliases:
   - Supervised Fine-Tuning
-  cluster: language
-  importance: medium
+  - SFT
+  cluster: posttraining_alignment
+  importance: high
   source:
     type: course
     ref: https://web.stanford.edu/class/cs224n/#schedule — Post-training (RLHF, SFT, DPO)
@@ -1631,11 +1636,12 @@
   name: 人类反馈强化学习
   aliases:
   - Reinforcement Learning from Human Feedback
-  cluster: language
-  importance: medium
+  - RLHF
+  cluster: posttraining_alignment
+  importance: high
   source:
-    type: course
-    ref: https://web.stanford.edu/class/cs224n/#schedule — Post-training (RLHF, SFT, DPO)
+    type: paper
+    ref: https://arxiv.org/abs/2203.02155
     confidence: medium
   requires:
   - language_model
@@ -1645,8 +1651,9 @@
   name: 低秩适配
   aliases:
   - Low-Rank Adaptation
-  cluster: language
-  importance: medium
+  - LoRA
+  cluster: posttraining_alignment
+  importance: high
   source:
     type: course
     ref: https://web.stanford.edu/class/cs224n/#schedule — Efficient Adaptation (Prompting + PEFT); reading LoRA
@@ -1659,12 +1666,12 @@
   name: 上下文学习
   aliases:
   - In-Context Learning
-  cluster: language
+  cluster: llm_foundation
   importance: medium
   source:
     type: course
-    ref: https://web.stanford.edu/class/cs224n/#schedule — Efficient Adaptation (Prompting + PEFT); reading Language Models
-      are Few-Shot Learners
+    ref: https://web.stanford.edu/class/cs224n/#schedule — Efficient Adaptation (Prompting + PEFT); reading Language
+      Models are Few-Shot Learners
     confidence: medium
   requires:
   - language_model
@@ -1673,11 +1680,12 @@
   name: 直接偏好优化
   aliases:
   - Direct Preference Optimization
-  cluster: language
-  importance: medium
+  - DPO
+  cluster: posttraining_alignment
+  importance: high
   source:
-    type: course
-    ref: https://web.stanford.edu/class/cs224n/#schedule — Post-training (RLHF, SFT, DPO); reading Direct Preference Optimization
+    type: paper
+    ref: https://arxiv.org/abs/2305.18290
     confidence: medium
   requires:
   - language_model
@@ -1687,8 +1695,8 @@
   name: 马尔可夫决策过程
   aliases:
   - Markov Decision Process
-  cluster: rl
-  importance: high
+  cluster: rl_reasoning
+  importance: medium
   source:
     type: textbook
     ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 3
@@ -1700,8 +1708,8 @@
   name: 贝尔曼方程
   aliases:
   - Bellman Equation
-  cluster: rl
-  importance: high
+  cluster: rl_reasoning
+  importance: medium
   source:
     type: textbook
     ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 3.5
@@ -1714,8 +1722,8 @@
   name: 价值迭代
   aliases:
   - Value Iteration
-  cluster: rl
-  importance: high
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 4.4
@@ -1727,8 +1735,8 @@
   name: Q 学习
   aliases:
   - Q-Learning
-  cluster: rl
-  importance: high
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 6.5
@@ -1740,7 +1748,7 @@
   name: 策略梯度
   aliases:
   - Policy Gradient
-  cluster: rl
+  cluster: rl_reasoning
   importance: high
   source:
     type: textbook
@@ -1755,7 +1763,7 @@
   name: 回报与折扣
   aliases:
   - Return and Discounting
-  cluster: rl
+  cluster: rl_reasoning
   importance: medium
   source:
     type: textbook
@@ -1768,7 +1776,7 @@
   name: 状态动作价值
   aliases:
   - Action-Value Function
-  cluster: rl
+  cluster: rl_reasoning
   importance: medium
   source:
     type: textbook
@@ -1782,8 +1790,8 @@
   name: 策略迭代
   aliases:
   - Policy Iteration
-  cluster: rl
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 4.3
@@ -1795,7 +1803,7 @@
   name: 蒙特卡洛强化学习
   aliases:
   - Monte Carlo Methods
-  cluster: rl
+  cluster: rl_reasoning
   importance: medium
   source:
     type: textbook
@@ -1809,7 +1817,7 @@
   name: 时序差分学习
   aliases:
   - Temporal-Difference Learning
-  cluster: rl
+  cluster: rl_reasoning
   importance: medium
   source:
     type: textbook
@@ -1822,8 +1830,8 @@
   name: SARSA 算法
   aliases:
   - Sarsa
-  cluster: rl
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: http://incompleteideas.net/book/RLbook2020.pdf — ch./§ 6.4
@@ -1835,7 +1843,7 @@
   name: 探索与利用
   aliases:
   - Exploration and Exploitation
-  cluster: rl
+  cluster: rl_reasoning
   importance: medium
   source:
     type: textbook
@@ -1848,7 +1856,7 @@
   name: 演员评论家方法
   aliases:
   - Actor–Critic Methods
-  cluster: rl
+  cluster: rl_reasoning
   importance: medium
   source:
     type: textbook
@@ -1862,7 +1870,7 @@
   name: 离策略学习
   aliases:
   - Off-Policy Learning
-  cluster: rl
+  cluster: rl_reasoning
   importance: medium
   source:
     type: textbook
@@ -1876,8 +1884,8 @@
   name: GPU 计算
   aliases:
   - GPU Computing
-  cluster: systems_harness
-  importance: high
+  cluster: systems_infra
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 6.7
@@ -1889,8 +1897,8 @@
   name: 数据并行
   aliases:
   - Data Parallelism
-  cluster: systems_harness
-  importance: high
+  cluster: systems_infra
+  importance: medium
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 13.5
@@ -1903,8 +1911,8 @@
   name: 实验跟踪
   aliases:
   - Experiment Tracking
-  cluster: systems_harness
-  importance: high
+  cluster: systems_infra
+  importance: medium
   source:
     type: course
     ref: https://stanford-cs329s.github.io/syllabus.html — Experiment tracking & versioning with Weights & Biases
@@ -1916,8 +1924,8 @@
   name: 模型版本管理
   aliases:
   - Model Versioning
-  cluster: systems_harness
-  importance: high
+  cluster: systems_infra
+  importance: medium
   source:
     type: course
     ref: https://stanford-cs329s.github.io/syllabus.html — Experiment tracking & versioning with Weights & Biases
@@ -1929,7 +1937,7 @@
   name: 智能体工具使用
   aliases:
   - Agent Tool Use
-  cluster: systems_harness
+  cluster: agent_harness
   importance: high
   source:
     type: course
@@ -1942,8 +1950,8 @@
   name: 参数服务器
   aliases:
   - Parameter Server
-  cluster: systems_harness
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: textbook
     ref: https://d2l.ai/ — ch./§ 13.7
@@ -1955,7 +1963,7 @@
   name: 全归约
   aliases:
   - AllReduce
-  cluster: systems_harness
+  cluster: systems_infra
   importance: medium
   source:
     type: textbook
@@ -1968,7 +1976,7 @@
   name: 异步计算
   aliases:
   - Asynchronous Computation
-  cluster: systems_harness
+  cluster: systems_infra
   importance: medium
   source:
     type: textbook
@@ -1980,7 +1988,7 @@
   name: 模型并行
   aliases:
   - Model Parallelism
-  cluster: systems_harness
+  cluster: systems_infra
   importance: medium
   source:
     type: textbook
@@ -1994,7 +2002,7 @@
   name: 激活检查点
   aliases:
   - Activation Checkpointing
-  cluster: systems_harness
+  cluster: systems_infra
   importance: medium
   source:
     type: course
@@ -2007,7 +2015,7 @@
   name: 机器学习流水线
   aliases:
   - ML Pipeline
-  cluster: systems_harness
+  cluster: systems_infra
   importance: medium
   source:
     type: course
@@ -2021,8 +2029,8 @@
   name: 特征存储
   aliases:
   - Feature Store
-  cluster: systems_harness
-  importance: medium
+  cluster: classical_ml
+  importance: low
   source:
     type: course
     ref: https://stanford-cs329s.github.io/syllabus.html — ML Infrastructure and Platform; lecture slides
@@ -2034,8 +2042,8 @@
   name: 思维链提示
   aliases:
   - Chain-of-Thought Prompting
-  cluster: systems_harness
-  importance: medium
+  cluster: agent_harness
+  importance: high
   source:
     type: course
     ref: https://web.stanford.edu/class/cs224n/#schedule — Efficient Adaptation (Prompting + PEFT); reading Chain-of-Thought
@@ -2048,14 +2056,1926 @@
   name: 自一致性解码
   aliases:
   - Self-Consistency
-  cluster: systems_harness
-  importance: medium
+  cluster: agent_harness
+  importance: high
   source:
     type: course
-    ref: https://web.stanford.edu/class/cs224n/#schedule — Reasoning 1; reading Self-Consistency Improves Chain of Thought
-      Reasoning
+    ref: https://web.stanford.edu/class/cs224n/#schedule — Reasoning 1; reading Self-Consistency Improves Chain
+      of Thought Reasoning
     confidence: medium
   requires:
   - chain_of_thought
   - probability
   note: ''
+- id: causal_language_modeling
+  name: 因果语言建模
+  aliases:
+  - Causal Language Modeling
+  - CLM
+  cluster: llm_foundation
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - language_model
+  - cross_entropy
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: scaling_laws
+  name: 规模定律
+  aliases:
+  - Scaling Laws
+  cluster: llm_foundation
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - language_model
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: compute_optimal_training
+  name: 计算最优训练
+  aliases:
+  - Compute-optimal Training
+  - Chinchilla scaling
+  cluster: llm_foundation
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - scaling_laws
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: instruction_following
+  name: 指令遵循
+  aliases:
+  - Instruction Following
+  cluster: llm_foundation
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - language_model
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: sampling_temperature
+  name: 采样温度
+  aliases:
+  - Sampling Temperature
+  cluster: llm_foundation
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - softmax
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: top_p_sampling
+  name: 核采样
+  aliases:
+  - Nucleus Sampling
+  - Top-p
+  cluster: llm_foundation
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - sampling_temperature
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: decoder_only
+  name: 仅解码器架构
+  aliases:
+  - Decoder-only Transformer
+  cluster: architecture
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - transformer
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: causal_mask
+  name: 因果注意力掩码
+  aliases:
+  - Causal Mask
+  cluster: architecture
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - attn_scaled_dot_product
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: rope
+  name: 旋转位置编码
+  aliases:
+  - Rotary Position Embedding
+  - RoPE
+  cluster: architecture
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - positional_encoding
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: gqa
+  name: 分组查询注意力
+  aliases:
+  - Grouped-query Attention
+  - GQA
+  cluster: architecture
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - multihead_attention
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: mqa
+  name: 多查询注意力
+  aliases:
+  - Multi-query Attention
+  - MQA
+  cluster: architecture
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - multihead_attention
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: rmsnorm
+  name: 均方根归一化
+  aliases:
+  - RMSNorm
+  cluster: architecture
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - layer_norm
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: swiglu
+  name: 门控前馈激活
+  aliases:
+  - SwiGLU
+  cluster: architecture
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - activation
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: mixture_of_experts
+  name: 混合专家
+  aliases:
+  - Mixture of Experts
+  - MoE
+  cluster: architecture
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2401.04088
+    confidence: medium
+  requires:
+  - mlp
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: expert_routing
+  name: 专家路由
+  aliases:
+  - Expert Routing
+  cluster: architecture
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2401.04088
+    confidence: medium
+  requires:
+  - mixture_of_experts
+  - softmax
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: load_balancing_loss
+  name: 专家负载均衡
+  aliases:
+  - Expert Load Balancing
+  cluster: architecture
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2401.04088
+    confidence: medium
+  requires:
+  - expert_routing
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: data_deduplication
+  name: 训练数据去重
+  aliases:
+  - Data Deduplication
+  cluster: pretraining
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - data_preprocessing
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: data_mixture
+  name: 训练数据配比
+  aliases:
+  - Data Mixture
+  cluster: pretraining
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - language_model
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: quality_filtering
+  name: 语料质量过滤
+  aliases:
+  - Quality Filtering
+  cluster: pretraining
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - data_preprocessing
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: pretraining_contamination
+  name: 预训练评测污染
+  aliases:
+  - Pretraining Contamination
+  cluster: pretraining
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - train_test_split
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: sequence_packing
+  name: 序列打包
+  aliases:
+  - Sequence Packing
+  cluster: pretraining
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - tokenization
+  - causal_mask
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: document_masking
+  name: 文档边界掩码
+  aliases:
+  - Document Boundary Masking
+  cluster: pretraining
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - causal_mask
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: continued_pretraining
+  name: 继续预训练
+  aliases:
+  - Continued Pretraining
+  - CPT
+  cluster: pretraining
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - causal_language_modeling
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: long_context_training
+  name: 长上下文训练
+  aliases:
+  - Long-context Training
+  cluster: pretraining
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - rope
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: synthetic_data
+  name: 合成训练数据
+  aliases:
+  - Synthetic Training Data
+  cluster: pretraining
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - language_model
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: checkpoint_recovery
+  name: 训练检查点恢复
+  aliases:
+  - Training Checkpoint Recovery
+  cluster: pretraining
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - model_versioning
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: preference_data
+  name: 偏好数据
+  aliases:
+  - Preference Data
+  cluster: posttraining_alignment
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2203.02155
+    confidence: medium
+  requires:
+  - supervised_learning
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: reward_model
+  name: 奖励模型
+  aliases:
+  - Reward Model
+  - RM
+  cluster: posttraining_alignment
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2203.02155
+    confidence: medium
+  requires:
+  - preference_data
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: kl_regularization
+  name: 策略KL约束
+  aliases:
+  - KL Regularization
+  cluster: posttraining_alignment
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2203.02155
+    confidence: medium
+  requires:
+  - kl_divergence
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: reward_hacking
+  name: 奖励投机
+  aliases:
+  - Reward Hacking
+  cluster: posttraining_alignment
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2203.02155
+    confidence: medium
+  requires:
+  - reward_model
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: reference_policy
+  name: 参考策略
+  aliases:
+  - Reference Policy
+  cluster: posttraining_alignment
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2305.18290
+    confidence: medium
+  requires:
+  - language_model
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: constitutional_ai
+  name: 宪法式AI
+  aliases:
+  - Constitutional AI
+  - CAI
+  cluster: posttraining_alignment
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2212.08073
+    confidence: medium
+  requires:
+  - instruction_following
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: rlaif
+  name: AI反馈强化学习
+  aliases:
+  - Reinforcement Learning from AI Feedback
+  - RLAIF
+  cluster: posttraining_alignment
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2212.08073
+    confidence: medium
+  requires:
+  - rlhf
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: harmlessness
+  name: 无害性对齐
+  aliases:
+  - Harmlessness Alignment
+  cluster: posttraining_alignment
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2212.08073
+    confidence: medium
+  requires:
+  - instruction_following
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: instruction_tuning_data
+  name: 指令微调数据
+  aliases:
+  - Instruction Tuning Data
+  cluster: posttraining_alignment
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2412.15115v1
+    confidence: medium
+  requires:
+  - instruction_following
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: rejection_sampling
+  name: 拒绝采样筛选
+  aliases:
+  - Rejection Sampling for Fine-tuning
+  cluster: posttraining_alignment
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2412.15115v1
+    confidence: medium
+  requires:
+  - synthetic_data
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: qlora
+  name: 量化低秩适配
+  aliases:
+  - Quantized Low-Rank Adaptation
+  - QLoRA
+  cluster: posttraining_alignment
+  importance: high
+  source:
+    type: documentation
+    ref: https://huggingface.co/docs/peft/index
+    confidence: low
+  requires:
+  - lora
+  - weight_quantization
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: peft
+  name: 参数高效微调
+  aliases:
+  - Parameter-efficient Fine-tuning
+  - PEFT
+  cluster: posttraining_alignment
+  importance: high
+  source:
+    type: documentation
+    ref: https://huggingface.co/docs/peft/index
+    confidence: low
+  requires:
+  - fine_tuning
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: ppo
+  name: 近端策略优化
+  aliases:
+  - Proximal Policy Optimization
+  - PPO
+  cluster: rl_reasoning
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/1707.06347
+    confidence: medium
+  requires:
+  - policy_gradient
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: advantage_estimation
+  name: 优势估计
+  aliases:
+  - Advantage Estimation
+  cluster: rl_reasoning
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/1707.06347
+    confidence: medium
+  requires:
+  - state_action_value
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: grpo
+  name: 组相对策略优化
+  aliases:
+  - Group Relative Policy Optimization
+  - GRPO
+  cluster: rl_reasoning
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2402.03300
+    confidence: medium
+  requires:
+  - policy_gradient
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: verifiable_reward
+  name: 可验证奖励
+  aliases:
+  - Verifiable Reward
+  cluster: rl_reasoning
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2402.03300
+    confidence: medium
+  requires:
+  - reward_model
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: reasoning_rl
+  name: 推理强化学习
+  aliases:
+  - Reasoning Reinforcement Learning
+  cluster: rl_reasoning
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2402.03300
+    confidence: medium
+  requires:
+  - policy_gradient
+  - verifiable_reward
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: test_time_compute
+  name: 测试时计算
+  aliases:
+  - Test-time Compute
+  cluster: rl_reasoning
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2412.15115v1
+    confidence: medium
+  requires:
+  - autoregressive_decoding
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: prompt_injection
+  name: 提示注入
+  aliases:
+  - Prompt Injection
+  cluster: safety_redteam
+  importance: high
+  source:
+    type: documentation
+    ref: https://genai.owasp.org/llm-top-10/
+    confidence: medium
+  requires:
+  - instruction_following
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: indirect_prompt_injection
+  name: 间接提示注入
+  aliases:
+  - Indirect Prompt Injection
+  cluster: safety_redteam
+  importance: high
+  source:
+    type: documentation
+    ref: https://genai.owasp.org/llm-top-10/
+    confidence: medium
+  requires:
+  - prompt_injection
+  - retrieval_augmented_generation
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: jailbreak
+  name: 越狱攻击
+  aliases:
+  - Jailbreak
+  cluster: safety_redteam
+  importance: high
+  source:
+    type: documentation
+    ref: https://genai.owasp.org/llm-top-10/
+    confidence: medium
+  requires:
+  - harmlessness
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: sensitive_disclosure
+  name: 敏感信息泄漏
+  aliases:
+  - Sensitive Information Disclosure
+  cluster: safety_redteam
+  importance: high
+  source:
+    type: documentation
+    ref: https://genai.owasp.org/llm-top-10/
+    confidence: medium
+  requires:
+  - language_model
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: data_poisoning
+  name: 数据投毒
+  aliases:
+  - Data Poisoning
+  cluster: safety_redteam
+  importance: medium
+  source:
+    type: documentation
+    ref: https://genai.owasp.org/llm-top-10/
+    confidence: medium
+  requires:
+  - data_preprocessing
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: supply_chain_security
+  name: 模型供应链安全
+  aliases:
+  - Model Supply Chain Security
+  cluster: safety_redteam
+  importance: medium
+  source:
+    type: documentation
+    ref: https://genai.owasp.org/llm-top-10/
+    confidence: medium
+  requires:
+  - model_versioning
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: unsafe_output_handling
+  name: 不安全输出处理
+  aliases:
+  - Improper Output Handling
+  cluster: safety_redteam
+  importance: medium
+  source:
+    type: documentation
+    ref: https://genai.owasp.org/llm-top-10/
+    confidence: medium
+  requires:
+  - agent_tool_use
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: excessive_agency
+  name: 过度代理权限
+  aliases:
+  - Excessive Agency
+  cluster: safety_redteam
+  importance: high
+  source:
+    type: documentation
+    ref: https://genai.owasp.org/llm-top-10/
+    confidence: medium
+  requires:
+  - agent_tool_use
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: system_prompt_leakage
+  name: 系统提示泄漏
+  aliases:
+  - System Prompt Leakage
+  cluster: safety_redteam
+  importance: medium
+  source:
+    type: documentation
+    ref: https://genai.owasp.org/llm-top-10/
+    confidence: medium
+  requires:
+  - prompt_injection
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: unbounded_consumption
+  name: 无界资源消耗
+  aliases:
+  - Unbounded Consumption
+  cluster: safety_redteam
+  importance: medium
+  source:
+    type: documentation
+    ref: https://genai.owasp.org/llm-top-10/
+    confidence: medium
+  requires:
+  - agent_tool_use
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: retrieval_poisoning
+  name: 检索库投毒
+  aliases:
+  - Retrieval Poisoning
+  cluster: safety_redteam
+  importance: high
+  source:
+    type: documentation
+    ref: https://genai.owasp.org/llm-top-10/
+    confidence: medium
+  requires:
+  - retrieval_augmented_generation
+  - data_poisoning
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: guardrails
+  name: 护栏
+  aliases:
+  - Guardrails
+  cluster: safety_redteam
+  importance: high
+  source:
+    type: documentation
+    ref: https://google.github.io/adk-docs/safety/
+    confidence: medium
+  requires:
+  - instruction_following
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: human_approval
+  name: 人工授权关卡
+  aliases:
+  - Human-in-the-loop Approval
+  - HITL approval
+  cluster: safety_redteam
+  importance: high
+  source:
+    type: documentation
+    ref: https://google.github.io/adk-docs/safety/
+    confidence: medium
+  requires:
+  - agent_tool_use
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: least_privilege
+  name: 最小权限
+  aliases:
+  - Least Privilege
+  cluster: safety_redteam
+  importance: high
+  source:
+    type: documentation
+    ref: https://google.github.io/adk-docs/safety/
+    confidence: medium
+  requires:
+  - agent_tool_use
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: sandbox_execution
+  name: 沙箱执行
+  aliases:
+  - Sandbox Execution
+  cluster: safety_redteam
+  importance: high
+  source:
+    type: documentation
+    ref: https://google.github.io/adk-docs/safety/
+    confidence: medium
+  requires:
+  - agent_tool_use
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: red_teaming
+  name: 红队测试
+  aliases:
+  - Red Teaming
+  cluster: safety_redteam
+  importance: high
+  source:
+    type: documentation
+    ref: https://google.github.io/adk-docs/safety/
+    confidence: medium
+  requires:
+  - robustness
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: blue_team_defense
+  name: 蓝队纵深防御
+  aliases:
+  - Defense in Depth
+  - Blue Team Defense
+  cluster: safety_redteam
+  importance: medium
+  source:
+    type: model
+    ref: WP-1b 编辑补洞；相邻外部概念见 https://google.github.io/adk-docs/safety/
+    confidence: low
+  requires:
+  - guardrails
+  note: 模型归纳的诊断概念，非来源直接命名；待专项来源复核。
+- id: authorization_boundary
+  name: 授权边界
+  aliases:
+  - Authorization Boundary
+  cluster: safety_redteam
+  importance: high
+  source:
+    type: documentation
+    ref: https://google.github.io/adk-docs/safety/
+    confidence: medium
+  requires:
+  - least_privilege
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: agent_loop
+  name: 代理执行循环
+  aliases:
+  - Agent Loop
+  cluster: agent_harness
+  importance: high
+  source:
+    type: documentation
+    ref: https://openai.github.io/openai-agents-python/tools/
+    confidence: medium
+  requires:
+  - agent_tool_use
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: function_calling
+  name: 函数调用协议
+  aliases:
+  - Function Calling
+  cluster: agent_harness
+  importance: high
+  source:
+    type: documentation
+    ref: https://openai.github.io/openai-agents-python/tools/
+    confidence: medium
+  requires:
+  - agent_tool_use
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: tool_schema
+  name: 工具模式契约
+  aliases:
+  - Tool Schema
+  cluster: agent_harness
+  importance: high
+  source:
+    type: documentation
+    ref: https://openai.github.io/openai-agents-python/tools/
+    confidence: medium
+  requires:
+  - function_calling
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: structured_outputs
+  name: 结构化输出
+  aliases:
+  - Structured Outputs
+  cluster: agent_harness
+  importance: high
+  source:
+    type: documentation
+    ref: https://openai.github.io/openai-agents-python/tools/
+    confidence: medium
+  requires:
+  - language_model
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: computer_use
+  name: 桌面操作
+  aliases:
+  - Computer Use
+  - Desktop Use
+  cluster: agent_harness
+  importance: high
+  source:
+    type: documentation
+    ref: https://openai.github.io/openai-agents-python/tools/
+    confidence: medium
+  requires:
+  - agent_tool_use
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: browser_use
+  name: 浏览器操作
+  aliases:
+  - Browser Use
+  cluster: agent_harness
+  importance: high
+  source:
+    type: documentation
+    ref: https://openai.github.io/openai-agents-python/tools/
+    confidence: medium
+  requires:
+  - agent_tool_use
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: agent_harness
+  name: 代理运行框架
+  aliases:
+  - Agent Harness
+  cluster: agent_harness
+  importance: high
+  source:
+    type: documentation
+    ref: https://openai.github.io/openai-agents-python/
+    confidence: medium
+  requires:
+  - agent_loop
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: handoff
+  name: 代理交接
+  aliases:
+  - Agent Handoff
+  cluster: agent_harness
+  importance: medium
+  source:
+    type: documentation
+    ref: https://openai.github.io/openai-agents-python/
+    confidence: medium
+  requires:
+  - agent_loop
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: agent_tracing
+  name: 代理轨迹追踪
+  aliases:
+  - Agent Tracing
+  cluster: agent_harness
+  importance: high
+  source:
+    type: documentation
+    ref: https://openai.github.io/openai-agents-python/
+    confidence: medium
+  requires:
+  - agent_loop
+  - experiment_tracking
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: session_memory
+  name: 会话记忆
+  aliases:
+  - Session Memory
+  cluster: agent_harness
+  importance: high
+  source:
+    type: documentation
+    ref: https://openai.github.io/openai-agents-python/
+    confidence: medium
+  requires:
+  - agent_loop
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: tool_error_recovery
+  name: 工具错误恢复
+  aliases:
+  - Tool Error Recovery
+  cluster: agent_harness
+  importance: high
+  source:
+    type: model
+    ref: WP-1b 编辑补洞；相邻外部概念见 https://openai.github.io/openai-agents-python/
+    confidence: low
+  requires:
+  - agent_loop
+  note: 模型归纳的诊断概念，非来源直接命名；待专项来源复核。
+- id: agent_plugins
+  name: 代理插件
+  aliases:
+  - Agent Plugins
+  cluster: agent_harness
+  importance: medium
+  source:
+    type: model
+    ref: WP-1b 编辑补洞；相邻外部概念见 https://openai.github.io/openai-agents-python/
+    confidence: low
+  requires:
+  - agent_harness
+  note: 模型归纳的诊断概念，非来源直接命名；待专项来源复核。
+- id: mcp
+  name: 模型上下文协议
+  aliases:
+  - Model Context Protocol
+  - MCP
+  cluster: agent_harness
+  importance: high
+  source:
+    type: documentation
+    ref: https://modelcontextprotocol.io/specification/2025-06-18
+    confidence: medium
+  requires:
+  - agent_tool_use
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: mcp_tools
+  name: MCP工具能力
+  aliases:
+  - MCP Tools
+  cluster: agent_harness
+  importance: medium
+  source:
+    type: documentation
+    ref: https://modelcontextprotocol.io/specification/2025-06-18
+    confidence: medium
+  requires:
+  - mcp
+  - tool_schema
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: mcp_resources
+  name: MCP资源能力
+  aliases:
+  - MCP Resources
+  cluster: agent_harness
+  importance: medium
+  source:
+    type: documentation
+    ref: https://modelcontextprotocol.io/specification/2025-06-18
+    confidence: medium
+  requires:
+  - mcp
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: mcp_authorization
+  name: MCP授权
+  aliases:
+  - MCP Authorization
+  cluster: agent_harness
+  importance: high
+  source:
+    type: documentation
+    ref: https://modelcontextprotocol.io/specification/2025-06-18
+    confidence: medium
+  requires:
+  - mcp
+  - authorization_boundary
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: workflow_orchestration
+  name: 代理工作流编排
+  aliases:
+  - Agent Workflow Orchestration
+  cluster: agent_harness
+  importance: medium
+  source:
+    type: documentation
+    ref: https://google.github.io/adk-docs/
+    confidence: medium
+  requires:
+  - agent_loop
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: persistent_knowledge
+  name: 代理持久知识库
+  aliases:
+  - Agent Persistent Knowledge Base
+  - LLM Wiki
+  cluster: agent_harness
+  importance: high
+  source:
+    type: model
+    ref: WP-1b 编辑补洞；相邻外部概念见 https://google.github.io/adk-docs/
+    confidence: low
+  requires:
+  - session_memory
+  - retrieval_augmented_generation
+  note: 模型归纳的诊断概念，非来源直接命名；待专项来源复核。
+- id: context_management
+  name: 代理上下文管理
+  aliases:
+  - Agent Context Management
+  cluster: agent_harness
+  importance: high
+  source:
+    type: model
+    ref: WP-1b 编辑补洞；相邻外部概念见 https://google.github.io/adk-docs/
+    confidence: low
+  requires:
+  - session_memory
+  note: 模型归纳的诊断概念，非来源直接命名；待专项来源复核。
+- id: dense_retrieval
+  name: 稠密检索
+  aliases:
+  - Dense Retrieval
+  - DPR
+  cluster: retrieval_search
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2004.04906
+    confidence: medium
+  requires:
+  - word_embedding
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: sparse_retrieval
+  name: 稀疏检索
+  aliases:
+  - Sparse Retrieval
+  - BM25
+  cluster: retrieval_search
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2004.04906
+    confidence: medium
+  requires:
+  - tokenization
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: hybrid_search
+  name: 混合检索
+  aliases:
+  - Hybrid Search
+  cluster: retrieval_search
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2004.04906
+    confidence: medium
+  requires:
+  - dense_retrieval
+  - sparse_retrieval
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: reranking
+  name: 重排序
+  aliases:
+  - Reranking
+  cluster: retrieval_search
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2004.04906
+    confidence: medium
+  requires:
+  - dense_retrieval
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: vector_index
+  name: 向量索引
+  aliases:
+  - Vector Index
+  - ANN index
+  cluster: retrieval_search
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2004.04906
+    confidence: medium
+  requires:
+  - dense_retrieval
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: chunking
+  name: 知识库分块
+  aliases:
+  - Knowledge Chunking
+  cluster: retrieval_search
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2004.04906
+    confidence: medium
+  requires:
+  - tokenization
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: retrieval_evaluation
+  name: 检索评估
+  aliases:
+  - Retrieval Evaluation
+  cluster: retrieval_search
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2004.04906
+    confidence: medium
+  requires:
+  - precision_recall
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: web_search
+  name: 联网搜索
+  aliases:
+  - Web Search
+  cluster: retrieval_search
+  importance: medium
+  source:
+    type: documentation
+    ref: https://openai.github.io/openai-agents-python/tools/
+    confidence: medium
+  requires:
+  - agent_tool_use
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: citation_grounding
+  name: 引文溯源
+  aliases:
+  - Citation Grounding
+  cluster: retrieval_search
+  importance: high
+  source:
+    type: documentation
+    ref: https://openai.github.io/openai-agents-python/tools/
+    confidence: medium
+  requires:
+  - retrieval_augmented_generation
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: vlm
+  name: 视觉语言模型
+  aliases:
+  - Vision-language Model
+  - VLM
+  - MLLM
+  cluster: multimodal_vision
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2306.13549
+    confidence: medium
+  requires:
+  - vision_transformer
+  - language_model
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: vision_projector
+  name: 视觉投影连接器
+  aliases:
+  - Vision Projector
+  cluster: multimodal_vision
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2306.13549
+    confidence: medium
+  requires:
+  - vlm
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: visual_instruction_tuning
+  name: 视觉指令微调
+  aliases:
+  - Visual Instruction Tuning
+  cluster: multimodal_vision
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2306.13549
+    confidence: medium
+  requires:
+  - vlm
+  - supervised_fine_tuning
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: visual_grounding
+  name: 视觉定位
+  aliases:
+  - Visual Grounding
+  cluster: multimodal_vision
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2306.13549
+    confidence: medium
+  requires:
+  - vlm
+  - object_detection
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: ocr_understanding
+  name: 文字图像理解
+  aliases:
+  - OCR Understanding
+  cluster: multimodal_vision
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2306.13549
+    confidence: medium
+  requires:
+  - vlm
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: multimodal_hallucination
+  name: 多模态幻觉
+  aliases:
+  - Multimodal Hallucination
+  cluster: multimodal_vision
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2306.13549
+    confidence: medium
+  requires:
+  - vlm
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: video_understanding
+  name: 视频理解
+  aliases:
+  - Video Understanding
+  cluster: multimodal_vision
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2306.13549
+    confidence: medium
+  requires:
+  - vlm
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: clip
+  name: 图文对比预训练
+  aliases:
+  - Contrastive Language-Image Pretraining
+  - CLIP
+  cluster: multimodal_vision
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2103.00020
+    confidence: medium
+  requires:
+  - contrastive_learning
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: vla
+  name: 视觉语言动作模型
+  aliases:
+  - Vision-language-action Model
+  - VLA
+  cluster: multimodal_vision
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2307.15818
+    confidence: medium
+  requires:
+  - vlm
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: embodied_intelligence
+  name: 具身智能
+  aliases:
+  - Embodied Intelligence
+  cluster: multimodal_vision
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2307.15818
+    confidence: medium
+  requires:
+  - mdp
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: action_tokenization
+  name: 动作离散化
+  aliases:
+  - Action Tokenization
+  cluster: multimodal_vision
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2307.15818
+    confidence: medium
+  requires:
+  - vla
+  - tokenization
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: autonomous_driving
+  name: 自动驾驶端到端规划
+  aliases:
+  - End-to-end Autonomous Driving
+  cluster: multimodal_vision
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2212.10156
+    confidence: medium
+  requires:
+  - object_detection
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: bev_representation
+  name: 鸟瞰图表示
+  aliases:
+  - Bird's-eye-view Representation
+  - BEV
+  cluster: multimodal_vision
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2212.10156
+    confidence: medium
+  requires:
+  - representation_learning
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: motion_prediction
+  name: 运动预测
+  aliases:
+  - Motion Prediction
+  cluster: multimodal_vision
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2212.10156
+    confidence: medium
+  requires:
+  - object_detection
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: closed_loop_control
+  name: 闭环控制评估
+  aliases:
+  - Closed-loop Control Evaluation
+  cluster: multimodal_vision
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2212.10156
+    confidence: medium
+  requires:
+  - mdp
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: ddpm
+  name: 去噪扩散概率模型
+  aliases:
+  - Denoising Diffusion Probabilistic Model
+  - DDPM
+  cluster: generative_media
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2209.00796v15
+    confidence: medium
+  requires:
+  - diffusion_model
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: score_matching
+  name: 分数匹配
+  aliases:
+  - Score Matching
+  cluster: generative_media
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2209.00796v15
+    confidence: medium
+  requires:
+  - probability
+  - gradient
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: ddim
+  name: 隐式扩散采样
+  aliases:
+  - Denoising Diffusion Implicit Model
+  - DDIM
+  cluster: generative_media
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2209.00796v15
+    confidence: medium
+  requires:
+  - diffusion_model
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: classifier_free_guidance
+  name: 无分类器引导
+  aliases:
+  - Classifier-free Guidance
+  - CFG
+  cluster: generative_media
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2209.00796v15
+    confidence: medium
+  requires:
+  - diffusion_model
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: latent_diffusion
+  name: 潜空间扩散
+  aliases:
+  - Latent Diffusion
+  - LDM
+  cluster: generative_media
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2209.00796v15
+    confidence: medium
+  requires:
+  - diffusion_model
+  - vae
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: text_to_image
+  name: 文本生图
+  aliases:
+  - Text-to-image Generation
+  - T2I
+  cluster: generative_media
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2209.00796v15
+    confidence: medium
+  requires:
+  - diffusion_model
+  - word_embedding
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: video_generation
+  name: 视频生成
+  aliases:
+  - Video Generation
+  cluster: generative_media
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2209.00796v15
+    confidence: medium
+  requires:
+  - diffusion_model
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: flow_matching
+  name: 流匹配
+  aliases:
+  - Flow Matching
+  cluster: generative_media
+  importance: medium
+  source:
+    type: model
+    ref: WP-1b 编辑补洞；相邻外部概念见 https://arxiv.org/html/2209.00796v15
+    confidence: low
+  requires:
+  - probability
+  note: 模型归纳的诊断概念，非来源直接命名；待专项来源复核。
+- id: dit
+  name: 扩散Transformer
+  aliases:
+  - Diffusion Transformer
+  - DiT
+  cluster: generative_media
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2212.09748
+    confidence: medium
+  requires:
+  - diffusion_model
+  - transformer
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: kv_cache
+  name: 键值缓存
+  aliases:
+  - Key-value Cache
+  - KV cache
+  cluster: efficiency_serving
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2309.06180
+    confidence: medium
+  requires:
+  - autoregressive_decoding
+  - multihead_attention
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: paged_attention
+  name: 分页注意力
+  aliases:
+  - PagedAttention
+  cluster: efficiency_serving
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2309.06180
+    confidence: medium
+  requires:
+  - kv_cache
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: continuous_batching
+  name: 连续批处理
+  aliases:
+  - Continuous Batching
+  cluster: efficiency_serving
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2309.06180
+    confidence: medium
+  requires:
+  - batch_prediction
+  - autoregressive_decoding
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: prefix_caching
+  name: 前缀缓存
+  aliases:
+  - Prefix Caching
+  cluster: efficiency_serving
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2309.06180
+    confidence: medium
+  requires:
+  - kv_cache
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: prefill_decode
+  name: 预填充与解码分离
+  aliases:
+  - Prefill and Decode
+  cluster: efficiency_serving
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2309.06180
+    confidence: medium
+  requires:
+  - autoregressive_decoding
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: serving_slo
+  name: 推理服务等级目标
+  aliases:
+  - Serving SLO
+  cluster: efficiency_serving
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2309.06180
+    confidence: medium
+  requires:
+  - latency
+  - throughput
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: flash_attention
+  name: IO感知精确注意力
+  aliases:
+  - FlashAttention
+  cluster: efficiency_serving
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2205.14135
+    confidence: medium
+  requires:
+  - attn_scaled_dot_product
+  - gpu_compute
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: weight_quantization
+  name: 权重量化
+  aliases:
+  - Weight Quantization
+  cluster: efficiency_serving
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2306.00978
+    confidence: medium
+  requires:
+  - model_compression
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: activation_quantization
+  name: 激活量化
+  aliases:
+  - Activation Quantization
+  cluster: efficiency_serving
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2306.00978
+    confidence: medium
+  requires:
+  - model_compression
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: post_training_quantization
+  name: 训练后量化
+  aliases:
+  - Post-training Quantization
+  - PTQ
+  cluster: efficiency_serving
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2306.00978
+    confidence: medium
+  requires:
+  - weight_quantization
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: quantization_aware_training
+  name: 量化感知训练
+  aliases:
+  - Quantization-aware Training
+  - QAT
+  cluster: efficiency_serving
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2306.00978
+    confidence: medium
+  requires:
+  - weight_quantization
+  - backpropagation
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: context_extension
+  name: 上下文窗口扩展
+  aliases:
+  - Context Window Extension
+  cluster: efficiency_serving
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2306.15595
+    confidence: medium
+  requires:
+  - rope
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: tensor_parallelism
+  name: 张量并行
+  aliases:
+  - Tensor Parallelism
+  - TP
+  cluster: systems_infra
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - model_parallelism
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: pipeline_parallelism
+  name: 流水线并行
+  aliases:
+  - Pipeline Parallelism
+  - PP
+  cluster: systems_infra
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - model_parallelism
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: expert_parallelism
+  name: 专家并行
+  aliases:
+  - Expert Parallelism
+  - EP
+  cluster: systems_infra
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - mixture_of_experts
+  - model_parallelism
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: fsdp
+  name: 全分片数据并行
+  aliases:
+  - Fully Sharded Data Parallel
+  - FSDP
+  cluster: systems_infra
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - data_parallelism
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: zero_sharding
+  name: 优化器状态分片
+  aliases:
+  - Zero Redundancy Optimizer
+  - ZeRO
+  cluster: systems_infra
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - data_parallelism
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: mixed_precision
+  name: 混合精度训练
+  aliases:
+  - Mixed Precision Training
+  cluster: systems_infra
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/html/2407.21783v3
+    confidence: medium
+  requires:
+  - gpu_compute
+  note: 按来源可读章节归纳；依赖为稀疏机制先修，非目录顺序。
+- id: holistic_evaluation
+  name: 全维度模型评估
+  aliases:
+  - Holistic Model Evaluation
+  - HELM
+  cluster: evaluation
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2211.09110
+    confidence: medium
+  requires:
+  - benchmarking
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: llm_as_judge
+  name: 模型裁判
+  aliases:
+  - LLM-as-Judge
+  cluster: evaluation
+  importance: medium
+  source:
+    type: model
+    ref: WP-1b 编辑补洞；相邻外部概念见 https://arxiv.org/abs/2211.09110
+    confidence: low
+  requires:
+  - benchmarking
+  note: 模型归纳的诊断概念，非来源直接命名；待专项来源复核。
+- id: agent_benchmark
+  name: 代理任务评测
+  aliases:
+  - Agent Benchmark
+  - AgentBench
+  cluster: evaluation
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2308.03688
+    confidence: medium
+  requires:
+  - agent_loop
+  - benchmarking
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: web_task_success
+  name: 网页任务成功率
+  aliases:
+  - Web Task Success
+  - WebArena
+  cluster: evaluation
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2307.13854
+    confidence: medium
+  requires:
+  - browser_use
+  - benchmarking
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: desktop_task_success
+  name: 桌面任务成功率
+  aliases:
+  - Desktop Task Success
+  - OSWorld
+  cluster: evaluation
+  importance: medium
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2404.07972
+    confidence: medium
+  requires:
+  - computer_use
+  - benchmarking
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: multimodal_benchmark
+  name: 多模态学科评测
+  aliases:
+  - Multimodal Benchmark
+  - MMMU
+  cluster: evaluation
+  importance: high
+  source:
+    type: paper
+    ref: https://arxiv.org/abs/2311.16502
+    confidence: medium
+  requires:
+  - vlm
+  - benchmarking
+  note: 摘要级外部锚点；细机制/依赖为编者推断，非逐边外部证明。
+- id: svm
+  name: 支持向量机
+  aliases:
+  - Support Vector Machine
+  - SVM
+  cluster: classical_ml
+  importance: low
+  source:
+    type: model
+    ref: WP-1b 传统ML清单补洞；专项外部出处待核验
+    confidence: low
+  requires:
+  - supervised_learning
+  note: verify_pending：传统ML保留清单，专项章节待核验。
+- id: decision_tree
+  name: 决策树
+  aliases:
+  - Decision Tree
+  cluster: classical_ml
+  importance: low
+  source:
+    type: model
+    ref: WP-1b 传统ML清单补洞；专项外部出处待核验
+    confidence: low
+  requires:
+  - supervised_learning
+  note: verify_pending：传统ML保留清单，专项章节待核验。
+- id: pca
+  name: 主成分分析
+  aliases:
+  - Principal Component Analysis
+  - PCA
+  cluster: classical_ml
+  importance: low
+  source:
+    type: model
+    ref: WP-1b 传统ML清单补洞；专项外部出处待核验
+    confidence: low
+  requires:
+  - linear_algebra
+  note: verify_pending：传统ML保留清单，专项章节待核验。
