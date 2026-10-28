@@ -8,16 +8,11 @@
   aliases:
   - 矩阵乘法
   cluster: llm_foundation
-- id: eigendecomposition
-  name: Eigendecomposition
-  aliases:
-  - 特征分解
-  cluster: classical_ml
 - id: svd
   name: Singular Value Decomposition
   aliases:
   - 奇异值分解
-  cluster: classical_ml
+  cluster: llm_foundation
 - id: calculus
   name: Calculus
   aliases:
@@ -68,21 +63,6 @@
   aliases:
   - 最大似然估计
   cluster: llm_foundation
-- id: convexity
-  name: Convexity
-  aliases:
-  - 凸性
-  cluster: classical_ml
-- id: linear_regression
-  name: Linear Regression
-  aliases:
-  - 线性回归
-  cluster: classical_ml
-- id: logistic_regression
-  name: Logistic Regression
-  aliases:
-  - 逻辑回归
-  cluster: classical_ml
 - id: mlp
   name: Multilayer Perceptron
   aliases:
@@ -128,21 +108,11 @@
   aliases:
   - 泛化
   cluster: llm_foundation
-- id: bias_variance
-  name: Bias–Variance Decomposition
-  aliases:
-  - 偏差方差分解
-  cluster: classical_ml
 - id: overfitting
   name: Overfitting
   aliases:
   - 过拟合
   cluster: llm_foundation
-- id: universal_approximation
-  name: Universal Approximation Theorem
-  aliases:
-  - 通用逼近定理
-  cluster: classical_ml
 - id: cnn
   name: Convolutional Neural Network
   aliases:
@@ -152,7 +122,7 @@
   name: Recurrent Neural Network
   aliases:
   - 循环神经网络
-  cluster: classical_ml
+  cluster: architecture
 - id: attn_scaled_dot_product
   name: Scaled Dot-Product Attention
   aliases:
@@ -168,16 +138,6 @@
   aliases:
   - Transformer 架构
   cluster: architecture
-- id: lstm
-  name: Long Short-Term Memory
-  aliases:
-  - 长短期记忆网络
-  cluster: classical_ml
-- id: gru
-  name: Gated Recurrent Unit
-  aliases:
-  - 门控循环单元
-  cluster: classical_ml
 - id: encoder_decoder
   name: Encoder–Decoder Architecture
   aliases:
@@ -197,7 +157,7 @@
   name: Batch Normalization
   aliases:
   - 批量归一化
-  cluster: classical_ml
+  cluster: architecture
 - id: layer_norm
   name: Layer Normalization
   aliases:
@@ -268,16 +228,6 @@
   aliases:
   - 梯度消失
   cluster: pretraining
-- id: early_stopping
-  name: Early Stopping
-  aliases:
-  - 早停
-  cluster: pretraining
-- id: hyperparameter_optimization
-  name: Hyperparameter Optimization
-  aliases:
-  - 超参数优化
-  cluster: pretraining
 - id: fine_tuning
   name: Fine-Tuning
   aliases:
@@ -298,50 +248,15 @@
   aliases:
   - 数据预处理
   cluster: pretraining
-- id: feature_engineering
-  name: Feature Engineering
-  aliases:
-  - 特征工程
-  cluster: classical_ml
 - id: distribution_shift
   name: Distribution Shift
   aliases:
   - 分布偏移
   cluster: pretraining
-- id: missing_values
-  name: Missing Values
-  aliases:
-  - 缺失值处理
-  cluster: classical_ml
-- id: categorical_encoding
-  name: Categorical Feature Encoding
-  aliases:
-  - 类别特征编码
-  cluster: classical_ml
 - id: data_augmentation
   name: Data Augmentation
   aliases:
   - 数据增强
-  cluster: pretraining
-- id: covariate_shift
-  name: Covariate Shift
-  aliases:
-  - 协变量偏移
-  cluster: pretraining
-- id: label_shift
-  name: Label Shift
-  aliases:
-  - 标签偏移
-  cluster: pretraining
-- id: concept_shift
-  name: Concept Shift
-  aliases:
-  - 概念偏移
-  cluster: pretraining
-- id: importance_weighting
-  name: Importance Weighting
-  aliases:
-  - 重要性加权
   cluster: pretraining
 - id: supervised_learning
   name: Supervised Learning
@@ -363,11 +278,6 @@
   aliases:
   - 准确率
   cluster: evaluation
-- id: cross_validation
-  name: Cross-Validation
-  aliases:
-  - 交叉验证
-  cluster: evaluation
 - id: perplexity
   name: Perplexity
   aliases:
@@ -383,30 +293,10 @@
   aliases:
   - F1 分数
   cluster: evaluation
-- id: roc_auc
-  name: ROC AUC
-  aliases:
-  - ROC 曲线下面积
-  cluster: evaluation
-- id: confusion_matrix
-  name: Confusion Matrix
-  aliases:
-  - 混淆矩阵
-  cluster: evaluation
 - id: offline_evaluation
   name: Offline Evaluation
   aliases:
   - 离线评估
-  cluster: evaluation
-- id: online_experiment
-  name: Online Experimentation
-  aliases:
-  - 在线实验
-  cluster: evaluation
-- id: ab_testing
-  name: A/B Testing
-  aliases:
-  - A/B 测试
   cluster: evaluation
 - id: benchmarking
   name: Benchmarking
@@ -418,25 +308,10 @@
   aliases:
   - 鲁棒性
   cluster: evaluation
-- id: iou
-  name: Intersection over Union
-  aliases:
-  - 交并比
-  cluster: evaluation
 - id: model_deployment
   name: Model Deployment
   aliases:
   - 模型部署
-  cluster: efficiency_serving
-- id: batch_prediction
-  name: Batch Prediction
-  aliases:
-  - 批量预测
-  cluster: efficiency_serving
-- id: online_prediction
-  name: Online Prediction
-  aliases:
-  - 在线预测
   cluster: efficiency_serving
 - id: model_compression
   name: Model Compression
@@ -463,26 +338,6 @@
   aliases:
   - 推理吞吐量
   cluster: efficiency_serving
-- id: shadow_deployment
-  name: Shadow Deployment
-  aliases:
-  - 影子部署
-  cluster: efficiency_serving
-- id: canary_release
-  name: Canary Release
-  aliases:
-  - 金丝雀发布
-  cluster: efficiency_serving
-- id: model_monitoring
-  name: Model Monitoring
-  aliases:
-  - 模型监控
-  cluster: efficiency_serving
-- id: continual_learning
-  name: Continual Learning
-  aliases:
-  - 持续学习
-  cluster: efficiency_serving
 - id: speculative_decoding
   name: Speculative Decoding
   aliases:
@@ -498,20 +353,10 @@
   aliases:
   - 卷积
   cluster: multimodal_vision
-- id: image_classification
-  name: Image Classification
-  aliases:
-  - 图像分类
-  cluster: multimodal_vision
 - id: object_detection
   name: Object Detection
   aliases:
   - 目标检测
-  cluster: multimodal_vision
-- id: semantic_segmentation
-  name: Semantic Segmentation
-  aliases:
-  - 语义分割
   cluster: multimodal_vision
 - id: vision_transformer
   name: Vision Transformer
@@ -523,41 +368,16 @@
   name: Pooling
   aliases:
   - 池化
-  cluster: classical_ml
+  cluster: architecture
 - id: padding_stride
   name: Padding and Stride
   aliases:
   - 填充与步幅
-  cluster: classical_ml
-- id: anchor_boxes
-  name: Anchor Boxes
-  aliases:
-  - 锚框
-  cluster: classical_ml
-- id: nonmaximum_suppression
-  name: Non-Maximum Suppression
-  aliases:
-  - 非极大值抑制
-  cluster: multimodal_vision
-- id: rcnn
-  name: Region-based Convolutional Neural Network
-  aliases:
-  - 区域卷积神经网络
-  cluster: classical_ml
-- id: fcn
-  name: Fully Convolutional Network
-  aliases:
-  - 全卷积网络
-  cluster: classical_ml
+  cluster: architecture
 - id: contrastive_learning
   name: Contrastive Learning
   aliases:
   - 对比学习
-  cluster: multimodal_vision
-- id: instance_segmentation
-  name: Instance Segmentation
-  aliases:
-  - 实例分割
   cluster: multimodal_vision
 - id: diffusion_model
   name: Diffusion Model
@@ -599,12 +419,7 @@
   name: word2vec
   aliases:
   - 词向量模型 word2vec
-  cluster: classical_ml
-- id: negative_sampling
-  name: Negative Sampling
-  aliases:
-  - 负采样
-  cluster: classical_ml
+  cluster: llm_foundation
 - id: masked_language_modeling
   name: Masked Language Modeling
   aliases:
@@ -649,16 +464,6 @@
   aliases:
   - 贝尔曼方程
   cluster: rl_reasoning
-- id: value_iteration
-  name: Value Iteration
-  aliases:
-  - 价值迭代
-  cluster: classical_ml
-- id: q_learning
-  name: Q-Learning
-  aliases:
-  - Q 学习
-  cluster: classical_ml
 - id: policy_gradient
   name: Policy Gradient
   aliases:
@@ -674,11 +479,6 @@
   aliases:
   - 状态动作价值
   cluster: rl_reasoning
-- id: policy_iteration
-  name: Policy Iteration
-  aliases:
-  - 策略迭代
-  cluster: classical_ml
 - id: monte_carlo_rl
   name: Monte Carlo Methods
   aliases:
@@ -689,11 +489,6 @@
   aliases:
   - 时序差分学习
   cluster: rl_reasoning
-- id: sarsa
-  name: Sarsa
-  aliases:
-  - SARSA 算法
-  cluster: classical_ml
 - id: exploration_exploitation
   name: Exploration and Exploitation
   aliases:
@@ -734,20 +529,10 @@
   aliases:
   - 智能体工具使用
   cluster: agent_harness
-- id: parameter_server
-  name: Parameter Server
-  aliases:
-  - 参数服务器
-  cluster: classical_ml
 - id: allreduce
   name: AllReduce
   aliases:
   - 全归约
-  cluster: systems_infra
-- id: asynchronous_computation
-  name: Asynchronous Computation
-  aliases:
-  - 异步计算
   cluster: systems_infra
 - id: model_parallelism
   name: Model Parallelism
@@ -759,16 +544,6 @@
   aliases:
   - 激活检查点
   cluster: systems_infra
-- id: ml_pipeline
-  name: ML Pipeline
-  aliases:
-  - 机器学习流水线
-  cluster: systems_infra
-- id: feature_store
-  name: Feature Store
-  aliases:
-  - 特征存储
-  cluster: classical_ml
 - id: chain_of_thought
   name: Chain-of-Thought Prompting
   aliases:
@@ -1516,20 +1291,173 @@
   - 多模态学科评测
   - MMMU
   cluster: evaluation
-- id: svm
-  name: Support Vector Machine
+- id: local_context
+  name: Local Execution Context
   aliases:
-  - 支持向量机
-  - SVM
-  cluster: classical_ml
-- id: decision_tree
-  name: Decision Tree
+  - 执行侧本地上下文
+  cluster: agent_harness
+- id: llm_context
+  name: LLM-visible Context
   aliases:
-  - 决策树
-  cluster: classical_ml
-- id: pca
-  name: Principal Component Analysis
+  - 模型可见上下文
+  cluster: agent_harness
+- id: context_compaction
+  name: Context Compaction
   aliases:
-  - 主成分分析
-  - PCA
-  cluster: classical_ml
+  - 上下文压缩
+  cluster: agent_harness
+- id: turn_budget
+  name: Agent Turn Budget
+  aliases:
+  - 代理轮次预算
+  cluster: agent_harness
+- id: run_resumption
+  name: Run Resumption
+  aliases:
+  - 中断后恢复执行
+  cluster: agent_harness
+- id: conversation_state
+  name: Conversation State Management
+  aliases:
+  - 对话状态管理
+  cluster: agent_harness
+- id: streaming_tool_calls
+  name: Streaming Tool Calls
+  aliases:
+  - 流式工具调用
+  cluster: agent_harness
+- id: termination_policy
+  name: Agent Termination Policy
+  aliases:
+  - 代理终止策略
+  cluster: agent_harness
+- id: history_filtering
+  name: Conversation History Filtering
+  aliases:
+  - 会话历史筛选
+  cluster: agent_harness
+- id: memory_correction
+  name: Session Memory Correction
+  aliases:
+  - 会话记忆纠错
+  cluster: agent_harness
+- id: mcp_transport
+  name: MCP Transport Selection
+  aliases:
+  - MCP传输选择
+  cluster: agent_harness
+- id: mcp_tool_filter
+  name: MCP Tool Filtering
+  aliases:
+  - MCP工具过滤
+  cluster: agent_harness
+- id: mcp_approval
+  name: MCP Tool Approval
+  aliases:
+  - MCP工具审批
+  cluster: agent_harness
+- id: mcp_tool_caching
+  name: MCP Tool-list Caching
+  aliases:
+  - MCP工具清单缓存
+  cluster: agent_harness
+- id: input_guardrail
+  name: Input Guardrail
+  aliases:
+  - 输入护栏
+  cluster: safety_redteam
+- id: output_guardrail
+  name: Output Guardrail
+  aliases:
+  - 输出护栏
+  cluster: safety_redteam
+- id: tool_guardrail
+  name: Tool Guardrail
+  aliases:
+  - 工具级护栏
+  cluster: safety_redteam
+- id: guardrail_tripwire
+  name: Guardrail Tripwire
+  aliases:
+  - 护栏熔断语义
+  cluster: safety_redteam
+- id: guardrail_race
+  name: Parallel Guardrail Race
+  aliases:
+  - 并行护栏竞态
+  cluster: safety_redteam
+- id: kv_cache_quantization
+  name: KV Cache Quantization
+  aliases:
+  - KV缓存量化
+  cluster: efficiency_serving
+- id: fp8_inference
+  name: FP8 Inference
+  aliases:
+  - FP8推理
+  cluster: efficiency_serving
+- id: gptq
+  name: GPTQ
+  aliases:
+  - 二阶训练后量化
+  cluster: efficiency_serving
+- id: quantized_moe
+  name: Quantized MoE
+  aliases:
+  - 量化混合专家
+  cluster: efficiency_serving
+- id: prefix_cache_limits
+  name: Prefix Cache Limits
+  aliases:
+  - 前缀缓存适用边界
+  cluster: efficiency_serving
+- id: prefix_cache_key
+  name: Prefix Cache Identity Key
+  aliases:
+  - 前缀缓存身份键
+  cluster: efficiency_serving
+- id: inference_data_parallel
+  name: Inference Data Parallelism
+  aliases:
+  - 推理数据并行
+  cluster: systems_infra
+- id: inference_tensor_parallel
+  name: Inference Tensor Parallelism
+  aliases:
+  - 推理张量并行
+  cluster: systems_infra
+- id: inference_pipeline_parallel
+  name: Inference Pipeline Parallelism
+  aliases:
+  - 推理流水并行
+  cluster: systems_infra
+- id: moe_dispatch
+  name: MoE Dispatch Communication
+  aliases:
+  - 专家分发通信
+  cluster: systems_infra
+- id: iterative_posttraining
+  name: Iterative Post-training
+  aliases:
+  - 迭代后训练
+  cluster: posttraining_alignment
+- id: preference_annealing
+  name: Preference Data Annealing Selection
+  aliases:
+  - 偏好数据退火选择
+  cluster: posttraining_alignment
+- id: sft_loss_mask
+  name: SFT Loss Mask
+  aliases:
+  - 指令训练损失掩码
+  cluster: posttraining_alignment
+- id: reward_ensemble
+  name: Reward Model Ensemble
+  aliases:
+  - 奖励模型集成
+  cluster: posttraining_alignment
+- id: preference_margin
+  name: Preference Margin Modeling
+  aliases:
+  - 偏好间隔建模
+  cluster: posttraining_alignment
