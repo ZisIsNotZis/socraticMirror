@@ -1,11 +1,16 @@
 - id: scen_rank_deficient
   title: 嵌入矩阵重复方向与低秩适配
-  brief: 7B模型的4096维嵌入中出现重复方向；LoRA秩8，显存24GB，团队把秩调到256却无验证集收益。
+  brief: 本地离线7B模型做LoRA适配，32层宽4096、32头，B=1、长度512、bf16、checkpointing开、FlashAttention开；24GiB卡仅余0.5GiB。秩8与256在同一留出集误差均为12%，更新矩阵前8个奇异值占平方和99%。
+  required_observables:
+  - 24GiB仅余0.5GiB
+  - 秩8与256误差均12%
+  - 前8奇异值能量99%
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 如何验证秩亏并稳定求解，而不是只加一行逆矩阵调用？
+    angle: 在剩余显存内制定下一轮秩选择实验。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只够训练一个新配置，你会把预算投给更高秩还是数据修订？
   instantiates:
   - linear_algebra
   - matrix_multiplication
@@ -21,12 +26,18 @@
     ref: https://arxiv.org/html/2407.21783v3 — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_pca_budget
   title: 检索嵌入低秩压缩
-  brief: 10000条2048维大模型嵌入需压到64维；内存512MiB，查询和文档却用了不同投影。
+  brief: 离线CPU检索库有10000条2048维float32向量，要输出64维表示；进程内存上限512MiB。原空间召回@10为90%，压缩后为40%；同一文本经查询接口和入库接口所得64维向量余弦为0.05，原空间为1。
+  required_observables:
+  - 10000×2048 float32
+  - 64维
+  - 512MiB
+  - 同文余弦0.05
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 比较中心化后协方差特征分解与直接截断 SVD 的关系及内存。
+    angle: 设计一套不超内存的压缩检索修复流程。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能保留一套投影，你如何选择拟合数据而不牺牲留出评估？
   instantiates:
   - svd
   - matrix_multiplication
@@ -42,12 +53,18 @@
     ref: https://arxiv.org/abs/2004.04906 — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_robust_constant
   title: 预训练长尾样本主导损失
-  brief: 300B token语料中1%损坏文本造成40%总loss，训练只能再跑2天，团队准备直接删掉所有高loss样本。
+  brief: 300B token语料的抽样审计中，1%样本贡献40%总交叉熵；其中既有不可解析的重复符号串，也有语法正确的罕见代码。只剩两天训练预算，无法重爬语料。
+  required_observables:
+  - 1%贡献40%loss
+  - 符号串与罕见代码并存
+  - 两天
+  - 不能重爬
+  symptom_shape: degradation
   asks:
   - type: application
-    angle: 推导平方损失与绝对损失最优常数，并解释目标尺度。
+    angle: 制定剩余两天内的语料过滤方案。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能人工审计一类高loss样本，你先选哪类以降低误删代价？
   instantiates:
   - calculus
   - maximum_likelihood
@@ -62,13 +79,18 @@
     type: engineering
     ref: https://arxiv.org/html/2407.21783v3 — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_xor_mlp
-  title: Transformer前馈层误删激活
-  brief: 7B模型把SwiGLU替换成两层无激活Linear，训练2000步后代码能力下降；预算只够2组消融。
+  title: 前馈改版后的表达能力退化
+  brief: 本地离线7B decoder继续训练，32层32层宽4096、32头，B=1、长度2048、bf16、checkpointing与FlashAttention均开。一次前馈模块改版后代码留出正确率由40%降到30%，同预算旧版仍40%；改版模块的输入沿任意两点插值时，输出等于两输出插值，误差低于1e-5。只够两组2000步消融。
+  required_observables:
+  - 插值误差低于1e-5
+  - 40%到30%
+  - 两组2000步
+  symptom_shape: degradation
   asks:
   - type: application
-    angle: 从表达能力和梯度而非调大训练轮数入手定位。
+    angle: 安排两组能检验前馈表达能力的消融。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能保留旧版或改版上线，你依据什么证据承担相应代价？
   instantiates:
   - mlp
   - activation
@@ -84,12 +106,18 @@
     ref: https://arxiv.org/html/2407.21783v3 — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_gradient_graph
   title: 共享参数的梯度验算
-  brief: 改写 D2L 反向传播习题：单批 16×32 输入，经共享 W 的两个分支求和后接标量损失；手写反向仅保留最后分支梯度，有限差分误差约 50%。
+  brief: CPU float64梯度验算：X为16×32全1，W为32×1，两条相同分支各计算XW，再将两输出所有元素求和为L。有限差分每个W元素得32，手写反向得16；无随机层。只能改一个反向节点。
+  required_observables:
+  - X全1为16×32
+  - 两个相同分支
+  - 差分32而反向16
+  - float64
+  symptom_shape: bias
   asks:
   - type: diagnosis
-    angle: 画出共享节点并说明梯度形状和累加位置。
+    angle: 定位应修改的反向节点。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 预算只够维护数值差分或解析单测之一，你保留哪个检查？
   instantiates:
   - backpropagation
   - computational_graph
@@ -106,13 +134,18 @@
     ref: https://d2l.ai/chapter_multilayer-perceptrons/backprop.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_batch_timing
   title: 数据翻倍后学习率日程失真
-  brief: 改写 D2L minibatch SGD 的重复数据习题：原 10000 样本，batch=100，每 10 epoch 降学习率十倍；数据被逐条复制成 20000 条，同事保持 epoch 数比较 SGD
-    与全批梯度下降。
+  brief: 10000样本逐条复制成20000，均值损失目标不变；B=100，每10 epoch学习率除10。两组都训练10 epoch后，复制组已更新2000次，原组1000次；只能再跑与原组相同1000步的对照。
+  required_observables:
+  - 10000到20000
+  - B=100
+  - 10epoch衰减
+  - 1000步对照
+  symptom_shape: bias
   asks:
   - type: diagnosis
-    angle: 区分经验目标、更新次数与墙钟时间，给出公平对照。
+    angle: 重设复制组的日程以完成公平对照。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只允许按步数或按遍历次数对齐一种预算，你选哪种来回答优化效率问题？
   instantiates:
   - gradient_descent
   - sgd
@@ -128,12 +161,18 @@
     ref: https://d2l.ai/chapter_optimization/minibatch-sgd.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_adam_sparse
   title: 稀疏词向量的自适应步长
-  brief: 沿 D2L Adam 的一二阶矩更新：词表 50000，embedding 维数 128，常见词每步更新而罕见词隔 1000 步才出现；从 SGD 改 Adam 后前十步损失跳变。
+  brief: 词表50000、维128的嵌入训练单元测试，float32、B=1、无注意力与checkpointing。对一个坐标连续输入梯度1，Adam的β1=0.9、β2=0.999、ε=1e-8、学习率1e-3；第1步参数改变量实测0.003162，成熟阶段约0.001。真实数据罕见词每1000步出现一次。
+  required_observables:
+  - 首步0.003162
+  - β1=.9与β2=.999
+  - 成熟步.001
+  - 罕见词间隔1000
+  symptom_shape: bias
   asks:
   - type: diagnosis
-    angle: 追踪前几步矩估计与偏差校正，而不是断言 Adam 总比 SGD 稳。
+    angle: 设计修复首步尺度偏差的验证。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只有一次重训预算，你先修优化器还是先调学习率？
   instantiates:
   - adam
   - sgd
@@ -149,12 +188,18 @@
     ref: https://d2l.ai/chapter_optimization/adam.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_bn_small_batch
   title: 显存限制下的 BN 统计量
-  brief: ResNet级预训练视觉骨干以每卡2张图在4卡继续训练，BN验证波动；对照ViT的LayerNorm，显存只剩1GB。
+  brief: 本地4卡ResNet-50继续训练，float32、每卡B=2、224平方图像，checkpointing关，无注意力；每卡只余1GiB。固定验证图在train模式输出类A概率0.8，eval模式0.4，连续20轮都是稳定差距而非尖峰；末层BN的运行均值0、方差1，当前域输入均值2、方差1。
+  required_observables:
+  - 每卡B=2
+  - 剩余1GiB
+  - train .8/eval .4
+  - 运行均值0与当前均值2
+  symptom_shape: bias
   asks:
   - type: diagnosis
-    angle: 先审计运行统计量、每卡统计与推理模式。
+    angle: 在显存不增加下修订验证与归一化方案。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只够做一次同步BN或统计量重估实验，你先选哪个？
   instantiates:
   - batch_norm
   - minibatch_sgd
@@ -170,12 +215,18 @@
     ref: https://d2l.ai/chapter_convolutional-modern/batch-norm.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_house_leak
   title: 预训练去污染中的划分泄漏
-  brief: 10万条指令先扩写5倍再随机划分，验证分高20点；原始作者信息缺失且不能重标。
+  brief: 10万原始指令各有5个改写版本，50万条记录随机80/20划分后验证80%，外部独立题60%；验证中抽100条有67条能在训练集找到近重复。作者信息缺失，不能重新标注。
+  required_observables:
+  - 5改写
+  - 80/20划分
+  - 近重复67/100
+  - 不能重标
+  symptom_shape: silent
   asks:
   - type: diagnosis
-    angle: 设计不读取留出标签的特征与验证流水线。
+    angle: 重建可用的留出集。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能牺牲留出集规模或放宽去重阈值，你如何取舍？
   instantiates:
   - train_test_split
   - validation_split
@@ -191,12 +242,18 @@
     ref: https://arxiv.org/html/2407.21783v3 — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_shift_monitor
   title: 模型迁移到新域后失准
-  brief: 客服大模型上线新地区后拒答率从5%涨到25%；方言占30%，日志禁止留原文。
+  brief: 本地客服上线新地区，拒答率5%变25%，方言占30%；同一固定探针在新旧服务拒答一致。日志不能保留请求原文，也不能出网；可在本地由授权审核员查看一次抽样。
+  required_observables:
+  - 拒答5%到25%
+  - 方言30%
+  - 固定探针一致
+  - 原文不留存不出网
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 区分输入漂移警报与性能已经下降的证据。
+    angle: 设计能区分输入迁移与策略变化的本地评估。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能审核方言或非方言一层，你先审核哪层？
   instantiates:
   - distribution_shift
   - model_calibration
@@ -212,12 +269,18 @@
     ref: https://arxiv.org/html/2407.21783v3 — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_rare_fraud
   title: 安全分类头的高准确率陷阱
-  brief: 10000条LLM安全请求只有50条攻击，护栏全放行仍有99.5%准确率；误拒普通用户有业务成本。
+  brief: 10000条请求中50条攻击，全放行的护栏准确率99.5%。本地审核每天最多100条；候选阈值A触发100条含40次攻击，阈值B触发500条含48次攻击，未审核默认不放行会误拒普通用户。
+  required_observables:
+  - 50/10000攻击
+  - 每日审核100
+  - A为40/100
+  - B为48/500
+  symptom_shape: silent
   asks:
   - type: application
-    angle: 根据审核容量选阈值并用混淆矩阵量化漏报。
+    angle: 给出满足审核容量的上线阈值策略。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 扩容不可能时，你优先漏报风险还是普通用户可用性，如何落地这一选择？
   instantiates:
   - precision_recall
   - accuracy
@@ -233,12 +296,17 @@
     ref: https://google.github.io/adk-docs/safety/ — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_calibrate
   title: 正确率不变却风险定价错误
-  brief: 沿 scikit-learn 温度缩放例子：三分类模型准确率 85%，声称置信度 0.9 的 1000 条记录实际仅 700 条正确；另留出 2000 条校准数据。
+  brief: 三分类模型准确率85%，置信度为0.9的一组1000条记录只有700条正确；有独立2000条带标签校准集和未使用测试集。业务按置信度决定是否人工复核，不能改变类别排序。
+  required_observables:
+  - 0.9组700/1000
+  - 独立2000校准
+  - 类别排序不得改
+  symptom_shape: bias
   asks:
   - type: diagnosis
-    angle: 解释为何提高概率可信度不一定提升 argmax 正确率。
+    angle: 修订供人工复核使用的概率输出。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只够做一次总体温度拟合或分群审计，你优先哪项？
   instantiates:
   - model_calibration
   - accuracy
@@ -254,12 +322,18 @@
     ref: https://scikit-learn.org/stable/modules/calibration.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_perplexity_tokens
   title: 不同 tokenizer 的困惑度不能直比
-  brief: 沿 D2L 语言模型：同一 10000 字符测试文本，模型 A 切成 5000 token，模型 B 为 8000 token；两者报告 token perplexity 18 与 12，团队欲宣布 B 更强。
+  brief: 相同10000个ASCII字符测试串，含相同边界处理且无未知词；A切5000 token、PPL18，B切8000 token、PPL12。只能用已存逐token logprob出一份发布比较，不能重跑。
+  required_observables:
+  - 10000 ASCII字节
+  - A5000/PPL18
+  - B8000/PPL12
+  - 不可重跑
+  symptom_shape: bias
   asks:
   - type: diagnosis
-    angle: 将归一化单位与测试文本固定后再比较。
+    angle: 用现有记录制定统一单位的比较结论。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能以压缩率或业务问答质量作发布主指标，你会如何选取可支持的主张？
   instantiates:
   - perplexity
   - language_model
@@ -275,12 +349,19 @@
     ref: https://d2l.ai/chapter_recurrent-neural-networks/rnn.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_batch_online
   title: prefill批处理拖慢短请求
-  brief: 长短请求长度相差100倍；批量32时吞吐高但短请求P99达8秒，SLO为2秒且只一张卡。
+  brief: 本地一张80GiB卡推理7B，32层宽4096、32Q/8KV头、头维128，bf16、checkpointing不适用、FlashAttention开；B上限32，输入320与32000 token混合，输出均32。短请求P99为8秒，SLO2秒；监控显示短请求等待长prefill占6秒，不能增卡。
+  required_observables:
+  - 输入320/32000
+  - B≤32
+  - P99=8s
+  - 等待prefill6s
+  - SLO2s
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 划定特征可用时间并验证训练和服务语义一致。
+    angle: 改造单卡调度以保护短请求SLO。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 预算只够实现分块prefill或增大批量，你先实现哪个？
   instantiates:
   - prefill_decode
   - continuous_batching
@@ -296,12 +377,19 @@
     ref: https://arxiv.org/abs/2309.06180 — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_distill_edge
   title: 端侧压缩不是只看参数量
-  brief: 改写蒸馏论文的集成到单模型任务：教师为 5 模型集成，学生要在 4 GiB 手机上运行，模型文件上限 50 MiB、单条 p95 低于 80 ms；只能用现有带标签训练集。
+  brief: 教师为5模型集成，学生用于不联网的本地4GiB手机；文件上限50MiB、单条p95<80ms，仅可用现有带标签训练集离线取得教师输出。候选学生float32权重2000万，实测p95为100ms，峰值300MiB。
+  required_observables:
+  - 离线手机4GiB
+  - 50MiB
+  - 80ms
+  - 20M float32
+  - 100ms
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 设计学生训练与真实端侧验收，不把压缩率当延迟加速率。
+    angle: 制定满足端侧验收的学生压缩训练方案。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能优先做量化或蒸馏，你先选哪个以解除硬阻塞？
   instantiates:
   - model_compression
   - knowledge_distillation
@@ -317,12 +405,18 @@
     ref: https://arxiv.org/abs/1503.02531 — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_beam_translation
   title: 翻译 beam 加宽反而偏短
-  brief: 沿 D2L beam search：中英翻译最长输出 64 token，beam 从 1 改 8，单请求预算 200 ms；总 log 概率更优但译文常提前输出 EOS。
+  brief: 本地离线翻译服务输出最多64 token，预算200ms；同一批句子beam1为80ms、beam8为260ms。beam8选出短译文总logprob=-8，完整译文=-12；参考长度约40词，短译文仅10词且漏掉否定句。
+  required_observables:
+  - 64token
+  - 200ms
+  - beam8 260ms
+  - 短-8完整-12
+  symptom_shape: bias
   asks:
   - type: application
-    angle: 解释搜索目标、长度偏置和延迟，而不是只加宽 beam。
+    angle: 修订满足时延的解码目标与配置。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只准上线一种beam宽度，你如何在漏译与时延间取舍？
   instantiates:
   - beam_search
   - autoregressive_decoding
@@ -337,12 +431,19 @@
     ref: https://d2l.ai/chapter_recurrent-modern/beam-search.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_lenet_shapes
   title: ResNet与ViT的小目标信息损失
-  brief: 预训练视觉骨干输入224，4像素药片经连续stride2后消失；端侧内存2GB，不能直接全图4K。
+  brief: 本地离线端侧2GiB内存，输入224平方图像中药片宽4像素；骨干连续5次3×3卷积、stride2、padding1。最终7×7特征对药片有无给出相同响应；不能整幅升到4K，但允许裁剪。
+  required_observables:
+  - '224'
+  - 药片4像素
+  - 五次stride2
+  - 2GiB
+  - 不可4K
+  symptom_shape: degradation
   asks:
   - type: application
-    angle: 逐层计算形状，区分参数共享与下采样损失。
+    angle: 设计保留药片证据的输入方案。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能提升全图分辨率或做局部裁剪，你选哪一个满足端侧约束？
   instantiates:
   - convolution
   - cnn
@@ -358,12 +459,19 @@
     ref: https://arxiv.org/abs/2306.13549 — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_crowded_nms
   title: 视觉大模型定位评估的重复框
-  brief: VLM定位100张货架图，重复输出300个框以提高召回；标签只含主要物体，脏遮挡占40%。
+  brief: 离线VLM定位100张货架图，每图3个候选框；共300框中有100对IoU>.9，40张严重遮挡。标注只覆盖主要物体，未覆盖的小物体也被算法检出；只够人工复核20张。
+  required_observables:
+  - 100图300框
+  - 100对IoU>.9
+  - 40遮挡
+  - 标签不全
+  - 复核20图
+  symptom_shape: bias
   asks:
   - type: diagnosis
-    angle: 说明重叠不一定是重复目标，并选择可验证的修复方向。
+    angle: 制定可验证的定位误差审计方案。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能优先去重或补标一项，你如何决定？
   instantiates:
   - visual_grounding
   - object_detection
@@ -379,12 +487,18 @@
     ref: https://arxiv.org/abs/2306.13549 — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_segmentation_crop
   title: 视觉指令数据增广破坏指代
-  brief: 500张带框指令图随机裁剪后仍使用原坐标；20%问题指向右侧物体，不能重新标整批图。
+  brief: 500张带框指令图做裁剪增广；原图1000×1000中框[600,100,800,300]，裁剪窗口[500,0,1000,500]后预览仍画在[600,100,800,300]，框越过新图右界。20%问题用左右方位指代，不能重标整批。
+  required_observables:
+  - 框坐标
+  - 裁剪窗口
+  - 20%方位指代
+  - 不能整批重标
+  symptom_shape: bias
   asks:
   - type: diagnosis
-    angle: 从标签几何和离散类别语义解释训练失败。
+    angle: 修复这批增广样本的监督。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能自动保留坐标可修样本或人工修全部方位指代，你选哪条路线？
   instantiates:
   - visual_instruction_tuning
   - data_augmentation
@@ -400,12 +514,21 @@
     ref: https://arxiv.org/abs/2306.13549 — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_vit_resolution
   title: ViT分辨率翻倍的预算
-  brief: ViT输入224升448，patch16不变；显存只有16GB，团队以为注意力只增加4倍。
+  brief: 本地ViT-B/16训练，12层宽768、12头，B=8、bf16、checkpointing关、FlashAttention关；16GiB卡224输入峰值5GiB，其中注意力分数相关张量约0.2GiB。改448后报CUDA
+    out of memory；patch16不变，需保留细粒度目标。
+  required_observables:
+  - 224→448
+  - patch16
+  - B8 bf16
+  - 无checkpoint/flash
+  - 16GiB
+  - 分数0.2GiB
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 估算 token 数、注意力矩阵与位置编码迁移成本。
+    angle: 制定能保留细目标的单卡训练方案。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能开省显存内核或缩回224，你如何选择并接受代价？
   instantiates:
   - vision_transformer
   - transformer
@@ -421,12 +544,19 @@
     ref: https://arxiv.org/abs/2205.14135 — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_rnn_detach
   title: 长序列 RNN 的状态和梯度
-  brief: 沿 D2L 字符语言模型：训练文本分为长 32 的片段，hidden 跨片段传递，运行第 100 个片段时显存持续增长；采样器还会随机重排片段。
+  brief: 本地单层RNN宽1024，float32训练，B=32、片段长32，无注意力、checkpointing关。每个新片段前向后记录图保存张量，约多4MiB，第100段比第1段多约396MiB；随机重排片段时同句首输出也随前一段改变。内存预算只余128MiB。
+  required_observables:
+  - 每段4MiB
+  - 100段396MiB
+  - B32/T32/H1024
+  - 随机重排
+  - 余128MiB
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 分别定位计算图增长与随机片段的状态污染。
+    angle: 修订片段之间的状态管理。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能保留32步截断梯度或100段全回传，你在128MiB余量下选哪种？
   instantiates:
   - rnn
   - backpropagation
@@ -442,13 +572,19 @@
     ref: https://d2l.ai/chapter_recurrent-neural-networks/rnn.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_attention_scale
   title: 高维注意力 logits 饱和
-  brief: 沿 D2L scaled dot-product attention：Q 为 2×8×128×64，K/V 长 256，bf16；训练时打印 softmax 前的 logits，数值在 ±40 量级；
-    注意力权重几乎 one-hot，梯度很小、loss 不动；padding 位置上的权重也不为 0。
+  brief: 局部注意力单元训练测试，B=2、8头、Q长128、KV长256、头维64、bf16，非完整模型，checkpointing和FlashAttention关。Q/K分量样本均值0方差1；softmax前logits标准差约8、极值±40，一行最大与次大差16，最大权重>.999；padding位置也有非零权重。改动不得改变有效token语义。
+  required_observables:
+  - Q2×8×128×64
+  - KV长256
+  - std8
+  - 首两差16
+  - padding非零
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 推导张量形状并区分缩放与 mask 两个问题。
+    angle: 修订该单元的注意力计算。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只够加一条回归测试，你优先测填充不变性还是长序列吞吐？
   instantiates:
   - attn_scaled_dot_product
   - multihead_attention
@@ -463,20 +599,26 @@
     type: engineering
     ref: https://d2l.ai/chapter_attention-mechanisms-and-transformers/attention-scoring-functions.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_causal_mask
-  title: 训练能偷看答案的 Transformer
-  brief: 改写 D2L Transformer 语言建模习题：decoder-only 序列长 1024，训练 loss=0.02，但逐 token 生成失败；实现用了双向 encoder mask，并未右移标签。
+  title: 低训练损失与前缀不变性冲突
+  brief: 本地decoder训练，6层宽512、8头，B=4、长1024、bf16，checkpointing关、FlashAttention关；teacher-forced loss=.02。自由续写在提示结束后逐字重复提示最后一词。固定前缀只替换后半段，前半段对应logits明显改变；同样测试已训练正常模型不变。只可用现有token缓存重训。
+  required_observables:
+  - loss .02
+  - 后缀扰动改变前缀logits
+  - 对照不变
+  - 现有缓存
+  symptom_shape: silent
   asks:
   - type: diagnosis
-    angle: 审计因果可见性与标签对齐并给最小泄漏测试。
+    angle: 设计修复并验证自回归训练合法性的流程。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只够重训一次，你先修可见性还是先换位置编码？
   instantiates:
   - transformer
   - attn_scaled_dot_product
   - positional_encoding
   - language_model
   expected_elements:
-  - 机制: 自回归位置 t 只能依赖已知前缀；未移位标签和双向注意力均可泄漏待预测 token。
+  - '机制: 未来扰动改变过去logits违反因果可见性；标签对齐错误可共存，但不能仅据此断言未右移。'
   - 应用: 右移输入/标签并使用因果 mask，扰动未来 token 检查过去位置 logits 是否不变。
   - 边界: 低 teacher-forced loss 不证明自由生成质量；位置编码也不替代因果 mask。
   difficulty: high
@@ -485,12 +627,19 @@
     ref: https://d2l.ai/chapter_attention-mechanisms-and-transformers/transformer.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_word_vectors
   title: 大模型分词与罕见词表示
-  brief: 7B模型处理2000个新药名，每词被切成10个token；词表不可改，延迟预算1秒。
+  brief: 本地离线7B服务词表冻结，2000个新药名平均每词10个子词，普通词平均2个；每请求20药名，仅药名已200token，实测首token1.4s而预算1s。有旧静态word2vec表但新药名均无整词条目；不得改词表。
+  required_observables:
+  - 2000药名10子词
+  - 每请求20
+  - 1.4s/1s
+  - 词表冻结
+  - 静态表无条目
+  symptom_shape: degradation
   asks:
   - type: application
-    angle: 说明负采样降低什么成本，如何处理低频和未登录词。
+    angle: 设计不改词表的药名处理方案。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只够维护检索词典或做域适配一项，你优先哪项？
   instantiates:
   - word_embedding
   - tokenization
@@ -506,12 +655,19 @@
     ref: https://arxiv.org/html/2407.21783v3 — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_bert_mask
   title: 把 BERT 当自由生成模型
-  brief: 沿 D2L BERT：512 token 上限的双向编码器，客服要在 800 token 工单后续写 100 token；团队把最后一个隐藏向量接词表 softmax 循环生成。
+  brief: 本地不联网客服只有512token上限的BERT编码器，要处理800token工单并续写100token。验收输入在第700token才出现关键金额；截取前512后答案漏金额，现有100条测试可用，无预算重新预训练。
+  required_observables:
+  - 上限512
+  - 工单800
+  - 金额在700
+  - 续写100
+  - 无预训练预算
+  symptom_shape: degradation
   asks:
   - type: application
-    angle: 比较预训练目标、可见上下文和目标任务。
+    angle: 制定可交付的客服输出方案。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能部署分段抽取或追加生成模型一项，你如何缩小承诺范围？
   instantiates:
   - bert
   - masked_language_modeling
@@ -527,12 +683,19 @@
     ref: https://d2l.ai/chapter_natural-language-processing-pretraining/bert.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_rag_freshness
   title: 知识更新后 RAG 仍答旧政策
-  brief: 改写 RAG 论文的检索加生成结构：10 万条公司政策段落，日更新一次，每次检索 top-5，答案需 2 秒内给出处；新政策已入库但检索仍返回旧版。
+  brief: 云端内部RAG可访问政策库但不能访问公网；10万段每日更新，top5、2s内需附出处。新版政策v2已能按ID读取；相同查询top5全为v1；强制提供v2上下文时生成器答对并引用v2。不允许重训生成器。
+  required_observables:
+  - v2按ID可读
+  - top5全v1
+  - 强制v2答对
+  - 2s
+  - 不重训
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 区分检索召回、索引新鲜度与生成器使用证据的问题。
+    angle: 制定2秒内能生效的知识更新修复方案。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只够重建索引或提高top-k，你先改哪处？
   instantiates:
   - retrieval_augmented_generation
   - word_embedding
@@ -548,12 +711,19 @@
     ref: https://arxiv.org/abs/2005.11401 — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_grid_value
   title: 工具代理长回合折扣选择
-  brief: 网页代理最多30步才获终态奖励，折扣0.8，10%工具返回失败；不能给每步人工标签。
+  brief: 网页代理一条任务需30次工具动作，只有成功终态奖励1，γ=.8；每次工具独立10%失败，任一次失败即终止且奖励0。不能人工标每步，最多30次调用。当前成功轨迹开头的折扣回报接近.001。
+  required_observables:
+  - 30动作
+  - γ.8
+  - 独立失败10%
+  - 失败终止
+  - 无逐步标签
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 写出 Bellman 最优备份并解释 gamma 与终止条件。
+    angle: 重设价值目标以避免长任务信号被过度压低。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只允许提高折扣或引入可验证子目标奖励，你优先哪项？
   instantiates:
   - mdp
   - bellman_equation
@@ -569,12 +739,18 @@
     ref: https://arxiv.org/abs/2308.03688 — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_grid_q
   title: 离线工具轨迹训练的分布外动作
-  brief: 5000条离线工具轨迹只使用3种动作，上线有6种；真实付款不能用随机探索验证。
+  brief: 有5000条离线工具轨迹只覆盖3种动作，上线接口提供6种；未见的付款动作被模型估值最高，但离线文件没有其回报记录。真实账户不能随机探索，允许无资金沙箱，部署截止前仅能收集500条新轨迹。
+  required_observables:
+  - 5000轨迹3/6动作
+  - 付款无回报记录
+  - 真实不可探索
+  - 沙箱500条
+  symptom_shape: silent
   asks:
   - type: diagnosis
-    angle: 分开数据采集策略、训练目标及测试策略。
+    angle: 制定这次上线的动作准入策略。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 500条沙箱预算优先补新动作还是复测旧动作，你如何分配？
   instantiates:
   - mdp
   - exploration_exploitation
@@ -590,12 +766,19 @@
     ref: https://arxiv.org/abs/2308.03688 — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_pg_baseline
   title: 策略梯度的高方差回报
-  brief: 沿 Spinning Up policy gradient 的 reward-to-go 与 baseline 推导：机器人模拟每回合 200 步，每轮 20 条轨迹；奖励大多为 0、成功时 100，梯度方向波动很大。
+  brief: 模拟机器人每回合200步，每轮20条轨迹，成功终奖100其余0；固定策略独立成功率5%，γ=1。相邻轮成功轨迹数0、2、0、1时，平均回报0、10、0、5，梯度范数随之出现峰谷；不能增加轨迹数。
+  required_observables:
+  - 20轨迹
+  - 5%成功
+  - 终奖100
+  - γ1
+  - 不能扩样
+  symptom_shape: spike
   asks:
   - type: diagnosis
-    angle: 说明为何可减状态基线并如何避免引入动作相关偏差。
+    angle: 设计降低这轮策略梯度估计方差的更新方案。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能先实现状态价值基线或增加重复更新，你选哪项？
   instantiates:
   - policy_gradient
   - expectation
@@ -610,34 +793,50 @@
     type: engineering
     ref: https://spinningup.openai.com/en/latest/spinningup/rl_intro3.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_gpu_graph_memory
-  title: 反向图超出单卡显存
-  brief: 改写 D2L 反向传播的显存习题：MLP 三层各 8192 宽，batch=128，单卡 16 GiB；前向能跑而 backward OOM，另有一张同规格卡可用。
+  title: 四层MLP的训练状态显存预算
+  brief: 本地单卡16GiB训练四层16384→16384的无偏置MLP，ReLU，B=128、float32、checkpointing关，无注意力。只预分配权重和两个float32 Adam状态，无其他常驻大张量；前向完成，反向为全部权重分配梯度时报CUDA
+    out of memory。另有一张16GiB卡但互联慢。
+  required_observables:
+  - 四层16384方阵
+  - B128 fp32
+  - 两个Adam状态
+  - 16GiB
+  - 反向OOM
+  symptom_shape: crash
   asks:
   - type: diagnosis
-    angle: 将参数、梯度、优化器状态和激活分开估算。
+    angle: 制定可在现有两卡完成训练的内存方案。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能改激活检查点或分片参数状态，你先选哪项？
   instantiates:
   - gpu_compute
   - backpropagation
   - activation_checkpointing
   - model_parallelism
   expected_elements:
-  - 机制: 训练保存中间激活并分配梯度/优化器状态，推理内存不能直接当训练需求。
-  - 应用: 测峰值并按张量估算，减小微批或检查点重算；跨卡分层时评估激活传输。
-  - 边界: 两卡数据并行复制模型不解决模型自身放不下；检查点以额外计算换激活内存。
+  - '机制: 四层方阵权重4GiB、两份Adam状态8GiB，反向梯度另4GiB；激活很小但峰值仍越过16GiB。'
+  - '应用: 以张量账本与实测峰值决定参数/梯度/优化器分片，跨卡分层时评估慢互联代价。'
+  - '边界: 检查点主要节省激活，不能消除16GiB常驻训练状态；复制式数据并行也不解决单副本超预算。'
   difficulty: high
   source:
     type: exercise
     ref: https://d2l.ai/chapter_multilayer-perceptrons/backprop.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_ddp_small_batch
   title: 两卡训练不是两倍有效吞吐
-  brief: 改写 D2L 反向传播的多 GPU 习题：两卡各处理 32 样本，模型含 1 亿 float32 参数；每步计算 20 ms，互联有效 10 GB/s，同事认为复制模型无需同步即可等价 batch=64。
+  brief: 本地两卡float32训练1亿参数模型，每卡B32，每步局部计算20ms，checkpointing关，无注意力。有效单向互联10GB/s，梯度无压缩且不与计算重叠；实测同步步约60ms，不能换网络。两卡需优化同一个全局B64均值损失。
+  required_observables:
+  - 100M fp32
+  - B32每卡
+  - 20ms
+  - 10GB/s
+  - 不重叠
+  - 全局B64
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 从平均损失梯度定义推导同步需求并估算通信数量级。
+    angle: 修订训练配置以提高有效吞吐且保持全局目标。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能加梯度累积或异步独立更新，你选哪项？
   instantiates:
   - data_parallelism
   - gpu_compute
@@ -653,12 +852,18 @@
     ref: https://d2l.ai/chapter_multilayer-perceptrons/backprop.html — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_run_lineage
   title: 调参结果无法找到对应制品
-  brief: 改写 ML Test Score 的可复现性检查：一周跑 40 次模型，最佳验证分 0.91，但文件均名 model.pt；预处理词表昨天更新，线上预测无法复现，只有一张旧 GPU 可回放。
+  brief: 本地一周40次实验最佳验证.91；权重目录仅剩一个model.pt，词表昨天更新后相同固定输入预测类别变了；没有历史词表副本。只有一张旧GPU能回放，不能重做40次。
+  required_observables:
+  - 40次仅1文件
+  - '.91'
+  - 词表无历史
+  - 1旧GPU不可重跑全部
+  symptom_shape: silent
   asks:
   - type: application
-    angle: 定义一次实验必须绑定的输入与发布制品。
+    angle: 制定下一次可追溯发布的制品绑定方案。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能先保存完整版本包或先追求跨硬件逐位复现，你优先哪个？
   instantiates:
   - experiment_tracking
   - model_versioning
@@ -674,12 +879,18 @@
     ref: https://arxiv.org/abs/1607.00673 — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_agent_webshop
   title: 购物 agent 的失败动作与预算
-  brief: 改写 ReAct 的 WebShop 交互任务：只有 10 次工具调用和 30 秒预算，要买价格低于 50 美元、蓝色且 M 码的商品；搜索返回商品摘要，详情页却显示 M 码缺货。
+  brief: 联网云端购物模拟器中，代理总预算10次工具调用、30秒；目标含运费总价<50美元、蓝色M码。已用7次和21秒，摘要说有货，详情显示M缺货；单次调用最多3秒，没有真实付款授权。
+  required_observables:
+  - 剩3调用9秒
+  - 含运费<50
+  - 蓝M缺货
+  - 仅模拟无付款
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 解释思考、行动与观察循环，如何证明完成而非仅输出意图。
+    angle: 决定代理接下来应执行的一个动作。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只够核验一个候选或直接终止，你如何取舍？
   instantiates:
   - agent_tool_use
   - language_model
@@ -695,12 +906,19 @@
     ref: https://arxiv.org/abs/2210.03629 — 改写自正文/习题；具体数字与故障组合为诊断任务设定，非来源实测或原题逐字转录。
 - id: scen_logistic_stability
   title: 大词表交叉熵数值溢出
-  brief: 7B模型词表128K，logits绝对值达到100，FP16训练出现NaN；不能直接改成全FP32。
+  brief: 本地7B训练，32层宽4096、B1长512、FP16、checkpointing开、FlashAttention开，词表128K。logits一行最大100、次大99、其余≤0，线性层输出有限；交叉熵输出NaN，FP32稳定参考给loss约1.313（标签为次大项）。不能全模型改FP32。
+  required_observables:
+  - logits100/99
+  - 线性输出有限
+  - 参考loss1.313
+  - FP16
+  - 不可全FP32
+  symptom_shape: crash
   asks:
   - type: application
-    angle: 分开数值稳定性和类别不平衡，不能把 NaN 归因于低正例率。
+    angle: 修复交叉熵数值路径。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能改前向归约精度或调loss scale，你先改哪项？
   instantiates:
   - softmax
   - activation
@@ -716,12 +934,19 @@
     ref: https://arxiv.org/html/2407.21783v3 — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_transfer_resolution
   title: 视觉基础模型冻结后的训练态
-  brief: ResNet预训练骨干迁移只有200张图，batch2；权重冻结但BN running stats仍更新，对照ViT。
+  brief: 本地离线ResNet-50迁移200图，每批2张、224输入、float32、checkpointing关，无注意力；训练前后权重校验和完全相同，BN缓冲均值却从0变1.5。固定验证图eval概率由.8变.5；同预算ViT对照权重与输出均不变。只能多做一次迁移实验。
+  required_observables:
+  - 200图/B2
+  - 权重相同
+  - BN均值0→1.5
+  - eval .8→.5
+  - 一次实验
+  symptom_shape: bias
   asks:
   - type: application
-    angle: 区分 requires_grad、训练模式和验证集选择。
+    angle: 修订冻结骨干的迁移流程。
   - type: boundary
-    angle: 指出该方案成立的条件以及一个失效反例
+    angle: 只能冻结统计或重估新域统计，你根据什么选一项？
   instantiates:
   - resnet
   - batch_norm
@@ -736,20 +961,26 @@
     type: engineering
     ref: https://arxiv.org/html/2407.21783v3 — 现代大模型机制教学改写；具体数字与脏约束为编者设定。
 - id: scen_wp1b_decoder
-  title: 离线训练被未来token偷看
-  brief: 7B decoder 在 2048 token 序列上 loss 降到 0.1，但线上续写崩溃；训练代码复用了双向掩码，且不能重取原始数据。
+  title: 低损失续写重复的因果检查
+  brief: 本地离线7B decoder，32层宽4096、32头，B1、长2048、bf16、checkpointing开、FlashAttention关；训练loss=.1，生成时反复输出同一句。对缓存序列只替换未来100token，较早位置预测也改变；逐位置输入和标签可供检查，但原始文本不能重取。
+  required_observables:
+  - loss.1
+  - 未来扰动改变过去
+  - 仅token缓存
+  - 不能重取
+  symptom_shape: silent
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 设计利用现有缓存恢复合法自回归训练的流程。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能先修因果目标或补新语料，你在无原文条件下如何取舍？
   instantiates:
   - decoder_only
   - causal_mask
   - causal_language_modeling
   - transformer
   expected_elements:
-  - 机制: 因果目标只能看到左侧上下文；双向注意力泄漏目标。
+  - '机制: 自回归位置不能依赖未来；扰动测试支持可见性泄漏，具体mask与标签错误须分开验。'
   - 应用: 核验移位标签、掩码形状及跨样本边界，重建合法验证集。
   - 边界: 低训练loss不能证明因果生成能力；修掩码后须重训或继续训练验证。
   difficulty: high
@@ -758,12 +989,18 @@
     ref: https://arxiv.org/html/2407.21783v3 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_position
   title: 位置扩窗不是改一个常数
-  brief: 8K 模型要读 64K 合同，只有 2 张80GB卡；团队只改最大长度，合同末尾的金额经常抄错。
+  brief: 本地两张80GiB卡推理7B，32层宽4096、32Q/8KV头、头维128，B1、bf16、FlashAttention开、checkpointing不适用；训练窗口8K，需从64K合同取金额。4K处准确95%、60K处40%，相同金额移到4K又95%。不能丢条款，仅能做一轮长文适配。
+  required_observables:
+  - 8K训练/64K合同
+  - 位置迁移95%/40%
+  - 两张80GiB
+  - 不能丢条款
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 设计覆盖全合同的长文金额提取方案。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能投长文继续训练或分段检索聚合，你如何选择？
   instantiates:
   - rope
   - context_extension
@@ -779,12 +1016,19 @@
     ref: https://arxiv.org/abs/2306.15595 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_moe
   title: 专家拥塞与跨机通信
-  brief: 8 专家 top-2 路由分布在 4 台机器，90% 金融token落到2个专家；网络仅25Gbps且不能丢token。
+  brief: 云内4机8专家top2推理，隐藏4096、bf16、每批4096token，32个MoE层；每层8192次分发中90%分给两个专家，最忙专家占45%。有效跨机25Gbps，无公网且不能丢token；通信面板显示每层约100MB跨机流量。
+  required_observables:
+  - 8192分发/层
+  - 热点45%
+  - 100MB/层
+  - 25Gbps
+  - 不丢token
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 改造不丢token的专家调度。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能扩大专家容量或调整路由均衡，你先改哪项？
   instantiates:
   - mixture_of_experts
   - expert_routing
@@ -800,12 +1044,19 @@
     ref: https://arxiv.org/abs/2401.04088 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_pretrain
   title: 重复网页吃掉训练预算
-  brief: 计划训练 300B token，30% 是镜像网页，代码只占2%；评测题出现在爬取仓库中，预算不能增加。
+  brief: 预训练总预算300B token，审计30%为镜像近重复、代码仅2%；留出基准中有题干与爬取文档逐字相同。不能增加token预算或重新采集，可从已有未用语料补齐。
+  required_observables:
+  - 300B
+  - 重复30%
+  - 代码2%
+  - 逐字重叠
+  - 已有候补
+  symptom_shape: silent
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 重排这次训练的语料流水线。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 固定300B下只够优先清污染或提升代码占比，你先选哪个？
   instantiates:
   - data_deduplication
   - data_mixture
@@ -821,12 +1072,19 @@
     ref: https://arxiv.org/html/2407.21783v3 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_sft
   title: 客服微调的角色模板错位
-  brief: 有 2万轮客服对话和5亿token内部手册，只有24GB显存；把用户输入也计入loss后模型开始复述隐私。
+  brief: 本地不联网7B，32层宽4096，B1长1024、bf16基座、checkpointing/FlashAttention开；卡24GiB，仅可训练增量。有2万轮客服对话和5亿token手册；输入含手机号时回复常逐字复述号码，日志中用户与助理片段的逐token损失均非零。不能保留真实手机号作测试。
+  required_observables:
+  - 24GiB增量
+  - 2万对话
+  - 5亿token
+  - 两角色损失非零
+  - 隐私不能留存
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 设计受限显存下的客服适配训练流程。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只够一轮SFT或继续预训练，你先选哪个以改善客服回复？
   instantiates:
   - supervised_fine_tuning
   - instruction_tuning_data
@@ -842,12 +1100,18 @@
     ref: https://arxiv.org/html/2412.15115v1 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_preference
   title: 偏好标签学到的是长度
-  brief: 收集 12000 对偏好，80%胜者更长；奖励上升但客服解决率从70%降至60%，不允许再雇标注员。
+  brief: 12000对客服偏好中80%胜者更长；更新后独立1000题解决数从700降至600，奖励均值却升高。按长度匹配的200对重评中旧模型胜110次、新模型90次；不能新雇标注员，只可复用现有审计员一天。
+  required_observables:
+  - 80%长胜
+  - 700→600/1000
+  - 匹配组110:90
+  - 一天审计
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 制定下一轮偏好数据修订方案。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只够长度分层重采样或继续最大化现有奖励，你选哪项？
   instantiates:
   - preference_data
   - reward_model
@@ -862,13 +1126,19 @@
     type: engineering
     ref: https://arxiv.org/abs/2203.02155 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_dpo
-  title: 离线偏好更新离参考太远
-  brief: 7B SFT模型用 5000 对离线偏好跑20轮；胜率涨10点但格式合规跌15点，参考模型被误设为每步更新。
+  title: 偏好更新中的参考漂移
+  brief: 本地7B偏好适配，32层宽4096，B1长1024、bf16、checkpointing/FlashAttention开，5000对数据20轮。留出胜率升10点而JSON合规跌15点；固定100条序列的参考logprob每个更新步都变化，输入和评估随机性固定。只够重跑一轮配置。
+  required_observables:
+  - 5000对20轮
+  - 参考logprob变化
+  - 胜率+10/合规−15
+  - 一次重跑
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 修订偏好优化以保护格式能力。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只够修参考快照或补偏好数据，你先做哪项？
   instantiates:
   - direct_preference_optimization
   - reference_policy
@@ -884,12 +1154,18 @@
     ref: https://arxiv.org/abs/2305.18290 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_ppo
   title: 策略更新幅度失控
-  brief: 每批 256 条回复反复更新16轮，KL突然从0.02升至2；value头与策略共享骨干，奖励有延迟。
+  brief: 本地7B策略LoRA训练，32层宽4096，B=256条回复分微批1、长512、bf16、checkpointing/FlashAttention开；同一批做16次更新，共享骨干value头。KL按每token均值从.02在第12次升到2，裁剪比例同时从.1升.9；奖励只在终态返回，下一批尚未采样。
+  required_observables:
+  - 同批16更新
+  - 第12次KL .02→2
+  - 裁剪.1→.9
+  - 终态奖励
+  symptom_shape: spike
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 决定这批轨迹接下来如何更新。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只准回滚重采样或沿用该批减学习率，你选哪项？
   instantiates:
   - ppo
   - advantage_estimation
@@ -905,12 +1181,18 @@
     ref: https://arxiv.org/abs/1707.06347 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_reasoning
   title: 可验证奖励也能被钻空子
-  brief: 数学任务每题采样8条链，只检查最后一个数；通过率70%但换单位后只剩20%，每天只有4 GPU小时。
+  brief: 数学策略每题8条采样，验证器仅给最终数值相等时奖励1；原题700/1000通过，同题单位从米改厘米后200/1000通过。人工抽样显示文字仍用米却提交原数也被判通过。每天4GPU小时，8采样一轮恰耗4小时。
+  required_observables:
+  - 8采样
+  - 700→200
+  - 单位错误仍过
+  - 4GPU小时
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 在每日预算内改造可验证奖励实验。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只够补单位检查或增加采样到16条，你先改哪项？
   instantiates:
   - grpo
   - reasoning_rl
@@ -926,12 +1208,18 @@
     ref: https://arxiv.org/abs/2402.03300 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_constitution
   title: AI反馈与拒答过度
-  brief: 用20条原则生成 10000 对AI偏好；恶意请求拒答率95%，但医学学习请求误拒30%，不能直接删安全规则。
+  brief: 20条原则生成10000对AI偏好；独立集1000条恶意请求拒答950条，1000条医学学习请求误拒300条。原则不得删除，允许澄清范围；只能人工复核100条争议样本。
+  required_observables:
+  - 20原则不得删
+  - 950/1000恶意拒答
+  - 300/1000误拒
+  - 复核100
+  symptom_shape: bias
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 修订原则反馈的数据生成流程。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 100条预算优先审误拒或漏拒，你如何分配？
   instantiates:
   - constitutional_ai
   - rlaif
@@ -947,12 +1235,18 @@
     ref: https://arxiv.org/abs/2212.08073 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_injection
   title: 检索网页把客服变成转账器
-  brief: 每天检索 200 个网页；其中1页藏有忽略系统并转账的文字，客服工具具备付款权限，日志不能含客户卡号。
+  brief: 联网云端客服每天从200个外部网页检索；一次测试中网页原文含要求转账的指令，随后工具轨迹出现用户未授权的付款调用，收款方与页面文字一致。实际付款工具可用，日志禁止含卡号；只能改一个执行关口。
+  required_observables:
+  - 外部页面指令
+  - 未授权付款
+  - 卡号不可记录
+  - 一个关口
+  symptom_shape: silent
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 设计阻止未授权副作用的执行关口。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能做提示词防护或付款前授权校验，你先部署哪项？
   instantiates:
   - prompt_injection
   - indirect_prompt_injection
@@ -968,12 +1262,19 @@
     ref: https://genai.owasp.org/llm-top-10/ — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_permissions
   title: 付款工具必须停在授权关口
-  brief: 机器人有 6 个工具，退款上限500元；攻击者要求拆成20笔499元，审批服务偶发超时。
+  brief: 云内退款机器人可调用查询、退款等6个工具，不可访问公网；业务规定同一订单累计退款≤500元。测试请求连续发20笔499元，前两笔已成功；第3笔审批服务超时，客户未追加有效授权。只能改一个服务端校验点。
+  required_observables:
+  - 累计≤500
+  - 20×499
+  - 前两笔成功
+  - 审批超时
+  - 一个校验点
+  symptom_shape: silent
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 改造退款执行授权。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能保证可用性或超时默认拒绝，你会如何落地选择？
   instantiates:
   - excessive_agency
   - least_privilege
@@ -989,12 +1290,19 @@
     ref: https://google.github.io/adk-docs/safety/ — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_guardrail
   title: 护栏漏报和误杀同时发生
-  brief: 对 1000 条请求护栏漏过3条隐私查询、误杀80条法律研究；上线延迟预算100ms，不能把日志发外网。
+  brief: 本地不联网护栏测试1000条：100条隐私攻击中漏过3条，900条合法法律研究中误拦80条。单次护栏p99=90ms，预算100ms；原文和日志均不能出网，只够增加一层检查。
+  required_observables:
+  - 3/100漏报
+  - 80/900误报
+  - 90/100ms
+  - 不出网
+  - 一层
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 设计下一层可在本地上线的防护。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能降低漏报或降低误杀，你如何选择新增检查位置？
   instantiates:
   - guardrails
   - red_teaming
@@ -1010,12 +1318,19 @@
     ref: https://google.github.io/adk-docs/safety/ — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_sandbox
   title: 桌面插件误删共享文件
-  brief: 代理在桌面整理 300 个文件，误触删除共享盘；工具回包超时10秒但操作可能已经执行，不能简单重试。
+  brief: 本地桌面代理整理300文件，工具超时10秒后返回失败；刷新目录可见共享盘原有20文件不见，执行状态未知，无回收站权限。可写临时目录但共享盘含他人数据，不能出网。
+  required_observables:
+  - 超时10s
+  - 20文件不见
+  - 无回收站
+  - 共享盘他人数据
+  - 临时目录可写
+  symptom_shape: crash
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 决定恢复工作流的第一步。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能先自动重试或人工核对外部状态，你选择哪项？
   instantiates:
   - sandbox_execution
   - computer_use
@@ -1031,12 +1346,20 @@
     ref: https://google.github.io/adk-docs/safety/ — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_function
   title: 工具JSON合法但语义危险
-  brief: 订单工具要求金额分，模型传入500却当作500元；每分钟100请求，20%用户包含非ASCII姓名。
+  brief: 云内订单接口amount整数单位为分；用户要付5元，轨迹传amount=500，回执却扣500元。每分钟100请求，20%用户姓名含非ASCII字符，姓名原样回显验收；不能修改下游扣款API，只能改适配层。
+  required_observables:
+  - 5元
+  - amount500
+  - 回执500元
+  - 100/min
+  - 20%非ASCII
+  - 仅适配层
+  symptom_shape: bias
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 修订适配层调用契约以阻断错误扣款。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能先补语义金额检查或JSON结构校验，你优先哪项？
   instantiates:
   - function_calling
   - tool_schema
@@ -1052,12 +1375,19 @@
     ref: https://openai.github.io/openai-agents-python/tools/ — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_loop
   title: 代理无限循环重搜同一页面
-  brief: 代理预算 30 次工具调用，遇到403后循环搜索，20轮后忘了用户禁止登录的要求；不能扩上下文窗口。
+  brief: 联网云端代理上限30次调用；前20次反复搜索同一返回403页面，第21次提议登录，而用户最初禁止登录。上下文窗口不可扩大，授权约束必须始终有效；还剩9次调用预算。
+  required_observables:
+  - 30次上限
+  - 重复20次403
+  - 禁止登录
+  - 剩9次
+  - 不可扩窗
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 改造剩余回合的控制策略。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能保留完整历史或单独保留不可变权限，你在固定窗口下选哪项？
   instantiates:
   - agent_loop
   - agent_harness
@@ -1073,12 +1403,18 @@
     ref: https://openai.github.io/openai-agents-python/ — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_mcp
   title: 接上MCP并不等于能信任服务器
-  brief: 接入 3 个MCP服务器，其中一个发布同名付款工具；客户端共享token，需支持2个租户且禁止串数据。
+  brief: 云内客户端接3个MCP服务器，其中2个均声明pay工具；2租户回归中A请求工具资源时拿到B订单摘要。抓包可见相同凭据标识用于两租户，不能访问公网，允许改客户端与授权网关。
+  required_observables:
+  - 3服务器同名pay
+  - 2租户串摘要
+  - 凭据标识相同
+  - 不出网
+  symptom_shape: silent
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 设计租户与工具身份隔离的接入流程。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能先隔离凭据或仅给工具重命名，你优先哪项？
   instantiates:
   - mcp
   - mcp_tools
@@ -1094,12 +1430,19 @@
     ref: https://modelcontextprotocol.io/specification/2025-06-18 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_trace
   title: 跨代理交接后无法复现失败
-  brief: 售后工作流交接 4 次，100条任务中12条丢订单号；日志只存最终答案，模型版本昨天刚更换。
+  brief: 云内售后流程4次交接，100任务12次最终答案缺订单号；日志只有最终文本，昨天模型版本更换。输入100条都有订单号，工具仅允许本地脱敏回放；只能增加一类追踪跨度。
+  required_observables:
+  - 4交接
+  - 12/100丢号
+  - 输入完整
+  - 只有终态
+  - 版本更换
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 设计能定位首次丢号位置的追踪。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能记录交接状态或完整未脱敏提示，你选哪项？
   instantiates:
   - agent_tracing
   - handoff
@@ -1115,12 +1458,19 @@
     ref: https://openai.github.io/openai-agents-python/ — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_wiki
   title: LLM wiki陈旧与越权检索
-  brief: 知识库 10万页每小时更新，分块500token；撤销权限的旧页面仍在摘要里，回答需在2秒内附来源。
+  brief: 云内知识库10万页每小时更新、每块500token；撤权后原文请求返回403，但同租户旧会话摘要仍含该页段落并生成引用。回答要求2秒内，禁止访问公网；只能改一层缓存失效机制。
+  required_observables:
+  - 10万页小时更新
+  - 500token块
+  - 原文403/摘要可读
+  - 2s
+  - 一层失效
+  symptom_shape: silent
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 制定撤权可贯穿摘要路径的修复。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只够缩短缓存TTL或按权限事件失效，你优先哪项？
   instantiates:
   - persistent_knowledge
   - session_memory
@@ -1136,12 +1486,18 @@
     ref: https://google.github.io/adk-docs/ — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_hybrid
   title: 稀疏精确词与语义检索冲突
-  brief: 200万条工单含错误码E-104，稠密top20没找到精确码；CPU内存16GB，召回阶段预算80ms。
+  brief: 本地不联网200万工单，768维float32向量；错误码E-104在库内且字面查询可找到，稠密top20没有该工单。进程内存16GiB、召回预算80ms，现有稠密检索p99=65ms；只能增加一个召回通道。
+  required_observables:
+  - 2M×768fp32
+  - 16GiB
+  - E-104稠密未召回
+  - 65/80ms
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 改造错误码检索以满足召回与预算。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只够做混合召回或重排top20，你先做哪项？
   instantiates:
   - dense_retrieval
   - hybrid_search
@@ -1157,12 +1513,19 @@
     ref: https://arxiv.org/abs/2004.04906 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_search
   title: 搜索摘要引用了过期价格
-  brief: 用户问今天价格，搜索返回3个月前缓存；系统需在5秒内回答，蒸馏学生只记住去年数据且无联网。
+  brief: 离线本地学生模型只有去年数据，不得联网；上游仅提供3个月前价格搜索快照，用户要求今天价格并需5秒内回复。没有今日来源或允许呼叫的外部工具，不能捏造报价。
+  required_observables:
+  - 离线
+  - 去年参数
+  - 3个月前快照
+  - 今天价格
+  - 5s
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 制定此请求可诚实交付的响应策略。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能给带时间戳历史价或拒绝报数，你如何选择？
   instantiates:
   - web_search
   - citation_grounding
@@ -1178,12 +1541,19 @@
     ref: https://openai.github.io/openai-agents-python/tools/ — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_vlm
   title: 高分图文模型看错小字
-  brief: 模型能描述1024像素海报却读错12像素药名；只有500张标注，用户不允许上传原图到云。
+  brief: 本地离线VLM处理1024平方海报，药名字高12像素；视觉输入统一到336平方后给出语法正确但药名错的描述。原图裁剪药名放到336输入时100例读对90，整图仅40；只有500标注且禁止上传云。
+  required_observables:
+  - 1024→336
+  - 12像素药名
+  - 裁剪90/100整图40/100
+  - 500标注
+  - 禁云
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 设计本地药名读取流程。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只够提高视觉输入成本或做500例指令适配，你优先哪项？
   instantiates:
   - vlm
   - vision_projector
@@ -1199,12 +1569,18 @@
     ref: https://arxiv.org/abs/2306.13549 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_clip
   title: 图文检索与定位不是一回事
-  brief: 50类仓储零件用文本做零样本检索，准确率80%；却要求输出瑕疵框，现场只有30张带框图。
+  brief: 本地离线仓储50类零件，CLIP零样本检索在100张测试图80张类别正确；当前接口只返回类别相似分，不返回坐标。新任务需瑕疵框，现场仅30张带框图且不得云端标注。
+  required_observables:
+  - 50类80/100
+  - 接口无框
+  - 30带框
+  - 本地禁云
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 设计最小可验收的瑕疵定位方案。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只够做区域标注适配或优化全局文本提示，你先做哪项？
   instantiates:
   - clip
   - visual_grounding
@@ -1219,13 +1595,21 @@
     type: engineering
     ref: https://arxiv.org/abs/2103.00020 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_video
-  title: 视频安全监测丢掉关键两帧
-  brief: 10分钟30fps视频只抽16帧，碰撞持续0.2秒；内存8GB，团队用MMMU高分证明系统可靠。
+  title: 视频安全监测漏过六帧事件
+  brief: 本地离线视频监测，10分钟30fps，当前均匀只取16帧；碰撞持续.2秒，事故窗口与抽帧相位随机。总内存8GiB，单帧解码后6MiB，不能常驻全片；测试100次短事件仅检出1次，静态MMMU得分高。
+  required_observables:
+  - 600s×30fps
+  - 16帧
+  - .2s事件
+  - 8GiB
+  - 6MiB/帧
+  - 1/100
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 改造短事件监测的采样流程。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只够增加流式时序采样或微调静态问答，你优先哪项？
   instantiates:
   - video_understanding
   - vlm
@@ -1241,12 +1625,19 @@
     ref: https://arxiv.org/abs/2306.13549 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_robot
   title: 语言动作迁移遇上实体风险
-  brief: 机械臂执行100次取杯，仿真成功95次实机仅60次；控制20Hz，杯子湿滑且不能损坏人手模型。
+  brief: 本地离线机械臂20Hz取杯，仿真100次成功95，湿杯实机100次成功60；闭环传感到动作延迟150ms，滑移超过100ms会掉杯。不得损坏人手模型，只有封闭台架可测。
+  required_observables:
+  - 20Hz
+  - 延迟150ms
+  - 滑移100ms
+  - 95/100对60/100
+  - 禁止伤害
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 制定安全的实机恢复实验。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能先降控制延迟或增加仿真语义数据，你优先哪项？
   instantiates:
   - vla
   - embodied_intelligence
@@ -1262,12 +1653,19 @@
     ref: https://arxiv.org/abs/2307.15818 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_drive
   title: 驾驶规划被离线指标骗过
-  brief: 雨夜路口离线轨迹误差0.3米，但闭环100次中碰撞5次；雷达缺失20%，只能先做封闭场测试。
+  brief: 封闭场自动驾驶雨夜评估，离线平均轨迹误差.3米；闭环100次碰撞5次，雷达帧随机缺失20%，无缺失对照100次碰撞1次。只允许封闭测试，不可上公共道路验证；下一轮仅100次。
+  required_observables:
+  - 误差.3m
+  - 5/100碰撞
+  - 雷达20%缺失
+  - 对照1/100
+  - 仅封闭100次
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 安排下一轮能验证缺失鲁棒性的闭环测试。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 100次只能优先测缺失场景或一般雨夜，你如何分配？
   instantiates:
   - autonomous_driving
   - bev_representation
@@ -1283,12 +1681,19 @@
     ref: https://arxiv.org/abs/2212.10156 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_diffusion
   title: 引导太强带来过饱和
-  brief: 生图从50步降到10步，CFG从5调到20，颜色过饱和且提示多样性下降；显存仅12GB。
+  brief: 本地离线860M潜空间扩散推理，512平方、B1、FP16、checkpointing不适用、普通注意力无Flash；12GiB卡峰值8GiB。从50步CFG5同时改10步CFG20，固定提示集出现颜色通道大量255截顶、100图仅20种布局，原版70种；时限只准10步。
+  required_observables:
+  - 12GiB峰8
+  - 10步上限
+  - CFG5→20
+  - 255截顶
+  - 20/70布局
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 修订10步预算内的采样配置。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能降低CFG或回到50步，你选哪项以守住时限？
   instantiates:
   - diffusion_model
   - ddpm
@@ -1304,12 +1709,19 @@
     ref: https://arxiv.org/html/2209.00796v15 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_dit
   title: 潜空间换Transformer后瓶颈仍在
-  brief: 图像从512升到1024，DiT显存增至原来的4倍以上；VAE细字重建已模糊，训练只有8张卡。
+  brief: 本地8卡各80GiB训练DiT-XL，28层宽1152、16头，B1每卡、bf16、checkpointing关、FlashAttention关；VAE下采样8、latent patch2。使用无动量SGD；512输入峰值8GiB，实测分解为固定6GiB、线性激活1GiB、注意力相关1GiB；1024输入26GiB；同图仅VAE重建后小字已无法辨读。卡数不可增加。
+  required_observables:
+  - VAE8/patch2
+  - 512→1024
+  - 8→26GiB
+  - B1bf16无checkpoint/flash
+  - 小字重建丢失
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 制定兼顾小字与现有资源的升级方案。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能改VAE或扩大DiT，你先改哪项以恢复小字？
   instantiates:
   - dit
   - latent_diffusion
@@ -1325,12 +1737,19 @@
     ref: https://arxiv.org/abs/2212.09748 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_flash
   title: 换FlashAttention后算式没近似
-  brief: 8K训练换内核后省显存但结果有1e-3差异；团队宣称是线性近似，硬件为旧GPU且mask有填充。
+  brief: 本地A100上7B训练，32层宽4096、32头，B1长8192、bf16、checkpointing关；普通注意力峰60GiB，换FlashAttention后30GiB。相同QKV含padding、无dropout，输出最大绝对差1e-3，FP32参考容差2e-3；预算一轮回归，需决定能否替换。
+  required_observables:
+  - A100
+  - B1/8192/bf16
+  - 60→30GiB
+  - 差1e-3/容差2e-3
+  - padding
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 设计此次内核替换的验收。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只够测mask梯度一致性或再测单一吞吐，你先测哪项？
   instantiates:
   - flash_attention
   - attn_scaled_dot_product
@@ -1346,12 +1765,19 @@
     ref: https://arxiv.org/abs/2205.14135 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_kv
   title: 并发长对话击穿KV显存
-  brief: 80GB卡服务 100 个并发会话，每个32K上下文；权重只占14GB，解码频繁OOM且请求长度差100倍。
+  brief: 云内80GiB单卡7B推理，32层宽4096、32Q/8KV头、头维128，bf16、FlashAttention开、checkpointing不适用，权重约14GiB。100并发中长度从320至32000token，压力测试全部达32000时分配KV报CUDA
+    out of memory；不增卡，需保留每会话长度。
+  required_observables:
+  - 80GiB权重14
+  - 100×32000
+  - 32层8KV/128/bf16
+  - 不增卡保长度
+  symptom_shape: crash
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 制定不OOM的会话准入与调度方案。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能分页KV或限制同时驻留长会话，你先选哪项？
   instantiates:
   - kv_cache
   - paged_attention
@@ -1366,13 +1792,19 @@
     type: engineering
     ref: https://arxiv.org/abs/2309.06180 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_prefill
-  title: 共享前缀缓存泄漏租户数据
-  brief: 系统提示8K在90%请求相同，首token延迟2秒；两个租户有不同权限，不能按裸文本共用所有缓存。
+  title: 共享公开前缀与租户隔离
+  brief: 云内两个权限不同租户的7B推理，32层宽4096、32Q/8KV头，bf16、B1、FlashAttention开、checkpointing不适用；90%请求共享8K公开系统前缀，首token2秒，其中前缀prefill1.6秒。租户私有后缀不同，缓存预算只够公开前缀一份，禁止跨租户私有信息复用。
+  required_observables:
+  - 90%共享8K公开前缀
+  - 2s中1.6s
+  - 两租户
+  - 一份公开缓存
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 制定兼顾隔离的前缀缓存策略。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能共享公开前缀或缓存完整私有请求，你在该预算下选哪项？
   instantiates:
   - prefix_caching
   - prefill_decode
@@ -1388,12 +1820,20 @@
     ref: https://arxiv.org/abs/2309.06180 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_quant
   title: 4bit适配后长尾任务崩溃
-  brief: 7B模型4bit部署到8GB卡，QLoRA用1000样本微调；均分只跌1点但财务计算跌20点，校准集没有财务数据。
+  brief: 本地离线8GiB卡部署7B，32层宽4096、32Q/8KV头，B1长512、4bit权重bf16激活、FlashAttention开、checkpointing不适用。1000例QLoRA适配后均分仅降1点，财务子集降20点；量化前同子集正常，校准记录无财务数据。禁止上传财务原文。
+  required_observables:
+  - 8GiB
+  - 7B4bit
+  - B1/512
+  - 财务−20均分−1
+  - 无财务校准
+  - 禁上传
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 设计本地财务退化修复实验。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只够校准重做或增加LoRA秩，你先选哪项？
   instantiates:
   - weight_quantization
   - activation_quantization
@@ -1409,12 +1849,18 @@
     ref: https://arxiv.org/abs/2306.00978 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_eval
   title: 代理基准成功不等于生产合规
-  brief: AgentBench高分系统在100个网页和50个桌面任务上失误30次；模拟环境没有付款权限，日志含用户邮箱。
+  brief: 联网云端代理在100网页任务、50桌面任务共失败30次；模拟器无付款权限，生产要求真实付款必须审批。日志含用户邮箱不得出网，只有一个隔离测试环境可用于上线验收，不能以AgentBench总分替代验收。
+  required_observables:
+  - 100+50任务失败30
+  - 模拟无付款
+  - 生产审批
+  - 邮箱不出网
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 制定上线前的任务验收门。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能优先补付款安全回归或扩充一般任务数，你先做哪项？
   instantiates:
   - agent_benchmark
   - web_task_success
@@ -1430,12 +1876,19 @@
     ref: https://arxiv.org/abs/2308.03688 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_budget
   title: 推理预算与投机解码算错收益
-  brief: 每题最多1000ms，小草稿模型接受率从80%跌至20%；多采样8条答案只有2条不同，但成本翻倍。
+  brief: 本地7B目标模型推理，32层宽4096、32Q/8KV头、bf16、B1长512、FlashAttention开、checkpointing不适用；每题1000ms。草稿每轮4token耗40ms，目标验证每轮80ms，串行逐token80ms；接受率由80%降20%。8条推理链只2条不同，实测总耗时1800ms，单链900ms。
+  required_observables:
+  - 4草稿/40ms
+  - 验证80ms
+  - 接受20%
+  - 1000ms
+  - 8链2异1800ms
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 提出可验证的机制解释、实施方案与失败定位步骤。
+    angle: 重分配当前题型的推理预算。
   - type: boundary
-    angle: 在给定脏约束下，指出不能保证的性质及反例。
+    angle: 只能保留投机解码或多链采样之一，你选哪项并限制其使用条件？
   instantiates:
   - test_time_compute
   - speculative_decoding
@@ -1451,12 +1904,19 @@
     ref: https://arxiv.org/html/2412.15115v1 — 教学改写；数字与脏约束为编者设定，非来源原题或实测。
 - id: scen_wp1b_resume
   title: 中断恢复会重复下单吗
-  brief: 代理第29轮发起支付后进程断开，预算30轮；恢复时只保存到第28轮，支付服务不支持事务回滚。
+  brief: 云内代理上限30轮，第29轮发起付款后断开；恢复文件只到28轮，外部服务不能回滚但可按订单号查询状态。用户未授权重复付款，恢复时查到订单处于处理中；只能再用2轮。
+  required_observables:
+  - 上限30/保存28
+  - 第29付款
+  - 处理中
+  - 不可回滚可查询
+  - 不许重复
+  symptom_shape: silent
   asks:
   - type: diagnosis
-    angle: 解释机制，给出可验证实施与故障定位方案。
+    angle: 决定恢复后的第一步动作。
   - type: boundary
-    angle: 指出该方案无法保证的性质。
+    angle: 只够等待查证或重发付款，你如何取舍可用性与重复扣款风险？
   instantiates:
   - run_resumption
   - turn_budget
@@ -1473,12 +1933,19 @@
     ref: https://openai.github.io/openai-agents-python/running_agents/ — 教学改写；数字与脏约束非来源实测。
 - id: scen_wp1b_contexts
   title: 本地权限对象进入了模型提示
-  brief: 上下文对象有100个客户token，摘要器误把其序列化进提示；模型窗口8K，工具列表动态变化。
+  brief: 本地多租户代理，执行上下文持有100个客户凭据，模型窗口8K；捕获的发往模型的提示中出现其中一个完整凭据。工具列表随租户变化，A会话偶见B工具名，服务端仍拒绝A调用B。可改一个导出接口，不允许把凭据送外网。
+  required_observables:
+  - 100凭据
+  - 提示泄露1个
+  - 8K
+  - A见B工具但服务拒绝
+  - 一个导出接口
+  symptom_shape: silent
   asks:
   - type: diagnosis
-    angle: 解释机制，给出可验证实施与故障定位方案。
+    angle: 改造模型可见上下文的导出边界。
   - type: boundary
-    angle: 指出该方案无法保证的性质。
+    angle: 只能优先字段允许列表或提示摘要压缩，你先做哪项？
   instantiates:
   - local_context
   - llm_context
@@ -1495,12 +1962,19 @@
     ref: https://openai.github.io/openai-agents-python/context/ — 教学改写；数字与脏约束非来源实测。
 - id: scen_wp1b_tool_guard
   title: 工具护栏为何没有阻断付款
-  brief: 输入护栏异步耗时300ms，但代理100ms就支付；输出护栏拦下回复时已扣款500元。
+  brief: 云内付款测试时间线：t=0请求进入，t=100ms扣款500元，t=300ms输入检查返回阻断，随后输出检查阻止发送回复。用户没有付款授权，付款不能撤销，下一版仅允许增加一个阻塞关口。
+  required_observables:
+  - 100ms扣500
+  - 300ms才阻断
+  - 无授权
+  - 不可撤销
+  - 一个阻塞关口
+  symptom_shape: silent
   asks:
   - type: diagnosis
-    angle: 解释机制，给出可验证实施与故障定位方案。
+    angle: 选择并设计新增的阻塞关口。
   - type: boundary
-    angle: 指出该方案无法保证的性质。
+    angle: 只能放在付款前或最终回复前，你优先哪处？
   instantiates:
   - tool_guardrail
   - input_guardrail
@@ -1517,12 +1991,21 @@
     ref: https://openai.github.io/openai-agents-python/guardrails/ — 教学改写；数字与脏约束非来源实测。
 - id: scen_wp1b_kvquant
   title: KV量化省显存后长文退化
-  brief: 32K合同服务将KV从FP16改低精度，显存省30%但尾部条款召回跌15点；校准只用短句。
+  brief: 云内7B推理，32层宽4096、32Q/8KV头、头维128，B8每条32K、FlashAttention开、checkpointing不适用；权重14GiB不变，FP16 KV占32GiB，运行态其他6GiB。换INT8
+    KV后总显存52降36GiB，尾条款召回跌15点，短句校准表现不变。卡上限40GiB，不可缩短合同。
+  required_observables:
+  - B8/32K
+  - KV32→16GiB
+  - 总52→36
+  - 40GiB
+  - 尾召回−15
+  - 合同不可缩
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 解释机制，给出可验证实施与故障定位方案。
+    angle: 设计可在40GiB下保护长文质量的缓存方案。
   - type: boundary
-    angle: 指出该方案无法保证的性质。
+    angle: 只能降低并发恢复FP16或保持B8优化KV量化，你先选哪项？
   instantiates:
   - kv_cache_quantization
   - weight_quantization
@@ -1538,12 +2021,19 @@
     ref: https://docs.vllm.ai/en/latest/features/quantization/ — 教学改写；数字与脏约束非来源实测。
 - id: scen_wp1b_dispatch
   title: 专家并行推理被网络吞掉
-  brief: 8专家模型跨4机，每机2GPU；50Gbps链路在高并发时满载，token吞吐下降40%。
+  brief: 云内4机每机2GPU的8专家推理，top2、隐藏4096、bf16、B4096token、32个MoE层，FlashAttention开、checkpointing不适用。跨机50Gbps链路有效满载6.25GB/s；每轮各机总跨机流量250MB，轮时由无通信基线60ms升100ms；专家负载均衡，不可加机器。
+  required_observables:
+  - 4机8GPU
+  - 50Gbps
+  - 250MB/轮
+  - 60→100ms
+  - 专家均衡
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 解释机制，给出可验证实施与故障定位方案。
+    angle: 重排专家分发以恢复吞吐。
   - type: boundary
-    angle: 指出该方案无法保证的性质。
+    angle: 只能优化专家放置或继续加张量切分，你先选哪项？
   instantiates:
   - moe_dispatch
   - expert_parallelism
@@ -1559,21 +2049,28 @@
     ref: https://docs.vllm.ai/en/latest/serving/parallelism_scaling/ — 教学改写；数字与脏约束非来源实测。
 - id: scen_wp1b_iteration
   title: 多轮后训练格式退化
-  brief: SFT后做3轮偏好优化，结构化JSON合规从98%降到80%；原SFT把用户输入也计loss，只有200个留出题。
+  brief: 本地7B增量后训练，32层宽4096，B1长1024、bf16、checkpointing/FlashAttention开；SFT后3轮偏好优化，固定200题JSON合规从196降160条。对同一SFT样本的损失探针显示用户片段与助理片段均产生梯度。仅够从一个历史快照重跑一次。
+  required_observables:
+  - 3轮
+  - 196→160/200
+  - 两角色有梯度
+  - 一次重跑
+  - 历史快照
+  symptom_shape: degradation
   asks:
   - type: diagnosis
-    angle: 解释机制，给出可验证实施与故障定位方案。
+    angle: 安排一次能区分SFT目标与后续覆盖的回滚实验。
   - type: boundary
-    angle: 指出该方案无法保证的性质。
+    angle: 只能回到SFT前修目标或从合规最好快照加约束，你先走哪条路线？
   instantiates:
   - iterative_posttraining
   - sft_loss_mask
   - direct_preference_optimization
   - rejection_sampling
   expected_elements:
-  - 机制: 损失mask决定训练目标，多阶段更新能覆盖前阶段行为。
-  - 应用: 分阶段留快照，修复mask后固定预算对照，拒绝采样保留质量而非只看长度。
-  - 边界: 小留出集胜率有不确定性；筛选策略可引入新偏差。
+  - '机制: 损失mask控制角色监督范围，多阶段更新可能覆盖先前格式行为；探针不能单独确定退化发生在哪阶段。'
+  - '应用: 固定200题与阶段快照，单次回滚只改变一个因素；比较合规率与偏好胜率，拒绝采样不得只按长度筛。'
+  - '边界: 修复SFT目标未必修复偏好阶段覆盖；200题不能证明分布外合规，资源取舍需明确放弃的收益。'
   difficulty: high
   source:
     type: engineering

@@ -205,6 +205,96 @@ class StateTests(unittest.TestCase):
             self.assertEqual(state['nodes']['a']['concept']['source']['ref'], 'https://example.org/ — Chapter One')
             self.assertGreater(engine.mastery(state['nodes']['b']), engine.mastery(state['nodes']['a']))
 
+    def score_cli(self, path, *flags):
+        return self.cli('score', '--state', path, '--scenario', 's0',
+                        '--question-type', 'explanation', '--scores',
+                        json.dumps(dict.fromkeys(engine.DIMS, 3)), '--quotes',
+                        json.dumps(QUOTES), '--probe', 'direct', *flags)
+
+    def test_only_dimension_does_not_double_count(self):
+        self.score(coverage=['n0'])
+        before = copy.deepcopy(self.state['nodes']['n0']['evidence'])
+        engine.score(self.state, ['n0'], 'explanation', dict.fromkeys(engine.DIMS, 3),
+                     QUOTES, 'direct', only=['mechanism'])
+        after = self.state['nodes']['n0']['evidence']
+        self.assertEqual(after['count'], before['count'] + 1)
+        for d in ('identify', 'application', 'boundary'):
+            self.assertEqual(after['dimensions'][d], before['dimensions'][d])
+        self.assertEqual(after['dimensions']['mechanism']['count'], 2)
+
+    def test_only_marginalizes_unobserved_scores(self):
+        other = copy.deepcopy(self.state)
+        engine.score(self.state, ['n0'], 'explanation', dict.fromkeys(engine.DIMS, 3),
+                     QUOTES, 'direct', only=['mechanism'])
+        # Gates stay identical while unused values change.
+        engine.score(other, ['n0'], 'explanation',
+                     dict(zip(engine.DIMS, (0, 3, 0, 3))), QUOTES, 'direct',
+                     only=['mechanism'])
+        self.assertEqual(self.state['nodes'], other['nodes'])
+        likelihood = [sum(engine.LIKELIHOOD_TABLE[min(11, 2 + sum(v))][i]
+                          ** (.35 if min(11, 2 + sum(v)) < 6 else 1)
+                          for v in engine.itertools.product(range(4), repeat=3)) / 64
+                      for i in range(4)]
+        expected = engine.posterior(engine.BASE, likelihood)
+        for got, want in zip(engine.distribution(self.state['nodes']['n0']), expected):
+            self.assertAlmostEqual(got, want)
+
+    def test_nodes_subset_skips_others(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'state.json'
+            engine.save(path, self.state)
+            result = self.score_cli(path, '--nodes', self.coverage[-1])
+            self.assertEqual(result.returncode, 0, result.stderr)
+            updated = engine.load_data(path)
+            for k in set(self.state['nodes']) - {self.coverage[-1]}:
+                self.assertEqual(updated['nodes'][k], self.state['nodes'][k])
+            self.assertEqual(engine.report(updated)['contaminated_nodes'], [])
+
+    def test_nodes_must_be_subset(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'state.json'
+            engine.save(path, self.state)
+            before = path.read_bytes()
+            for flags in [('--nodes', 'not-covered'), ('--nodes', ''),
+                          ('--nodes', self.coverage[0] + ',not-covered'),
+                          ('--only', 'invalid')]:
+                result = self.score_cli(path, *flags)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertEqual(path.read_bytes(), before)
+
+    def test_required_observables_passthrough(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'state.json'
+            for present in (False, True):
+                if present:
+                    self.state['scenarios'][0]['required_observables'] = {'dtype': ['fp16', 'fp32']}
+                engine.save(path, self.state)
+                result = self.score_cli(path)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertIn('whole-coverage scoring may contaminate untested nodes', result.stderr)
+                output = json.loads(result.stdout)
+                if present:
+                    self.assertEqual(output['required_observables'],
+                                     self.state['scenarios'][0]['required_observables'])
+                else:
+                    self.assertNotIn('required_observables', output)
+                report = json.loads(self.cli('report-data', '--state', path).stdout)
+                self.assertEqual(report['contaminated_nodes'], sorted(self.coverage))
+
+    def test_determinism_with_new_flags(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            paths = [Path(tmp) / ('state%d.json' % i) for i in range(2)]
+            results = []
+            for path in paths:
+                engine.save(path, self.state)
+                results.append(self.score_cli(path, '--nodes', ','.join(self.coverage[:2]),
+                                               '--only', 'mechanism,identify',
+                                               '--only', 'mechanism'))
+            self.assertTrue(all(r.returncode == 0 for r in results), results)
+            self.assertEqual(results[0].stdout, results[1].stdout)
+            self.assertEqual(results[0].stderr, results[1].stderr)
+            self.assertEqual(paths[0].read_bytes(), paths[1].read_bytes())
+
 class RealDataTests(unittest.TestCase):
     """The shipped data/ must work without adaptation. Catches schema drift
     between the scenario authors and the engine contract."""

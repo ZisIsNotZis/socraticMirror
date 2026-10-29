@@ -9,6 +9,7 @@ commands only read. Fusion scoring adds --scenario as an alternative to --node.
 import argparse
 import ast
 import json
+import itertools
 import math
 import os
 from pathlib import Path
@@ -227,10 +228,14 @@ def fusion_model(state, coverage):
     return pass_prob, success, failure
 
 
-def score(state, coverage, question_type, scores, quotes, probe):
+def score(state, coverage, question_type, scores, quotes, probe, only=None,
+          restrict_updates=False):
     if not isinstance(scores, dict) or set(scores) != set(DIMS) or any(type(scores[d]) is not int or
                                        not 0 <= scores[d] <= 3 for d in DIMS):
         raise ValueError('scores require four integer dimensions in 0..3')
+    selected = tuple(d for d in DIMS if only is None or d in only)
+    if only is not None and (not selected or not set(only) <= set(DIMS)):
+        raise ValueError('invalid --only dimensions')
     if not isinstance(quotes, dict):
         raise ValueError('quotes must be an object')
     if question_type not in OFFSETS or probe not in ('direct', 'after_prompt'):
@@ -246,25 +251,35 @@ def score(state, coverage, question_type, scores, quotes, probe):
         raise ValueError('invalid coverage')
     total = sum(scores.values())
     row = max(0, min(11, total - 1 + OFFSETS[question_type]))
-    likelihood = list(LIKELIHOOD_TABLE[row])
-    # First omission is weak evidence; a prompted omission is fully diagnostic.
-    if row < 6 and probe == 'direct':
-        likelihood = [v ** .35 for v in likelihood]
+    # Marginalize absent dimensions with a uniform prior over rubric 0..3.
+    # Average likelihoods, not normalized posteriors; retain existing rows.
+    missing = [d for d in DIMS if d not in selected]
+    rows = []
+    for values in itertools.product(range(4), repeat=len(missing)):
+        latent_total = sum(scores[d] for d in selected) + sum(values)
+        latent_row = max(0, min(11, latent_total - 1 + OFFSETS[question_type]))
+        likelihood = list(LIKELIHOOD_TABLE[latent_row])
+        if latent_row < 6 and probe == 'direct':
+            likelihood = [v ** .35 for v in likelihood]
+        rows.append((latent_row, likelihood))
     cap = 1 if scores['mechanism'] == 0 else (2 if scores['boundary'] == 0 and
                                              scores['mechanism'] <= 2 else 3)
     before = {k: state['nodes'][k]['level'].copy() for k in coverage}
     _, positive, negative = fusion_model(state, coverage)
     for key in coverage:
         node = state['nodes'][key]
-        evidence_likelihood = likelihood
-        if len(coverage) > 1:
-            # A high fusion rubric is shared strong positive evidence. A failed
-            # fusion cannot assign blame; use weak noisy-AND failure marginals.
-            if row >= 7:
-                evidence_likelihood = [a * b for a, b in zip(likelihood, positive[key])]
-            else:
-                strength = 3 if probe == 'after_prompt' else 1
-                evidence_likelihood = [v ** strength for v in negative[key]]
+        alternatives = []
+        for latent_row, likelihood in rows:
+            evidence_likelihood = likelihood
+            if len(coverage) > 1:
+                if latent_row >= 7:
+                    evidence_likelihood = [a * b for a, b in zip(likelihood, positive[key])]
+                else:
+                    strength = 3 if probe == 'after_prompt' else 1
+                    evidence_likelihood = [v ** strength for v in negative[key]]
+            alternatives.append(evidence_likelihood)
+        evidence_likelihood = [sum(v[i] for v in alternatives) / len(alternatives)
+                               for i in range(4)]
         # A previous hard gate must not make later demonstrated learning
         # mathematically impossible (Bayesian zero is otherwise absorbing).
         prior = normalize([max(RECOVERY_FLOOR, v) for v in distribution(node)])
@@ -273,12 +288,23 @@ def score(state, coverage, question_type, scores, quotes, probe):
         updated = normalize([v if i <= cap else 0. for i, v in enumerate(updated)])
         set_level(node, updated)
         e = node['evidence']
+        if 'dimensions' not in e:
+            # Recover old-state dimensional counts from the audit trail.
+            e['dimensions'] = {d: {'count': sum(
+                key in h['nodes'] and d in h.get('only', DIMS)
+                for h in state['history']), 'sharpness': 0.} for d in DIMS}
+            for item in e['dimensions'].values():
+                item['sharpness'] = 1 - math.exp(-item['count'] / 3)
+        for d in selected:
+            item = e['dimensions'][d]
+            item['count'] += 1
+            item['sharpness'] = 1 - math.exp(-item['count'] / 3)
         e['count'] += 1
         e['question_types'][question_type] = e['question_types'].get(question_type, 0) + 1
         e['sharpness'] = 1 - math.exp(-e['count'] / 3)
     # Only strong direct evidence lifts immediate prerequisites; never recurse.
     parents = set()
-    if row >= 9 and cap == 3:
+    if not restrict_updates and not missing and row >= 9 and cap == 3:
         for key in coverage:
             if mastery(state['nodes'][key]) >= .75:
                 parents.update(state['nodes'][key]['concept']['requires'])
@@ -289,6 +315,7 @@ def score(state, coverage, question_type, scores, quotes, probe):
         node['evidence']['propagated'] += 1
     state['history'].append({'nodes': list(coverage), 'question_type': question_type,
                              'scores': scores, 'quotes': quotes, 'probe': probe,
+                             'only': list(selected),
                              'total': total, 'row': row, 'before': before,
                              'after': {k: state['nodes'][k]['level'].copy() for k in coverage}})
     return state
@@ -361,7 +388,11 @@ def report(state):
                                         nodes[k]['p_mastery'], k))
         path.append(key)
         pending.remove(key)
+    contaminated = sorted({k for h in state['history']
+                           if h.get('whole_coverage', len(h['nodes']) > 1)
+                           for k in h['nodes']})
     return {'nodes': nodes, 'clusters': summary, 'learning_path': path,
+            'contaminated_nodes': contaminated,
             'calibration': {'observations': state['history'],
                             'semantic_hedging': None,
                             'note': 'Raw rubric/quotes only; hedging and correctness require external labels.'}}
@@ -397,6 +428,10 @@ def main(argv=None):
             target.add_argument('--node')
             target.add_argument('--scenario')
             cmd.add_argument('--question-type', choices=OFFSETS, required=True)
+            cmd.add_argument('--only', action='append',
+                             help='Evidence dimensions (comma-separated; repeatable)')
+            cmd.add_argument('--nodes', action='append',
+                             help='Actually observed scenario nodes (comma-separated; repeatable)')
             cmd.add_argument('--scores', required=True)
             cmd.add_argument('--quotes', required=True)
             cmd.add_argument('--probe', choices=('direct', 'after_prompt'), required=True)
@@ -415,15 +450,34 @@ def main(argv=None):
             state = load_data(args.state)
             topology(state['nodes'])
             if args.command == 'score':
+                only = None if args.only is None else [
+                    d for group in args.only for d in group.split(',')]
                 if args.node:
+                    if args.nodes is not None:
+                        raise ValueError('--nodes requires --scenario')
                     coverage = [args.node]
                 else:
                     item = next((s for s in state['scenarios'] if s['id'] == args.scenario), None)
                     if item is None:
                         raise ValueError('unknown scenario: ' + args.scenario)
                     coverage = item['instantiates']
+                    if args.nodes is not None:
+                        requested = {k for group in args.nodes for k in group.split(',')}
+                        if not requested or not requested <= set(coverage):
+                            raise ValueError('--nodes must be a nonempty subset of instantiates')
+                        coverage = [k for k in coverage if k in requested]
+                    else:
+                        print('warning: whole-coverage scoring may contaminate untested nodes',
+                              file=sys.stderr)
                 score(state, coverage, args.question_type, json.loads(args.scores),
-                      json.loads(args.quotes), args.probe)
+                      json.loads(args.quotes), args.probe, only,
+                      restrict_updates=args.nodes is not None)
+                observation = state['history'][-1]
+                observation['whole_coverage'] = bool(args.scenario and args.nodes is None)
+                if args.scenario:
+                    observation['scenario'] = args.scenario
+                    if 'required_observables' in item:
+                        observation['required_observables'] = item['required_observables']
                 save(args.state, state)
                 result = state['history'][-1]
             elif args.command == 'pick':
