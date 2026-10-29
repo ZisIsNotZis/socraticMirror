@@ -618,7 +618,7 @@
   - positional_encoding
   - language_model
   expected_elements:
-  - '机制: 未来扰动改变过去logits违反因果可见性；标签对齐错误可共存，但不能仅据此断言未右移。'
+  - 机制: '未来扰动改变过去logits违反因果可见性；标签对齐错误可共存，但不能仅据此断言未右移。'
   - 应用: 右移输入/标签并使用因果 mask，扰动未来 token 检查过去位置 logits 是否不变。
   - 边界: 低 teacher-forced loss 不证明自由生成质量；位置编码也不替代因果 mask。
   difficulty: high
@@ -814,9 +814,9 @@
   - activation_checkpointing
   - model_parallelism
   expected_elements:
-  - '机制: 四层方阵权重4GiB、两份Adam状态8GiB，反向梯度另4GiB；激活很小但峰值仍越过16GiB。'
-  - '应用: 以张量账本与实测峰值决定参数/梯度/优化器分片，跨卡分层时评估慢互联代价。'
-  - '边界: 检查点主要节省激活，不能消除16GiB常驻训练状态；复制式数据并行也不解决单副本超预算。'
+  - 机制: '四层方阵权重4GiB、两份Adam状态8GiB，反向梯度另4GiB；激活很小但峰值仍越过16GiB。'
+  - 应用: '以张量账本与实测峰值决定参数/梯度/优化器分片，跨卡分层时评估慢互联代价。'
+  - 边界: '检查点主要节省激活，不能消除16GiB常驻训练状态；复制式数据并行也不解决单副本超预算。'
   difficulty: high
   source:
     type: exercise
@@ -980,7 +980,7 @@
   - causal_language_modeling
   - transformer
   expected_elements:
-  - '机制: 自回归位置不能依赖未来；扰动测试支持可见性泄漏，具体mask与标签错误须分开验。'
+  - 机制: '自回归位置不能依赖未来；扰动测试支持可见性泄漏，具体mask与标签错误须分开验。'
   - 应用: 核验移位标签、掩码形状及跨样本边界，重建合法验证集。
   - 边界: 低训练loss不能证明因果生成能力；修掩码后须重训或继续训练验证。
   difficulty: high
@@ -2068,9 +2068,9 @@
   - direct_preference_optimization
   - rejection_sampling
   expected_elements:
-  - '机制: 损失mask控制角色监督范围，多阶段更新可能覆盖先前格式行为；探针不能单独确定退化发生在哪阶段。'
-  - '应用: 固定200题与阶段快照，单次回滚只改变一个因素；比较合规率与偏好胜率，拒绝采样不得只按长度筛。'
-  - '边界: 修复SFT目标未必修复偏好阶段覆盖；200题不能证明分布外合规，资源取舍需明确放弃的收益。'
+  - 机制: '损失mask控制角色监督范围，多阶段更新可能覆盖先前格式行为；探针不能单独确定退化发生在哪阶段。'
+  - 应用: '固定200题与阶段快照，单次回滚只改变一个因素；比较合规率与偏好胜率，拒绝采样不得只按长度筛。'
+  - 边界: '修复SFT目标未必修复偏好阶段覆盖；200题不能证明分布外合规，资源取舍需明确放弃的收益。'
   difficulty: high
   source:
     type: engineering
