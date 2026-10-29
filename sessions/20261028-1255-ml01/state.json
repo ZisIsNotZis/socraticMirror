@@ -505,6 +505,385 @@
         "mechanism": 3
       },
       "total": 12
+    },
+    {
+      "after": {
+        "multimodal_benchmark": {
+          "aware": 0.3094479903693897,
+          "deep": 0.11849322950025906,
+          "operable": 0.3062773595501401,
+          "unknown": 0.2657814205802111
+        },
+        "multimodal_hallucination": {
+          "aware": 0.3237652456178422,
+          "deep": 0.11183195045521513,
+          "operable": 0.28630064667858934,
+          "unknown": 0.2781021572483533
+        },
+        "video_understanding": {
+          "aware": 0.3237652456178422,
+          "deep": 0.11183195045521513,
+          "operable": 0.28630064667858934,
+          "unknown": 0.2781021572483533
+        },
+        "vlm": {
+          "aware": 0.13369919324821192,
+          "deep": 0.34959151172116254,
+          "operable": 0.47741006478992004,
+          "unknown": 0.03929923024070546
+        }
+      },
+      "before": {
+        "multimodal_benchmark": {
+          "aware": 0.3088117232024828,
+          "deep": 0.119123128513133,
+          "operable": 0.30736938553939896,
+          "unknown": 0.26469576274498524
+        },
+        "multimodal_hallucination": {
+          "aware": 0.32313409814320554,
+          "deep": 0.1124734544335117,
+          "operable": 0.2874203633005351,
+          "unknown": 0.27697208412274765
+        },
+        "video_understanding": {
+          "aware": 0.32313409814320554,
+          "deep": 0.1124734544335117,
+          "operable": 0.2874203633005351,
+          "unknown": 0.27697208412274765
+        },
+        "vlm": {
+          "aware": 0.133287539520109,
+          "deep": 0.3500461529598847,
+          "operable": 0.4775356189889948,
+          "unknown": 0.03913068853101145
+        }
+      },
+      "nodes": [
+        "video_understanding",
+        "vlm",
+        "multimodal_benchmark",
+        "multimodal_hallucination"
+      ],
+      "probe": "direct",
+      "question_type": "diagnosis",
+      "quotes": {
+        "application": "如果是每 16 帧，可能把事件切成两半，至少要有 50% 重叠的滑动窗口",
+        "boundary": "跑分跟目标之间没有必然联系",
+        "identify": "MMMU 我好像见过但不确定是啥，肯定是个跑分",
+        "mechanism": "采样到 0.2 秒事件的概率本质上是 0.2÷37.5，太小了"
+      },
+      "row": 6,
+      "scores": {
+        "application": 2,
+        "boundary": 2,
+        "identify": 2,
+        "mechanism": 2
+      },
+      "total": 8
+    },
+    {
+      "after": {
+        "multimodal_hallucination": {
+          "aware": 0.3256440046044283,
+          "deep": 0.10991508306017486,
+          "operable": 0.28293512234166657,
+          "unknown": 0.28150578999373027
+        },
+        "vision_projector": {
+          "aware": 0.3250170582579406,
+          "deep": 0.11055598498993852,
+          "operable": 0.2840636719928219,
+          "unknown": 0.28036328475929895
+        },
+        "visual_instruction_tuning": {
+          "aware": 0.3095651236219972,
+          "deep": 0.11777505113033788,
+          "operable": 0.3056993458084097,
+          "unknown": 0.26696047943925527
+        },
+        "vlm": {
+          "aware": 0.13493993868284876,
+          "deep": 0.3482253513487622,
+          "operable": 0.4770260042524442,
+          "unknown": 0.03980870571594485
+        }
+      },
+      "before": {
+        "multimodal_hallucination": {
+          "aware": 0.3237652456178422,
+          "deep": 0.11183195045521513,
+          "operable": 0.28630064667858934,
+          "unknown": 0.2781021572483533
+        },
+        "vision_projector": {
+          "aware": 0.32313409814320554,
+          "deep": 0.1124734544335117,
+          "operable": 0.2874203633005351,
+          "unknown": 0.27697208412274765
+        },
+        "visual_instruction_tuning": {
+          "aware": 0.3076645395957374,
+          "deep": 0.11965574947340764,
+          "operable": 0.3089672484202229,
+          "unknown": 0.2637124625106321
+        },
+        "vlm": {
+          "aware": 0.13369919324821192,
+          "deep": 0.34959151172116254,
+          "operable": 0.47741006478992004,
+          "unknown": 0.03929923024070546
+        }
+      },
+      "nodes": [
+        "vlm",
+        "vision_projector",
+        "visual_instruction_tuning",
+        "multimodal_hallucination"
+      ],
+      "probe": "after_prompt",
+      "question_type": "diagnosis",
+      "quotes": {
+        "application": "我直接看他生成这个答案的概率，或者用提示词让他自己报告有多确定",
+        "boundary": "也有可能是对齐让他过于自信，其他场景下概率判断是正常的",
+        "identify": "本质上也就是到底是自信地说出一个错误答案，还是不自信地",
+        "mechanism": "可能是训练数据集中在视野中央，周围一圈训练得少，所以边角注意力不够"
+      },
+      "row": 5,
+      "scores": {
+        "application": 1,
+        "boundary": 2,
+        "identify": 2,
+        "mechanism": 2
+      },
+      "total": 7
+    },
+    {
+      "after": {
+        "cross_entropy": {
+          "aware": 0.3110089783694576,
+          "deep": 0.11766823139102321,
+          "operable": 0.3040383075577356,
+          "unknown": 0.26728448268178356
+        },
+        "language_model": {
+          "aware": 0.0010027015806857776,
+          "deep": 0.9270369721508134,
+          "operable": 0.07095637987280619,
+          "unknown": 0.0010039463956946892
+        },
+        "perplexity": {
+          "aware": 0.32410874732906636,
+          "deep": 0.11156955825942964,
+          "operable": 0.2857507655293113,
+          "unknown": 0.2785709288821927
+        },
+        "tokenization": {
+          "aware": 0.31532373868263536,
+          "deep": 0.11799937535032165,
+          "operable": 0.2956760487090205,
+          "unknown": 0.27100083725802254
+        }
+      },
+      "before": {
+        "cross_entropy": {
+          "aware": 0.3101855027133275,
+          "deep": 0.11848530231166937,
+          "operable": 0.3054559069350081,
+          "unknown": 0.265873288039995
+        },
+        "language_model": {
+          "aware": 0.0002895485272716701,
+          "deep": 0.9286898109495284,
+          "operable": 0.07100762327602378,
+          "unknown": 1.3017247176155919e-05
+        },
+        "perplexity": {
+          "aware": 0.3232917038174593,
+          "deep": 0.11240028037046532,
+          "operable": 0.28720084111139593,
+          "unknown": 0.2771071747006794
+        },
+        "tokenization": {
+          "aware": 0.3145007300909806,
+          "deep": 0.11883634729866337,
+          "operable": 0.2970908682466584,
+          "unknown": 0.2695720543636977
+        }
+      },
+      "nodes": [
+        "perplexity",
+        "language_model",
+        "tokenization",
+        "cross_entropy"
+      ],
+      "probe": "direct",
+      "question_type": "diagnosis",
+      "quotes": {
+        "application": "应该全部 normalize 到整句话的概率",
+        "identify": "publicity 是所有 token 的平均",
+        "mechanism": "8000 个 token，其中的垃圾 token 肯定更多"
+      },
+      "row": 6,
+      "scores": {
+        "application": 2,
+        "boundary": 0,
+        "identify": 3,
+        "mechanism": 3
+      },
+      "total": 8
+    },
+    {
+      "after": {
+        "clip": {
+          "aware": 0.06622608210979325,
+          "deep": 0.5385470913099234,
+          "operable": 0.38453326678515876,
+          "unknown": 0.010693559795124673
+        },
+        "cross_entropy": {
+          "aware": 0.06082998345272169,
+          "deep": 0.5390223917432485,
+          "operable": 0.390166058968095,
+          "unknown": 0.009981565835934876
+        },
+        "vision_transformer": {
+          "aware": 0.014730914203043273,
+          "deep": 0.7104542956536817,
+          "operable": 0.2738596050883189,
+          "unknown": 0.0009551850549560816
+        },
+        "visual_grounding": {
+          "aware": 0.060514812690153796,
+          "deep": 0.5397819024173615,
+          "operable": 0.3897901070328631,
+          "unknown": 0.009913177859621666
+        }
+      },
+      "before": {
+        "clip": {
+          "aware": 0.32502886006205195,
+          "deep": 0.11159374354261875,
+          "operable": 0.2847812306278562,
+          "unknown": 0.2785961657674731
+        },
+        "cross_entropy": {
+          "aware": 0.3110089783694576,
+          "deep": 0.11766823139102321,
+          "operable": 0.3040383075577356,
+          "unknown": 0.26728448268178356
+        },
+        "vision_transformer": {
+          "aware": 0.14373740408466407,
+          "deep": 0.34657510092536736,
+          "operable": 0.4680639353794584,
+          "unknown": 0.04162355961051017
+        },
+        "visual_grounding": {
+          "aware": 0.3104871637930836,
+          "deep": 0.11834524538178261,
+          "operable": 0.30503573614534785,
+          "unknown": 0.26613185467978595
+        }
+      },
+      "nodes": [
+        "clip",
+        "visual_grounding",
+        "vision_transformer",
+        "cross_entropy"
+      ],
+      "probe": "direct",
+      "question_type": "diagnosis",
+      "quotes": {
+        "application": "可以用 Grad-CAM 出热力图再框，或者用 SAM、分割头去画边界",
+        "boundary": "这样得到的区域比较模糊，而且取决于模型的判据；有可能模型是根据环境判断的，而不是根据本体",
+        "identify": "他肯定没有原生输出区域的能力",
+        "mechanism": "全局池化之后空间信息就没了，所以热力图只能反映模型用的判据"
+      },
+      "row": 9,
+      "scores": {
+        "application": 2,
+        "boundary": 3,
+        "identify": 3,
+        "mechanism": 3
+      },
+      "total": 11
+    },
+    {
+      "after": {
+        "object_detection": {
+          "aware": 0.0606495191181522,
+          "deep": 0.5517286764403362,
+          "operable": 0.37983572673477317,
+          "unknown": 0.007786077706738545
+        },
+        "robustness": {
+          "aware": 0.05812595454580208,
+          "deep": 0.548690294796599,
+          "operable": 0.3856618270733564,
+          "unknown": 0.007521923584242476
+        },
+        "visual_grounding": {
+          "aware": 0.004009664528127735,
+          "deep": 0.8281246545060346,
+          "operable": 0.1677385793218858,
+          "unknown": 0.00012710164395196506
+        },
+        "vlm": {
+          "aware": 0.010107896048363672,
+          "deep": 0.7153549287364089,
+          "operable": 0.2739801019244248,
+          "unknown": 0.0005570732908026184
+        }
+      },
+      "before": {
+        "object_detection": {
+          "aware": 0.332541567695962,
+          "deep": 0.10926365795724464,
+          "operable": 0.2731591448931116,
+          "unknown": 0.2850356294536817
+        },
+        "robustness": {
+          "aware": 0.32537014999999997,
+          "deep": 0.11143528750000001,
+          "operable": 0.2843058625,
+          "unknown": 0.2788887
+        },
+        "visual_grounding": {
+          "aware": 0.060514812690153796,
+          "deep": 0.5397819024173615,
+          "operable": 0.3897901070328631,
+          "unknown": 0.009913177859621666
+        },
+        "vlm": {
+          "aware": 0.12007600570977346,
+          "deep": 0.3563476917044125,
+          "operable": 0.4881526139321446,
+          "unknown": 0.03542368865366948
+        }
+      },
+      "nodes": [
+        "visual_grounding",
+        "object_detection",
+        "vlm",
+        "robustness"
+      ],
+      "probe": "after_prompt",
+      "question_type": "diagnosis",
+      "quotes": {
+        "application": "标注必须和需求对齐，匹配必须一对一",
+        "boundary": "现实中到底是真的重叠还是同一个物体多报了几个框，这本身有歧义",
+        "identify": "召回和精度这些东西，取决于需求",
+        "mechanism": "一个 GT 不能被 3 个框消费 3 次；重复框算 false positive，精度下降，召回不变"
+      },
+      "row": 9,
+      "scores": {
+        "application": 3,
+        "boundary": 2,
+        "identify": 3,
+        "mechanism": 3
+      },
+      "total": 11
     }
   ],
   "nodes": {
@@ -1797,16 +2176,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.32502886006205195,
-        "deep": 0.11159374354261875,
-        "operable": 0.2847812306278562,
-        "unknown": 0.2785961657674731
+        "aware": 0.06622608210979325,
+        "deep": 0.5385470913099234,
+        "operable": 0.38453326678515876,
+        "unknown": 0.010693559795124673
       }
     },
     "closed_loop_control": {
@@ -1991,15 +2372,15 @@
       },
       "evidence": {
         "count": 0,
-        "propagated": 2,
+        "propagated": 3,
         "question_types": {},
         "sharpness": 0.0
       },
       "level": {
-        "aware": 0.2912311732355932,
-        "deep": 0.12946586009381425,
-        "operable": 0.32967624675436974,
-        "unknown": 0.2496267199162228
+        "aware": 0.2724660760081381,
+        "deep": 0.13929248252377444,
+        "operable": 0.354699090603969,
+        "unknown": 0.23354235086411843
       }
     },
     "constitutional_ai": {
@@ -2217,15 +2598,15 @@
       },
       "evidence": {
         "count": 0,
-        "propagated": 0,
+        "propagated": 1,
         "question_types": {},
         "sharpness": 0.0
       },
       "level": {
-        "aware": 0.32503299198335,
-        "deep": 0.1115918251505875,
-        "operable": 0.2847754754517625,
-        "unknown": 0.2785997074143
+        "aware": 0.3067926082847622,
+        "deep": 0.12112887041449483,
+        "operable": 0.3091134284852325,
+        "unknown": 0.26296509281551045
       }
     },
     "conversation_state": {
@@ -2313,16 +2694,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 2,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 2
+        },
+        "sharpness": 0.486582880967408
       },
       "level": {
-        "aware": 0.3101855027133275,
-        "deep": 0.11848530231166937,
-        "operable": 0.3054559069350081,
-        "unknown": 0.265873288039995
+        "aware": 0.06082998345272169,
+        "deep": 0.5390223917432485,
+        "operable": 0.390166058968095,
+        "unknown": 0.009981565835934876
       }
     },
     "data_augmentation": {
@@ -2967,15 +3350,15 @@
       },
       "evidence": {
         "count": 0,
-        "propagated": 0,
+        "propagated": 1,
         "question_types": {},
         "sharpness": 0.0
       },
       "level": {
-        "aware": 0.32537014999999997,
-        "deep": 0.11143528750000001,
-        "operable": 0.2843058625,
-        "unknown": 0.2788887
+        "aware": 0.30713807381872865,
+        "deep": 0.12096967866263761,
+        "operable": 0.3086310413882948,
+        "unknown": 0.2632612061303389
       }
     },
     "excessive_agency": {
@@ -3456,15 +3839,15 @@
       },
       "evidence": {
         "count": 0,
-        "propagated": 0,
+        "propagated": 1,
         "question_types": {},
         "sharpness": 0.0
       },
       "level": {
-        "aware": 0.32794999999999996,
-        "deep": 0.1102375,
-        "operable": 0.2807125,
-        "unknown": 0.2811
+        "aware": 0.3097835199323662,
+        "deep": 0.1197506476454516,
+        "operable": 0.30493710105158256,
+        "unknown": 0.2655287313705996
       }
     },
     "gptq": {
@@ -4527,19 +4910,19 @@
         }
       },
       "evidence": {
-        "count": 3,
-        "propagated": 0,
+        "count": 4,
+        "propagated": 1,
         "question_types": {
           "application": 2,
-          "diagnosis": 1
+          "diagnosis": 2
         },
-        "sharpness": 0.6321205588285577
+        "sharpness": 0.7364028618842733
       },
       "level": {
-        "aware": 0.0002895485272716701,
-        "deep": 0.9286898109495284,
-        "operable": 0.07100762327602378,
-        "unknown": 1.3017247176155919e-05
+        "aware": 0.000872142689730693,
+        "deep": 0.9272796752661061,
+        "operable": 0.07097495662320813,
+        "unknown": 0.0008732254209550188
       }
     },
     "latency": {
@@ -5858,16 +6241,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.3088117232024828,
-        "deep": 0.119123128513133,
-        "operable": 0.30736938553939896,
-        "unknown": 0.26469576274498524
+        "aware": 0.3094479903693897,
+        "deep": 0.11849322950025906,
+        "operable": 0.3062773595501401,
+        "unknown": 0.2657814205802111
       }
     },
     "multimodal_hallucination": {
@@ -5890,16 +6275,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 2,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 2
+        },
+        "sharpness": 0.486582880967408
       },
       "level": {
-        "aware": 0.32313409814320554,
-        "deep": 0.1124734544335117,
-        "operable": 0.2874203633005351,
-        "unknown": 0.27697208412274765
+        "aware": 0.3256440046044283,
+        "deep": 0.10991508306017486,
+        "operable": 0.28293512234166657,
+        "unknown": 0.28150578999373027
       }
     },
     "object_detection": {
@@ -5920,16 +6307,18 @@
         }
       },
       "evidence": {
-        "count": 0,
-        "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "count": 1,
+        "propagated": 1,
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.35,
-        "deep": 0.1,
-        "operable": 0.25,
-        "unknown": 0.3
+        "aware": 0.0606495191181522,
+        "deep": 0.5517286764403362,
+        "operable": 0.37983572673477317,
+        "unknown": 0.007786077706738545
       }
     },
     "ocr_understanding": {
@@ -6210,16 +6599,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.3232917038174593,
-        "deep": 0.11240028037046532,
-        "operable": 0.28720084111139593,
-        "unknown": 0.2771071747006794
+        "aware": 0.32410874732906636,
+        "deep": 0.11156955825942964,
+        "operable": 0.2857507655293113,
+        "unknown": 0.2785709288821927
       }
     },
     "persistent_knowledge": {
@@ -7544,16 +7935,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.32537014999999997,
-        "deep": 0.11143528750000001,
-        "operable": 0.2843058625,
-        "unknown": 0.2788887
+        "aware": 0.05812595454580208,
+        "deep": 0.548690294796599,
+        "operable": 0.3856618270733564,
+        "unknown": 0.007521923584242476
       }
     },
     "rope": {
@@ -8647,16 +9040,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 2,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.3145007300909806,
-        "deep": 0.11883634729866337,
-        "operable": 0.2970908682466584,
-        "unknown": 0.2695720543636977
+        "aware": 0.31532373868263536,
+        "deep": 0.11799937535032165,
+        "operable": 0.2956760487090205,
+        "unknown": 0.27100083725802254
       }
     },
     "tool_error_recovery": {
@@ -8844,17 +9239,17 @@
       },
       "evidence": {
         "count": 2,
-        "propagated": 0,
+        "propagated": 1,
         "question_types": {
           "diagnosis": 2
         },
         "sharpness": 0.486582880967408
       },
       "level": {
-        "aware": 0.012437058214108976,
-        "deep": 0.7098294111139556,
-        "operable": 0.2769398510456059,
-        "unknown": 0.0007936796263294833
+        "aware": 0.010833529175452218,
+        "deep": 0.711056515768286,
+        "operable": 0.2774186057645099,
+        "unknown": 0.000691349291751987
       }
     },
     "turn_budget": {
@@ -9199,16 +9594,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.32313409814320554,
-        "deep": 0.1124734544335117,
-        "operable": 0.2874203633005351,
-        "unknown": 0.27697208412274765
+        "aware": 0.3237652456178422,
+        "deep": 0.11183195045521513,
+        "operable": 0.28630064667858934,
+        "unknown": 0.2781021572483533
       }
     },
     "vision_projector": {
@@ -9231,16 +9628,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.32313409814320554,
-        "deep": 0.1124734544335117,
-        "operable": 0.2874203633005351,
-        "unknown": 0.27697208412274765
+        "aware": 0.3250170582579406,
+        "deep": 0.11055598498993852,
+        "operable": 0.2840636719928219,
+        "unknown": 0.28036328475929895
       }
     },
     "vision_transformer": {
@@ -9264,18 +9663,18 @@
         }
       },
       "evidence": {
-        "count": 1,
-        "propagated": 0,
+        "count": 2,
+        "propagated": 1,
         "question_types": {
-          "diagnosis": 1
+          "diagnosis": 2
         },
-        "sharpness": 0.28346868942621073
+        "sharpness": 0.486582880967408
       },
       "level": {
-        "aware": 0.14373740408466407,
-        "deep": 0.34657510092536736,
-        "operable": 0.4680639353794584,
-        "unknown": 0.04162355961051017
+        "aware": 0.012835752727603239,
+        "deep": 0.7119108745198427,
+        "operable": 0.27442107415889416,
+        "unknown": 0.000832298593659955
       }
     },
     "visual_grounding": {
@@ -9299,16 +9698,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 2,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 2
+        },
+        "sharpness": 0.486582880967408
       },
       "level": {
-        "aware": 0.3104871637930836,
-        "deep": 0.11834524538178261,
-        "operable": 0.30503573614534785,
-        "unknown": 0.26613185467978595
+        "aware": 0.004009664528127735,
+        "deep": 0.8281246545060346,
+        "operable": 0.1677385793218858,
+        "unknown": 0.00012710164395196506
       }
     },
     "visual_instruction_tuning": {
@@ -9332,16 +9733,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.3076645395957374,
-        "deep": 0.11965574947340764,
-        "operable": 0.3089672484202229,
-        "unknown": 0.2637124625106321
+        "aware": 0.3095651236219972,
+        "deep": 0.11777505113033788,
+        "operable": 0.3056993458084097,
+        "unknown": 0.26696047943925527
       }
     },
     "vla": {
@@ -9400,18 +9803,18 @@
         }
       },
       "evidence": {
-        "count": 1,
-        "propagated": 0,
+        "count": 4,
+        "propagated": 1,
         "question_types": {
-          "diagnosis": 1
+          "diagnosis": 4
         },
-        "sharpness": 0.28346868942621073
+        "sharpness": 0.7364028618842733
       },
       "level": {
-        "aware": 0.133287539520109,
-        "deep": 0.3500461529598847,
-        "operable": 0.4775356189889948,
-        "unknown": 0.03913068853101145
+        "aware": 0.010107896048363672,
+        "deep": 0.7153549287364089,
+        "operable": 0.2739801019244248,
+        "unknown": 0.0005570732908026184
       }
     },
     "web_search": {
