@@ -1,0 +1,52 @@
+{
+  "after": {
+    "flash_attention": {
+      "aware": 0.30892958321327857,
+      "deep": 0.11906840779383496,
+      "operable": 0.30720522338150485,
+      "unknown": 0.26479678561138165
+    }
+  },
+  "before": {
+    "flash_attention": {
+      "aware": 0.30892958321327857,
+      "deep": 0.11906840779383496,
+      "operable": 0.30720522338150485,
+      "unknown": 0.26479678561138165
+    }
+  },
+  "nodes": [
+    "flash_attention"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": null,
+    "boundary": null,
+    "identify": null,
+    "mechanism": null
+  },
+  "required_observables": [
+    "A100",
+    "B1/8192/bf16",
+    "60→30GiB",
+    "差1e-3/容差2e-3",
+    "padding"
+  ],
+  "row": 0,
+  "scenario": "scen_wp1b_flash",
+  "scores": {
+    "application": "unverified",
+    "boundary": "unverified",
+    "identify": "unverified",
+    "mechanism": "unverified"
+  },
+  "total": 0,
+  "whole_coverage": false
+}

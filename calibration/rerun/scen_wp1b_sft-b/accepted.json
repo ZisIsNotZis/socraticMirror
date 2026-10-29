@@ -1,0 +1,52 @@
+{
+  "after": {
+    "supervised_fine_tuning": {
+      "aware": 0.28253248526858904,
+      "deep": 0.16391643360653058,
+      "operable": 0.3277779626934898,
+      "unknown": 0.22577311843139064
+    }
+  },
+  "before": {
+    "supervised_fine_tuning": {
+      "aware": 0.3079379410057978,
+      "deep": 0.11952881310445101,
+      "operable": 0.30858643931335306,
+      "unknown": 0.26394680657639813
+    }
+  },
+  "nodes": [
+    "supervised_fine_tuning"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": "统一角色模板与助理回复mask，先去标识化手机号并隔离验证来源，在24GiB本地用PEFT训练；以SFT为主，在有限短程对照中比较有无手册域继续预训练。合成虚构号码测试复述率和任务解决率，核验用户位置loss为零及角色边界；",
+    "boundary": null,
+    "identify": "SFT在聊天模板上学习目标助理回复；用户与助理位置都计损失，意味着目标不只对准回复。继续预训练学习手册的域分布，不能替代客服指令监督；PEFT只更新受限参数子空间以满足增量训练约束。屏蔽用户目标但保留用户上下文，会把监督集中到回复而不是强迫模型复述每个用户token。",
+    "mechanism": "SFT在聊天模板上学习目标助理回复；用户与助理位置都计损失，意味着目标不只对准回复。继续预训练学习手册的域分布，不能替代客服指令监督；PEFT只更新受限参数子空间以满足增量训练约束。屏蔽用户目标但保留用户上下文，会把监督集中到回复而不是强迫模型复述每个用户token。"
+  },
+  "required_observables": [
+    "24GiB增量",
+    "2万对话",
+    "5亿token",
+    "两角色损失非零",
+    "隐私不能留存"
+  ],
+  "row": 5,
+  "scenario": "scen_wp1b_sft",
+  "scores": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "total": 8,
+  "whole_coverage": false
+}

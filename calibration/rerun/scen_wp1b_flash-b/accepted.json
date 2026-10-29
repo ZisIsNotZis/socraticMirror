@@ -1,0 +1,52 @@
+{
+  "after": {
+    "flash_attention": {
+      "aware": 0.283573217015355,
+      "deep": 0.16336046425906178,
+      "operable": 0.32646154636351443,
+      "unknown": 0.22660477236206877
+    }
+  },
+  "before": {
+    "flash_attention": {
+      "aware": 0.30892958321327857,
+      "deep": 0.11906840779383496,
+      "operable": 0.30720522338150485,
+      "unknown": 0.26479678561138165
+    }
+  },
+  "nodes": [
+    "flash_attention"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": "在一轮回归内固定QKV、padding语义、bf16和无dropout，使用FP32基准同时比较输出、损失与梯度，覆盖不同有效长度，记录峰值显存与耗时。确认内核支持对应mask和头维；输出及梯度达预定容差且实际显存约30GiB才替换，",
+    "boundary": null,
+    "identify": "FlashAttention不是低秩近似：它分块计算并用在线softmax与反向重算减少注意力中间矩阵的HBM读写及驻留，数学目标仍是精确缩放点积注意力。相同QKV差1e-3低于2e-3容差；若序列加长，免存完整N平方矩阵的收益更明显。",
+    "mechanism": "FlashAttention不是低秩近似：它分块计算并用在线softmax与反向重算减少注意力中间矩阵的HBM读写及驻留，数学目标仍是精确缩放点积注意力。相同QKV差1e-3低于2e-3容差；若序列加长，免存完整N平方矩阵的收益更明显。"
+  },
+  "required_observables": [
+    "A100",
+    "B1/8192/bf16",
+    "60→30GiB",
+    "差1e-3/容差2e-3",
+    "padding"
+  ],
+  "row": 5,
+  "scenario": "scen_wp1b_flash",
+  "scores": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "total": 8,
+  "whole_coverage": false
+}

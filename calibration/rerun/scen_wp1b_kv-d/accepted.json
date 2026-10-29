@@ -1,0 +1,51 @@
+{
+  "after": {
+    "kv_cache": {
+      "aware": 0.30972459011830156,
+      "deep": 0.11869929744507429,
+      "operable": 0.30609789233522283,
+      "unknown": 0.2654782201014013
+    }
+  },
+  "before": {
+    "kv_cache": {
+      "aware": 0.30972459011830156,
+      "deep": 0.11869929744507429,
+      "operable": 0.30609789233522283,
+      "unknown": 0.2654782201014013
+    }
+  },
+  "nodes": [
+    "kv_cache"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": null,
+    "boundary": null,
+    "identify": null,
+    "mechanism": null
+  },
+  "required_observables": [
+    "80GiB权重14",
+    "100×32000",
+    "32层8KV/128/bf16",
+    "不增卡保长度"
+  ],
+  "row": 0,
+  "scenario": "scen_wp1b_kv",
+  "scores": {
+    "application": "unverified",
+    "boundary": "unverified",
+    "identify": "unverified",
+    "mechanism": "unverified"
+  },
+  "total": 0,
+  "whole_coverage": false
+}

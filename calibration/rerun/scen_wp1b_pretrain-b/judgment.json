@@ -1,0 +1,36 @@
+{
+  "anchor_reasons": {
+    "application": "保留可执行方案与验证，删除故障调整路径，维持原应用2。",
+    "boundary": "按WP-8c2指定的整段边界消融标签；asks含boundary。保留正文仍可能含范围限制的判分歧义，见报告。"
+  },
+  "framework_A": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "framework_B": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "low_confidence": false,
+  "observed_nodes": [
+    "data_deduplication"
+  ],
+  "quotes": {
+    "application": "先做文档精确及近重复过滤，隔离基准重叠文档和相关来源，留出干净评估；审核质量过滤阈值，从已有未用语料分域补足300B。以短程分域消融比较原配比与较高代码配比，再确定正式混合，记录去除量、token账和域内/域外指标；",
+    "boundary": null,
+    "identify": "镜像近重复改变有效样本权重和混合分布，300B计数不等于300B独立信息；同一模式反复贡献梯度而非互相抵消。基准逐字重叠会带来污染并虚增评测。去重后从已有候补补足预算，会改变有效域比例，代码2%的效果需单独测。",
+    "mechanism": "镜像近重复改变有效样本权重和混合分布，300B计数不等于300B独立信息；同一模式反复贡献梯度而非互相抵消。基准逐字重叠会带来污染并虚增评测。去重后从已有候补补足预算，会改变有效域比例，代码2%的效果需单独测。"
+  },
+  "scores": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "source_answer": "calibration/answers/scen_wp1b_pretrain/b.md",
+  "source_judgment": "calibration/sessions/scen_wp1b_pretrain-b/judgment.json"
+}

@@ -1,0 +1,52 @@
+{
+  "after": {
+    "data_deduplication": {
+      "aware": 0.32794999999999996,
+      "deep": 0.1102375,
+      "operable": 0.2807125,
+      "unknown": 0.2811
+    }
+  },
+  "before": {
+    "data_deduplication": {
+      "aware": 0.32794999999999996,
+      "deep": 0.1102375,
+      "operable": 0.2807125,
+      "unknown": 0.2811
+    }
+  },
+  "nodes": [
+    "data_deduplication"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": null,
+    "boundary": null,
+    "identify": null,
+    "mechanism": null
+  },
+  "required_observables": [
+    "300B",
+    "重复30%",
+    "代码2%",
+    "逐字重叠",
+    "已有候补"
+  ],
+  "row": 0,
+  "scenario": "scen_wp1b_pretrain",
+  "scores": {
+    "application": "unverified",
+    "boundary": "unverified",
+    "identify": "unverified",
+    "mechanism": "unverified"
+  },
+  "total": 0,
+  "whole_coverage": false
+}

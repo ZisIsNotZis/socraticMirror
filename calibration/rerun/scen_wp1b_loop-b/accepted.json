@@ -1,0 +1,52 @@
+{
+  "after": {
+    "agent_harness": {
+      "aware": 0.30058203784573023,
+      "deep": 0.1542741814127248,
+      "operable": 0.30494717480301514,
+      "unknown": 0.2401966059385299
+    }
+  },
+  "before": {
+    "agent_harness": {
+      "aware": 0.32500735111618373,
+      "deep": 0.11160372983891469,
+      "operable": 0.28481118951674406,
+      "unknown": 0.2785777295281575
+    }
+  },
+  "nodes": [
+    "agent_harness"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": "立即取消登录动作，将最初禁止登录写入执行策略，记录URL、403及已用20次调用，剩余9次单独记账。屏蔽同条件重试，选无需登录的授权来源，最多分配几次探测，保留结束预算；每轮先查权限和计数，工具返回再更新状态。",
+    "boundary": null,
+    "identify": "重复403与禁止登录是不同层面的事实和权限：403是路径失败，不是登录授权。harness应持有预算、尝试历史和不可变授权，模型上下文只是工作材料；若压缩只留网页摘要而丢权限，后续动作就失去约束。把权限从可丢弃摘要移入执行时检查，可使扩窗与否不再决定授权是否生效。",
+    "mechanism": "重复403与禁止登录是不同层面的事实和权限：403是路径失败，不是登录授权。harness应持有预算、尝试历史和不可变授权，模型上下文只是工作材料；若压缩只留网页摘要而丢权限，后续动作就失去约束。把权限从可丢弃摘要移入执行时检查，可使扩窗与否不再决定授权是否生效。"
+  },
+  "required_observables": [
+    "30次上限",
+    "重复20次403",
+    "禁止登录",
+    "剩9次",
+    "不可扩窗"
+  ],
+  "row": 5,
+  "scenario": "scen_wp1b_loop",
+  "scores": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "total": 8,
+  "whole_coverage": false
+}

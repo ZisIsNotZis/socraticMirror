@@ -1,0 +1,51 @@
+{
+  "after": {
+    "clip": {
+      "aware": 0.32502886006205195,
+      "deep": 0.11159374354261875,
+      "operable": 0.2847812306278562,
+      "unknown": 0.2785961657674731
+    }
+  },
+  "before": {
+    "clip": {
+      "aware": 0.32502886006205195,
+      "deep": 0.11159374354261875,
+      "operable": 0.2847812306278562,
+      "unknown": 0.2785961657674731
+    }
+  },
+  "nodes": [
+    "clip"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": null,
+    "boundary": null,
+    "identify": null,
+    "mechanism": null
+  },
+  "required_observables": [
+    "50类80/100",
+    "接口无框",
+    "30带框",
+    "本地禁云"
+  ],
+  "row": 0,
+  "scenario": "scen_wp1b_clip",
+  "scores": {
+    "application": "unverified",
+    "boundary": "unverified",
+    "identify": "unverified",
+    "mechanism": "unverified"
+  },
+  "total": 0,
+  "whole_coverage": false
+}

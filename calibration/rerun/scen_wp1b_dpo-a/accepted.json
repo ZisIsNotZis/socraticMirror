@@ -1,0 +1,51 @@
+{
+  "after": {
+    "direct_preference_optimization": {
+      "aware": 0.11533085102477847,
+      "deep": 0.4610415938069211,
+      "operable": 0.3913731611231017,
+      "unknown": 0.03225439404519864
+    }
+  },
+  "before": {
+    "direct_preference_optimization": {
+      "aware": 0.2949903554371562,
+      "deep": 0.12554019211846318,
+      "operable": 0.32662057635538955,
+      "unknown": 0.25284887608899104
+    }
+  },
+  "nodes": [
+    "direct_preference_optimization"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": "保存独立只读参考快照，逐条核验chosen/rejected方向、长度处理和参考适配器开关；在有限一次重跑里预先选较短轮数并固定β，分离训练与留出。保留β/轮数离线候选分析，不声称一次训练扫全参数。每个检查点联合测胜率、JSON解析率和任务成功，合规下跌就回滚。",
+    "boundary": "离线偏好没有覆盖的新请求仍可能失败；没有独立奖励模型不代表没有标签偏差。冻结参考不能单独保证JSON合规，若修复后仍下跌，应恢复旧模型并补合规偏好数据，不能仅凭胜率批准上线。",
+    "identify": "DPO用固定参考策略的chosen/rejected相对对数概率构造成对目标，β控制相对参考的优化权衡，不是直接把偏好标签当token标签。固定序列和随机性仍每步参考logprob变化，说明参考计算路径有漂移，应查快照、共享权重与适配器启用状态；冻结后该对照量应稳定。",
+    "mechanism": "DPO用固定参考策略的chosen/rejected相对对数概率构造成对目标，β控制相对参考的优化权衡，不是直接把偏好标签当token标签。固定序列和随机性仍每步参考logprob变化，说明参考计算路径有漂移，应查快照、共享权重与适配器启用状态；冻结后该对照量应稳定。"
+  },
+  "required_observables": [
+    "5000对20轮",
+    "参考logprob变化",
+    "胜率+10/合规−15",
+    "一次重跑"
+  ],
+  "row": 9,
+  "scenario": "scen_wp1b_dpo",
+  "scores": {
+    "application": 3,
+    "boundary": 3,
+    "identify": 3,
+    "mechanism": 3
+  },
+  "total": 12,
+  "whole_coverage": false
+}

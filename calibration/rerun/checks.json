@@ -1,0 +1,72 @@
+[
+  {
+    "a_gt_b_gt_c": true,
+    "c_below_prior": true,
+    "d_unverified_null": true,
+    "passed": true,
+    "scenario": "scen_wp1b_preference"
+  },
+  {
+    "a_gt_b_gt_c": true,
+    "c_below_prior": true,
+    "d_unverified_null": true,
+    "passed": true,
+    "scenario": "scen_wp1b_dpo"
+  },
+  {
+    "a_gt_b_gt_c": true,
+    "c_below_prior": true,
+    "d_unverified_null": true,
+    "passed": true,
+    "scenario": "scen_wp1b_function"
+  },
+  {
+    "a_gt_b_gt_c": true,
+    "c_below_prior": true,
+    "d_unverified_null": true,
+    "passed": true,
+    "scenario": "scen_wp1b_loop"
+  },
+  {
+    "a_gt_b_gt_c": true,
+    "c_below_prior": true,
+    "d_unverified_null": true,
+    "passed": true,
+    "scenario": "scen_wp1b_vlm"
+  },
+  {
+    "a_gt_b_gt_c": true,
+    "c_below_prior": true,
+    "d_unverified_null": true,
+    "passed": true,
+    "scenario": "scen_wp1b_clip"
+  },
+  {
+    "a_gt_b_gt_c": true,
+    "c_below_prior": true,
+    "d_unverified_null": true,
+    "passed": true,
+    "scenario": "scen_wp1b_flash"
+  },
+  {
+    "a_gt_b_gt_c": true,
+    "c_below_prior": true,
+    "d_unverified_null": true,
+    "passed": true,
+    "scenario": "scen_wp1b_kv"
+  },
+  {
+    "a_gt_b_gt_c": true,
+    "c_below_prior": true,
+    "d_unverified_null": true,
+    "passed": true,
+    "scenario": "scen_wp1b_pretrain"
+  },
+  {
+    "a_gt_b_gt_c": true,
+    "c_below_prior": true,
+    "d_unverified_null": true,
+    "passed": true,
+    "scenario": "scen_wp1b_sft"
+  }
+]

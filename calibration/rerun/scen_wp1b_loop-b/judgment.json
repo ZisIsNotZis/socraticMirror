@@ -1,0 +1,36 @@
+{
+  "anchor_reasons": {
+    "application": "保留可执行方案与验证，删除故障调整路径，维持原应用2。",
+    "boundary": "按WP-8c2指定的整段边界消融标签；asks含boundary。保留正文仍可能含范围限制的判分歧义，见报告。"
+  },
+  "framework_A": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "framework_B": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "low_confidence": false,
+  "observed_nodes": [
+    "agent_harness"
+  ],
+  "quotes": {
+    "application": "立即取消登录动作，将最初禁止登录写入执行策略，记录URL、403及已用20次调用，剩余9次单独记账。屏蔽同条件重试，选无需登录的授权来源，最多分配几次探测，保留结束预算；每轮先查权限和计数，工具返回再更新状态。",
+    "boundary": null,
+    "identify": "重复403与禁止登录是不同层面的事实和权限：403是路径失败，不是登录授权。harness应持有预算、尝试历史和不可变授权，模型上下文只是工作材料；若压缩只留网页摘要而丢权限，后续动作就失去约束。把权限从可丢弃摘要移入执行时检查，可使扩窗与否不再决定授权是否生效。",
+    "mechanism": "重复403与禁止登录是不同层面的事实和权限：403是路径失败，不是登录授权。harness应持有预算、尝试历史和不可变授权，模型上下文只是工作材料；若压缩只留网页摘要而丢权限，后续动作就失去约束。把权限从可丢弃摘要移入执行时检查，可使扩窗与否不再决定授权是否生效。"
+  },
+  "scores": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "source_answer": "calibration/answers/scen_wp1b_loop/b.md",
+  "source_judgment": "calibration/sessions/scen_wp1b_loop-b/judgment.json"
+}

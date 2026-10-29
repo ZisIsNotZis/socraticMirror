@@ -1,0 +1,52 @@
+{
+  "after": {
+    "vlm": {
+      "aware": 0.30883844566842367,
+      "deep": 0.11911072165394616,
+      "operable": 0.30733216496183846,
+      "unknown": 0.2647186677157917
+    }
+  },
+  "before": {
+    "vlm": {
+      "aware": 0.30883844566842367,
+      "deep": 0.11911072165394616,
+      "operable": 0.30733216496183846,
+      "unknown": 0.2647186677157917
+    }
+  },
+  "nodes": [
+    "vlm"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": null,
+    "boundary": null,
+    "identify": null,
+    "mechanism": null
+  },
+  "required_observables": [
+    "1024→336",
+    "12像素药名",
+    "裁剪90/100整图40/100",
+    "500标注",
+    "禁云"
+  ],
+  "row": 0,
+  "scenario": "scen_wp1b_vlm",
+  "scores": {
+    "application": "unverified",
+    "boundary": "unverified",
+    "identify": "unverified",
+    "mechanism": "unverified"
+  },
+  "total": 0,
+  "whole_coverage": false
+}

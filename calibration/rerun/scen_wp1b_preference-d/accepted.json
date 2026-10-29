@@ -1,0 +1,51 @@
+{
+  "after": {
+    "reward_model": {
+      "aware": 0.32503299198335,
+      "deep": 0.1115918251505875,
+      "operable": 0.2847754754517625,
+      "unknown": 0.2785997074143
+    }
+  },
+  "before": {
+    "reward_model": {
+      "aware": 0.32503299198335,
+      "deep": 0.1115918251505875,
+      "operable": 0.2847754754517625,
+      "unknown": 0.2785997074143
+    }
+  },
+  "nodes": [
+    "reward_model"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": null,
+    "boundary": null,
+    "identify": null,
+    "mechanism": null
+  },
+  "required_observables": [
+    "80%长胜",
+    "700→600/1000",
+    "匹配组110:90",
+    "一天审计"
+  ],
+  "row": 0,
+  "scenario": "scen_wp1b_preference",
+  "scores": {
+    "application": "unverified",
+    "boundary": "unverified",
+    "identify": "unverified",
+    "mechanism": "unverified"
+  },
+  "total": 0,
+  "whole_coverage": false
+}

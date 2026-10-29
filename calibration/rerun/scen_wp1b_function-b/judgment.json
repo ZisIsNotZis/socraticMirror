@@ -1,0 +1,36 @@
+{
+  "anchor_reasons": {
+    "application": "保留可执行方案与验证，删除故障调整路径，维持原应用2。",
+    "boundary": "按WP-8c2指定的整段边界消融标签；asks含boundary。保留正文仍可能含范围限制的判分歧义，见报告。"
+  },
+  "framework_A": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "framework_B": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "low_confidence": false,
+  "observed_nodes": [
+    "tool_schema"
+  ],
+  "quotes": {
+    "application": "在适配层给输入声明分单位，核对下游实际契约后只换算一次；将参数生成与扣款执行分开，执行前校验金额范围、订单身份及付款授权。先做沙箱5元闭环，检查回执与账务，再压测100请求/分钟和非ASCII姓名原样回显，",
+    "boundary": null,
+    "identify": "这不是JSON语法错误：500整数满足结构，却在适配层与下游之间出现分和元的语义不一致。上游5元编码500分，而回执500元，必须沿适配前后请求和扣款回执定位单位映射，schema约束类型，不执行货币换算；显式统一单位后金额应回到5元。",
+    "mechanism": "这不是JSON语法错误：500整数满足结构，却在适配层与下游之间出现分和元的语义不一致。上游5元编码500分，而回执500元，必须沿适配前后请求和扣款回执定位单位映射，schema约束类型，不执行货币换算；显式统一单位后金额应回到5元。"
+  },
+  "scores": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "source_answer": "calibration/answers/scen_wp1b_function/b.md",
+  "source_judgment": "calibration/sessions/scen_wp1b_function-b/judgment.json"
+}

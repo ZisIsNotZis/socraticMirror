@@ -1,0 +1,51 @@
+{
+  "after": {
+    "reward_model": {
+      "aware": 0.30060936853057624,
+      "deep": 0.1542595810864958,
+      "operable": 0.30491260435779477,
+      "unknown": 0.24021844602513331
+    }
+  },
+  "before": {
+    "reward_model": {
+      "aware": 0.32503299198335,
+      "deep": 0.1115918251505875,
+      "operable": 0.2847754754517625,
+      "unknown": 0.2785997074143
+    }
+  },
+  "nodes": [
+    "reward_model"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": "暂停发布，用现有审计员一天按长度和问题类型分层抽样，遮蔽模型身份重评；留一组不回流训练的盲测，联合检查解决率、长度分布与奖励。优先修长度混杂标签，再做小批更新，与旧模型比较；",
+    "boundary": null,
+    "identify": "这里要区分偏好代理奖励与实际解决率。700降到600而奖励升高，加上80%长胜，提示奖励模型拟合比较标签时利用了长度伪特征；策略优化该代理便能得高奖励而少解决问题。若打破长度与标签的相关性，这条捷径的收益应下降。",
+    "mechanism": "这里要区分偏好代理奖励与实际解决率。700降到600而奖励升高，加上80%长胜，提示奖励模型拟合比较标签时利用了长度伪特征；策略优化该代理便能得高奖励而少解决问题。若打破长度与标签的相关性，这条捷径的收益应下降。"
+  },
+  "required_observables": [
+    "80%长胜",
+    "700→600/1000",
+    "匹配组110:90",
+    "一天审计"
+  ],
+  "row": 5,
+  "scenario": "scen_wp1b_preference",
+  "scores": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "total": 8,
+  "whole_coverage": false
+}

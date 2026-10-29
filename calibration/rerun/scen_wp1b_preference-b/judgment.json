@@ -1,0 +1,36 @@
+{
+  "anchor_reasons": {
+    "application": "保留可执行方案与验证，删除故障调整路径，维持原应用2。",
+    "boundary": "按WP-8c2指定的整段边界消融标签；asks含boundary。保留正文仍可能含范围限制的判分歧义，见报告。"
+  },
+  "framework_A": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "framework_B": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "low_confidence": false,
+  "observed_nodes": [
+    "reward_model"
+  ],
+  "quotes": {
+    "application": "暂停发布，用现有审计员一天按长度和问题类型分层抽样，遮蔽模型身份重评；留一组不回流训练的盲测，联合检查解决率、长度分布与奖励。优先修长度混杂标签，再做小批更新，与旧模型比较；",
+    "boundary": null,
+    "identify": "这里要区分偏好代理奖励与实际解决率。700降到600而奖励升高，加上80%长胜，提示奖励模型拟合比较标签时利用了长度伪特征；策略优化该代理便能得高奖励而少解决问题。若打破长度与标签的相关性，这条捷径的收益应下降。",
+    "mechanism": "这里要区分偏好代理奖励与实际解决率。700降到600而奖励升高，加上80%长胜，提示奖励模型拟合比较标签时利用了长度伪特征；策略优化该代理便能得高奖励而少解决问题。若打破长度与标签的相关性，这条捷径的收益应下降。"
+  },
+  "scores": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "source_answer": "calibration/answers/scen_wp1b_preference/b.md",
+  "source_judgment": "calibration/sessions/scen_wp1b_preference-b/judgment.json"
+}

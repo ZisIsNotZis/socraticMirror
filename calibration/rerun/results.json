@@ -1,0 +1,562 @@
+[
+  {
+    "initial_prior": 0.39636730060235004,
+    "node": "reward_model",
+    "p_mastery": 0.8220181556937194,
+    "scenario": "scen_wp1b_preference",
+    "scores": {
+      "application": 3,
+      "boundary": 3,
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "a"
+  },
+  {
+    "initial_prior": 0.39636730060235004,
+    "node": "reward_model",
+    "p_mastery": 0.45917218544429056,
+    "scenario": "scen_wp1b_preference",
+    "scores": {
+      "application": 2,
+      "boundary": "absent_asked",
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "b"
+  },
+  {
+    "initial_prior": 0.39636730060235004,
+    "node": "reward_model",
+    "p_mastery": 0.0,
+    "scenario": "scen_wp1b_preference",
+    "scores": {
+      "application": 2,
+      "boundary": 2,
+      "identify": 2,
+      "mechanism": 0
+    },
+    "status": "scored",
+    "variant": "c"
+  },
+  {
+    "initial_prior": 0.39636730060235004,
+    "node": "reward_model",
+    "p_mastery": null,
+    "scenario": "scen_wp1b_preference",
+    "scores": {
+      "application": "unverified",
+      "boundary": "unverified",
+      "identify": "unverified",
+      "mechanism": "unverified"
+    },
+    "status": "unverified",
+    "variant": "d"
+  },
+  {
+    "initial_prior": 0.4521607684738527,
+    "node": "direct_preference_optimization",
+    "p_mastery": 0.8524147549300228,
+    "scenario": "scen_wp1b_dpo",
+    "scores": {
+      "application": 3,
+      "boundary": 3,
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "a"
+  },
+  {
+    "initial_prior": 0.4521607684738527,
+    "node": "direct_preference_optimization",
+    "p_mastery": 0.5159839120963605,
+    "scenario": "scen_wp1b_dpo",
+    "scores": {
+      "application": 2,
+      "boundary": "absent_asked",
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "b"
+  },
+  {
+    "initial_prior": 0.4521607684738527,
+    "node": "direct_preference_optimization",
+    "p_mastery": 0.0,
+    "scenario": "scen_wp1b_dpo",
+    "scores": {
+      "application": 2,
+      "boundary": 2,
+      "identify": 2,
+      "mechanism": 0
+    },
+    "status": "scored",
+    "variant": "c"
+  },
+  {
+    "initial_prior": 0.4521607684738527,
+    "node": "direct_preference_optimization",
+    "p_mastery": null,
+    "scenario": "scen_wp1b_dpo",
+    "scores": {
+      "application": "unverified",
+      "boundary": "unverified",
+      "identify": "unverified",
+      "mechanism": "unverified"
+    },
+    "status": "unverified",
+    "variant": "d"
+  },
+  {
+    "initial_prior": 0.39641491935565876,
+    "node": "tool_schema",
+    "p_mastery": 0.8220465478104819,
+    "scenario": "scen_wp1b_function",
+    "scores": {
+      "application": 3,
+      "boundary": 3,
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "a"
+  },
+  {
+    "initial_prior": 0.39641491935565876,
+    "node": "tool_schema",
+    "p_mastery": 0.45922135621573995,
+    "scenario": "scen_wp1b_function",
+    "scores": {
+      "application": 2,
+      "boundary": "absent_asked",
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "b"
+  },
+  {
+    "initial_prior": 0.39641491935565876,
+    "node": "tool_schema",
+    "p_mastery": 0.0,
+    "scenario": "scen_wp1b_function",
+    "scores": {
+      "application": 0,
+      "boundary": 2,
+      "identify": 2,
+      "mechanism": 0
+    },
+    "status": "scored",
+    "variant": "c"
+  },
+  {
+    "initial_prior": 0.39641491935565876,
+    "node": "tool_schema",
+    "p_mastery": null,
+    "scenario": "scen_wp1b_function",
+    "scores": {
+      "application": "unverified",
+      "boundary": "unverified",
+      "identify": "unverified",
+      "mechanism": "unverified"
+    },
+    "status": "unverified",
+    "variant": "d"
+  },
+  {
+    "initial_prior": 0.39641491935565876,
+    "node": "agent_harness",
+    "p_mastery": 0.8220465478104819,
+    "scenario": "scen_wp1b_loop",
+    "scores": {
+      "application": 3,
+      "boundary": 3,
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "a"
+  },
+  {
+    "initial_prior": 0.39641491935565876,
+    "node": "agent_harness",
+    "p_mastery": 0.45922135621573995,
+    "scenario": "scen_wp1b_loop",
+    "scores": {
+      "application": 2,
+      "boundary": "absent_asked",
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "b"
+  },
+  {
+    "initial_prior": 0.39641491935565876,
+    "node": "agent_harness",
+    "p_mastery": 0.0,
+    "scenario": "scen_wp1b_loop",
+    "scores": {
+      "application": 1,
+      "boundary": 2,
+      "identify": 2,
+      "mechanism": 0
+    },
+    "status": "scored",
+    "variant": "c"
+  },
+  {
+    "initial_prior": 0.39641491935565876,
+    "node": "agent_harness",
+    "p_mastery": null,
+    "scenario": "scen_wp1b_loop",
+    "scores": {
+      "application": "unverified",
+      "boundary": "unverified",
+      "identify": "unverified",
+      "mechanism": "unverified"
+    },
+    "status": "unverified",
+    "variant": "d"
+  },
+  {
+    "initial_prior": 0.4264428866157846,
+    "node": "vlm",
+    "p_mastery": 0.8390826040728097,
+    "scenario": "scen_wp1b_vlm",
+    "scores": {
+      "application": 3,
+      "boundary": 3,
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "a"
+  },
+  {
+    "initial_prior": 0.4264428866157846,
+    "node": "vlm",
+    "p_mastery": 0.48999416565492004,
+    "scenario": "scen_wp1b_vlm",
+    "scores": {
+      "application": 2,
+      "boundary": "absent_asked",
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "b"
+  },
+  {
+    "initial_prior": 0.4264428866157846,
+    "node": "vlm",
+    "p_mastery": 0.0,
+    "scenario": "scen_wp1b_vlm",
+    "scores": {
+      "application": 2,
+      "boundary": 2,
+      "identify": 2,
+      "mechanism": 0
+    },
+    "status": "scored",
+    "variant": "c"
+  },
+  {
+    "initial_prior": 0.4264428866157846,
+    "node": "vlm",
+    "p_mastery": null,
+    "scenario": "scen_wp1b_vlm",
+    "scores": {
+      "application": "unverified",
+      "boundary": "unverified",
+      "identify": "unverified",
+      "mechanism": "unverified"
+    },
+    "status": "unverified",
+    "variant": "d"
+  },
+  {
+    "initial_prior": 0.39637497417047496,
+    "node": "clip",
+    "p_mastery": 0.8220227312772066,
+    "scenario": "scen_wp1b_clip",
+    "scores": {
+      "application": 3,
+      "boundary": 3,
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "a"
+  },
+  {
+    "initial_prior": 0.39637497417047496,
+    "node": "clip",
+    "p_mastery": 0.4591801091937892,
+    "scenario": "scen_wp1b_clip",
+    "scores": {
+      "application": 2,
+      "boundary": "absent_asked",
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "b"
+  },
+  {
+    "initial_prior": 0.39637497417047496,
+    "node": "clip",
+    "p_mastery": 0.0,
+    "scenario": "scen_wp1b_clip",
+    "scores": {
+      "application": 0,
+      "boundary": 2,
+      "identify": 2,
+      "mechanism": 0
+    },
+    "status": "scored",
+    "variant": "c"
+  },
+  {
+    "initial_prior": 0.39637497417047496,
+    "node": "clip",
+    "p_mastery": null,
+    "scenario": "scen_wp1b_clip",
+    "scores": {
+      "application": "unverified",
+      "boundary": "unverified",
+      "identify": "unverified",
+      "mechanism": "unverified"
+    },
+    "status": "unverified",
+    "variant": "d"
+  },
+  {
+    "initial_prior": 0.4262736311753398,
+    "node": "flash_attention",
+    "p_mastery": 0.8389912006100542,
+    "scenario": "scen_wp1b_flash",
+    "scores": {
+      "application": 3,
+      "boundary": 3,
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "a"
+  },
+  {
+    "initial_prior": 0.4262736311753398,
+    "node": "flash_attention",
+    "p_mastery": 0.48982201062257624,
+    "scenario": "scen_wp1b_flash",
+    "scores": {
+      "application": 2,
+      "boundary": "absent_asked",
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "b"
+  },
+  {
+    "initial_prior": 0.4262736311753398,
+    "node": "flash_attention",
+    "p_mastery": 0.0,
+    "scenario": "scen_wp1b_flash",
+    "scores": {
+      "application": 2,
+      "boundary": 2,
+      "identify": 2,
+      "mechanism": 0
+    },
+    "status": "scored",
+    "variant": "c"
+  },
+  {
+    "initial_prior": 0.4262736311753398,
+    "node": "flash_attention",
+    "p_mastery": null,
+    "scenario": "scen_wp1b_flash",
+    "scores": {
+      "application": "unverified",
+      "boundary": "unverified",
+      "identify": "unverified",
+      "mechanism": "unverified"
+    },
+    "status": "unverified",
+    "variant": "d"
+  },
+  {
+    "initial_prior": 0.4247971897802971,
+    "node": "kv_cache",
+    "p_mastery": 0.8381917538430081,
+    "scenario": "scen_wp1b_kv",
+    "scores": {
+      "application": 3,
+      "boundary": 3,
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "a"
+  },
+  {
+    "initial_prior": 0.4247971897802971,
+    "node": "kv_cache",
+    "p_mastery": 0.48831965564855867,
+    "scenario": "scen_wp1b_kv",
+    "scores": {
+      "application": 2,
+      "boundary": "absent_asked",
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "b"
+  },
+  {
+    "initial_prior": 0.4247971897802971,
+    "node": "kv_cache",
+    "p_mastery": 0.0,
+    "scenario": "scen_wp1b_kv",
+    "scores": {
+      "application": 2,
+      "boundary": 2,
+      "identify": 2,
+      "mechanism": 0
+    },
+    "status": "scored",
+    "variant": "c"
+  },
+  {
+    "initial_prior": 0.4247971897802971,
+    "node": "kv_cache",
+    "p_mastery": null,
+    "scenario": "scen_wp1b_kv",
+    "scores": {
+      "application": "unverified",
+      "boundary": "unverified",
+      "identify": "unverified",
+      "mechanism": "unverified"
+    },
+    "status": "unverified",
+    "variant": "d"
+  },
+  {
+    "initial_prior": 0.39094999999999996,
+    "node": "data_deduplication",
+    "p_mastery": 0.8187579822450622,
+    "scenario": "scen_wp1b_pretrain",
+    "scores": {
+      "application": 3,
+      "boundary": 3,
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "a"
+  },
+  {
+    "initial_prior": 0.39094999999999996,
+    "node": "data_deduplication",
+    "p_mastery": 0.4535705863738196,
+    "scenario": "scen_wp1b_pretrain",
+    "scores": {
+      "application": 2,
+      "boundary": "absent_asked",
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "b"
+  },
+  {
+    "initial_prior": 0.39094999999999996,
+    "node": "data_deduplication",
+    "p_mastery": 0.0,
+    "scenario": "scen_wp1b_pretrain",
+    "scores": {
+      "application": 2,
+      "boundary": 2,
+      "identify": 2,
+      "mechanism": 0
+    },
+    "status": "scored",
+    "variant": "c"
+  },
+  {
+    "initial_prior": 0.39094999999999996,
+    "node": "data_deduplication",
+    "p_mastery": null,
+    "scenario": "scen_wp1b_pretrain",
+    "scores": {
+      "application": "unverified",
+      "boundary": "unverified",
+      "identify": "unverified",
+      "mechanism": "unverified"
+    },
+    "status": "unverified",
+    "variant": "d"
+  },
+  {
+    "initial_prior": 0.42811525241780407,
+    "node": "supervised_fine_tuning",
+    "p_mastery": 0.8399830630415319,
+    "scenario": "scen_wp1b_sft",
+    "scores": {
+      "application": 3,
+      "boundary": 3,
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "a"
+  },
+  {
+    "initial_prior": 0.42811525241780407,
+    "node": "supervised_fine_tuning",
+    "p_mastery": 0.4916943963000204,
+    "scenario": "scen_wp1b_sft",
+    "scores": {
+      "application": 2,
+      "boundary": "absent_asked",
+      "identify": 3,
+      "mechanism": 3
+    },
+    "status": "scored",
+    "variant": "b"
+  },
+  {
+    "initial_prior": 0.42811525241780407,
+    "node": "supervised_fine_tuning",
+    "p_mastery": 0.0,
+    "scenario": "scen_wp1b_sft",
+    "scores": {
+      "application": 2,
+      "boundary": 2,
+      "identify": 2,
+      "mechanism": 0
+    },
+    "status": "scored",
+    "variant": "c"
+  },
+  {
+    "initial_prior": 0.42811525241780407,
+    "node": "supervised_fine_tuning",
+    "p_mastery": null,
+    "scenario": "scen_wp1b_sft",
+    "scores": {
+      "application": "unverified",
+      "boundary": "unverified",
+      "identify": "unverified",
+      "mechanism": "unverified"
+    },
+    "status": "unverified",
+    "variant": "d"
+  }
+]

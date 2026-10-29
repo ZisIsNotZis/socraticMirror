@@ -1,0 +1,5530 @@
+{
+  "calibration": {
+    "note": "Raw rubric/quotes only; hedging and correctness require external labels.",
+    "observations": [
+      {
+        "after": {
+          "direct_preference_optimization": {
+            "aware": 0.2690315967992162,
+            "deep": 0.17112874376800252,
+            "operable": 0.344855168328358,
+            "unknown": 0.21498449110442325
+          }
+        },
+        "before": {
+          "direct_preference_optimization": {
+            "aware": 0.2949903554371562,
+            "deep": 0.12554019211846318,
+            "operable": 0.32662057635538955,
+            "unknown": 0.25284887608899104
+          }
+        },
+        "nodes": [
+          "direct_preference_optimization"
+        ],
+        "only": [
+          "identify",
+          "mechanism",
+          "application",
+          "boundary"
+        ],
+        "probe": "direct",
+        "question_type": "boundary",
+        "quotes": {
+          "application": "保存独立只读参考快照，逐条核验chosen/rejected方向、长度处理和参考适配器开关；在有限一次重跑里预先选较短轮数并固定β，分离训练与留出。保留β/轮数离线候选分析，不声称一次训练扫全参数。每个检查点联合测胜率、JSON解析率和任务成功，",
+          "boundary": null,
+          "identify": "DPO用固定参考策略的chosen/rejected相对对数概率构造成对目标，β控制相对参考的优化权衡，不是直接把偏好标签当token标签。固定序列和随机性仍每步参考logprob变化，说明参考计算路径有漂移，应查快照、共享权重与适配器启用状态；冻结后该对照量应稳定。",
+          "mechanism": "DPO用固定参考策略的chosen/rejected相对对数概率构造成对目标，β控制相对参考的优化权衡，不是直接把偏好标签当token标签。固定序列和随机性仍每步参考logprob变化，说明参考计算路径有漂移，应查快照、共享权重与适配器启用状态；冻结后该对照量应稳定。"
+        },
+        "required_observables": [
+          "5000对20轮",
+          "参考logprob变化",
+          "胜率+10/合规−15",
+          "一次重跑"
+        ],
+        "row": 5,
+        "scenario": "scen_wp1b_dpo",
+        "scores": {
+          "application": 2,
+          "boundary": "absent_asked",
+          "identify": 3,
+          "mechanism": 3
+        },
+        "total": 8,
+        "whole_coverage": false
+      }
+    ],
+    "semantic_hedging": null
+  },
+  "clusters": {
+    "agent_harness": {
+      "mean_p_mastery": null,
+      "nodes": [
+        "agent_harness",
+        "agent_loop",
+        "agent_plugins",
+        "agent_tool_use",
+        "agent_tracing",
+        "browser_use",
+        "chain_of_thought",
+        "computer_use",
+        "context_compaction",
+        "context_management",
+        "conversation_state",
+        "function_calling",
+        "handoff",
+        "history_filtering",
+        "llm_context",
+        "local_context",
+        "mcp",
+        "mcp_approval",
+        "mcp_authorization",
+        "mcp_resources",
+        "mcp_tool_caching",
+        "mcp_tool_filter",
+        "mcp_tools",
+        "mcp_transport",
+        "memory_correction",
+        "persistent_knowledge",
+        "run_resumption",
+        "self_consistency",
+        "session_memory",
+        "streaming_tool_calls",
+        "structured_outputs",
+        "termination_policy",
+        "tool_error_recovery",
+        "tool_schema",
+        "turn_budget",
+        "workflow_orchestration"
+      ],
+      "tested": 0
+    },
+    "architecture": {
+      "mean_p_mastery": null,
+      "nodes": [
+        "attn_scaled_dot_product",
+        "batch_norm",
+        "causal_mask",
+        "cnn",
+        "decoder_only",
+        "encoder_decoder",
+        "expert_routing",
+        "gqa",
+        "layer_norm",
+        "load_balancing_loss",
+        "mixture_of_experts",
+        "mqa",
+        "multihead_attention",
+        "padding_stride",
+        "pooling",
+        "positional_encoding",
+        "resnet",
+        "rmsnorm",
+        "rnn",
+        "rope",
+        "swiglu",
+        "transformer"
+      ],
+      "tested": 0
+    },
+    "efficiency_serving": {
+      "mean_p_mastery": null,
+      "nodes": [
+        "activation_quantization",
+        "autoregressive_decoding",
+        "beam_search",
+        "context_extension",
+        "continuous_batching",
+        "flash_attention",
+        "fp8_inference",
+        "gptq",
+        "knowledge_distillation",
+        "kv_cache",
+        "kv_cache_quantization",
+        "latency",
+        "model_compression",
+        "model_deployment",
+        "paged_attention",
+        "post_training_quantization",
+        "prefill_decode",
+        "prefix_cache_key",
+        "prefix_cache_limits",
+        "prefix_caching",
+        "quantization_aware_training",
+        "quantized_moe",
+        "serving_slo",
+        "speculative_decoding",
+        "throughput",
+        "weight_quantization"
+      ],
+      "tested": 0
+    },
+    "evaluation": {
+      "mean_p_mastery": null,
+      "nodes": [
+        "accuracy",
+        "agent_benchmark",
+        "benchmarking",
+        "desktop_task_success",
+        "f1_score",
+        "holistic_evaluation",
+        "llm_as_judge",
+        "model_calibration",
+        "multimodal_benchmark",
+        "offline_evaluation",
+        "perplexity",
+        "precision_recall",
+        "robustness",
+        "web_task_success"
+      ],
+      "tested": 0
+    },
+    "generative_media": {
+      "mean_p_mastery": null,
+      "nodes": [
+        "classifier_free_guidance",
+        "ddim",
+        "ddpm",
+        "diffusion_model",
+        "dit",
+        "flow_matching",
+        "gan",
+        "latent_diffusion",
+        "score_matching",
+        "text_to_image",
+        "vae",
+        "video_generation"
+      ],
+      "tested": 0
+    },
+    "llm_foundation": {
+      "mean_p_mastery": null,
+      "nodes": [
+        "activation",
+        "autodiff",
+        "backpropagation",
+        "bayes_rule",
+        "bert",
+        "calculus",
+        "causal_language_modeling",
+        "chain_rule",
+        "computational_graph",
+        "compute_optimal_training",
+        "conditional_probability",
+        "cross_entropy",
+        "entropy",
+        "expectation",
+        "generalization",
+        "gradient",
+        "in_context_learning",
+        "instruction_following",
+        "kl_divergence",
+        "language_model",
+        "linear_algebra",
+        "masked_language_modeling",
+        "matrix_multiplication",
+        "maximum_likelihood",
+        "mlp",
+        "overfitting",
+        "probability",
+        "representation_learning",
+        "sampling_temperature",
+        "scaling_laws",
+        "softmax",
+        "subword_tokenization",
+        "svd",
+        "tokenization",
+        "top_p_sampling",
+        "word2vec",
+        "word_embedding"
+      ],
+      "tested": 0
+    },
+    "multimodal_vision": {
+      "mean_p_mastery": null,
+      "nodes": [
+        "action_tokenization",
+        "autonomous_driving",
+        "bev_representation",
+        "clip",
+        "closed_loop_control",
+        "contrastive_learning",
+        "convolution",
+        "embodied_intelligence",
+        "motion_prediction",
+        "multimodal_hallucination",
+        "object_detection",
+        "ocr_understanding",
+        "video_understanding",
+        "vision_projector",
+        "vision_transformer",
+        "visual_grounding",
+        "visual_instruction_tuning",
+        "vla",
+        "vlm"
+      ],
+      "tested": 0
+    },
+    "posttraining_alignment": {
+      "mean_p_mastery": 0.5159839120963605,
+      "nodes": [
+        "constitutional_ai",
+        "direct_preference_optimization",
+        "fine_tuning",
+        "harmlessness",
+        "instruction_tuning_data",
+        "iterative_posttraining",
+        "kl_regularization",
+        "lora",
+        "peft",
+        "preference_annealing",
+        "preference_data",
+        "preference_margin",
+        "qlora",
+        "reference_policy",
+        "rejection_sampling",
+        "reward_ensemble",
+        "reward_hacking",
+        "reward_model",
+        "rlaif",
+        "rlhf",
+        "sft_loss_mask",
+        "supervised_fine_tuning"
+      ],
+      "tested": 1
+    },
+    "pretraining": {
+      "mean_p_mastery": null,
+      "nodes": [
+        "adam",
+        "checkpoint_recovery",
+        "continued_pretraining",
+        "data_augmentation",
+        "data_deduplication",
+        "data_mixture",
+        "data_preprocessing",
+        "distribution_shift",
+        "document_masking",
+        "dropout",
+        "gradient_clipping",
+        "gradient_descent",
+        "initialization",
+        "learning_rate_schedule",
+        "long_context_training",
+        "minibatch_sgd",
+        "momentum",
+        "pretraining_contamination",
+        "quality_filtering",
+        "sequence_packing",
+        "sgd",
+        "supervised_learning",
+        "synthetic_data",
+        "train_test_split",
+        "unsupervised_learning",
+        "validation_split",
+        "vanishing_gradient",
+        "weight_decay"
+      ],
+      "tested": 0
+    },
+    "retrieval_search": {
+      "mean_p_mastery": null,
+      "nodes": [
+        "chunking",
+        "citation_grounding",
+        "dense_retrieval",
+        "hybrid_search",
+        "reranking",
+        "retrieval_augmented_generation",
+        "retrieval_evaluation",
+        "sparse_retrieval",
+        "vector_index",
+        "web_search"
+      ],
+      "tested": 0
+    },
+    "rl_reasoning": {
+      "mean_p_mastery": null,
+      "nodes": [
+        "actor_critic",
+        "advantage_estimation",
+        "bellman_equation",
+        "exploration_exploitation",
+        "grpo",
+        "mdp",
+        "monte_carlo_rl",
+        "off_policy_learning",
+        "policy_gradient",
+        "ppo",
+        "reasoning_rl",
+        "return_discount",
+        "state_action_value",
+        "temporal_difference",
+        "test_time_compute",
+        "verifiable_reward"
+      ],
+      "tested": 0
+    },
+    "safety_redteam": {
+      "mean_p_mastery": null,
+      "nodes": [
+        "authorization_boundary",
+        "blue_team_defense",
+        "data_poisoning",
+        "excessive_agency",
+        "guardrail_race",
+        "guardrail_tripwire",
+        "guardrails",
+        "human_approval",
+        "indirect_prompt_injection",
+        "input_guardrail",
+        "jailbreak",
+        "least_privilege",
+        "output_guardrail",
+        "prompt_injection",
+        "red_teaming",
+        "retrieval_poisoning",
+        "sandbox_execution",
+        "sensitive_disclosure",
+        "supply_chain_security",
+        "system_prompt_leakage",
+        "tool_guardrail",
+        "unbounded_consumption",
+        "unsafe_output_handling"
+      ],
+      "tested": 0
+    },
+    "systems_infra": {
+      "mean_p_mastery": null,
+      "nodes": [
+        "activation_checkpointing",
+        "allreduce",
+        "data_parallelism",
+        "experiment_tracking",
+        "expert_parallelism",
+        "fsdp",
+        "gpu_compute",
+        "inference_data_parallel",
+        "inference_pipeline_parallel",
+        "inference_tensor_parallel",
+        "mixed_precision",
+        "model_parallelism",
+        "model_versioning",
+        "moe_dispatch",
+        "pipeline_parallelism",
+        "tensor_parallelism",
+        "zero_sharding"
+      ],
+      "tested": 0
+    }
+  },
+  "contaminated_nodes": [],
+  "learning_path": [
+    "tokenization",
+    "chunking",
+    "calculus",
+    "computational_graph",
+    "data_preprocessing",
+    "data_deduplication",
+    "latency",
+    "linear_algebra",
+    "object_detection",
+    "probability",
+    "activation",
+    "autonomous_driving",
+    "chain_rule",
+    "conditional_probability",
+    "language_model",
+    "agent_tool_use",
+    "agent_loop",
+    "agent_harness",
+    "session_memory",
+    "context_management",
+    "context_compaction",
+    "llm_context",
+    "termination_policy",
+    "tool_error_recovery",
+    "turn_budget",
+    "browser_use",
+    "computer_use",
+    "excessive_agency",
+    "function_calling",
+    "tool_schema",
+    "human_approval",
+    "least_privilege",
+    "authorization_boundary",
+    "mcp",
+    "sandbox_execution",
+    "autoregressive_decoding",
+    "continuous_batching",
+    "prefill_decode",
+    "test_time_compute",
+    "chain_of_thought",
+    "retrieval_augmented_generation",
+    "citation_grounding",
+    "sensitive_disclosure",
+    "structured_outputs",
+    "self_consistency",
+    "mcp_authorization",
+    "run_resumption",
+    "mcp_tool_filter",
+    "persistent_knowledge",
+    "speculative_decoding",
+    "data_poisoning",
+    "retrieval_poisoning",
+    "expectation",
+    "flow_matching",
+    "generalization",
+    "gradient",
+    "matrix_multiplication",
+    "motion_prediction",
+    "quality_filtering",
+    "sparse_retrieval",
+    "subword_tokenization",
+    "unsupervised_learning",
+    "accuracy",
+    "bayes_rule",
+    "beam_search",
+    "convolution",
+    "entropy",
+    "exploration_exploitation",
+    "gpu_compute",
+    "gradient_clipping",
+    "gradient_descent",
+    "maximum_likelihood",
+    "mdp",
+    "policy_gradient",
+    "grpo",
+    "ppo",
+    "mlp",
+    "mixture_of_experts",
+    "diffusion_model",
+    "classifier_free_guidance",
+    "model_calibration",
+    "overfitting",
+    "positional_encoding",
+    "rope",
+    "context_extension",
+    "long_context_training",
+    "precision_recall",
+    "return_discount",
+    "robustness",
+    "red_teaming",
+    "softmax",
+    "attn_scaled_dot_product",
+    "multihead_attention",
+    "gqa",
+    "expert_routing",
+    "kv_cache",
+    "paged_attention",
+    "prefix_caching",
+    "flash_attention",
+    "transformer",
+    "decoder_only",
+    "vision_transformer",
+    "vlm",
+    "multimodal_hallucination",
+    "video_understanding",
+    "vision_projector",
+    "vla",
+    "dit",
+    "supervised_learning",
+    "preference_data",
+    "reward_model",
+    "reward_hacking",
+    "swiglu",
+    "train_test_split",
+    "word_embedding",
+    "dense_retrieval",
+    "reranking",
+    "hybrid_search",
+    "closed_loop_control",
+    "data_augmentation",
+    "embodied_intelligence",
+    "f1_score",
+    "kl_divergence",
+    "kl_regularization",
+    "rlhf",
+    "rlaif",
+    "learning_rate_schedule",
+    "mixed_precision",
+    "momentum",
+    "offline_evaluation",
+    "pretraining_contamination",
+    "representation_learning",
+    "retrieval_evaluation",
+    "sampling_temperature",
+    "validation_split",
+    "verifiable_reward",
+    "reasoning_rl",
+    "weight_decay",
+    "benchmarking",
+    "agent_benchmark",
+    "multimodal_benchmark",
+    "bev_representation",
+    "contrastive_learning",
+    "clip",
+    "encoder_decoder",
+    "experiment_tracking",
+    "agent_tracing",
+    "model_compression",
+    "weight_quantization",
+    "knowledge_distillation",
+    "kv_cache_quantization",
+    "model_deployment",
+    "preference_annealing",
+    "preference_margin",
+    "top_p_sampling",
+    "vector_index",
+    "activation_quantization",
+    "holistic_evaluation",
+    "llm_as_judge",
+    "model_versioning",
+    "reward_ensemble",
+    "throughput",
+    "checkpoint_recovery",
+    "fp8_inference",
+    "post_training_quantization",
+    "supply_chain_security",
+    "gptq",
+    "agent_plugins",
+    "conversation_state",
+    "history_filtering",
+    "local_context",
+    "memory_correction",
+    "handoff",
+    "mcp_resources",
+    "mcp_tool_caching",
+    "mcp_transport",
+    "streaming_tool_calls",
+    "workflow_orchestration",
+    "unbounded_consumption",
+    "unsafe_output_handling",
+    "web_search",
+    "mqa",
+    "prefix_cache_key",
+    "prefix_cache_limits",
+    "data_mixture",
+    "in_context_learning",
+    "instruction_following",
+    "constitutional_ai",
+    "guardrails",
+    "harmlessness",
+    "jailbreak",
+    "prompt_injection",
+    "tool_guardrail",
+    "indirect_prompt_injection",
+    "blue_team_defense",
+    "guardrail_tripwire",
+    "input_guardrail",
+    "output_guardrail",
+    "system_prompt_leakage",
+    "instruction_tuning_data",
+    "masked_language_modeling",
+    "reference_policy",
+    "direct_preference_optimization",
+    "scaling_laws",
+    "compute_optimal_training",
+    "synthetic_data",
+    "causal_mask",
+    "document_masking",
+    "ddim",
+    "ddpm",
+    "video_generation",
+    "load_balancing_loss",
+    "ocr_understanding",
+    "bert",
+    "autodiff",
+    "score_matching",
+    "dropout",
+    "serving_slo",
+    "sequence_packing",
+    "action_tokenization",
+    "visual_grounding",
+    "distribution_shift",
+    "backpropagation",
+    "fine_tuning",
+    "peft",
+    "lora",
+    "qlora",
+    "supervised_fine_tuning",
+    "sft_loss_mask",
+    "visual_instruction_tuning",
+    "iterative_posttraining",
+    "activation_checkpointing",
+    "vanishing_gradient",
+    "bellman_equation",
+    "temporal_difference",
+    "cnn",
+    "resnet",
+    "cross_entropy",
+    "perplexity",
+    "gan",
+    "initialization",
+    "layer_norm",
+    "rmsnorm",
+    "off_policy_learning",
+    "sgd",
+    "minibatch_sgd",
+    "adam",
+    "monte_carlo_rl",
+    "state_action_value",
+    "advantage_estimation",
+    "vae",
+    "latent_diffusion",
+    "quantized_moe",
+    "desktop_task_success",
+    "web_task_success",
+    "mcp_tools",
+    "guardrail_race",
+    "mcp_approval",
+    "rejection_sampling",
+    "data_parallelism",
+    "allreduce",
+    "fsdp",
+    "inference_data_parallel",
+    "zero_sharding",
+    "model_parallelism",
+    "expert_parallelism",
+    "moe_dispatch",
+    "pipeline_parallelism",
+    "inference_pipeline_parallel",
+    "tensor_parallelism",
+    "inference_tensor_parallel",
+    "text_to_image",
+    "quantization_aware_training",
+    "causal_language_modeling",
+    "continued_pretraining",
+    "actor_critic",
+    "pooling",
+    "svd",
+    "padding_stride",
+    "rnn",
+    "word2vec",
+    "batch_norm"
+  ],
+  "nodes": {
+    "accuracy": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "action_tokenization": {
+      "entropy": 1.9185107222329414,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31157434816379076,
+        "deep": 0.11784048120966857,
+        "operable": 0.3035214436290057,
+        "unknown": 0.26706372699753494
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "activation": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "activation_checkpointing": {
+      "entropy": 1.9110847812694494,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "activation_quantization": {
+      "entropy": 1.909741979873221,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502886006205195,
+        "deep": 0.11159374354261875,
+        "operable": 0.2847812306278562,
+        "unknown": 0.2785961657674731
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "actor_critic": {
+      "entropy": 1.9205251501254952,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3072832927716937,
+        "deep": 0.11983275692742795,
+        "operable": 0.3094982707822838,
+        "unknown": 0.26338567951859465
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "adam": {
+      "entropy": 1.9192142783072823,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101639937674593,
+        "deep": 0.11849528860796532,
+        "operable": 0.3054858658238959,
+        "unknown": 0.2658548518006794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "advantage_estimation": {
+      "entropy": 1.9111008860180365,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32327036407376825,
+        "deep": 0.11241018810860759,
+        "operable": 0.2872305643258227,
+        "unknown": 0.2770888834918014
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "agent_benchmark": {
+      "entropy": 1.919321087232996,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30994247995121627,
+        "deep": 0.11859813430836387,
+        "operable": 0.3057944029250916,
+        "unknown": 0.26566498281532824
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "agent_harness": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "agent_loop": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "agent_plugins": {
+      "entropy": 1.9097443530293714,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3250258600805935,
+        "deep": 0.11159513639115302,
+        "operable": 0.28478540917345907,
+        "unknown": 0.2785935943547944
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "agent_tool_use": {
+      "entropy": 1.9109293258483842,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "agent_tracing": {
+      "entropy": 1.919321087232996,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30994247995121627,
+        "deep": 0.11859813430836387,
+        "operable": 0.3057944029250916,
+        "unknown": 0.26566498281532824
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "allreduce": {
+      "entropy": 1.9111954844569716,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3231447612359536,
+        "deep": 0.11246850371187869,
+        "operable": 0.28740551113563606,
+        "unknown": 0.2769812239165316
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "attn_scaled_dot_product": {
+      "entropy": 1.9192038538046363,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "authorization_boundary": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "autodiff": {
+      "entropy": 1.9183213650051034,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31194059749999997,
+        "deep": 0.117670436875,
+        "operable": 0.303011310625,
+        "unknown": 0.267377655
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "autonomous_driving": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "autoregressive_decoding": {
+      "entropy": 1.9109293258483842,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "backpropagation": {
+      "entropy": 1.9192038538046363,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "batch_norm": {
+      "entropy": 1.9192038538046363,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "bayes_rule": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "beam_search": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "bellman_equation": {
+      "entropy": 1.9192038538046363,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "benchmarking": {
+      "entropy": 1.909738710980874,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "bert": {
+      "entropy": 1.9119002664821347,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32219489197157447,
+        "deep": 0.112909514441769,
+        "operable": 0.28872854332530695,
+        "unknown": 0.2761670502613496
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "bev_representation": {
+      "entropy": 1.909738710980874,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "blue_team_defense": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "browser_use": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "calculus": {
+      "entropy": 1.8833830982290134,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.35,
+        "deep": 0.1,
+        "operable": 0.25,
+        "unknown": 0.3
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "causal_language_modeling": {
+      "entropy": 1.9202040488032244,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3080244464357781,
+        "deep": 0.11948864986910303,
+        "operable": 0.30846594960730905,
+        "unknown": 0.2640209540878098
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "causal_mask": {
+      "entropy": 1.9110847812694494,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "chain_of_thought": {
+      "entropy": 1.9109293258483842,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "chain_rule": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "checkpoint_recovery": {
+      "entropy": 1.9097423623103555,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502837662726003,
+        "deep": 0.1115939679944864,
+        "operable": 0.28478190398345915,
+        "unknown": 0.27859575139479437
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "chunking": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "citation_grounding": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "classifier_free_guidance": {
+      "entropy": 1.9110847812694494,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "clip": {
+      "entropy": 1.909741979873221,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502886006205195,
+        "deep": 0.11159374354261875,
+        "operable": 0.2847812306278562,
+        "unknown": 0.2785961657674731
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "closed_loop_control": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "cnn": {
+      "entropy": 1.9192038538046363,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "computational_graph": {
+      "entropy": 1.8833830982290134,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.35,
+        "deep": 0.1,
+        "operable": 0.25,
+        "unknown": 0.3
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "compute_optimal_training": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "computer_use": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "conditional_probability": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "constitutional_ai": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "context_compaction": {
+      "entropy": 1.9097426399757829,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3250280256294294,
+        "deep": 0.11159413095776491,
+        "operable": 0.2847823928732947,
+        "unknown": 0.27859545053951096
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "context_extension": {
+      "entropy": 1.909738710980874,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "context_management": {
+      "entropy": 1.9097443530293714,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3250258600805935,
+        "deep": 0.11159513639115302,
+        "operable": 0.28478540917345907,
+        "unknown": 0.2785935943547944
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "continued_pretraining": {
+      "entropy": 1.9112749894431413,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.323038860232986,
+        "deep": 0.11251767203468506,
+        "operable": 0.28755301610405515,
+        "unknown": 0.27689045162827375
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "continuous_batching": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "contrastive_learning": {
+      "entropy": 1.909738710980874,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "conversation_state": {
+      "entropy": 1.9097443530293714,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3250258600805935,
+        "deep": 0.11159513639115302,
+        "operable": 0.28478540917345907,
+        "unknown": 0.2785935943547944
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "convolution": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "cross_entropy": {
+      "entropy": 1.9192038538046363,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "data_augmentation": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "data_deduplication": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "data_mixture": {
+      "entropy": 1.9109293258483842,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "data_parallelism": {
+      "entropy": 1.9197967213427152,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30892958321327857,
+        "deep": 0.11906840779383496,
+        "operable": 0.30720522338150485,
+        "unknown": 0.26479678561138165
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "data_poisoning": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "data_preprocessing": {
+      "entropy": 1.8833830982290134,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.35,
+        "deep": 0.1,
+        "operable": 0.25,
+        "unknown": 0.3
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "ddim": {
+      "entropy": 1.9110847812694494,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "ddpm": {
+      "entropy": 1.9110847812694494,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "decoder_only": {
+      "entropy": 1.9119002664821347,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32219489197157447,
+        "deep": 0.112909514441769,
+        "operable": 0.28872854332530695,
+        "unknown": 0.2761670502613496
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "dense_retrieval": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "desktop_task_success": {
+      "entropy": 1.919321087232996,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30994247995121627,
+        "deep": 0.11859813430836387,
+        "operable": 0.3057944029250916,
+        "unknown": 0.26566498281532824
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "diffusion_model": {
+      "entropy": 1.9192038538046363,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "direct_preference_optimization": {
+      "entropy": 1.951871546642216,
+      "evidence": {
+        "count": 1,
+        "dimensions": {
+          "application": {
+            "count": 1,
+            "sharpness": 0.28346868942621073,
+            "status": "scored",
+            "value": 2
+          },
+          "boundary": {
+            "count": 0,
+            "sharpness": 0.0,
+            "status": "absent_asked",
+            "value": null
+          },
+          "identify": {
+            "count": 1,
+            "sharpness": 0.28346868942621073,
+            "status": "scored",
+            "value": 3
+          },
+          "mechanism": {
+            "count": 1,
+            "sharpness": 0.28346868942621073,
+            "status": "scored",
+            "value": 3
+          }
+        },
+        "propagated": 0,
+        "question_types": {
+          "boundary": 1
+        },
+        "sharpness": 0.28346868942621073
+      },
+      "level": {
+        "aware": 0.2690315967992162,
+        "deep": 0.17112874376800252,
+        "operable": 0.344855168328358,
+        "unknown": 0.21498449110442325
+      },
+      "p_mastery": 0.5159839120963605,
+      "status": "scored"
+    },
+    "distribution_shift": {
+      "entropy": 1.9191143699339988,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3103693398575,
+        "deep": 0.118399949351875,
+        "operable": 0.305199848055625,
+        "unknown": 0.266030862735
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "dit": {
+      "entropy": 1.9205289660663383,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.307274326909839,
+        "deep": 0.11983691964900331,
+        "operable": 0.3095107589470099,
+        "unknown": 0.2633779944941477
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "document_masking": {
+      "entropy": 1.9099027160176463,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248251293466427,
+        "deep": 0.11168833280334445,
+        "operable": 0.2850649984100333,
+        "unknown": 0.2784215394399795
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "dropout": {
+      "entropy": 1.9184231439277675,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31174439990749997,
+        "deep": 0.117761528614375,
+        "operable": 0.303284585843125,
+        "unknown": 0.267209485635
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "embodied_intelligence": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "encoder_decoder": {
+      "entropy": 1.909738710980874,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "entropy": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "excessive_agency": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "expectation": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "experiment_tracking": {
+      "entropy": 1.909738710980874,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "expert_parallelism": {
+      "entropy": 1.919846682011279,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30882053038614476,
+        "deep": 0.11911903946357563,
+        "operable": 0.3073571183907269,
+        "unknown": 0.2647033117595527
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "expert_routing": {
+      "entropy": 1.9193022146096586,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30998177199791827,
+        "deep": 0.11857989157239508,
+        "operable": 0.3057396747171852,
+        "unknown": 0.2656986617125014
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "exploration_exploitation": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "f1_score": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "fine_tuning": {
+      "entropy": 1.919806059925521,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3089092393706594,
+        "deep": 0.11907785314933671,
+        "operable": 0.3072335594480101,
+        "unknown": 0.26477934803199377
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "flash_attention": {
+      "entropy": 1.9197967213427152,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30892958321327857,
+        "deep": 0.11906840779383496,
+        "operable": 0.30720522338150485,
+        "unknown": 0.26479678561138165
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "flow_matching": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "fp8_inference": {
+      "entropy": 1.9097423623103555,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502837662726003,
+        "deep": 0.1115939679944864,
+        "operable": 0.28478190398345915,
+        "unknown": 0.27859575139479437
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "fsdp": {
+      "entropy": 1.9111954844569716,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3231447612359536,
+        "deep": 0.11246850371187869,
+        "operable": 0.28740551113563606,
+        "unknown": 0.2769812239165316
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "function_calling": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "gan": {
+      "entropy": 1.9192038538046363,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "generalization": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "gptq": {
+      "entropy": 1.909742407055182,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502832006538945,
+        "deep": 0.11159399425535492,
+        "operable": 0.28478198276606476,
+        "unknown": 0.27859570291319097
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "gpu_compute": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "gqa": {
+      "entropy": 1.9099027160176463,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248251293466427,
+        "deep": 0.11168833280334445,
+        "operable": 0.2850649984100333,
+        "unknown": 0.2784215394399795
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "gradient": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "gradient_clipping": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "gradient_descent": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "grpo": {
+      "entropy": 1.911873691599244,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32223117226002357,
+        "deep": 0.11289267002213191,
+        "operable": 0.2886780100663957,
+        "unknown": 0.2761981476514488
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "guardrail_race": {
+      "entropy": 1.9193273129734643,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3099295037915694,
+        "deep": 0.11860415895391418,
+        "operable": 0.30581247686174257,
+        "unknown": 0.26565386039277383
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "guardrail_tripwire": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "guardrails": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "handoff": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "harmlessness": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "history_filtering": {
+      "entropy": 1.9097443530293714,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3250258600805935,
+        "deep": 0.11159513639115302,
+        "operable": 0.28478540917345907,
+        "unknown": 0.2785935943547944
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "holistic_evaluation": {
+      "entropy": 1.909741979873221,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502886006205195,
+        "deep": 0.11159374354261875,
+        "operable": 0.2847812306278562,
+        "unknown": 0.2785961657674731
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "human_approval": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "hybrid_search": {
+      "entropy": 1.9192142783072823,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101639937674593,
+        "deep": 0.11849528860796532,
+        "operable": 0.3054858658238959,
+        "unknown": 0.2658548518006794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "in_context_learning": {
+      "entropy": 1.9109293258483842,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "indirect_prompt_injection": {
+      "entropy": 1.9193729970751507,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3098340653559274,
+        "deep": 0.11864846965617658,
+        "operable": 0.30594540896852973,
+        "unknown": 0.26557205601936634
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "inference_data_parallel": {
+      "entropy": 1.9111954844569716,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3231447612359536,
+        "deep": 0.11246850371187869,
+        "operable": 0.28740551113563606,
+        "unknown": 0.2769812239165316
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "inference_pipeline_parallel": {
+      "entropy": 1.9099162405020838,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248079370646066,
+        "deep": 0.11169631493428983,
+        "operable": 0.28508894480286945,
+        "unknown": 0.27840680319823424
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "inference_tensor_parallel": {
+      "entropy": 1.9099162405020838,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248079370646066,
+        "deep": 0.11169631493428983,
+        "operable": 0.28508894480286945,
+        "unknown": 0.27840680319823424
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "initialization": {
+      "entropy": 1.9192038538046363,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "input_guardrail": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "instruction_following": {
+      "entropy": 1.9109293258483842,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "instruction_tuning_data": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "iterative_posttraining": {
+      "entropy": 1.9207542726499391,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30673795674012816,
+        "deep": 0.12008594865636907,
+        "operable": 0.3102578459691072,
+        "unknown": 0.26291824863439556
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "jailbreak": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "kl_divergence": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "kl_regularization": {
+      "entropy": 1.909738710980874,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "knowledge_distillation": {
+      "entropy": 1.91930341477819,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3099792752479064,
+        "deep": 0.11858105077775773,
+        "operable": 0.3057431523332732,
+        "unknown": 0.26569652164106267
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "kv_cache": {
+      "entropy": 1.9194251712535741,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30972459011830156,
+        "deep": 0.11869929744507429,
+        "operable": 0.30609789233522283,
+        "unknown": 0.2654782201014013
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "kv_cache_quantization": {
+      "entropy": 1.9198222028045842,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30887402910409323,
+        "deep": 0.11909420077309957,
+        "operable": 0.30728260231929866,
+        "unknown": 0.2647491678035085
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "language_model": {
+      "entropy": 1.9183213650051034,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31194059749999997,
+        "deep": 0.117670436875,
+        "operable": 0.303011310625,
+        "unknown": 0.267377655
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "latency": {
+      "entropy": 1.8833830982290134,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.35,
+        "deep": 0.1,
+        "operable": 0.25,
+        "unknown": 0.3
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "latent_diffusion": {
+      "entropy": 1.92026269548406,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30789098685320476,
+        "deep": 0.11955061324672636,
+        "operable": 0.30865183974017907,
+        "unknown": 0.2639065601598898
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "layer_norm": {
+      "entropy": 1.9192038538046363,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "learning_rate_schedule": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "least_privilege": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "linear_algebra": {
+      "entropy": 1.8833830982290134,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.35,
+        "deep": 0.1,
+        "operable": 0.25,
+        "unknown": 0.3
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "llm_as_judge": {
+      "entropy": 1.909741979873221,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502886006205195,
+        "deep": 0.11159374354261875,
+        "operable": 0.2847812306278562,
+        "unknown": 0.2785961657674731
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "llm_context": {
+      "entropy": 1.9097426399757829,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3250280256294294,
+        "deep": 0.11159413095776491,
+        "operable": 0.2847823928732947,
+        "unknown": 0.27859545053951096
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "load_balancing_loss": {
+      "entropy": 1.9111027696546992,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32326786732375645,
+        "deep": 0.11241134731397023,
+        "operable": 0.28723404194191066,
+        "unknown": 0.27708674342036266
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "local_context": {
+      "entropy": 1.9097443530293714,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3250258600805935,
+        "deep": 0.11159513639115302,
+        "operable": 0.28478540917345907,
+        "unknown": 0.2785935943547944
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "long_context_training": {
+      "entropy": 1.909738710980874,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "lora": {
+      "entropy": 1.9197585642222337,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3090125171519279,
+        "deep": 0.11902990275089062,
+        "operable": 0.30708970825267184,
+        "unknown": 0.26486787184450966
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "masked_language_modeling": {
+      "entropy": 1.9109293258483842,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "matrix_multiplication": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "maximum_likelihood": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "mcp": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "mcp_approval": {
+      "entropy": 1.9193273129734643,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3099295037915694,
+        "deep": 0.11860415895391418,
+        "operable": 0.30581247686174257,
+        "unknown": 0.26565386039277383
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "mcp_authorization": {
+      "entropy": 1.919321955780627,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3099406700885396,
+        "deep": 0.1185989746017495,
+        "operable": 0.3057969238052485,
+        "unknown": 0.26566343150446253
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "mcp_resources": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "mcp_tool_caching": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "mcp_tool_filter": {
+      "entropy": 1.9193273129734643,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3099295037915694,
+        "deep": 0.11860415895391418,
+        "operable": 0.30581247686174257,
+        "unknown": 0.26565386039277383
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "mcp_tools": {
+      "entropy": 1.919321955780627,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3099406700885396,
+        "deep": 0.1185989746017495,
+        "operable": 0.3057969238052485,
+        "unknown": 0.26566343150446253
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "mcp_transport": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "mdp": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "memory_correction": {
+      "entropy": 1.9097443530293714,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3250258600805935,
+        "deep": 0.11159513639115302,
+        "operable": 0.28478540917345907,
+        "unknown": 0.2785935943547944
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "minibatch_sgd": {
+      "entropy": 1.9110847812694494,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "mixed_precision": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "mixture_of_experts": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "mlp": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "model_calibration": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "model_compression": {
+      "entropy": 1.909738710980874,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "model_deployment": {
+      "entropy": 1.909738710980874,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "model_parallelism": {
+      "entropy": 1.9197967213427152,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30892958321327857,
+        "deep": 0.11906840779383496,
+        "operable": 0.30720522338150485,
+        "unknown": 0.26479678561138165
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "model_versioning": {
+      "entropy": 1.909741979873221,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502886006205195,
+        "deep": 0.11159374354261875,
+        "operable": 0.2847812306278562,
+        "unknown": 0.2785961657674731
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "moe_dispatch": {
+      "entropy": 1.9112050757445442,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32313200205517895,
+        "deep": 0.11247442761723836,
+        "operable": 0.28742328285171503,
+        "unknown": 0.27697028747586766
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "momentum": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "monte_carlo_rl": {
+      "entropy": 1.9192919515653248,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31000311174160927,
+        "deep": 0.11856998383425282,
+        "operable": 0.3057099515027585,
+        "unknown": 0.2657169529213794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "motion_prediction": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "mqa": {
+      "entropy": 1.9099027160176463,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248251293466427,
+        "deep": 0.11168833280334445,
+        "operable": 0.2850649984100333,
+        "unknown": 0.2784215394399795
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "multihead_attention": {
+      "entropy": 1.9110847812694494,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "multimodal_benchmark": {
+      "entropy": 1.9198507062857948,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3088117232024828,
+        "deep": 0.119123128513133,
+        "operable": 0.30736938553939896,
+        "unknown": 0.26469576274498524
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "multimodal_hallucination": {
+      "entropy": 1.9112035003128367,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32313409814320554,
+        "deep": 0.1124734544335117,
+        "operable": 0.2874203633005351,
+        "unknown": 0.27697208412274765
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "object_detection": {
+      "entropy": 1.8833830982290134,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.35,
+        "deep": 0.1,
+        "operable": 0.25,
+        "unknown": 0.3
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "ocr_understanding": {
+      "entropy": 1.9112035003128367,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32313409814320554,
+        "deep": 0.1124734544335117,
+        "operable": 0.2874203633005351,
+        "unknown": 0.27697208412274765
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "off_policy_learning": {
+      "entropy": 1.9192038538046363,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "offline_evaluation": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "output_guardrail": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "overfitting": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "padding_stride": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "paged_attention": {
+      "entropy": 1.911125460630784,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32323777704384127,
+        "deep": 0.11242531780107369,
+        "operable": 0.2872759534032211,
+        "unknown": 0.27706095175186396
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "peft": {
+      "entropy": 1.9111972739718455,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3231423810063671,
+        "deep": 0.1124696088184724,
+        "operable": 0.2874088264554172,
+        "unknown": 0.2769791837197433
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "perplexity": {
+      "entropy": 1.9110847812694494,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "persistent_knowledge": {
+      "entropy": 1.919367683854626,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3098451851759251,
+        "deep": 0.1186433068826062,
+        "operable": 0.3059299206478186,
+        "unknown": 0.2655815872936501
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "pipeline_parallelism": {
+      "entropy": 1.9111954844569716,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3231447612359536,
+        "deep": 0.11246850371187869,
+        "operable": 0.28740551113563606,
+        "unknown": 0.2769812239165316
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "policy_gradient": {
+      "entropy": 1.9227626958730313,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3011211304275521,
+        "deep": 0.12269376087292223,
+        "operable": 0.31808128261876667,
+        "unknown": 0.25810382608075894
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "pooling": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "positional_encoding": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "post_training_quantization": {
+      "entropy": 1.9097423623103555,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502837662726003,
+        "deep": 0.1115939679944864,
+        "operable": 0.28478190398345915,
+        "unknown": 0.27859575139479437
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "ppo": {
+      "entropy": 1.911873691599244,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32223117226002357,
+        "deep": 0.11289267002213191,
+        "operable": 0.2886780100663957,
+        "unknown": 0.2761981476514488
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "precision_recall": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "preference_annealing": {
+      "entropy": 1.909738710980874,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "preference_data": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "preference_margin": {
+      "entropy": 1.909738710980874,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "prefill_decode": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "prefix_cache_key": {
+      "entropy": 1.909907680113105,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248188199141294,
+        "deep": 0.11169126218272563,
+        "operable": 0.2850737865481769,
+        "unknown": 0.27841613135496807
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "prefix_cache_limits": {
+      "entropy": 1.909907680113105,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248188199141294,
+        "deep": 0.11169126218272563,
+        "operable": 0.2850737865481769,
+        "unknown": 0.27841613135496807
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "prefix_caching": {
+      "entropy": 1.911125460630784,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32323777704384127,
+        "deep": 0.11242531780107369,
+        "operable": 0.2872759534032211,
+        "unknown": 0.27706095175186396
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "pretraining_contamination": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "probability": {
+      "entropy": 1.8833830982290134,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.35,
+        "deep": 0.1,
+        "operable": 0.25,
+        "unknown": 0.3
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "prompt_injection": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "qlora": {
+      "entropy": 1.9198452152419483,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.308823739571755,
+        "deep": 0.11911754948454231,
+        "operable": 0.3073526484536269,
+        "unknown": 0.2647060624900757
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "quality_filtering": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "quantization_aware_training": {
+      "entropy": 1.919807279751912,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30890658065421134,
+        "deep": 0.11907908755340188,
+        "operable": 0.3072372626602056,
+        "unknown": 0.26477706913218113
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "quantized_moe": {
+      "entropy": 1.919313796970151,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30995766576832373,
+        "deep": 0.11859108375042111,
+        "operable": 0.3057732512512633,
+        "unknown": 0.2656779992299918
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "reasoning_rl": {
+      "entropy": 1.920095642612542,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3082689982877698,
+        "deep": 0.11937510793782113,
+        "operable": 0.3081253238134634,
+        "unknown": 0.26423056996094557
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "red_teaming": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "reference_policy": {
+      "entropy": 1.9109293258483842,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "rejection_sampling": {
+      "entropy": 1.9193668224361613,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30984698750549233,
+        "deep": 0.1186424700867357,
+        "operable": 0.3059274102602071,
+        "unknown": 0.26558313214756485
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "representation_learning": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "reranking": {
+      "entropy": 1.909738710980874,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "resnet": {
+      "entropy": 1.9110847812694494,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "retrieval_augmented_generation": {
+      "entropy": 1.9109293258483842,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "retrieval_evaluation": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "retrieval_poisoning": {
+      "entropy": 1.9192683910186532,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31005202775480106,
+        "deep": 0.1185472728281281,
+        "operable": 0.30564181848438426,
+        "unknown": 0.2657588809326867
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "return_discount": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "reward_ensemble": {
+      "entropy": 1.909741979873221,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502886006205195,
+        "deep": 0.11159374354261875,
+        "operable": 0.2847812306278562,
+        "unknown": 0.2785961657674731
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "reward_hacking": {
+      "entropy": 1.909741979873221,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502886006205195,
+        "deep": 0.11159374354261875,
+        "operable": 0.2847812306278562,
+        "unknown": 0.2785961657674731
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "reward_model": {
+      "entropy": 1.909738710980874,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "rlaif": {
+      "entropy": 1.9124404877331989,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32144911305227614,
+        "deep": 0.11325576894001466,
+        "operable": 0.2897673068200439,
+        "unknown": 0.2755278111876653
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "rlhf": {
+      "entropy": 1.924321233567694,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.2944368636946679,
+        "deep": 0.1257971704274756,
+        "operable": 0.3273915112824268,
+        "unknown": 0.2523744545954297
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "rmsnorm": {
+      "entropy": 1.9110847812694494,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "rnn": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "robustness": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "rope": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "run_resumption": {
+      "entropy": 1.919321955780627,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3099406700885396,
+        "deep": 0.1185989746017495,
+        "operable": 0.3057969238052485,
+        "unknown": 0.26566343150446253
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "sampling_temperature": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "sandbox_execution": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "scaling_laws": {
+      "entropy": 1.9109293258483842,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "score_matching": {
+      "entropy": 1.9183213650051034,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31194059749999997,
+        "deep": 0.117670436875,
+        "operable": 0.303011310625,
+        "unknown": 0.267377655
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "self_consistency": {
+      "entropy": 1.9184965469124418,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31160195064546536,
+        "deep": 0.11782766577174822,
+        "operable": 0.30348299731524464,
+        "unknown": 0.26708738626754175
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "sensitive_disclosure": {
+      "entropy": 1.9109293258483842,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "sequence_packing": {
+      "entropy": 1.9185045687542444,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3115863340753178,
+        "deep": 0.1178349163221739,
+        "operable": 0.3035047489665217,
+        "unknown": 0.2670740006359867
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "serving_slo": {
+      "entropy": 1.9184365493220934,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31171844480771904,
+        "deep": 0.11777357919641616,
+        "operable": 0.3033207375892485,
+        "unknown": 0.26718723840661635
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "session_memory": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "sft_loss_mask": {
+      "entropy": 1.9112825756590779,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3230287390976783,
+        "deep": 0.11252237113322078,
+        "operable": 0.2875671133996623,
+        "unknown": 0.27688177636943856
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "sgd": {
+      "entropy": 1.9192038538046363,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3101855027133275,
+        "deep": 0.11848530231166937,
+        "operable": 0.3054559069350081,
+        "unknown": 0.265873288039995
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "softmax": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "sparse_retrieval": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "speculative_decoding": {
+      "entropy": 1.919658520940035,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30922852824616287,
+        "deep": 0.1189296118857101,
+        "operable": 0.3067888356571303,
+        "unknown": 0.26505302421099675
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "state_action_value": {
+      "entropy": 1.9192919515653248,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.31000311174160927,
+        "deep": 0.11856998383425282,
+        "operable": 0.3057099515027585,
+        "unknown": 0.2657169529213794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "streaming_tool_calls": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "structured_outputs": {
+      "entropy": 1.9109293258483842,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "subword_tokenization": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "supervised_fine_tuning": {
+      "entropy": 1.9202421036072908,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3079379410057978,
+        "deep": 0.11952881310445101,
+        "operable": 0.30858643931335306,
+        "unknown": 0.26394680657639813
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "supervised_learning": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "supply_chain_security": {
+      "entropy": 1.9097423623103555,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502837662726003,
+        "deep": 0.1115939679944864,
+        "operable": 0.28478190398345915,
+        "unknown": 0.27859575139479437
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "svd": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "swiglu": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "synthetic_data": {
+      "entropy": 1.9109293258483842,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3234970499075,
+        "deep": 0.112304941114375,
+        "operable": 0.286914823343125,
+        "unknown": 0.277283185635
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "system_prompt_leakage": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "temporal_difference": {
+      "entropy": 1.9110847812694494,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "tensor_parallelism": {
+      "entropy": 1.9111954844569716,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3231447612359536,
+        "deep": 0.11246850371187869,
+        "operable": 0.28740551113563606,
+        "unknown": 0.2769812239165316
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "termination_policy": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "test_time_compute": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "text_to_image": {
+      "entropy": 1.9197967213427152,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30892958321327857,
+        "deep": 0.11906840779383496,
+        "operable": 0.30720522338150485,
+        "unknown": 0.26479678561138165
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "throughput": {
+      "entropy": 1.909741979873221,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502886006205195,
+        "deep": 0.11159374354261875,
+        "operable": 0.2847812306278562,
+        "unknown": 0.2785961657674731
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "tokenization": {
+      "entropy": 1.8833830982290134,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.35,
+        "deep": 0.1,
+        "operable": 0.25,
+        "unknown": 0.3
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "tool_error_recovery": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "tool_guardrail": {
+      "entropy": 1.9193273129734643,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3099295037915694,
+        "deep": 0.11860415895391418,
+        "operable": 0.30581247686174257,
+        "unknown": 0.26565386039277383
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "tool_schema": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "top_p_sampling": {
+      "entropy": 1.909738710980874,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "train_test_split": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "transformer": {
+      "entropy": 1.9228549516488387,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3008110424920897,
+        "deep": 0.1228377302715298,
+        "operable": 0.3185131908145894,
+        "unknown": 0.25783803642179115
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "turn_budget": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "unbounded_consumption": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "unsafe_output_handling": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "unsupervised_learning": {
+      "entropy": 1.9073419632461142,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32794999999999996,
+        "deep": 0.1102375,
+        "operable": 0.2807125,
+        "unknown": 0.2811
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "vae": {
+      "entropy": 1.919312458846819,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30996045205088196,
+        "deep": 0.11858979011923337,
+        "operable": 0.3057693703577001,
+        "unknown": 0.2656803874721846
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "validation_split": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "vanishing_gradient": {
+      "entropy": 1.9110847812694494,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "vector_index": {
+      "entropy": 1.909738710980874,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32503299198335,
+        "deep": 0.1115918251505875,
+        "operable": 0.2847754754517625,
+        "unknown": 0.2785997074143
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "verifiable_reward": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "video_generation": {
+      "entropy": 1.9110847812694494,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3232917038174593,
+        "deep": 0.11240028037046532,
+        "operable": 0.28720084111139593,
+        "unknown": 0.2771071747006794
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "video_understanding": {
+      "entropy": 1.9112035003128367,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32313409814320554,
+        "deep": 0.1124734544335117,
+        "operable": 0.2874203633005351,
+        "unknown": 0.27697208412274765
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "vision_projector": {
+      "entropy": 1.9112035003128367,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32313409814320554,
+        "deep": 0.1124734544335117,
+        "operable": 0.2874203633005351,
+        "unknown": 0.27697208412274765
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "vision_transformer": {
+      "entropy": 1.9119002664821347,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32219489197157447,
+        "deep": 0.112909514441769,
+        "operable": 0.28872854332530695,
+        "unknown": 0.2761670502613496
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "visual_grounding": {
+      "entropy": 1.9190566553427455,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3104871637930836,
+        "deep": 0.11834524538178261,
+        "operable": 0.30503573614534785,
+        "unknown": 0.26613185467978595
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "visual_instruction_tuning": {
+      "entropy": 1.9203613740016585,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3076645395957374,
+        "deep": 0.11965574947340764,
+        "operable": 0.3089672484202229,
+        "unknown": 0.2637124625106321
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "vla": {
+      "entropy": 1.9112035003128367,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32313409814320554,
+        "deep": 0.1124734544335117,
+        "operable": 0.2874203633005351,
+        "unknown": 0.27697208412274765
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "vlm": {
+      "entropy": 1.9198384910834119,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30883844566842367,
+        "deep": 0.11911072165394616,
+        "operable": 0.30733216496183846,
+        "unknown": 0.2647186677157917
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "web_search": {
+      "entropy": 1.9098838057939762,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3248491548391775,
+        "deep": 0.11167717811038189,
+        "operable": 0.28503153433114564,
+        "unknown": 0.27844213271929497
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "web_task_success": {
+      "entropy": 1.919321087232996,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.30994247995121627,
+        "deep": 0.11859813430836387,
+        "operable": 0.3057944029250916,
+        "unknown": 0.26566498281532824
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "weight_decay": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "weight_quantization": {
+      "entropy": 1.909741979873221,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32502886006205195,
+        "deep": 0.11159374354261875,
+        "operable": 0.2847812306278562,
+        "unknown": 0.2785961657674731
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "word2vec": {
+      "entropy": 1.9097107572007492,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32506830755,
+        "deep": 0.1115754286375,
+        "operable": 0.2847262859125,
+        "unknown": 0.2786299779
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "word_embedding": {
+      "entropy": 1.9094707744192814,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32537014999999997,
+        "deep": 0.11143528750000001,
+        "operable": 0.2843058625,
+        "unknown": 0.2788887
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "workflow_orchestration": {
+      "entropy": 1.909758990522235,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.32500735111618373,
+        "deep": 0.11160372983891469,
+        "operable": 0.28481118951674406,
+        "unknown": 0.2785777295281575
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    },
+    "zero_sharding": {
+      "entropy": 1.9111954844569716,
+      "evidence": {
+        "count": 0,
+        "propagated": 0,
+        "question_types": {},
+        "sharpness": 0.0
+      },
+      "level": {
+        "aware": 0.3231447612359536,
+        "deep": 0.11246850371187869,
+        "operable": 0.28740551113563606,
+        "unknown": 0.2769812239165316
+      },
+      "p_mastery": null,
+      "status": "unverified"
+    }
+  }
+}

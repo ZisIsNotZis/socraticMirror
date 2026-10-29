@@ -1,0 +1,36 @@
+{
+  "anchor_reasons": {
+    "application": "保留可执行方案与验证，删除故障调整路径，维持原应用2。",
+    "boundary": "按WP-8c2指定的整段边界消融标签；asks含boundary。保留正文仍可能含范围限制的判分歧义，见报告。"
+  },
+  "framework_A": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "framework_B": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "low_confidence": false,
+  "observed_nodes": [
+    "vlm"
+  ],
+  "quotes": {
+    "application": "全部本地处理，用500标注按来源隔离训练和留出，比较整图、原图药名裁剪放大与本地OCR。分别记区域是否可读、视觉到语言映射错误和语言补全错误，按药名精确匹配验收；先上线裁剪/OCR流水线，",
+    "boundary": null,
+    "identify": "裁剪90/100而整图40/100支持分辨率瓶颈，。12像素字缩到336后约4像素，视觉编码器的信息经投影连接器映射到语言空间，再由语言模型生成；流畅生成与读对药名不是同一目标。保持字区域像素数会增加可辨信号，整图一味改措辞不会增加像素。",
+    "mechanism": "裁剪90/100而整图40/100支持分辨率瓶颈，。12像素字缩到336后约4像素，视觉编码器的信息经投影连接器映射到语言空间，再由语言模型生成；流畅生成与读对药名不是同一目标。保持字区域像素数会增加可辨信号，整图一味改措辞不会增加像素。"
+  },
+  "scores": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "source_answer": "calibration/answers/scen_wp1b_vlm/b.md",
+  "source_judgment": "calibration/sessions/scen_wp1b_vlm-b/judgment.json"
+}

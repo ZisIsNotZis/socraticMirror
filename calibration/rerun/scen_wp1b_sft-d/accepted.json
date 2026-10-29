@@ -1,0 +1,52 @@
+{
+  "after": {
+    "supervised_fine_tuning": {
+      "aware": 0.3079379410057978,
+      "deep": 0.11952881310445101,
+      "operable": 0.30858643931335306,
+      "unknown": 0.26394680657639813
+    }
+  },
+  "before": {
+    "supervised_fine_tuning": {
+      "aware": 0.3079379410057978,
+      "deep": 0.11952881310445101,
+      "operable": 0.30858643931335306,
+      "unknown": 0.26394680657639813
+    }
+  },
+  "nodes": [
+    "supervised_fine_tuning"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": null,
+    "boundary": null,
+    "identify": null,
+    "mechanism": null
+  },
+  "required_observables": [
+    "24GiB增量",
+    "2万对话",
+    "5亿token",
+    "两角色损失非零",
+    "隐私不能留存"
+  ],
+  "row": 0,
+  "scenario": "scen_wp1b_sft",
+  "scores": {
+    "application": "unverified",
+    "boundary": "unverified",
+    "identify": "unverified",
+    "mechanism": "unverified"
+  },
+  "total": 0,
+  "whole_coverage": false
+}

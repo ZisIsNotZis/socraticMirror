@@ -1,0 +1,52 @@
+{
+  "after": {
+    "data_deduplication": {
+      "aware": 0.3037229161588894,
+      "deep": 0.15259629268522856,
+      "operable": 0.300974293688591,
+      "unknown": 0.24270649746729106
+    }
+  },
+  "before": {
+    "data_deduplication": {
+      "aware": 0.32794999999999996,
+      "deep": 0.1102375,
+      "operable": 0.2807125,
+      "unknown": 0.2811
+    }
+  },
+  "nodes": [
+    "data_deduplication"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": "先做文档精确及近重复过滤，隔离基准重叠文档和相关来源，留出干净评估；审核质量过滤阈值，从已有未用语料分域补足300B。以短程分域消融比较原配比与较高代码配比，再确定正式混合，记录去除量、token账和域内/域外指标；",
+    "boundary": null,
+    "identify": "镜像近重复改变有效样本权重和混合分布，300B计数不等于300B独立信息；同一模式反复贡献梯度而非互相抵消。基准逐字重叠会带来污染并虚增评测。去重后从已有候补补足预算，会改变有效域比例，代码2%的效果需单独测。",
+    "mechanism": "镜像近重复改变有效样本权重和混合分布，300B计数不等于300B独立信息；同一模式反复贡献梯度而非互相抵消。基准逐字重叠会带来污染并虚增评测。去重后从已有候补补足预算，会改变有效域比例，代码2%的效果需单独测。"
+  },
+  "required_observables": [
+    "300B",
+    "重复30%",
+    "代码2%",
+    "逐字重叠",
+    "已有候补"
+  ],
+  "row": 5,
+  "scenario": "scen_wp1b_pretrain",
+  "scores": {
+    "application": 2,
+    "boundary": "absent_asked",
+    "identify": 3,
+    "mechanism": 3
+  },
+  "total": 8,
+  "whole_coverage": false
+}

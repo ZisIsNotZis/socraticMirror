@@ -1,0 +1,51 @@
+{
+  "after": {
+    "direct_preference_optimization": {
+      "aware": 0.46857912946094415,
+      "deep": 0.0,
+      "operable": 0.0,
+      "unknown": 0.5314208705390558
+    }
+  },
+  "before": {
+    "direct_preference_optimization": {
+      "aware": 0.2949903554371562,
+      "deep": 0.12554019211846318,
+      "operable": 0.32662057635538955,
+      "unknown": 0.25284887608899104
+    }
+  },
+  "nodes": [
+    "direct_preference_optimization"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": "应固定参考模型重跑一次并检查JSON。固定输入下参考logprob变化不是采样噪声。DPO的参考策略本来是把偏好标签变成下一个token的监督标签；参考漂移会让JSON括号的标签逐步被胜者标签覆盖。冻结参考后比较胜率和合规率。",
+    "boundary": "离线偏好缺少的新分布没有保障，JSON合规继续下降就回滚旧快照。",
+    "identify": "应固定参考模型重跑一次并检查JSON。固定输入下参考logprob变化不是采样噪声。DPO的参考策略本来是把偏好标签变成下一个token的监督标签；参考漂移会让JSON括号的标签逐步被胜者标签覆盖。冻结参考后比较胜率和合规率。",
+    "mechanism": "应固定参考模型重跑一次并检查JSON。固定输入下参考logprob变化不是采样噪声。DPO的参考策略本来是把偏好标签变成下一个token的监督标签；参考漂移会让JSON括号的标签逐步被胜者标签覆盖。冻结参考后比较胜率和合规率。"
+  },
+  "required_observables": [
+    "5000对20轮",
+    "参考logprob变化",
+    "胜率+10/合规−15",
+    "一次重跑"
+  ],
+  "row": 3,
+  "scenario": "scen_wp1b_dpo",
+  "scores": {
+    "application": 2,
+    "boundary": 2,
+    "identify": 2,
+    "mechanism": 0
+  },
+  "total": 6,
+  "whole_coverage": false
+}

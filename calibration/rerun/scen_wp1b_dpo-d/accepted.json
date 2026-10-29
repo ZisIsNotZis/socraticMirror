@@ -1,0 +1,51 @@
+{
+  "after": {
+    "direct_preference_optimization": {
+      "aware": 0.2949903554371562,
+      "deep": 0.12554019211846318,
+      "operable": 0.32662057635538955,
+      "unknown": 0.25284887608899104
+    }
+  },
+  "before": {
+    "direct_preference_optimization": {
+      "aware": 0.2949903554371562,
+      "deep": 0.12554019211846318,
+      "operable": 0.32662057635538955,
+      "unknown": 0.25284887608899104
+    }
+  },
+  "nodes": [
+    "direct_preference_optimization"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": null,
+    "boundary": null,
+    "identify": null,
+    "mechanism": null
+  },
+  "required_observables": [
+    "5000对20轮",
+    "参考logprob变化",
+    "胜率+10/合规−15",
+    "一次重跑"
+  ],
+  "row": 0,
+  "scenario": "scen_wp1b_dpo",
+  "scores": {
+    "application": "unverified",
+    "boundary": "unverified",
+    "identify": "unverified",
+    "mechanism": "unverified"
+  },
+  "total": 0,
+  "whole_coverage": false
+}

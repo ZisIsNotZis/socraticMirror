@@ -1,0 +1,53 @@
+{
+  "after": {
+    "tool_schema": {
+      "aware": 0.32500735111618373,
+      "deep": 0.11160372983891469,
+      "operable": 0.28481118951674406,
+      "unknown": 0.2785777295281575
+    }
+  },
+  "before": {
+    "tool_schema": {
+      "aware": 0.32500735111618373,
+      "deep": 0.11160372983891469,
+      "operable": 0.28481118951674406,
+      "unknown": 0.2785777295281575
+    }
+  },
+  "nodes": [
+    "tool_schema"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": null,
+    "boundary": null,
+    "identify": null,
+    "mechanism": null
+  },
+  "required_observables": [
+    "5元",
+    "amount500",
+    "回执500元",
+    "100/min",
+    "20%非ASCII",
+    "仅适配层"
+  ],
+  "row": 0,
+  "scenario": "scen_wp1b_function",
+  "scores": {
+    "application": "unverified",
+    "boundary": "unverified",
+    "identify": "unverified",
+    "mechanism": "unverified"
+  },
+  "total": 0,
+  "whole_coverage": false
+}

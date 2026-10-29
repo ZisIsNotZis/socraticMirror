@@ -1,0 +1,82 @@
+[
+  {
+    "asks": [
+      "diagnosis",
+      "boundary"
+    ],
+    "eligible": true,
+    "scenario": "scen_wp1b_preference"
+  },
+  {
+    "asks": [
+      "diagnosis",
+      "boundary"
+    ],
+    "eligible": true,
+    "scenario": "scen_wp1b_dpo"
+  },
+  {
+    "asks": [
+      "diagnosis",
+      "boundary"
+    ],
+    "eligible": true,
+    "scenario": "scen_wp1b_function"
+  },
+  {
+    "asks": [
+      "diagnosis",
+      "boundary"
+    ],
+    "eligible": true,
+    "scenario": "scen_wp1b_loop"
+  },
+  {
+    "asks": [
+      "diagnosis",
+      "boundary"
+    ],
+    "eligible": true,
+    "scenario": "scen_wp1b_vlm"
+  },
+  {
+    "asks": [
+      "diagnosis",
+      "boundary"
+    ],
+    "eligible": true,
+    "scenario": "scen_wp1b_clip"
+  },
+  {
+    "asks": [
+      "diagnosis",
+      "boundary"
+    ],
+    "eligible": true,
+    "scenario": "scen_wp1b_flash"
+  },
+  {
+    "asks": [
+      "diagnosis",
+      "boundary"
+    ],
+    "eligible": true,
+    "scenario": "scen_wp1b_kv"
+  },
+  {
+    "asks": [
+      "diagnosis",
+      "boundary"
+    ],
+    "eligible": true,
+    "scenario": "scen_wp1b_pretrain"
+  },
+  {
+    "asks": [
+      "diagnosis",
+      "boundary"
+    ],
+    "eligible": true,
+    "scenario": "scen_wp1b_sft"
+  }
+]

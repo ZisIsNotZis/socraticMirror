@@ -1,0 +1,41 @@
+{
+  "anchor_reasons": {
+    "application": "执行、验证、失败识别与调整均明确；见第二段。",
+    "boundary": "失效范围、原因/信号与退路；见第三段。",
+    "identify": "排除当前关键近邻混淆并关联决策；见第一段。",
+    "mechanism": "完整因果链并说明关键条件变化的影响；见第一段。"
+  },
+  "assertion_correct": true,
+  "framework_A": {
+    "application": 3,
+    "boundary": 3,
+    "identify": 3,
+    "mechanism": 3
+  },
+  "framework_B": {
+    "application": 3,
+    "boundary": 3,
+    "identify": 3,
+    "mechanism": 3
+  },
+  "low_confidence": false,
+  "mechanism_correct": true,
+  "observed_nodes": [
+    "flash_attention"
+  ],
+  "probe": "direct",
+  "quotes": {
+    "application": "在一轮回归内固定QKV、padding语义、bf16和无dropout，使用FP32基准同时比较输出、损失与梯度，覆盖不同有效长度，记录峰值显存与耗时。确认内核支持对应mask和头维；输出及梯度达预定容差且实际显存约30GiB才替换，出现不一致则切回旧内核。",
+    "boundary": "浮点差异不等于算法近似，长序列算术复杂度仍是二次而非线性。当前输出容差通过不能证明所有mask或梯度正确，遇到不兼容内核或长序列数值异常应回退标准实现，不能仅凭省一半显存批准替换。",
+    "identify": "FlashAttention不是低秩近似：它分块计算并用在线softmax与反向重算减少注意力中间矩阵的HBM读写及驻留，数学目标仍是精确缩放点积注意力。相同QKV差1e-3低于2e-3容差，支持数值一致但非逐位一致；若序列加长，免存完整N平方矩阵的收益更明显。",
+    "mechanism": "FlashAttention不是低秩近似：它分块计算并用在线softmax与反向重算减少注意力中间矩阵的HBM读写及驻留，数学目标仍是精确缩放点积注意力。相同QKV差1e-3低于2e-3容差，支持数值一致但非逐位一致；若序列加长，免存完整N平方矩阵的收益更明显。"
+  },
+  "scores": {
+    "application": 3,
+    "boundary": 3,
+    "identify": 3,
+    "mechanism": 3
+  },
+  "source_answer": "calibration/answers/scen_wp1b_flash/a.md",
+  "source_judgment": "calibration/sessions/scen_wp1b_flash-a/judgment.json"
+}

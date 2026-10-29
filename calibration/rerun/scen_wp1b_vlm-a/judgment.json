@@ -1,0 +1,41 @@
+{
+  "anchor_reasons": {
+    "application": "执行、验证、失败识别与调整均明确；见第二段。",
+    "boundary": "失效范围、原因/信号与退路；见第三段。",
+    "identify": "排除当前关键近邻混淆并关联决策；见第一段。",
+    "mechanism": "完整因果链并说明关键条件变化的影响；见第一段。"
+  },
+  "assertion_correct": true,
+  "framework_A": {
+    "application": 3,
+    "boundary": 3,
+    "identify": 3,
+    "mechanism": 3
+  },
+  "framework_B": {
+    "application": 3,
+    "boundary": 3,
+    "identify": 3,
+    "mechanism": 3
+  },
+  "low_confidence": false,
+  "mechanism_correct": true,
+  "observed_nodes": [
+    "vlm"
+  ],
+  "probe": "direct",
+  "quotes": {
+    "application": "全部本地处理，用500标注按来源隔离训练和留出，比较整图、原图药名裁剪放大与本地OCR。分别记区域是否可读、视觉到语言映射错误和语言补全错误，按药名精确匹配验收；先上线裁剪/OCR流水线，仍错则记录失败样例并回退人工复核，不上传云。",
+    "boundary": "指令调优和流畅语气都不保证细粒度识别，降采样丢失的信息不能靠提示恢复。若原图本身字迹不可辨，裁剪也不能凭空恢复；药名无法核实则拒绝猜测并交人工，不能把90/100当成药品场景充分安全证明。",
+    "identify": "裁剪90/100而整图40/100支持分辨率瓶颈，但不独立证明连接器坏。12像素字缩到336后约4像素，视觉编码器的信息经投影连接器映射到语言空间，再由语言模型生成；流畅生成与读对药名不是同一目标。保持字区域像素数会增加可辨信号，整图一味改措辞不会增加像素。",
+    "mechanism": "裁剪90/100而整图40/100支持分辨率瓶颈，但不独立证明连接器坏。12像素字缩到336后约4像素，视觉编码器的信息经投影连接器映射到语言空间，再由语言模型生成；流畅生成与读对药名不是同一目标。保持字区域像素数会增加可辨信号，整图一味改措辞不会增加像素。"
+  },
+  "scores": {
+    "application": 3,
+    "boundary": 3,
+    "identify": 3,
+    "mechanism": 3
+  },
+  "source_answer": "calibration/answers/scen_wp1b_vlm/a.md",
+  "source_judgment": "calibration/sessions/scen_wp1b_vlm-a/judgment.json"
+}

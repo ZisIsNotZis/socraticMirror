@@ -1,0 +1,52 @@
+{
+  "after": {
+    "agent_harness": {
+      "aware": 0.32500735111618373,
+      "deep": 0.11160372983891469,
+      "operable": 0.28481118951674406,
+      "unknown": 0.2785777295281575
+    }
+  },
+  "before": {
+    "agent_harness": {
+      "aware": 0.32500735111618373,
+      "deep": 0.11160372983891469,
+      "operable": 0.28481118951674406,
+      "unknown": 0.2785777295281575
+    }
+  },
+  "nodes": [
+    "agent_harness"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": null,
+    "boundary": null,
+    "identify": null,
+    "mechanism": null
+  },
+  "required_observables": [
+    "30次上限",
+    "重复20次403",
+    "禁止登录",
+    "剩9次",
+    "不可扩窗"
+  ],
+  "row": 0,
+  "scenario": "scen_wp1b_loop",
+  "scores": {
+    "application": "unverified",
+    "boundary": "unverified",
+    "identify": "unverified",
+    "mechanism": "unverified"
+  },
+  "total": 0,
+  "whole_coverage": false
+}

@@ -1,0 +1,41 @@
+{
+  "anchor_reasons": {
+    "application": "按应用锚点判断具体方案，不能由结论方向正确推定方案可行。",
+    "boundary": "指出一条当前失效条件、影响与处理，但未完整界定范围。",
+    "identify": "辨认情景关键对象，但未用正确机制排除近邻混淆。",
+    "mechanism": "核心因果明确错误，不是另一种无法排除的可能根因；详见report逐题反证。"
+  },
+  "assertion_correct": true,
+  "framework_A": {
+    "application": 2,
+    "boundary": 2,
+    "identify": 2,
+    "mechanism": 0
+  },
+  "framework_B": {
+    "application": 2,
+    "boundary": 2,
+    "identify": 2,
+    "mechanism": 0
+  },
+  "low_confidence": false,
+  "mechanism_correct": false,
+  "observed_nodes": [
+    "supervised_fine_tuning"
+  ],
+  "probe": "direct",
+  "quotes": {
+    "application": "应优先对客服对话做助理侧损失的增量微调，使用合成号码测试。用户和助理损失均非零会鼓励复制输入。原因是交叉熵只要在用户位置计算就会把这些位置的梯度强制广播成所有助理位置的目标token。屏蔽用户损失并比较号码复述率和任务正确率。",
+    "boundary": "助理标签含号码时仅屏蔽用户仍会泄露，应修标签并在泄露时暂停发布。",
+    "identify": "应优先对客服对话做助理侧损失的增量微调，使用合成号码测试。用户和助理损失均非零会鼓励复制输入。原因是交叉熵只要在用户位置计算就会把这些位置的梯度强制广播成所有助理位置的目标token。屏蔽用户损失并比较号码复述率和任务正确率。",
+    "mechanism": "应优先对客服对话做助理侧损失的增量微调，使用合成号码测试。用户和助理损失均非零会鼓励复制输入。原因是交叉熵只要在用户位置计算就会把这些位置的梯度强制广播成所有助理位置的目标token。屏蔽用户损失并比较号码复述率和任务正确率。"
+  },
+  "scores": {
+    "application": 2,
+    "boundary": 2,
+    "identify": 2,
+    "mechanism": 0
+  },
+  "source_answer": "calibration/answers/scen_wp1b_sft/c.md",
+  "source_judgment": "calibration/sessions/scen_wp1b_sft-c/judgment.json"
+}

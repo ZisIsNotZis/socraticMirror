@@ -1,0 +1,41 @@
+{
+  "anchor_reasons": {
+    "application": "按应用锚点判断具体方案，不能由结论方向正确推定方案可行。",
+    "boundary": "指出一条当前失效条件、影响与处理，但未完整界定范围。",
+    "identify": "辨认情景关键对象，但未用正确机制排除近邻混淆。",
+    "mechanism": "核心因果明确错误，不是另一种无法排除的可能根因；详见report逐题反证。"
+  },
+  "assertion_correct": true,
+  "framework_A": {
+    "application": 2,
+    "boundary": 2,
+    "identify": 2,
+    "mechanism": 0
+  },
+  "framework_B": {
+    "application": 2,
+    "boundary": 2,
+    "identify": 2,
+    "mechanism": 0
+  },
+  "low_confidence": false,
+  "mechanism_correct": false,
+  "observed_nodes": [
+    "data_deduplication"
+  ],
+  "probe": "direct",
+  "quotes": {
+    "application": "应去重、去污染并从已有候补补足300B。30%镜像不能算同量独立信息。因为重复样本会在反向传播时自动抵消梯度，镜像越多有效梯度越接近零；按哈希删镜像可恢复梯度。隔离重叠基准并检查代码占比和留出效果。",
+    "boundary": "过强去重会误删合理模板，按域审查误删并调低阈值。",
+    "identify": "应去重、去污染并从已有候补补足300B。30%镜像不能算同量独立信息。因为重复样本会在反向传播时自动抵消梯度，镜像越多有效梯度越接近零；按哈希删镜像可恢复梯度。隔离重叠基准并检查代码占比和留出效果。",
+    "mechanism": "应去重、去污染并从已有候补补足300B。30%镜像不能算同量独立信息。因为重复样本会在反向传播时自动抵消梯度，镜像越多有效梯度越接近零；按哈希删镜像可恢复梯度。隔离重叠基准并检查代码占比和留出效果。"
+  },
+  "scores": {
+    "application": 2,
+    "boundary": 2,
+    "identify": 2,
+    "mechanism": 0
+  },
+  "source_answer": "calibration/answers/scen_wp1b_pretrain/c.md",
+  "source_judgment": "calibration/sessions/scen_wp1b_pretrain-c/judgment.json"
+}

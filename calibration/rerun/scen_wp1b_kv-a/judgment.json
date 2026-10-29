@@ -1,0 +1,41 @@
+{
+  "anchor_reasons": {
+    "application": "执行、验证、失败识别与调整均明确；见第二段。",
+    "boundary": "失效范围、原因/信号与退路；见第三段。",
+    "identify": "排除当前关键近邻混淆并关联决策；见第一段。",
+    "mechanism": "完整因果链并说明关键条件变化的影响；见第一段。"
+  },
+  "assertion_correct": true,
+  "framework_A": {
+    "application": 3,
+    "boundary": 3,
+    "identify": 3,
+    "mechanism": 3
+  },
+  "framework_B": {
+    "application": 3,
+    "boundary": 3,
+    "identify": 3,
+    "mechanism": 3
+  },
+  "low_confidence": false,
+  "mechanism_correct": true,
+  "observed_nodes": [
+    "kv_cache"
+  ],
+  "probe": "direct",
+  "quotes": {
+    "application": "保留每会话32000上限，按已用加预留KV容量做准入和排队；仅算KV最多16个满长会话，实际还要扣工作区留余量，不能直接承诺16。用分页减少碎片，连续批处理随结束回收页；压测全长极端、短长混合、吞吐、尾延迟及公平性，OOM或尾延迟越线则降低驻留并发。",
+    "boundary": "分页减少碎片但不消除390GiB的真实容量，FlashAttention也不代替持久KV。提高批量可能恶化尾延迟；若用户同时要求100个满长低延迟会话，当前单卡约束不可满足，应明确排队代价或交回资源决策，不能静默截短。",
+    "identify": "KV不是注意力分数矩阵，每token每层保存K与V。bf16下每会话需要2×32×8×128×2×32000字节，约3.90625GiB；100会话约390.625GiB，远超80GiB减14GiB权重后的66GiB。8KV头而非32Q头体现GQA共享：KV容量随长度和并发线性增，KV头减半也约减半。",
+    "mechanism": "KV不是注意力分数矩阵，每token每层保存K与V。bf16下每会话需要2×32×8×128×2×32000字节，约3.90625GiB；100会话约390.625GiB，远超80GiB减14GiB权重后的66GiB。8KV头而非32Q头体现GQA共享：KV容量随长度和并发线性增，KV头减半也约减半。"
+  },
+  "scores": {
+    "application": 3,
+    "boundary": 3,
+    "identify": 3,
+    "mechanism": 3
+  },
+  "source_answer": "calibration/answers/scen_wp1b_kv/a.md",
+  "source_judgment": "calibration/sessions/scen_wp1b_kv-a/judgment.json"
+}

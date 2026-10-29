@@ -1,0 +1,31 @@
+{
+  "framework_A": {
+    "application": "unverified",
+    "boundary": "unverified",
+    "identify": "unverified",
+    "mechanism": "unverified"
+  },
+  "framework_B": {
+    "application": "unverified",
+    "boundary": "unverified",
+    "identify": "unverified",
+    "mechanism": "unverified"
+  },
+  "low_confidence": false,
+  "observed_nodes": [],
+  "quotes": {
+    "application": null,
+    "boundary": null,
+    "identify": null,
+    "mechanism": null
+  },
+  "reason": "仅说我不知道；四维均无可判证据，全部unverified，不冒充0。",
+  "scores": {
+    "application": "unverified",
+    "boundary": "unverified",
+    "identify": "unverified",
+    "mechanism": "unverified"
+  },
+  "source_answer": "calibration/answers/scen_wp1b_pretrain/d.md",
+  "source_judgment": "calibration/sessions/scen_wp1b_pretrain-d/judgment.json"
+}

@@ -1,0 +1,41 @@
+{
+  "anchor_reasons": {
+    "application": "按应用锚点判断具体方案，不能由结论方向正确推定方案可行。",
+    "boundary": "指出一条当前失效条件、影响与处理，但未完整界定范围。",
+    "identify": "辨认情景关键对象，但未用正确机制排除近邻混淆。",
+    "mechanism": "核心因果明确错误，不是另一种无法排除的可能根因；详见report逐题反证。"
+  },
+  "assertion_correct": true,
+  "framework_A": {
+    "application": 2,
+    "boundary": 2,
+    "identify": 2,
+    "mechanism": 0
+  },
+  "framework_B": {
+    "application": 2,
+    "boundary": 2,
+    "identify": 2,
+    "mechanism": 0
+  },
+  "low_confidence": false,
+  "mechanism_correct": false,
+  "observed_nodes": [
+    "direct_preference_optimization"
+  ],
+  "probe": "direct",
+  "quotes": {
+    "application": "应固定参考模型重跑一次并检查JSON。固定输入下参考logprob变化不是采样噪声。DPO的参考策略本来是把偏好标签变成下一个token的监督标签；参考漂移会让JSON括号的标签逐步被胜者标签覆盖。冻结参考后比较胜率和合规率。",
+    "boundary": "离线偏好缺少的新分布没有保障，JSON合规继续下降就回滚旧快照。",
+    "identify": "应固定参考模型重跑一次并检查JSON。固定输入下参考logprob变化不是采样噪声。DPO的参考策略本来是把偏好标签变成下一个token的监督标签；参考漂移会让JSON括号的标签逐步被胜者标签覆盖。冻结参考后比较胜率和合规率。",
+    "mechanism": "应固定参考模型重跑一次并检查JSON。固定输入下参考logprob变化不是采样噪声。DPO的参考策略本来是把偏好标签变成下一个token的监督标签；参考漂移会让JSON括号的标签逐步被胜者标签覆盖。冻结参考后比较胜率和合规率。"
+  },
+  "scores": {
+    "application": 2,
+    "boundary": 2,
+    "identify": 2,
+    "mechanism": 0
+  },
+  "source_answer": "calibration/answers/scen_wp1b_dpo/c.md",
+  "source_judgment": "calibration/sessions/scen_wp1b_dpo-c/judgment.json"
+}
