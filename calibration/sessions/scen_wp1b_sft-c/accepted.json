@@ -1,0 +1,52 @@
+{
+  "after": {
+    "supervised_fine_tuning": {
+      "aware": 0.4685791294609441,
+      "deep": 0.0,
+      "operable": 0.0,
+      "unknown": 0.531420870539056
+    }
+  },
+  "before": {
+    "supervised_fine_tuning": {
+      "aware": 0.3079379410057978,
+      "deep": 0.11952881310445101,
+      "operable": 0.30858643931335306,
+      "unknown": 0.26394680657639813
+    }
+  },
+  "nodes": [
+    "supervised_fine_tuning"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": "应优先对客服对话做助理侧损失的增量微调，使用合成号码测试。用户和助理损失均非零会鼓励复制输入。原因是交叉熵只要在用户位置计算就会把这些位置的梯度强制广播成所有助理位置的目标token。屏蔽用户损失并比较号码复述率和任务正确率。",
+    "boundary": "助理标签含号码时仅屏蔽用户仍会泄露，应修标签并在泄露时暂停发布。",
+    "identify": "应优先对客服对话做助理侧损失的增量微调，使用合成号码测试。用户和助理损失均非零会鼓励复制输入。原因是交叉熵只要在用户位置计算就会把这些位置的梯度强制广播成所有助理位置的目标token。屏蔽用户损失并比较号码复述率和任务正确率。",
+    "mechanism": "应优先对客服对话做助理侧损失的增量微调，使用合成号码测试。用户和助理损失均非零会鼓励复制输入。原因是交叉熵只要在用户位置计算就会把这些位置的梯度强制广播成所有助理位置的目标token。屏蔽用户损失并比较号码复述率和任务正确率。"
+  },
+  "required_observables": [
+    "24GiB增量",
+    "2万对话",
+    "5亿token",
+    "两角色损失非零",
+    "隐私不能留存"
+  ],
+  "row": 3,
+  "scenario": "scen_wp1b_sft",
+  "scores": {
+    "application": 2,
+    "boundary": 2,
+    "identify": 2,
+    "mechanism": 0
+  },
+  "total": 6,
+  "whole_coverage": false
+}

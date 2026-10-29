@@ -1,0 +1,52 @@
+{
+  "after": {
+    "data_deduplication": {
+      "aware": 0.46857912946094404,
+      "deep": 0.0,
+      "operable": 0.0,
+      "unknown": 0.531420870539056
+    }
+  },
+  "before": {
+    "data_deduplication": {
+      "aware": 0.32794999999999996,
+      "deep": 0.1102375,
+      "operable": 0.2807125,
+      "unknown": 0.2811
+    }
+  },
+  "nodes": [
+    "data_deduplication"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": "应去重、去污染并从已有候补补足300B。30%镜像不能算同量独立信息。因为重复样本会在反向传播时自动抵消梯度，镜像越多有效梯度越接近零；按哈希删镜像可恢复梯度。隔离重叠基准并检查代码占比和留出效果。",
+    "boundary": "过强去重会误删合理模板，按域审查误删并调低阈值。",
+    "identify": "应去重、去污染并从已有候补补足300B。30%镜像不能算同量独立信息。因为重复样本会在反向传播时自动抵消梯度，镜像越多有效梯度越接近零；按哈希删镜像可恢复梯度。隔离重叠基准并检查代码占比和留出效果。",
+    "mechanism": "应去重、去污染并从已有候补补足300B。30%镜像不能算同量独立信息。因为重复样本会在反向传播时自动抵消梯度，镜像越多有效梯度越接近零；按哈希删镜像可恢复梯度。隔离重叠基准并检查代码占比和留出效果。"
+  },
+  "required_observables": [
+    "300B",
+    "重复30%",
+    "代码2%",
+    "逐字重叠",
+    "已有候补"
+  ],
+  "row": 3,
+  "scenario": "scen_wp1b_pretrain",
+  "scores": {
+    "application": 2,
+    "boundary": 2,
+    "identify": 2,
+    "mechanism": 0
+  },
+  "total": 6,
+  "whole_coverage": false
+}

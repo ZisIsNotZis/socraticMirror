@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 """Hand-authored calibration fixtures, not a model judge. See report.md."""
-from pathlib import Path
-import json, subprocess
-ROOT=Path(__file__).resolve().parent
 WRONG={
 'preference':'应暂停上线并用一天审计重排偏好。80%长胜、解决率下降而奖励升高说明长度混杂。原因是奖励模型将token数直接作为softmax温度，回答越长温度越低，奖励必然越高。按长度配对复审并用独立解决率验收。',
 'dpo':'应固定参考模型重跑一次并检查JSON。固定输入下参考logprob变化不是采样噪声。DPO的参考策略本来是把偏好标签变成下一个token的监督标签；参考漂移会让JSON括号的标签逐步被胜者标签覆盖。冻结参考后比较胜率和合规率。',
@@ -15,8 +12,3 @@ WRONG={
 'pretrain':'应去重、去污染并从已有候补补足300B。30%镜像不能算同量独立信息。因为重复样本会在反向传播时自动抵消梯度，镜像越多有效梯度越接近零；按哈希删镜像可恢复梯度。隔离重叠基准并检查代码占比和留出效果。',
 'sft':'应优先对客服对话做助理侧损失的增量微调，使用合成号码测试。用户和助理损失均非零会鼓励复制输入。原因是交叉熵只要在用户位置计算就会把这些位置的梯度强制广播成所有助理位置的目标token。屏蔽用户损失并比较号码复述率和任务正确率。'
 }
-if __name__=='__main__':
- for key,text in WRONG.items():
-  p=ROOT/'answers'/('scen_wp1b_'+key);p.mkdir(parents=True,exist_ok=True)
-  (p/'c.md').write_text(text+'\n')
-  (p/'d.md').write_text('我不知道。\n')

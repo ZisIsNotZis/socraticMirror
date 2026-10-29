@@ -1,0 +1,53 @@
+{
+  "after": {
+    "tool_schema": {
+      "aware": 0.41341896102509523,
+      "deep": 0.0,
+      "operable": 0.0,
+      "unknown": 0.5865810389749049
+    }
+  },
+  "before": {
+    "tool_schema": {
+      "aware": 0.32500735111618373,
+      "deep": 0.11160372983891469,
+      "operable": 0.28481118951674406,
+      "unknown": 0.2785777295281575
+    }
+  },
+  "nodes": [
+    "tool_schema"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": "应在适配层修复金额单位映射并保留姓名。500分却扣500元是单位契约不一致。JSON整数在传输时自动带有货币指数，UTF-8姓名会把该指数从分重置为元，所以必须将金额和姓名分开发送。用5元沙箱交易和非ASCII姓名做回归。",
+    "boundary": "JSON合法也不能替代金额与授权验证，回执异常时停止重试扣款并对账。",
+    "identify": "应在适配层修复金额单位映射并保留姓名。500分却扣500元是单位契约不一致。JSON整数在传输时自动带有货币指数，UTF-8姓名会把该指数从分重置为元，所以必须将金额和姓名分开发送。用5元沙箱交易和非ASCII姓名做回归。",
+    "mechanism": "应在适配层修复金额单位映射并保留姓名。500分却扣500元是单位契约不一致。JSON整数在传输时自动带有货币指数，UTF-8姓名会把该指数从分重置为元，所以必须将金额和姓名分开发送。用5元沙箱交易和非ASCII姓名做回归。"
+  },
+  "required_observables": [
+    "5元",
+    "amount500",
+    "回执500元",
+    "100/min",
+    "20%非ASCII",
+    "仅适配层"
+  ],
+  "row": 1,
+  "scenario": "scen_wp1b_function",
+  "scores": {
+    "application": 0,
+    "boundary": 2,
+    "identify": 2,
+    "mechanism": 0
+  },
+  "total": 4,
+  "whole_coverage": false
+}

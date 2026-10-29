@@ -1,0 +1,39 @@
+{
+  "observed_nodes": [
+    "clip"
+  ],
+  "scores": {
+    "identify": 2,
+    "mechanism": 0,
+    "application": 0,
+    "boundary": 2
+  },
+  "framework_A": {
+    "identify": 2,
+    "mechanism": 0,
+    "application": 0,
+    "boundary": 2
+  },
+  "framework_B": {
+    "identify": 2,
+    "mechanism": 0,
+    "application": 0,
+    "boundary": 2
+  },
+  "low_confidence": false,
+  "quotes": {
+    "identify": "应增加本地定位头并使用30张带框图，类别分不能直接当坐标。CLIP的全局向量其实把所有框坐标逐项加总后归一化，因此只需逆归一化就可恢复唯一瑕疵框。用留出框的IoU验证。",
+    "mechanism": "应增加本地定位头并使用30张带框图，类别分不能直接当坐标。CLIP的全局向量其实把所有框坐标逐项加总后归一化，因此只需逆归一化就可恢复唯一瑕疵框。用留出框的IoU验证。",
+    "application": "应增加本地定位头并使用30张带框图，类别分不能直接当坐标。CLIP的全局向量其实把所有框坐标逐项加总后归一化，因此只需逆归一化就可恢复唯一瑕疵框。用留出框的IoU验证。",
+    "boundary": "类别相似分高不证明细小瑕疵能定位，留出定位召回不足则人工复核。"
+  },
+  "anchor_reasons": {
+    "identify": "辨认情景关键对象，但未用正确机制排除近邻混淆。",
+    "mechanism": "核心因果明确错误，不是另一种无法排除的可能根因；详见report逐题反证。",
+    "application": "按应用锚点判断具体方案，不能由结论方向正确推定方案可行。",
+    "boundary": "指出一条当前失效条件、影响与处理，但未完整界定范围。"
+  },
+  "assertion_correct": true,
+  "mechanism_correct": false,
+  "probe": "direct"
+}

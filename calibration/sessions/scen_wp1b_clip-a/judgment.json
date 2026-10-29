@@ -1,0 +1,39 @@
+{
+  "observed_nodes": [
+    "clip"
+  ],
+  "scores": {
+    "identify": 3,
+    "mechanism": 3,
+    "application": 3,
+    "boundary": 3
+  },
+  "framework_A": {
+    "identify": 3,
+    "mechanism": 3,
+    "application": 3,
+    "boundary": 3
+  },
+  "framework_B": {
+    "identify": 3,
+    "mechanism": 3,
+    "application": 3,
+    "boundary": 3
+  },
+  "low_confidence": false,
+  "quotes": {
+    "identify": "类别检索80/100不等于瑕疵定位。CLIP通过对比目标对齐全局图文表示，相似分没有逐区域坐标监督，接口也不输出框；因此无法从一个类别分唯一反推位置。加区域监督后才可能学习定位，不能把分类准确率直接当框准确率。",
+    "mechanism": "类别检索80/100不等于瑕疵定位。CLIP通过对比目标对齐全局图文表示，相似分没有逐区域坐标监督，接口也不输出框；因此无法从一个类别分唯一反推位置。加区域监督后才可能学习定位，不能把分类准确率直接当框准确率。",
+    "application": "离线保留检索作为类别筛选，另接本地定位模型或区域头，用30张带框图按来源隔离小型训练和留出，并用交叉验证估计不确定性。分别报告类别检索、瑕疵召回和IoU，审阅错框；如细小瑕疵漏检则补区域裁剪与人工复核，不把有限样本训练和验收混在一起。",
+    "boundary": "高检索分不证明定位能力，相似类别及细小缺陷可能不可分；30张框不足以保证50类覆盖，域变化时需人工复核或新增本地标注，不能用零样本分类分数替代缺陷安全验收。"
+  },
+  "anchor_reasons": {
+    "identify": "排除当前关键近邻混淆并关联决策；见第一段。",
+    "mechanism": "完整因果链并说明关键条件变化的影响；见第一段。",
+    "application": "执行、验证、失败识别与调整均明确；见第二段。",
+    "boundary": "失效范围、原因/信号与退路；见第三段。"
+  },
+  "assertion_correct": true,
+  "mechanism_correct": true,
+  "probe": "direct"
+}

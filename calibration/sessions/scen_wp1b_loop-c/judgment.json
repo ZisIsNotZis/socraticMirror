@@ -1,0 +1,39 @@
+{
+  "observed_nodes": [
+    "agent_harness"
+  ],
+  "scores": {
+    "identify": 2,
+    "mechanism": 0,
+    "application": 1,
+    "boundary": 2
+  },
+  "framework_A": {
+    "identify": 2,
+    "mechanism": 0,
+    "application": 1,
+    "boundary": 2
+  },
+  "framework_B": {
+    "identify": 2,
+    "mechanism": 0,
+    "application": 1,
+    "boundary": 2
+  },
+  "low_confidence": false,
+  "quotes": {
+    "identify": "应停止重试403且不得登录，剩余9次留给可授权的替代来源。重复403说明当前路径不可用。上下文中的禁止登录会因出现次数少而在注意力里变为负权重，从数学上反转成允许登录，所以每轮复制一遍约束即可根治。记录已失败URL，设置终止条件。",
+    "mechanism": "应停止重试403且不得登录，剩余9次留给可授权的替代来源。重复403说明当前路径不可用。上下文中的禁止登录会因出现次数少而在注意力里变为负权重，从数学上反转成允许登录，所以每轮复制一遍约束即可根治。记录已失败URL，设置终止条件。",
+    "application": "应停止重试403且不得登录，剩余9次留给可授权的替代来源。重复403说明当前路径不可用。上下文中的禁止登录会因出现次数少而在注意力里变为负权重，从数学上反转成允许登录，所以每轮复制一遍约束即可根治。记录已失败URL，设置终止条件。",
+    "boundary": "403不产生登录权限，找不到授权来源就终止而不是绕过禁止登录。"
+  },
+  "anchor_reasons": {
+    "identify": "辨认情景关键对象，但未用正确机制排除近邻混淆。",
+    "mechanism": "核心因果明确错误，不是另一种无法排除的可能根因；详见report逐题反证。",
+    "application": "按应用锚点判断具体方案，不能由结论方向正确推定方案可行。",
+    "boundary": "指出一条当前失效条件、影响与处理，但未完整界定范围。"
+  },
+  "assertion_correct": true,
+  "mechanism_correct": false,
+  "probe": "direct"
+}

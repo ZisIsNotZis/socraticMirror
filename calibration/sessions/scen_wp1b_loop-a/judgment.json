@@ -1,0 +1,39 @@
+{
+  "observed_nodes": [
+    "agent_harness"
+  ],
+  "scores": {
+    "identify": 3,
+    "mechanism": 3,
+    "application": 3,
+    "boundary": 3
+  },
+  "framework_A": {
+    "identify": 3,
+    "mechanism": 3,
+    "application": 3,
+    "boundary": 3
+  },
+  "framework_B": {
+    "identify": 3,
+    "mechanism": 3,
+    "application": 3,
+    "boundary": 3
+  },
+  "low_confidence": false,
+  "quotes": {
+    "identify": "重复403与禁止登录是不同层面的事实和权限：403是路径失败，不是登录授权。harness应持有预算、尝试历史和不可变授权，模型上下文只是工作材料；若压缩只留网页摘要而丢权限，后续动作就失去约束。把权限从可丢弃摘要移入执行时检查，可使扩窗与否不再决定授权是否生效。",
+    "mechanism": "重复403与禁止登录是不同层面的事实和权限：403是路径失败，不是登录授权。harness应持有预算、尝试历史和不可变授权，模型上下文只是工作材料；若压缩只留网页摘要而丢权限，后续动作就失去约束。把权限从可丢弃摘要移入执行时检查，可使扩窗与否不再决定授权是否生效。",
+    "application": "立即取消登录动作，将最初禁止登录写入执行策略，记录URL、403及已用20次调用，剩余9次单独记账。屏蔽同条件重试，选无需登录的授权来源，最多分配几次探测，保留结束预算；每轮先查权限和计数，工具返回再更新状态。无来源就返回可追溯的失败说明并终止。",
+    "boundary": "更长上下文不能保证可靠状态，总结不是原始轨迹的无损副本；若摘要与权限冲突，以不可变授权为准，不能用反复搜索或绕过登录来“完成”任务。遇到新授权需求必须停下交回用户。"
+  },
+  "anchor_reasons": {
+    "identify": "排除当前关键近邻混淆并关联决策；见第一段。",
+    "mechanism": "完整因果链并说明关键条件变化的影响；见第一段。",
+    "application": "执行、验证、失败识别与调整均明确；见第二段。",
+    "boundary": "失效范围、原因/信号与退路；见第三段。"
+  },
+  "assertion_correct": true,
+  "mechanism_correct": true,
+  "probe": "direct"
+}

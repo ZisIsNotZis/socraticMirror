@@ -1,0 +1,52 @@
+{
+  "after": {
+    "flash_attention": {
+      "aware": 0.46857912946094415,
+      "deep": 0.0,
+      "operable": 0.0,
+      "unknown": 0.5314208705390558
+    }
+  },
+  "before": {
+    "flash_attention": {
+      "aware": 0.30892958321327857,
+      "deep": 0.11906840779383496,
+      "operable": 0.30720522338150485,
+      "unknown": 0.26479678561138165
+    }
+  },
+  "nodes": [
+    "flash_attention"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": "可以在回归通过后替换，差1e-3在2e-3容差内。显存减半是因为FlashAttention将注意力矩阵做秩一近似，删掉小奇异值；这解释了输出近似相等。用同一QKV和padding对照输出及梯度。",
+    "boundary": "输出当前过容差不保证梯度和其他mask正确，回归失败则保留旧内核。",
+    "identify": "可以在回归通过后替换，差1e-3在2e-3容差内。显存减半是因为FlashAttention将注意力矩阵做秩一近似，删掉小奇异值；这解释了输出近似相等。用同一QKV和padding对照输出及梯度。",
+    "mechanism": "可以在回归通过后替换，差1e-3在2e-3容差内。显存减半是因为FlashAttention将注意力矩阵做秩一近似，删掉小奇异值；这解释了输出近似相等。用同一QKV和padding对照输出及梯度。"
+  },
+  "required_observables": [
+    "A100",
+    "B1/8192/bf16",
+    "60→30GiB",
+    "差1e-3/容差2e-3",
+    "padding"
+  ],
+  "row": 3,
+  "scenario": "scen_wp1b_flash",
+  "scores": {
+    "application": 2,
+    "boundary": 2,
+    "identify": 2,
+    "mechanism": 0
+  },
+  "total": 6,
+  "whole_coverage": false
+}

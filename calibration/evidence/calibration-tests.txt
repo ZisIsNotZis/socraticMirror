@@ -1,0 +1,9 @@
+test_evidence_quotes_and_no_fabricated_missing_scores (__main__.CalibrationTests.test_evidence_quotes_and_no_fabricated_missing_scores) ... ok
+test_mechanical_deletions_only (__main__.CalibrationTests.test_mechanical_deletions_only) ... ok
+test_partial_order_and_full_chain_not_claimed (__main__.CalibrationTests.test_partial_order_and_full_chain_not_claimed) ... ok
+test_selection_is_from_fresh_cli (__main__.CalibrationTests.test_selection_is_from_fresh_cli) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.197s
+
+OK

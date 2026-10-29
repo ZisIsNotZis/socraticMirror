@@ -1,0 +1,51 @@
+{
+  "after": {
+    "kv_cache": {
+      "aware": 0.46857912946094415,
+      "deep": 0.0,
+      "operable": 0.0,
+      "unknown": 0.5314208705390558
+    }
+  },
+  "before": {
+    "kv_cache": {
+      "aware": 0.30972459011830156,
+      "deep": 0.11869929744507429,
+      "operable": 0.30609789233522283,
+      "unknown": 0.2654782201014013
+    }
+  },
+  "nodes": [
+    "kv_cache"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": "应保留长度、降低同时驻留会话数并排队。100会话同时32000会超预算。KV缓存之所以随长度增加，是每个新token都为全部历史token重新存一份QKV，所以内存按长度平方增长。用分页缓存回收空洞并做峰值压力测试。",
+    "boundary": "分页不能消除每会话存储成本，峰值容量不够就排队而不能截短会话。",
+    "identify": "应保留长度、降低同时驻留会话数并排队。100会话同时32000会超预算。KV缓存之所以随长度增加，是每个新token都为全部历史token重新存一份QKV，所以内存按长度平方增长。用分页缓存回收空洞并做峰值压力测试。",
+    "mechanism": "应保留长度、降低同时驻留会话数并排队。100会话同时32000会超预算。KV缓存之所以随长度增加，是每个新token都为全部历史token重新存一份QKV，所以内存按长度平方增长。用分页缓存回收空洞并做峰值压力测试。"
+  },
+  "required_observables": [
+    "80GiB权重14",
+    "100×32000",
+    "32层8KV/128/bf16",
+    "不增卡保长度"
+  ],
+  "row": 3,
+  "scenario": "scen_wp1b_kv",
+  "scores": {
+    "application": 2,
+    "boundary": 2,
+    "identify": 2,
+    "mechanism": 0
+  },
+  "total": 6,
+  "whole_coverage": false
+}

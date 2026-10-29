@@ -1,0 +1,19 @@
+{
+  "observed_nodes": [
+    "direct_preference_optimization"
+  ],
+  "scores": {
+    "identify": 3,
+    "mechanism": 3,
+    "application": 2,
+    "boundary": "unverified"
+  },
+  "submitted": false,
+  "reason": "边界整段删除，无反证，不得以0补空；score强制四整数。",
+  "quotes": {
+    "identify": "DPO用固定参考策略的chosen/rejected相对对数概率构造成对目标，β控制相对参考的优化权衡，不是直接把偏好标签当token标签。固定序列和随机性仍每步参考logprob变化，说明参考计算路径有漂移，应查快照、共享权重与适配器启用状态；冻结后该对照量应稳定。",
+    "mechanism": "DPO用固定参考策略的chosen/rejected相对对数概率构造成对目标，β控制相对参考的优化权衡，不是直接把偏好标签当token标签。固定序列和随机性仍每步参考logprob变化，说明参考计算路径有漂移，应查快照、共享权重与适配器启用状态；冻结后该对照量应稳定。",
+    "application": "保存独立只读参考快照，逐条核验chosen/rejected方向、长度处理和参考适配器开关；在有限一次重跑里预先选较短轮数并固定β，分离训练与留出。保留β/轮数离线候选分析，不声称一次训练扫全参数。每个检查点联合测胜率、JSON解析率和任务成功，",
+    "boundary": null
+  }
+}

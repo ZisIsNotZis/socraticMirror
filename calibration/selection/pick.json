@@ -1,0 +1,2108 @@
+[
+  {
+    "S": [
+      "autoregressive_decoding",
+      "beam_search",
+      "language_model"
+    ],
+    "cost": 3.0216164395818303,
+    "gain": 0.09864114694920367,
+    "question_type": "application",
+    "reason": "Importance-weighted expected entropy reduction over 3 nodes per unit cost.",
+    "scenario": "scen_beam_translation",
+    "utility": 0.03264515828582627
+  },
+  {
+    "S": [
+      "autoregressive_decoding",
+      "beam_search",
+      "language_model"
+    ],
+    "cost": 3.0216164395818303,
+    "gain": 0.09864114694920367,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 3 nodes per unit cost.",
+    "scenario": "scen_beam_translation",
+    "utility": 0.03264515828582627
+  },
+  {
+    "S": [
+      "dit",
+      "latent_diffusion",
+      "transformer",
+      "vae"
+    ],
+    "cost": 3.754887721613817,
+    "gain": 0.05423237736853537,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_dit",
+    "utility": 0.014443142216041224
+  },
+  {
+    "S": [
+      "dit",
+      "latent_diffusion",
+      "transformer",
+      "vae"
+    ],
+    "cost": 3.754887721613817,
+    "gain": 0.05423237736853537,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_dit",
+    "utility": 0.014443142216041224
+  },
+  {
+    "S": [
+      "direct_preference_optimization",
+      "iterative_posttraining",
+      "rejection_sampling",
+      "sft_loss_mask"
+    ],
+    "cost": 3.752689015510092,
+    "gain": 0.04854821017830235,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_iteration",
+    "utility": 0.012936912698507563
+  },
+  {
+    "S": [
+      "direct_preference_optimization",
+      "iterative_posttraining",
+      "rejection_sampling",
+      "sft_loss_mask"
+    ],
+    "cost": 3.752689015510092,
+    "gain": 0.04854821017830235,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_iteration",
+    "utility": 0.012936912698507563
+  },
+  {
+    "S": [
+      "attn_scaled_dot_product",
+      "language_model",
+      "positional_encoding",
+      "transformer"
+    ],
+    "cost": 3.750955283463358,
+    "gain": 0.042417359012244304,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_causal_mask",
+    "utility": 0.011308415005438086
+  },
+  {
+    "S": [
+      "attn_scaled_dot_product",
+      "language_model",
+      "positional_encoding",
+      "transformer"
+    ],
+    "cost": 3.750955283463358,
+    "gain": 0.042417359012244304,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_causal_mask",
+    "utility": 0.011308415005438086
+  },
+  {
+    "S": [
+      "agent_benchmark",
+      "agent_tracing",
+      "desktop_task_success",
+      "web_task_success"
+    ],
+    "cost": 3.7531853046795947,
+    "gain": 0.041817233452110525,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_eval",
+    "utility": 0.011141798248003217
+  },
+  {
+    "S": [
+      "agent_benchmark",
+      "agent_tracing",
+      "desktop_task_success",
+      "web_task_success"
+    ],
+    "cost": 3.7531853046795947,
+    "gain": 0.041817233452110525,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_eval",
+    "utility": 0.011141798248003217
+  },
+  {
+    "S": [
+      "multihead_attention",
+      "transformer",
+      "vision_transformer",
+      "vlm"
+    ],
+    "cost": 3.74970354714515,
+    "gain": 0.04068235362436545,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_vit_resolution",
+    "utility": 0.010849485329404003
+  },
+  {
+    "S": [
+      "multihead_attention",
+      "transformer",
+      "vision_transformer",
+      "vlm"
+    ],
+    "cost": 3.74970354714515,
+    "gain": 0.04068235362436545,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_vit_resolution",
+    "utility": 0.010849485329404003
+  },
+  {
+    "S": [
+      "actor_critic",
+      "advantage_estimation",
+      "policy_gradient",
+      "ppo"
+    ],
+    "cost": 3.7498787270847416,
+    "gain": 0.0372616619211763,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_ppo",
+    "utility": 0.00993676452842104
+  },
+  {
+    "S": [
+      "actor_critic",
+      "advantage_estimation",
+      "policy_gradient",
+      "ppo"
+    ],
+    "cost": 3.7498787270847416,
+    "gain": 0.0372616619211763,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_ppo",
+    "utility": 0.00993676452842104
+  },
+  {
+    "S": [
+      "multimodal_hallucination",
+      "vision_projector",
+      "visual_instruction_tuning",
+      "vlm"
+    ],
+    "cost": 3.748782059713223,
+    "gain": 0.036516427567889975,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_vlm",
+    "utility": 0.009740877700071857
+  },
+  {
+    "S": [
+      "multimodal_hallucination",
+      "vision_projector",
+      "visual_instruction_tuning",
+      "vlm"
+    ],
+    "cost": 3.748782059713223,
+    "gain": 0.036516427567889975,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_vlm",
+    "utility": 0.009740877700071857
+  },
+  {
+    "S": [
+      "multimodal_benchmark",
+      "multimodal_hallucination",
+      "video_understanding",
+      "vlm"
+    ],
+    "cost": 3.7486288593984636,
+    "gain": 0.0358977662510056,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_video",
+    "utility": 0.00957623909899847
+  },
+  {
+    "S": [
+      "multimodal_benchmark",
+      "multimodal_hallucination",
+      "video_understanding",
+      "vlm"
+    ],
+    "cost": 3.7486288593984636,
+    "gain": 0.0358977662510056,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_video",
+    "utility": 0.00957623909899847
+  },
+  {
+    "S": [
+      "causal_language_modeling",
+      "causal_mask",
+      "decoder_only",
+      "transformer"
+    ],
+    "cost": 3.749813214461094,
+    "gain": 0.0347068179916854,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_decoder",
+    "utility": 0.009255612481666852
+  },
+  {
+    "S": [
+      "causal_language_modeling",
+      "causal_mask",
+      "decoder_only",
+      "transformer"
+    ],
+    "cost": 3.749813214461094,
+    "gain": 0.0347068179916854,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_decoder",
+    "utility": 0.009255612481666852
+  },
+  {
+    "S": [
+      "indirect_prompt_injection",
+      "prompt_injection",
+      "retrieval_augmented_generation",
+      "retrieval_poisoning"
+    ],
+    "cost": 3.7478363559208487,
+    "gain": 0.033525452224957286,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_injection",
+    "utility": 0.008945281768237726
+  },
+  {
+    "S": [
+      "indirect_prompt_injection",
+      "prompt_injection",
+      "retrieval_augmented_generation",
+      "retrieval_poisoning"
+    ],
+    "cost": 3.7478363559208487,
+    "gain": 0.033525452224957286,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_injection",
+    "utility": 0.008945281768237726
+  },
+  {
+    "S": [
+      "chain_of_thought",
+      "self_consistency",
+      "speculative_decoding",
+      "test_time_compute"
+    ],
+    "cost": 3.7476904598484513,
+    "gain": 0.033022246100801844,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_budget",
+    "utility": 0.008811359010193493
+  },
+  {
+    "S": [
+      "chain_of_thought",
+      "self_consistency",
+      "speculative_decoding",
+      "test_time_compute"
+    ],
+    "cost": 3.7476904598484513,
+    "gain": 0.033022246100801844,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_budget",
+    "utility": 0.008811359010193493
+  },
+  {
+    "S": [
+      "preference_data",
+      "reward_hacking",
+      "reward_model",
+      "rlhf"
+    ],
+    "cost": 3.7460538044867615,
+    "gain": 0.032260997225691534,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_preference",
+    "utility": 0.008611995157958375
+  },
+  {
+    "S": [
+      "preference_data",
+      "reward_hacking",
+      "reward_model",
+      "rlhf"
+    ],
+    "cost": 3.7460538044867615,
+    "gain": 0.032260997225691534,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_preference",
+    "utility": 0.008611995157958375
+  },
+  {
+    "S": [
+      "expert_parallelism",
+      "expert_routing",
+      "load_balancing_loss",
+      "mixture_of_experts"
+    ],
+    "cost": 3.747988727042915,
+    "gain": 0.03193321268187388,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_moe",
+    "utility": 0.008520093043894643
+  },
+  {
+    "S": [
+      "expert_parallelism",
+      "expert_routing",
+      "load_balancing_loss",
+      "mixture_of_experts"
+    ],
+    "cost": 3.747988727042915,
+    "gain": 0.03193321268187388,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_moe",
+    "utility": 0.008520093043894643
+  },
+  {
+    "S": [
+      "attn_scaled_dot_product",
+      "flash_attention",
+      "gpu_compute",
+      "multihead_attention"
+    ],
+    "cost": 3.7478668392508245,
+    "gain": 0.03182011421117292,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_flash",
+    "utility": 0.008490193375582567
+  },
+  {
+    "S": [
+      "attn_scaled_dot_product",
+      "flash_attention",
+      "gpu_compute",
+      "multihead_attention"
+    ],
+    "cost": 3.7478668392508245,
+    "gain": 0.03182011421117292,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_flash",
+    "utility": 0.008490193375582567
+  },
+  {
+    "S": [
+      "activation_quantization",
+      "lora",
+      "qlora",
+      "weight_quantization"
+    ],
+    "cost": 3.747726321763187,
+    "gain": 0.03168100226195891,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_quant",
+    "utility": 0.008453392681847164
+  },
+  {
+    "S": [
+      "activation_quantization",
+      "lora",
+      "qlora",
+      "weight_quantization"
+    ],
+    "cost": 3.747726321763187,
+    "gain": 0.03168100226195891,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_quant",
+    "utility": 0.008453392681847164
+  },
+  {
+    "S": [
+      "activation_quantization",
+      "kv_cache",
+      "kv_cache_quantization",
+      "weight_quantization"
+    ],
+    "cost": 3.74761940014138,
+    "gain": 0.0312909720086858,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_kvquant",
+    "utility": 0.008349559725169889
+  },
+  {
+    "S": [
+      "activation_quantization",
+      "kv_cache",
+      "kv_cache_quantization",
+      "weight_quantization"
+    ],
+    "cost": 3.74761940014138,
+    "gain": 0.0312909720086858,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_kvquant",
+    "utility": 0.008349559725169889
+  },
+  {
+    "S": [
+      "direct_preference_optimization",
+      "kl_regularization",
+      "preference_data",
+      "reference_policy"
+    ],
+    "cost": 3.7463815524955404,
+    "gain": 0.03072983179545763,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_dpo",
+    "utility": 0.008202536598277842
+  },
+  {
+    "S": [
+      "direct_preference_optimization",
+      "kl_regularization",
+      "preference_data",
+      "reference_policy"
+    ],
+    "cost": 3.7463815524955404,
+    "gain": 0.03072983179545763,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_dpo",
+    "utility": 0.008202536598277842
+  },
+  {
+    "S": [
+      "actor_critic",
+      "expectation",
+      "policy_gradient",
+      "return_discount"
+    ],
+    "cost": 3.748030175099177,
+    "gain": 0.029047953120281633,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_pg_baseline",
+    "utility": 0.00775019190434159
+  },
+  {
+    "S": [
+      "actor_critic",
+      "expectation",
+      "policy_gradient",
+      "return_discount"
+    ],
+    "cost": 3.748030175099177,
+    "gain": 0.029047953120281633,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_pg_baseline",
+    "utility": 0.00775019190434159
+  },
+  {
+    "S": [
+      "classifier_free_guidance",
+      "ddpm",
+      "diffusion_model",
+      "text_to_image"
+    ],
+    "cost": 3.7483510413058747,
+    "gain": 0.029045265670654574,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_diffusion",
+    "utility": 0.0077488115042009505
+  },
+  {
+    "S": [
+      "classifier_free_guidance",
+      "ddpm",
+      "diffusion_model",
+      "text_to_image"
+    ],
+    "cost": 3.7483510413058747,
+    "gain": 0.029045265670654574,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_diffusion",
+    "utility": 0.0077488115042009505
+  },
+  {
+    "S": [
+      "mcp",
+      "mcp_authorization",
+      "mcp_resources",
+      "mcp_tools"
+    ],
+    "cost": 3.7474860123632396,
+    "gain": 0.027244894172514744,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_mcp",
+    "utility": 0.007270179016714613
+  },
+  {
+    "S": [
+      "mcp",
+      "mcp_authorization",
+      "mcp_resources",
+      "mcp_tools"
+    ],
+    "cost": 3.7474860123632396,
+    "gain": 0.027244894172514744,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_mcp",
+    "utility": 0.007270179016714613
+  },
+  {
+    "S": [
+      "clip",
+      "cross_entropy",
+      "vision_transformer",
+      "visual_grounding"
+    ],
+    "cost": 3.747970826650821,
+    "gain": 0.02673359645264517,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_clip",
+    "utility": 0.007132818714209218
+  },
+  {
+    "S": [
+      "clip",
+      "cross_entropy",
+      "vision_transformer",
+      "visual_grounding"
+    ],
+    "cost": 3.747970826650821,
+    "gain": 0.02673359645264517,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_clip",
+    "utility": 0.007132818714209218
+  },
+  {
+    "S": [
+      "batch_norm",
+      "fine_tuning",
+      "resnet",
+      "vision_transformer"
+    ],
+    "cost": 3.7485984884445225,
+    "gain": 0.026171826135164666,
+    "question_type": "application",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_transfer_resolution",
+    "utility": 0.006981762975107169
+  },
+  {
+    "S": [
+      "batch_norm",
+      "fine_tuning",
+      "resnet",
+      "vision_transformer"
+    ],
+    "cost": 3.7485984884445225,
+    "gain": 0.026171826135164666,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_transfer_resolution",
+    "utility": 0.006981762975107169
+  },
+  {
+    "S": [
+      "continuous_batching",
+      "gqa",
+      "kv_cache",
+      "paged_attention"
+    ],
+    "cost": 3.7451011461087944,
+    "gain": 0.02592779309596982,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_kv",
+    "utility": 0.006923122256099575
+  },
+  {
+    "S": [
+      "continuous_batching",
+      "gqa",
+      "kv_cache",
+      "paged_attention"
+    ],
+    "cost": 3.7451011461087944,
+    "gain": 0.02592779309596982,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_kv",
+    "utility": 0.006923122256099575
+  },
+  {
+    "S": [
+      "grpo",
+      "reasoning_rl",
+      "reward_hacking",
+      "verifiable_reward"
+    ],
+    "cost": 3.745426621385727,
+    "gain": 0.025199999614202717,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_reasoning",
+    "utility": 0.006728205398636073
+  },
+  {
+    "S": [
+      "grpo",
+      "reasoning_rl",
+      "reward_hacking",
+      "verifiable_reward"
+    ],
+    "cost": 3.745426621385727,
+    "gain": 0.025199999614202717,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_reasoning",
+    "utility": 0.006728205398636073
+  },
+  {
+    "S": [
+      "expert_parallelism",
+      "inference_tensor_parallel",
+      "mixture_of_experts",
+      "moe_dispatch"
+    ],
+    "cost": 3.745203626637597,
+    "gain": 0.024565723427443675,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_dispatch",
+    "utility": 0.0065592490759971075
+  },
+  {
+    "S": [
+      "expert_parallelism",
+      "inference_tensor_parallel",
+      "mixture_of_experts",
+      "moe_dispatch"
+    ],
+    "cost": 3.745203626637597,
+    "gain": 0.024565723427443675,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_dispatch",
+    "utility": 0.0065592490759971075
+  },
+  {
+    "S": [
+      "batch_norm",
+      "data_parallelism",
+      "layer_norm",
+      "minibatch_sgd"
+    ],
+    "cost": 3.750786763066431,
+    "gain": 0.024411816107988482,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_bn_small_batch",
+    "utility": 0.0065084521328615235
+  },
+  {
+    "S": [
+      "batch_norm",
+      "data_parallelism",
+      "layer_norm",
+      "minibatch_sgd"
+    ],
+    "cost": 3.750786763066431,
+    "gain": 0.024411816107988482,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_bn_small_batch",
+    "utility": 0.0065084521328615235
+  },
+  {
+    "S": [
+      "continued_pretraining",
+      "instruction_tuning_data",
+      "peft",
+      "supervised_fine_tuning"
+    ],
+    "cost": 3.745779451844876,
+    "gain": 0.02401579895544681,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_sft",
+    "utility": 0.006411428986727587
+  },
+  {
+    "S": [
+      "continued_pretraining",
+      "instruction_tuning_data",
+      "peft",
+      "supervised_fine_tuning"
+    ],
+    "cost": 3.745779451844876,
+    "gain": 0.02401579895544681,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_sft",
+    "utility": 0.006411428986727587
+  },
+  {
+    "S": [
+      "citation_grounding",
+      "knowledge_distillation",
+      "retrieval_augmented_generation",
+      "web_search"
+    ],
+    "cost": 3.7450001056643574,
+    "gain": 0.023923431482946622,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_search",
+    "utility": 0.006388099014139451
+  },
+  {
+    "S": [
+      "citation_grounding",
+      "knowledge_distillation",
+      "retrieval_augmented_generation",
+      "web_search"
+    ],
+    "cost": 3.7450001056643574,
+    "gain": 0.023923431482946622,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_search",
+    "utility": 0.006388099014139451
+  },
+  {
+    "S": [
+      "chunking",
+      "citation_grounding",
+      "persistent_knowledge",
+      "session_memory"
+    ],
+    "cost": 3.743905733025085,
+    "gain": 0.023331287317717386,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_wiki",
+    "utility": 0.006231804158932616
+  },
+  {
+    "S": [
+      "chunking",
+      "citation_grounding",
+      "persistent_knowledge",
+      "session_memory"
+    ],
+    "cost": 3.743905733025085,
+    "gain": 0.023331287317717386,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_wiki",
+    "utility": 0.006231804158932616
+  },
+  {
+    "S": [
+      "agent_tool_use",
+      "browser_use",
+      "experiment_tracking",
+      "language_model"
+    ],
+    "cost": 3.744661962288501,
+    "gain": 0.022916130449395,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_agent_webshop",
+    "utility": 0.006119679340933115
+  },
+  {
+    "S": [
+      "agent_tool_use",
+      "browser_use",
+      "experiment_tracking",
+      "language_model"
+    ],
+    "cost": 3.744661962288501,
+    "gain": 0.022916130449395,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_agent_webshop",
+    "utility": 0.006119679340933115
+  },
+  {
+    "S": [
+      "dense_retrieval",
+      "hybrid_search",
+      "reranking",
+      "vector_index"
+    ],
+    "cost": 3.7445207372409337,
+    "gain": 0.022881033116030736,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_hybrid",
+    "utility": 0.006110537161263023
+  },
+  {
+    "S": [
+      "dense_retrieval",
+      "hybrid_search",
+      "reranking",
+      "vector_index"
+    ],
+    "cost": 3.7445207372409337,
+    "gain": 0.022881033116030736,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_hybrid",
+    "utility": 0.006110537161263023
+  },
+  {
+    "S": [
+      "activation_checkpointing",
+      "backpropagation",
+      "gpu_compute",
+      "model_parallelism"
+    ],
+    "cost": 3.7478668392508245,
+    "gain": 0.022503313657987523,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_gpu_graph_memory",
+    "utility": 0.006004299144866576
+  },
+  {
+    "S": [
+      "activation_checkpointing",
+      "backpropagation",
+      "gpu_compute",
+      "model_parallelism"
+    ],
+    "cost": 3.7478668392508245,
+    "gain": 0.022503313657987523,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_gpu_graph_memory",
+    "utility": 0.006004299144866576
+  },
+  {
+    "S": [
+      "backpropagation",
+      "gradient_clipping",
+      "language_model",
+      "rnn"
+    ],
+    "cost": 3.7470120251289307,
+    "gain": 0.022144282705572227,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_rnn_detach",
+    "utility": 0.005909850984481499
+  },
+  {
+    "S": [
+      "backpropagation",
+      "gradient_clipping",
+      "language_model",
+      "rnn"
+    ],
+    "cost": 3.7470120251289307,
+    "gain": 0.022144282705572227,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_rnn_detach",
+    "utility": 0.005909850984481499
+  },
+  {
+    "S": [
+      "adam",
+      "learning_rate_schedule",
+      "sgd",
+      "word_embedding"
+    ],
+    "cost": 3.747279899119585,
+    "gain": 0.02140902752000562,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_adam_sparse",
+    "utility": 0.005713218146590977
+  },
+  {
+    "S": [
+      "adam",
+      "learning_rate_schedule",
+      "sgd",
+      "word_embedding"
+    ],
+    "cost": 3.747279899119585,
+    "gain": 0.02140902752000562,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_adam_sparse",
+    "utility": 0.005713218146590977
+  },
+  {
+    "S": [
+      "language_model",
+      "model_versioning",
+      "retrieval_augmented_generation",
+      "word_embedding"
+    ],
+    "cost": 3.7445390335437967,
+    "gain": 0.021021936478576864,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_rag_freshness",
+    "utility": 0.005614025195160511
+  },
+  {
+    "S": [
+      "language_model",
+      "model_versioning",
+      "retrieval_augmented_generation",
+      "word_embedding"
+    ],
+    "cost": 3.7445390335437967,
+    "gain": 0.021021936478576864,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_rag_freshness",
+    "utility": 0.005614025195160511
+  },
+  {
+    "S": [
+      "attn_scaled_dot_product",
+      "matrix_multiplication",
+      "multihead_attention",
+      "softmax"
+    ],
+    "cost": 3.7441304118218444,
+    "gain": 0.020805613112495847,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_attention_scale",
+    "utility": 0.005556861226522318
+  },
+  {
+    "S": [
+      "attn_scaled_dot_product",
+      "matrix_multiplication",
+      "multihead_attention",
+      "softmax"
+    ],
+    "cost": 3.7441304118218444,
+    "gain": 0.020805613112495847,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_attention_scale",
+    "utility": 0.005556861226522318
+  },
+  {
+    "S": [
+      "agent_tracing",
+      "handoff",
+      "model_versioning",
+      "workflow_orchestration"
+    ],
+    "cost": 3.744574314445206,
+    "gain": 0.019660298306181323,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_trace",
+    "utility": 0.005250342670551107
+  },
+  {
+    "S": [
+      "agent_tracing",
+      "handoff",
+      "model_versioning",
+      "workflow_orchestration"
+    ],
+    "cost": 3.744574314445206,
+    "gain": 0.019660298306181323,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_trace",
+    "utility": 0.005250342670551107
+  },
+  {
+    "S": [
+      "constitutional_ai",
+      "harmlessness",
+      "jailbreak",
+      "rlaif"
+    ],
+    "cost": 3.742590126953016,
+    "gain": 0.019294424630409868,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_constitution",
+    "utility": 0.005155366731573727
+  },
+  {
+    "S": [
+      "constitutional_ai",
+      "harmlessness",
+      "jailbreak",
+      "rlaif"
+    ],
+    "cost": 3.742590126953016,
+    "gain": 0.019294424630409868,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_constitution",
+    "utility": 0.005155366731573727
+  },
+  {
+    "S": [
+      "agent_tool_use",
+      "function_calling",
+      "structured_outputs",
+      "tool_schema"
+    ],
+    "cost": 3.742450434403894,
+    "gain": 0.018961790642085585,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_function",
+    "utility": 0.0050666778289893
+  },
+  {
+    "S": [
+      "agent_tool_use",
+      "function_calling",
+      "structured_outputs",
+      "tool_schema"
+    ],
+    "cost": 3.742450434403894,
+    "gain": 0.018961790642085585,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_function",
+    "utility": 0.0050666778289893
+  },
+  {
+    "S": [
+      "agent_tool_use",
+      "exploration_exploitation",
+      "mdp",
+      "off_policy_learning"
+    ],
+    "cost": 3.7447224185474752,
+    "gain": 0.01852342278586594,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_grid_q",
+    "utility": 0.004946540948968632
+  },
+  {
+    "S": [
+      "agent_tool_use",
+      "exploration_exploitation",
+      "mdp",
+      "off_policy_learning"
+    ],
+    "cost": 3.7447224185474752,
+    "gain": 0.01852342278586594,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_grid_q",
+    "utility": 0.004946540948968632
+  },
+  {
+    "S": [
+      "action_tokenization",
+      "closed_loop_control",
+      "embodied_intelligence",
+      "vla"
+    ],
+    "cost": 3.7447407210841828,
+    "gain": 0.01843369849798515,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_robot",
+    "utility": 0.004922556692429216
+  },
+  {
+    "S": [
+      "action_tokenization",
+      "closed_loop_control",
+      "embodied_intelligence",
+      "vla"
+    ],
+    "cost": 3.7447407210841828,
+    "gain": 0.01843369849798515,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_robot",
+    "utility": 0.004922556692429216
+  },
+  {
+    "S": [
+      "allreduce",
+      "data_parallelism",
+      "gpu_compute",
+      "minibatch_sgd"
+    ],
+    "cost": 3.745464328446525,
+    "gain": 0.017933324196125255,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_ddp_small_batch",
+    "utility": 0.004788010944310157
+  },
+  {
+    "S": [
+      "allreduce",
+      "data_parallelism",
+      "gpu_compute",
+      "minibatch_sgd"
+    ],
+    "cost": 3.745464328446525,
+    "gain": 0.017933324196125255,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_ddp_small_batch",
+    "utility": 0.004788010944310157
+  },
+  {
+    "S": [
+      "agent_loop",
+      "bellman_equation",
+      "mdp",
+      "return_discount"
+    ],
+    "cost": 3.744408762531153,
+    "gain": 0.017897167744270304,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_grid_value",
+    "utility": 0.004779704588708456
+  },
+  {
+    "S": [
+      "agent_loop",
+      "bellman_equation",
+      "mdp",
+      "return_discount"
+    ],
+    "cost": 3.744408762531153,
+    "gain": 0.017897167744270304,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_grid_value",
+    "utility": 0.004779704588708456
+  },
+  {
+    "S": [
+      "authorization_boundary",
+      "excessive_agency",
+      "human_approval",
+      "least_privilege"
+    ],
+    "cost": 3.7418231223712493,
+    "gain": 0.017655425930307445,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_permissions",
+    "utility": 0.004718402060415656
+  },
+  {
+    "S": [
+      "authorization_boundary",
+      "excessive_agency",
+      "human_approval",
+      "least_privilege"
+    ],
+    "cost": 3.7418231223712493,
+    "gain": 0.017655425930307445,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_permissions",
+    "utility": 0.004718402060415656
+  },
+  {
+    "S": [
+      "agent_harness",
+      "agent_loop",
+      "context_management",
+      "session_memory"
+    ],
+    "cost": 3.7417438419603446,
+    "gain": 0.017494452390079296,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_loop",
+    "utility": 0.004675481040122121
+  },
+  {
+    "S": [
+      "agent_harness",
+      "agent_loop",
+      "context_management",
+      "session_memory"
+    ],
+    "cost": 3.7417438419603446,
+    "gain": 0.017494452390079296,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_loop",
+    "utility": 0.004675481040122121
+  },
+  {
+    "S": [
+      "context_extension",
+      "gqa",
+      "long_context_training",
+      "rope"
+    ],
+    "cost": 3.741727268554043,
+    "gain": 0.017460962936345137,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_position",
+    "utility": 0.004666551483612746
+  },
+  {
+    "S": [
+      "context_extension",
+      "gqa",
+      "long_context_training",
+      "rope"
+    ],
+    "cost": 3.741727268554043,
+    "gain": 0.017460962936345137,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_position",
+    "utility": 0.004666551483612746
+  },
+  {
+    "S": [
+      "gradient_descent",
+      "learning_rate_schedule",
+      "minibatch_sgd",
+      "sgd"
+    ],
+    "cost": 3.744841050008235,
+    "gain": 0.016849096614542702,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_batch_timing",
+    "utility": 0.004499282183019664
+  },
+  {
+    "S": [
+      "gradient_descent",
+      "learning_rate_schedule",
+      "minibatch_sgd",
+      "sgd"
+    ],
+    "cost": 3.744841050008235,
+    "gain": 0.016849096614542702,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_batch_timing",
+    "utility": 0.004499282183019664
+  },
+  {
+    "S": [
+      "blue_team_defense",
+      "guardrails",
+      "red_teaming",
+      "sensitive_disclosure"
+    ],
+    "cost": 3.7420848638096027,
+    "gain": 0.01672336633662974,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_guardrail",
+    "utility": 0.004468997081911349
+  },
+  {
+    "S": [
+      "blue_team_defense",
+      "guardrails",
+      "red_teaming",
+      "sensitive_disclosure"
+    ],
+    "cost": 3.7420848638096027,
+    "gain": 0.01672336633662974,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_guardrail",
+    "utility": 0.004468997081911349
+  },
+  {
+    "S": [
+      "data_augmentation",
+      "data_preprocessing",
+      "visual_grounding",
+      "visual_instruction_tuning"
+    ],
+    "cost": 3.73975356543225,
+    "gain": 0.01633659068389126,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_segmentation_crop",
+    "utility": 0.004368360213596865
+  },
+  {
+    "S": [
+      "data_augmentation",
+      "data_preprocessing",
+      "visual_grounding",
+      "visual_instruction_tuning"
+    ],
+    "cost": 3.73975356543225,
+    "gain": 0.01633659068389126,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_segmentation_crop",
+    "utility": 0.004368360213596865
+  },
+  {
+    "S": [
+      "agent_plugins",
+      "computer_use",
+      "sandbox_execution",
+      "tool_error_recovery"
+    ],
+    "cost": 3.741781286541867,
+    "gain": 0.01611546732266267,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_sandbox",
+    "utility": 0.004306897193757813
+  },
+  {
+    "S": [
+      "agent_plugins",
+      "computer_use",
+      "sandbox_execution",
+      "tool_error_recovery"
+    ],
+    "cost": 3.741781286541867,
+    "gain": 0.01611546732266267,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_sandbox",
+    "utility": 0.004306897193757813
+  },
+  {
+    "S": [
+      "object_detection",
+      "robustness",
+      "visual_grounding",
+      "vlm"
+    ],
+    "cost": 3.739524705722336,
+    "gain": 0.01574215287592473,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_crowded_nms",
+    "utility": 0.004209666766430397
+  },
+  {
+    "S": [
+      "object_detection",
+      "robustness",
+      "visual_grounding",
+      "vlm"
+    ],
+    "cost": 3.739524705722336,
+    "gain": 0.01574215287592473,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_crowded_nms",
+    "utility": 0.004209666766430397
+  },
+  {
+    "S": [
+      "activation",
+      "cross_entropy",
+      "mixed_precision",
+      "softmax"
+    ],
+    "cost": 3.743718204601234,
+    "gain": 0.015247482372787058,
+    "question_type": "application",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_logistic_stability",
+    "utility": 0.004072817861677481
+  },
+  {
+    "S": [
+      "activation",
+      "cross_entropy",
+      "mixed_precision",
+      "softmax"
+    ],
+    "cost": 3.743718204601234,
+    "gain": 0.015247482372787058,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_logistic_stability",
+    "utility": 0.004072817861677481
+  },
+  {
+    "S": [
+      "activation",
+      "backpropagation",
+      "mlp",
+      "swiglu"
+    ],
+    "cost": 3.7436462097667933,
+    "gain": 0.015145180195440311,
+    "question_type": "application",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_xor_mlp",
+    "utility": 0.004045569305114375
+  },
+  {
+    "S": [
+      "activation",
+      "backpropagation",
+      "mlp",
+      "swiglu"
+    ],
+    "cost": 3.7436462097667933,
+    "gain": 0.015145180195440311,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_xor_mlp",
+    "utility": 0.004045569305114375
+  },
+  {
+    "S": [
+      "cross_entropy",
+      "language_model",
+      "perplexity",
+      "tokenization"
+    ],
+    "cost": 3.7395979294924606,
+    "gain": 0.014131155088286107,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_perplexity_tokens",
+    "utility": 0.0037787899540857837
+  },
+  {
+    "S": [
+      "cross_entropy",
+      "language_model",
+      "perplexity",
+      "tokenization"
+    ],
+    "cost": 3.7395979294924606,
+    "gain": 0.014131155088286107,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_perplexity_tokens",
+    "utility": 0.0037787899540857837
+  },
+  {
+    "S": [
+      "accuracy",
+      "f1_score",
+      "guardrails",
+      "precision_recall"
+    ],
+    "cost": 3.741560833549986,
+    "gain": 0.012875700412541047,
+    "question_type": "application",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_rare_fraud",
+    "utility": 0.0034412644843528056
+  },
+  {
+    "S": [
+      "accuracy",
+      "f1_score",
+      "guardrails",
+      "precision_recall"
+    ],
+    "cost": 3.741560833549986,
+    "gain": 0.012875700412541047,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_rare_fraud",
+    "utility": 0.0034412644843528056
+  },
+  {
+    "S": [
+      "cnn",
+      "convolution",
+      "padding_stride",
+      "pooling"
+    ],
+    "cost": 3.744356847953185,
+    "gain": 0.012839152677387222,
+    "question_type": "application",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_lenet_shapes",
+    "utility": 0.003428934046285043
+  },
+  {
+    "S": [
+      "cnn",
+      "convolution",
+      "padding_stride",
+      "pooling"
+    ],
+    "cost": 3.744356847953185,
+    "gain": 0.012839152677387222,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_lenet_shapes",
+    "utility": 0.003428934046285043
+  },
+  {
+    "S": [
+      "experiment_tracking",
+      "model_deployment",
+      "model_versioning",
+      "validation_split"
+    ],
+    "cost": 3.741679047710715,
+    "gain": 0.011575475832161342,
+    "question_type": "application",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_run_lineage",
+    "utility": 0.0030936581370450806
+  },
+  {
+    "S": [
+      "experiment_tracking",
+      "model_deployment",
+      "model_versioning",
+      "validation_split"
+    ],
+    "cost": 3.741679047710715,
+    "gain": 0.011575475832161342,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_run_lineage",
+    "utility": 0.0030936581370450806
+  },
+  {
+    "S": [
+      "data_deduplication",
+      "data_mixture",
+      "pretraining_contamination",
+      "quality_filtering"
+    ],
+    "cost": 3.740597202862409,
+    "gain": 0.011298542538852097,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_pretrain",
+    "utility": 0.003020518362737944
+  },
+  {
+    "S": [
+      "data_deduplication",
+      "data_mixture",
+      "pretraining_contamination",
+      "quality_filtering"
+    ],
+    "cost": 3.740597202862409,
+    "gain": 0.011298542538852097,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_pretrain",
+    "utility": 0.003020518362737944
+  },
+  {
+    "S": [
+      "accuracy",
+      "model_calibration",
+      "softmax",
+      "validation_split"
+    ],
+    "cost": 3.7414369241375773,
+    "gain": 0.011251319169625518,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_calibrate",
+    "utility": 0.0030072187231163896
+  },
+  {
+    "S": [
+      "accuracy",
+      "model_calibration",
+      "softmax",
+      "validation_split"
+    ],
+    "cost": 3.7414369241375773,
+    "gain": 0.011251319169625518,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_calibrate",
+    "utility": 0.0030072187231163896
+  },
+  {
+    "S": [
+      "latency",
+      "prefill_decode",
+      "prefix_caching",
+      "serving_slo"
+    ],
+    "cost": 3.7368486741927605,
+    "gain": 0.010877467293958665,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_prefill",
+    "utility": 0.002910866412407891
+  },
+  {
+    "S": [
+      "latency",
+      "prefill_decode",
+      "prefix_caching",
+      "serving_slo"
+    ],
+    "cost": 3.7368486741927605,
+    "gain": 0.010877467293958665,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_prefill",
+    "utility": 0.002910866412407891
+  },
+  {
+    "S": [
+      "knowledge_distillation",
+      "latency",
+      "model_compression",
+      "model_deployment"
+    ],
+    "cost": 3.7366491804906854,
+    "gain": 0.01069699872482932,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_distill_edge",
+    "utility": 0.0028627249196095587
+  },
+  {
+    "S": [
+      "knowledge_distillation",
+      "latency",
+      "model_compression",
+      "model_deployment"
+    ],
+    "cost": 3.7366491804906854,
+    "gain": 0.01069699872482932,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_distill_edge",
+    "utility": 0.0028627249196095587
+  },
+  {
+    "S": [
+      "bert",
+      "language_model",
+      "masked_language_modeling",
+      "tokenization"
+    ],
+    "cost": 3.7373602166693907,
+    "gain": 0.01010028633964355,
+    "question_type": "application",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_bert_mask",
+    "utility": 0.002702518824542041
+  },
+  {
+    "S": [
+      "bert",
+      "language_model",
+      "masked_language_modeling",
+      "tokenization"
+    ],
+    "cost": 3.7373602166693907,
+    "gain": 0.01010028633964355,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_bert_mask",
+    "utility": 0.002702518824542041
+  },
+  {
+    "S": [
+      "autonomous_driving",
+      "bev_representation",
+      "closed_loop_control",
+      "motion_prediction"
+    ],
+    "cost": 3.7402400184021554,
+    "gain": 0.009726627616395866,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_drive",
+    "utility": 0.0026005356791383456
+  },
+  {
+    "S": [
+      "autonomous_driving",
+      "bev_representation",
+      "closed_loop_control",
+      "motion_prediction"
+    ],
+    "cost": 3.7402400184021554,
+    "gain": 0.009726627616395866,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_wp1b_drive",
+    "utility": 0.0026005356791383456
+  },
+  {
+    "S": [
+      "linear_algebra",
+      "lora",
+      "matrix_multiplication",
+      "svd"
+    ],
+    "cost": 3.7359863200349928,
+    "gain": 0.008817404523758343,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_rank_deficient",
+    "utility": 0.0023601276258623334
+  },
+  {
+    "S": [
+      "linear_algebra",
+      "lora",
+      "matrix_multiplication",
+      "svd"
+    ],
+    "cost": 3.7359863200349928,
+    "gain": 0.008817404523758343,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_rank_deficient",
+    "utility": 0.0023601276258623334
+  },
+  {
+    "S": [
+      "data_preprocessing",
+      "distribution_shift",
+      "model_calibration",
+      "model_deployment"
+    ],
+    "cost": 3.7365120860689505,
+    "gain": 0.007802678571993571,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_shift_monitor",
+    "utility": 0.002088225166214433
+  },
+  {
+    "S": [
+      "data_preprocessing",
+      "distribution_shift",
+      "model_calibration",
+      "model_deployment"
+    ],
+    "cost": 3.7365120860689505,
+    "gain": 0.007802678571993571,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_shift_monitor",
+    "utility": 0.002088225166214433
+  },
+  {
+    "S": [
+      "continuous_batching",
+      "latency",
+      "prefill_decode",
+      "throughput"
+    ],
+    "cost": 3.733867806907056,
+    "gain": 0.006087934865717237,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_batch_online",
+    "utility": 0.0016304634177073797
+  },
+  {
+    "S": [
+      "continuous_batching",
+      "latency",
+      "prefill_decode",
+      "throughput"
+    ],
+    "cost": 3.733867806907056,
+    "gain": 0.006087934865717237,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_batch_online",
+    "utility": 0.0016304634177073797
+  },
+  {
+    "S": [
+      "data_deduplication",
+      "data_preprocessing",
+      "train_test_split",
+      "validation_split"
+    ],
+    "cost": 3.732971977928547,
+    "gain": 0.0036367670771035865,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_house_leak",
+    "utility": 0.0009742283356548673
+  },
+  {
+    "S": [
+      "data_deduplication",
+      "data_preprocessing",
+      "train_test_split",
+      "validation_split"
+    ],
+    "cost": 3.732971977928547,
+    "gain": 0.0036367670771035865,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_house_leak",
+    "utility": 0.0009742283356548673
+  },
+  {
+    "S": [
+      "dense_retrieval",
+      "linear_algebra",
+      "matrix_multiplication",
+      "svd"
+    ],
+    "cost": 3.732971977928547,
+    "gain": 0.0028978918398796516,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_pca_budget",
+    "utility": 0.000776296167507722
+  },
+  {
+    "S": [
+      "dense_retrieval",
+      "linear_algebra",
+      "matrix_multiplication",
+      "svd"
+    ],
+    "cost": 3.732971977928547,
+    "gain": 0.0028978918398796516,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_pca_budget",
+    "utility": 0.000776296167507722
+  },
+  {
+    "S": [
+      "calculus",
+      "cross_entropy",
+      "data_preprocessing",
+      "maximum_likelihood"
+    ],
+    "cost": 3.728632247404583,
+    "gain": 0.0005385374346382754,
+    "question_type": "application",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_robust_constant",
+    "utility": 0.0001444329713699009
+  },
+  {
+    "S": [
+      "calculus",
+      "cross_entropy",
+      "data_preprocessing",
+      "maximum_likelihood"
+    ],
+    "cost": 3.728632247404583,
+    "gain": 0.0005385374346382754,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_robust_constant",
+    "utility": 0.0001444329713699009
+  },
+  {
+    "S": [
+      "subword_tokenization",
+      "tokenization",
+      "word2vec",
+      "word_embedding"
+    ],
+    "cost": 3.732971977928547,
+    "gain": 0.0004686771551560831,
+    "question_type": "application",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_word_vectors",
+    "utility": 0.0001255506759566289
+  },
+  {
+    "S": [
+      "subword_tokenization",
+      "tokenization",
+      "word2vec",
+      "word_embedding"
+    ],
+    "cost": 3.732971977928547,
+    "gain": 0.0004686771551560831,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 4 nodes per unit cost.",
+    "scenario": "scen_word_vectors",
+    "utility": 0.0001255506759566289
+  },
+  {
+    "S": [
+      "guardrail_race",
+      "guardrail_tripwire",
+      "input_guardrail",
+      "output_guardrail",
+      "tool_guardrail"
+    ],
+    "cost": 4.47037947925409,
+    "gain": -0.0024354832741508847,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 5 nodes per unit cost.",
+    "scenario": "scen_wp1b_tool_guard",
+    "utility": -0.0005448045933132415
+  },
+  {
+    "S": [
+      "guardrail_race",
+      "guardrail_tripwire",
+      "input_guardrail",
+      "output_guardrail",
+      "tool_guardrail"
+    ],
+    "cost": 4.47037947925409,
+    "gain": -0.0024354832741508847,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 5 nodes per unit cost.",
+    "scenario": "scen_wp1b_tool_guard",
+    "utility": -0.0005448045933132415
+  },
+  {
+    "S": [
+      "context_compaction",
+      "least_privilege",
+      "llm_context",
+      "local_context",
+      "mcp_tool_filter"
+    ],
+    "cost": 4.467532225524513,
+    "gain": -0.006176514486417872,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 5 nodes per unit cost.",
+    "scenario": "scen_wp1b_contexts",
+    "utility": -0.0013825338407475539
+  },
+  {
+    "S": [
+      "context_compaction",
+      "least_privilege",
+      "llm_context",
+      "local_context",
+      "mcp_tool_filter"
+    ],
+    "cost": 4.467532225524513,
+    "gain": -0.006176514486417872,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 5 nodes per unit cost.",
+    "scenario": "scen_wp1b_contexts",
+    "utility": -0.0013825338407475539
+  },
+  {
+    "S": [
+      "agent_harness",
+      "run_resumption",
+      "termination_policy",
+      "tool_error_recovery",
+      "turn_budget"
+    ],
+    "cost": 4.46750737536087,
+    "gain": -0.0067922305307566155,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 5 nodes per unit cost.",
+    "scenario": "scen_wp1b_resume",
+    "utility": -0.00152036246615216
+  },
+  {
+    "S": [
+      "agent_harness",
+      "run_resumption",
+      "termination_policy",
+      "tool_error_recovery",
+      "turn_budget"
+    ],
+    "cost": 4.46750737536087,
+    "gain": -0.0067922305307566155,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 5 nodes per unit cost.",
+    "scenario": "scen_wp1b_resume",
+    "utility": -0.00152036246615216
+  },
+  {
+    "S": [
+      "autodiff",
+      "backpropagation",
+      "calculus",
+      "chain_rule",
+      "computational_graph"
+    ],
+    "cost": 4.4534900135541635,
+    "gain": -0.00918003126965461,
+    "question_type": "boundary",
+    "reason": "Importance-weighted expected entropy reduction over 5 nodes per unit cost.",
+    "scenario": "scen_gradient_graph",
+    "utility": -0.0020613117446576174
+  },
+  {
+    "S": [
+      "autodiff",
+      "backpropagation",
+      "calculus",
+      "chain_rule",
+      "computational_graph"
+    ],
+    "cost": 4.4534900135541635,
+    "gain": -0.00918003126965461,
+    "question_type": "diagnosis",
+    "reason": "Importance-weighted expected entropy reduction over 5 nodes per unit cost.",
+    "scenario": "scen_gradient_graph",
+    "utility": -0.0020613117446576174
+  }
+]

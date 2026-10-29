@@ -1,0 +1,34 @@
+test_pick_exclude (__main__.RealDataTests.test_pick_exclude) ... ok
+test_pick_on_shipped_data (__main__.RealDataTests.test_pick_on_shipped_data) ... ok
+test_bisect_partitions_original (__main__.StateTests.test_bisect_partitions_original) ... ok
+test_boundary_gate (__main__.StateTests.test_boundary_gate) ... ok
+test_boundary_zero_quote_exception_and_other_zero_rejection (__main__.StateTests.test_boundary_zero_quote_exception_and_other_zero_rejection) ... warning: boundary=0 without quotation
+ok
+test_correct_fusion_raises_every_node (__main__.StateTests.test_correct_fusion_raises_every_node) ... ok
+test_cycle_rejected (__main__.StateTests.test_cycle_rejected) ... ok
+test_determinism_byte_for_byte_all_commands (__main__.StateTests.test_determinism_byte_for_byte_all_commands) ... ok
+test_determinism_with_new_flags (__main__.StateTests.test_determinism_with_new_flags) ... ok
+test_difficulty_offsets_and_clamp (__main__.StateTests.test_difficulty_offsets_and_clamp) ... ok
+test_evidence_and_single_hop_propagation (__main__.StateTests.test_evidence_and_single_hop_propagation) ... ok
+test_failed_fusion_entropy_almost_unchanged (__main__.StateTests.test_failed_fusion_entropy_almost_unchanged) ... ok
+test_gate_does_not_permanently_prevent_learning (__main__.StateTests.test_gate_does_not_permanently_prevent_learning) ... ok
+test_invalid_scores (__main__.StateTests.test_invalid_scores) ... ok
+test_mechanism_gate_overrides_even_strong_prior (__main__.StateTests.test_mechanism_gate_overrides_even_strong_prior) ... ok
+test_missing_quote_rejected_cli_no_write (__main__.StateTests.test_missing_quote_rejected_cli_no_write) ... ok
+test_no_scenarios_fallback (__main__.StateTests.test_no_scenarios_fallback) ... ok
+test_nodes_must_be_subset (__main__.StateTests.test_nodes_must_be_subset) ... ok
+test_nodes_subset_skips_others (__main__.StateTests.test_nodes_subset_skips_others) ... ok
+test_noisy_and_expectation_and_cost (__main__.StateTests.test_noisy_and_expectation_and_cost) ... ok
+test_only_dimension_does_not_double_count (__main__.StateTests.test_only_dimension_does_not_double_count) ... ok
+test_only_marginalizes_unobserved_scores (__main__.StateTests.test_only_marginalizes_unobserved_scores) ... ok
+test_prompted_negative_stronger (__main__.StateTests.test_prompted_negative_stronger) ... ok
+test_report_and_topology (__main__.StateTests.test_report_and_topology) ... ok
+test_required_observables_passthrough (__main__.StateTests.test_required_observables_passthrough) ... ok
+test_rows_monotone (__main__.StateTests.test_rows_monotone) ... ok
+test_tested_low_entropy_nodes_not_selected (__main__.StateTests.test_tested_low_entropy_nodes_not_selected) ... ok
+test_yaml_real_format_and_folded_source (__main__.StateTests.test_yaml_real_format_and_folded_source) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 1.397s
+
+OK

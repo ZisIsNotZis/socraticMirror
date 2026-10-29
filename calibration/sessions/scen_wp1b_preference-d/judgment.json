@@ -1,0 +1,17 @@
+{
+  "observed_nodes": [],
+  "scores": {
+    "identify": "unverified",
+    "mechanism": "unverified",
+    "application": "unverified",
+    "boundary": "unverified"
+  },
+  "submitted": false,
+  "reason": "不知道不是四维错误证据；保留先验但不作已测估计。",
+  "quotes": {
+    "identify": null,
+    "mechanism": null,
+    "application": null,
+    "boundary": null
+  }
+}

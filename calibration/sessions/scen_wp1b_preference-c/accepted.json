@@ -1,0 +1,51 @@
+{
+  "after": {
+    "reward_model": {
+      "aware": 0.46857912946094415,
+      "deep": 0.0,
+      "operable": 0.0,
+      "unknown": 0.5314208705390558
+    }
+  },
+  "before": {
+    "reward_model": {
+      "aware": 0.32503299198335,
+      "deep": 0.1115918251505875,
+      "operable": 0.2847754754517625,
+      "unknown": 0.2785997074143
+    }
+  },
+  "nodes": [
+    "reward_model"
+  ],
+  "only": [
+    "identify",
+    "mechanism",
+    "application",
+    "boundary"
+  ],
+  "probe": "direct",
+  "question_type": "boundary",
+  "quotes": {
+    "application": "应暂停上线并用一天审计重排偏好。80%长胜、解决率下降而奖励升高说明长度混杂。原因是奖励模型将token数直接作为softmax温度，回答越长温度越低，奖励必然越高。按长度配对复审并用独立解决率验收。",
+    "boundary": "标签偏向长度时，奖励上升不能推出解决率提升，应以独立任务盲测阻止退化上线。",
+    "identify": "应暂停上线并用一天审计重排偏好。80%长胜、解决率下降而奖励升高说明长度混杂。原因是奖励模型将token数直接作为softmax温度，回答越长温度越低，奖励必然越高。按长度配对复审并用独立解决率验收。",
+    "mechanism": "应暂停上线并用一天审计重排偏好。80%长胜、解决率下降而奖励升高说明长度混杂。原因是奖励模型将token数直接作为softmax温度，回答越长温度越低，奖励必然越高。按长度配对复审并用独立解决率验收。"
+  },
+  "required_observables": [
+    "80%长胜",
+    "700→600/1000",
+    "匹配组110:90",
+    "一天审计"
+  ],
+  "row": 3,
+  "scenario": "scen_wp1b_preference",
+  "scores": {
+    "application": 2,
+    "boundary": 2,
+    "identify": 2,
+    "mechanism": 0
+  },
+  "total": 6,
+  "whole_coverage": false
+}

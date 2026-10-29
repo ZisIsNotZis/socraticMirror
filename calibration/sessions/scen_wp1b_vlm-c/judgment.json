@@ -1,0 +1,39 @@
+{
+  "observed_nodes": [
+    "vlm"
+  ],
+  "scores": {
+    "identify": 2,
+    "mechanism": 0,
+    "application": 2,
+    "boundary": 2
+  },
+  "framework_A": {
+    "identify": 2,
+    "mechanism": 0,
+    "application": 2,
+    "boundary": 2
+  },
+  "framework_B": {
+    "identify": 2,
+    "mechanism": 0,
+    "application": 2,
+    "boundary": 2
+  },
+  "low_confidence": false,
+  "quotes": {
+    "identify": "应先本地裁剪药名再识别，不能上传云。裁剪90对而整图40对说明整图输入存在信息瓶颈。视觉投影器按每张图固定分配药名的词表槽位，整图物体多会抢走药名槽位；裁剪减少槽位竞争，因此提高准确率。用500标注分留出验证。",
+    "mechanism": "应先本地裁剪药名再识别，不能上传云。裁剪90对而整图40对说明整图输入存在信息瓶颈。视觉投影器按每张图固定分配药名的词表槽位，整图物体多会抢走药名槽位；裁剪减少槽位竞争，因此提高准确率。用500标注分留出验证。",
+    "application": "应先本地裁剪药名再识别，不能上传云。裁剪90对而整图40对说明整图输入存在信息瓶颈。视觉投影器按每张图固定分配药名的词表槽位，整图物体多会抢走药名槽位；裁剪减少槽位竞争，因此提高准确率。用500标注分留出验证。",
+    "boundary": "原图无法辨认的药名不能凭流畅措辞猜测，无法核实就人工复核。"
+  },
+  "anchor_reasons": {
+    "identify": "辨认情景关键对象，但未用正确机制排除近邻混淆。",
+    "mechanism": "核心因果明确错误，不是另一种无法排除的可能根因；详见report逐题反证。",
+    "application": "按应用锚点判断具体方案，不能由结论方向正确推定方案可行。",
+    "boundary": "指出一条当前失效条件、影响与处理，但未完整界定范围。"
+  },
+  "assertion_correct": true,
+  "mechanism_correct": false,
+  "probe": "direct"
+}
