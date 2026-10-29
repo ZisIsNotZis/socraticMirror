@@ -884,6 +884,538 @@
         "mechanism": 3
       },
       "total": 11
+    },
+    {
+      "after": {
+        "activation": {
+          "aware": 0.1006957710729425,
+          "deep": 0.4445074379613753,
+          "operable": 0.43380499867168854,
+          "unknown": 0.020991792293993655
+        },
+        "cross_entropy": {
+          "aware": 0.008140822236817773,
+          "deep": 0.7721697554017686,
+          "operable": 0.21928279476342125,
+          "unknown": 0.00040662759799241346
+        },
+        "mixed_precision": {
+          "aware": 0.09895230634966072,
+          "deep": 0.4450197341010454,
+          "operable": 0.4353359275091914,
+          "unknown": 0.02069203204010243
+        },
+        "softmax": {
+          "aware": 0.07278621865675683,
+          "deep": 0.45720440015892483,
+          "operable": 0.4538333902260936,
+          "unknown": 0.01617599095822482
+        }
+      },
+      "before": {
+        "activation": {
+          "aware": 0.32794999999999996,
+          "deep": 0.1102375,
+          "operable": 0.2807125,
+          "unknown": 0.2811
+        },
+        "cross_entropy": {
+          "aware": 0.06082998345272169,
+          "deep": 0.5390223917432485,
+          "operable": 0.390166058968095,
+          "unknown": 0.009981565835934876
+        },
+        "mixed_precision": {
+          "aware": 0.32506830755,
+          "deep": 0.1115754286375,
+          "operable": 0.2847262859125,
+          "unknown": 0.2786299779
+        },
+        "softmax": {
+          "aware": 0.2740480403468578,
+          "deep": 0.13636739316772503,
+          "operable": 0.35171338248464756,
+          "unknown": 0.2378711840007697
+        }
+      },
+      "nodes": [
+        "softmax",
+        "activation",
+        "cross_entropy",
+        "mixed_precision"
+      ],
+      "probe": "direct",
+      "question_type": "application",
+      "quotes": {
+        "application": "用融合的 log-space 算子，不要整个前向都改成 FP32",
+        "boundary": "FP32 可以但慢，慢是原罪；用技术解决比翻倍显存和减半速度更好",
+        "identify": "logits 是 softmax 之前的原始分数，无界",
+        "mechanism": "肯定要避免这个 exp，全程在 log space 里用融合算术，保证数值稳定"
+      },
+      "row": 8,
+      "scores": {
+        "application": 2,
+        "boundary": 2,
+        "identify": 3,
+        "mechanism": 3
+      },
+      "total": 10
+    },
+    {
+      "after": {
+        "agent_tool_use": {
+          "aware": 0.3660173266078789,
+          "deep": 0.0,
+          "operable": 0.317848604229202,
+          "unknown": 0.3161340691629192
+        },
+        "browser_use": {
+          "aware": 0.3672725170742327,
+          "deep": 0.0,
+          "operable": 0.31549961635246004,
+          "unknown": 0.3172278665733073
+        },
+        "experiment_tracking": {
+          "aware": 0.36744302404309914,
+          "deep": 0.0,
+          "operable": 0.3151805140145607,
+          "unknown": 0.3173764619423402
+        },
+        "language_model": {
+          "aware": 0.013830145063890947,
+          "deep": 0.0,
+          "operable": 0.9722918445992417,
+          "unknown": 0.013878010336867405
+        }
+      },
+      "before": {
+        "agent_tool_use": {
+          "aware": 0.3234970499075,
+          "deep": 0.112304941114375,
+          "operable": 0.286914823343125,
+          "unknown": 0.277283185635
+        },
+        "browser_use": {
+          "aware": 0.3248491548391775,
+          "deep": 0.11167717811038189,
+          "operable": 0.28503153433114564,
+          "unknown": 0.27844213271929497
+        },
+        "experiment_tracking": {
+          "aware": 0.32503299198335,
+          "deep": 0.1115918251505875,
+          "operable": 0.2847754754517625,
+          "unknown": 0.2785997074143
+        },
+        "language_model": {
+          "aware": 0.000872142689730693,
+          "deep": 0.9272796752661061,
+          "operable": 0.07097495662320813,
+          "unknown": 0.0008732254209550188
+        }
+      },
+      "nodes": [
+        "agent_tool_use",
+        "language_model",
+        "experiment_tracking",
+        "browser_use"
+      ],
+      "probe": "after_prompt",
+      "question_type": "application",
+      "quotes": {
+        "application": "保留历史、少跳几层回去、不要从头开始",
+        "boundary": "未测到",
+        "identify": "根据之前的调用，再去找下一个可能有货的商品，而不是从头再来",
+        "mechanism": "像搜索树一样一层层点出来，回到上一两层再找其他有希望的商品"
+      },
+      "row": 4,
+      "scores": {
+        "application": 2,
+        "boundary": 0,
+        "identify": 2,
+        "mechanism": 2
+      },
+      "total": 6
+    },
+    {
+      "after": {
+        "bert": {
+          "aware": 0.1010181697857152,
+          "deep": 0.44144517790543747,
+          "operable": 0.4350321342072741,
+          "unknown": 0.0225045181015733
+        },
+        "language_model": {
+          "aware": 0.003445956787862791,
+          "deep": 0.002593680790213056,
+          "operable": 0.9928821013704177,
+          "unknown": 0.0010782610515065124
+        },
+        "masked_language_modeling": {
+          "aware": 0.10180621901038531,
+          "deep": 0.4412050212879855,
+          "operable": 0.4343385133240595,
+          "unknown": 0.022650246377569735
+        },
+        "tokenization": {
+          "aware": 0.09662309199914217,
+          "deep": 0.44839309802762156,
+          "operable": 0.43325637448163523,
+          "unknown": 0.02172743549160106
+        }
+      },
+      "before": {
+        "bert": {
+          "aware": 0.32219489197157447,
+          "deep": 0.112909514441769,
+          "operable": 0.28872854332530695,
+          "unknown": 0.2761670502613496
+        },
+        "language_model": {
+          "aware": 0.013830145063890947,
+          "deep": 0.0,
+          "operable": 0.9722918445992417,
+          "unknown": 0.013878010336867405
+        },
+        "masked_language_modeling": {
+          "aware": 0.3234970499075,
+          "deep": 0.112304941114375,
+          "operable": 0.286914823343125,
+          "unknown": 0.277283185635
+        },
+        "tokenization": {
+          "aware": 0.31532373868263536,
+          "deep": 0.11799937535032165,
+          "operable": 0.2956760487090205,
+          "unknown": 0.27100083725802254
+        }
+      },
+      "nodes": [
+        "bert",
+        "masked_language_modeling",
+        "language_model",
+        "tokenization"
+      ],
+      "probe": "direct",
+      "question_type": "explanation",
+      "quotes": {
+        "application": "就这样做",
+        "boundary": "这样效果还是不如 AR，因为太慢了",
+        "identify": "循环肯定要 AR；用 BERT 做自回归不能接最后一个隐藏向量，而是 mask prediction",
+        "mechanism": "每次在最后插一个 MASK，读出结果，把 MASK 换成结果，再插新的 MASK"
+      },
+      "row": 8,
+      "scores": {
+        "application": 1,
+        "boundary": 2,
+        "identify": 3,
+        "mechanism": 3
+      },
+      "total": 9
+    },
+    {
+      "after": {
+        "language_model": {
+          "aware": 0.0034787373978128343,
+          "deep": 0.0025859526885125468,
+          "operable": 0.9928430300677819,
+          "unknown": 0.0010922798458928033
+        },
+        "model_versioning": {
+          "aware": 0.3269055944143641,
+          "deep": 0.10967484152519597,
+          "operable": 0.28141968491034597,
+          "unknown": 0.2819998791500939
+        },
+        "retrieval_augmented_generation": {
+          "aware": 0.32537672575055615,
+          "deep": 0.11038935057382862,
+          "operable": 0.283560971758339,
+          "unknown": 0.28067295191727626
+        },
+        "word_embedding": {
+          "aware": 0.3272461992885098,
+          "deep": 0.10951565571914637,
+          "operable": 0.2809426294018378,
+          "unknown": 0.28229551559050614
+        }
+      },
+      "before": {
+        "language_model": {
+          "aware": 0.003445956787862791,
+          "deep": 0.002593680790213056,
+          "operable": 0.9928821013704177,
+          "unknown": 0.0010782610515065124
+        },
+        "model_versioning": {
+          "aware": 0.32502886006205195,
+          "deep": 0.11159374354261875,
+          "operable": 0.2847812306278562,
+          "unknown": 0.2785961657674731
+        },
+        "retrieval_augmented_generation": {
+          "aware": 0.3234970499075,
+          "deep": 0.112304941114375,
+          "operable": 0.286914823343125,
+          "unknown": 0.277283185635
+        },
+        "word_embedding": {
+          "aware": 0.32537014999999997,
+          "deep": 0.11143528750000001,
+          "operable": 0.2843058625,
+          "unknown": 0.2788887
+        }
+      },
+      "nodes": [
+        "retrieval_augmented_generation",
+        "word_embedding",
+        "model_versioning",
+        "language_model"
+      ],
+      "probe": "after_prompt",
+      "question_type": "diagnosis",
+      "quotes": {
+        "application": "把旧段落标记失效或 deactivate，让新段落自然被检索到",
+        "boundary": "我对这个词怀疑太多",
+        "identify": "single source of truth，不应该有旧段落",
+        "mechanism": "新旧段落分数差不多，旧段落越积越多，就只能加 top-k"
+      },
+      "row": 5,
+      "scores": {
+        "application": 2,
+        "boundary": 1,
+        "identify": 2,
+        "mechanism": 2
+      },
+      "total": 7
+    },
+    {
+      "after": {
+        "allreduce": {
+          "aware": 0.0970037388049527,
+          "deep": 0.44622390947274726,
+          "operable": 0.43672721127499925,
+          "unknown": 0.02004514044730076
+        },
+        "data_parallelism": {
+          "aware": 0.08901489687622205,
+          "deep": 0.44856435921777393,
+          "operable": 0.4437525919496672,
+          "unknown": 0.0186681519563369
+        },
+        "gpu_compute": {
+          "aware": 0.00015492509037852222,
+          "deep": 0.9481472424338143,
+          "operable": 0.05166576434890316,
+          "unknown": 3.2068126904066843e-05
+        },
+        "minibatch_sgd": {
+          "aware": 0.09709024859624407,
+          "deep": 0.44619864435314105,
+          "operable": 0.4366512322765416,
+          "unknown": 0.020059874774073304
+        }
+      },
+      "before": {
+        "allreduce": {
+          "aware": 0.3231447612359536,
+          "deep": 0.11246850371187869,
+          "operable": 0.28740551113563606,
+          "unknown": 0.2769812239165316
+        },
+        "data_parallelism": {
+          "aware": 0.30892958321327857,
+          "deep": 0.11906840779383496,
+          "operable": 0.30720522338150485,
+          "unknown": 0.26479678561138165
+        },
+        "gpu_compute": {
+          "aware": 0.001499700987546464,
+          "deep": 0.8770213834823744,
+          "operable": 0.1214643635104969,
+          "unknown": 1.4552019582262412e-05
+        },
+        "minibatch_sgd": {
+          "aware": 0.3232917038174593,
+          "deep": 0.11240028037046532,
+          "operable": 0.28720084111139593,
+          "unknown": 0.2771071747006794
+        }
+      },
+      "nodes": [
+        "data_parallelism",
+        "gpu_compute",
+        "allreduce",
+        "minibatch_sgd"
+      ],
+      "probe": "direct",
+      "question_type": "diagnosis",
+      "quotes": {
+        "application": "0.1G×4=0.4GB，乘 2 得 0.8GB，按 10GB/s 约 80ms，重叠后约 40ms",
+        "boundary": "如果允许不是每步同步，可能快很多",
+        "identify": "不用同步，肯定是假的",
+        "mechanism": "前向取决于是否有 batch norm，可能要同步；反向肯定要同步"
+      },
+      "row": 8,
+      "scores": {
+        "application": 2,
+        "boundary": 2,
+        "identify": 3,
+        "mechanism": 3
+      },
+      "total": 10
+    },
+    {
+      "after": {
+        "batch_norm": {
+          "aware": 0.3141159027068119,
+          "deep": 0.114573567686358,
+          "operable": 0.2986276708984049,
+          "unknown": 0.27268285870842524
+        },
+        "data_parallelism": {
+          "aware": 0.09079803886171814,
+          "deep": 0.44607376045006925,
+          "operable": 0.4439519806778419,
+          "unknown": 0.019176220010370684
+        },
+        "layer_norm": {
+          "aware": 0.3141159027068119,
+          "deep": 0.114573567686358,
+          "operable": 0.2986276708984049,
+          "unknown": 0.27268285870842524
+        },
+        "minibatch_sgd": {
+          "aware": 0.09902864538633066,
+          "deep": 0.4436092430802103,
+          "operable": 0.436756590161943,
+          "unknown": 0.020605521371516004
+        }
+      },
+      "before": {
+        "batch_norm": {
+          "aware": 0.3101855027133275,
+          "deep": 0.11848530231166937,
+          "operable": 0.3054559069350081,
+          "unknown": 0.265873288039995
+        },
+        "data_parallelism": {
+          "aware": 0.08901489687622205,
+          "deep": 0.44856435921777393,
+          "operable": 0.4437525919496672,
+          "unknown": 0.0186681519563369
+        },
+        "layer_norm": {
+          "aware": 0.3101855027133275,
+          "deep": 0.11848530231166937,
+          "operable": 0.3054559069350081,
+          "unknown": 0.265873288039995
+        },
+        "minibatch_sgd": {
+          "aware": 0.09709024859624407,
+          "deep": 0.44619864435314105,
+          "operable": 0.4366512322765416,
+          "unknown": 0.020059874774073304
+        }
+      },
+      "nodes": [
+        "batch_norm",
+        "minibatch_sgd",
+        "data_parallelism",
+        "layer_norm"
+      ],
+      "probe": "after_prompt",
+      "question_type": "diagnosis",
+      "quotes": {
+        "application": "过拟合就是单调上升，抖动可能是数据分布或者代码 bug",
+        "boundary": "抖动不是缓慢下滑，所以过拟合的解释要打问号",
+        "identify": "训练 loss 正常下降、验证不动，是典型的 train/val 分化",
+        "mechanism": "如果训练正常，大概率跟小 batch 无关，要么过拟合，要么验证集分布不匹配"
+      },
+      "row": 4,
+      "scores": {
+        "application": 1,
+        "boundary": 2,
+        "identify": 2,
+        "mechanism": 1
+      },
+      "total": 6
+    },
+    {
+      "after": {
+        "gradient_descent": {
+          "aware": 0.32602984310456373,
+          "deep": 0.11076159485834994,
+          "operable": 0.28312899429776484,
+          "unknown": 0.28007956773932147
+        },
+        "learning_rate_schedule": {
+          "aware": 0.32572819986947954,
+          "deep": 0.11090196908918243,
+          "operable": 0.2835499510936794,
+          "unknown": 0.27981987994765856
+        },
+        "minibatch_sgd": {
+          "aware": 0.09935854820590133,
+          "deep": 0.4431715907384519,
+          "operable": 0.4367709797554881,
+          "unknown": 0.020698881300158622
+        },
+        "sgd": {
+          "aware": 0.3108517118392626,
+          "deep": 0.11782427475145134,
+          "operable": 0.3043090392224918,
+          "unknown": 0.2670149741867943
+        }
+      },
+      "before": {
+        "gradient_descent": {
+          "aware": 0.32537014999999997,
+          "deep": 0.11143528750000001,
+          "operable": 0.2843058625,
+          "unknown": 0.2788887
+        },
+        "learning_rate_schedule": {
+          "aware": 0.32506830755,
+          "deep": 0.1115754286375,
+          "operable": 0.2847262859125,
+          "unknown": 0.2786299779
+        },
+        "minibatch_sgd": {
+          "aware": 0.09902864538633066,
+          "deep": 0.4436092430802103,
+          "operable": 0.436756590161943,
+          "unknown": 0.020605521371516004
+        },
+        "sgd": {
+          "aware": 0.3101855027133275,
+          "deep": 0.11848530231166937,
+          "operable": 0.3054559069350081,
+          "unknown": 0.265873288039995
+        }
+      },
+      "nodes": [
+        "gradient_descent",
+        "sgd",
+        "minibatch_sgd",
+        "learning_rate_schedule"
+      ],
+      "probe": "direct",
+      "question_type": "diagnosis",
+      "quotes": {
+        "application": "没给具体怎么比",
+        "boundary": "没提复制数据不增加独立信息",
+        "identify": "按 epoch 比较没有意义，因为数据量变了",
+        "mechanism": "训练集大一倍，同样 epoch 数的步数就变了"
+      },
+      "row": 4,
+      "scores": {
+        "application": 1,
+        "boundary": 1,
+        "identify": 2,
+        "mechanism": 2
+      },
+      "total": 6
     }
   ],
   "nodes": {
@@ -972,16 +1504,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "application": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.32794999999999996,
-        "deep": 0.1102375,
-        "operable": 0.2807125,
-        "unknown": 0.2811
+        "aware": 0.1006957710729425,
+        "deep": 0.4445074379613753,
+        "operable": 0.43380499867168854,
+        "unknown": 0.020991792293993655
       }
     },
     "activation_checkpointing": {
@@ -1296,16 +1830,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "application": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.3234970499075,
-        "deep": 0.112304941114375,
-        "operable": 0.286914823343125,
-        "unknown": 0.277283185635
+        "aware": 0.3660173266078789,
+        "deep": 0.0,
+        "operable": 0.317848604229202,
+        "unknown": 0.3161340691629192
       }
     },
     "agent_tracing": {
@@ -1361,16 +1897,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.3231447612359536,
-        "deep": 0.11246850371187869,
-        "operable": 0.28740551113563606,
-        "unknown": 0.2769812239165316
+        "aware": 0.0970037388049527,
+        "deep": 0.44622390947274726,
+        "operable": 0.43672721127499925,
+        "unknown": 0.02004514044730076
       }
     },
     "attn_scaled_dot_product": {
@@ -1593,16 +2131,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.3101855027133275,
-        "deep": 0.11848530231166937,
-        "operable": 0.3054559069350081,
-        "unknown": 0.265873288039995
+        "aware": 0.3141159027068119,
+        "deep": 0.114573567686358,
+        "operable": 0.2986276708984049,
+        "unknown": 0.27268285870842524
       }
     },
     "bayes_rule": {
@@ -1756,16 +2296,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "explanation": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.32219489197157447,
-        "deep": 0.112909514441769,
-        "operable": 0.28872854332530695,
-        "unknown": 0.2761670502613496
+        "aware": 0.1010181697857152,
+        "deep": 0.44144517790543747,
+        "operable": 0.4350321342072741,
+        "unknown": 0.0225045181015733
       }
     },
     "bev_representation": {
@@ -1854,16 +2396,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "application": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.3248491548391775,
-        "deep": 0.11167717811038189,
-        "operable": 0.28503153433114564,
-        "unknown": 0.27844213271929497
+        "aware": 0.3672725170742327,
+        "deep": 0.0,
+        "operable": 0.31549961635246004,
+        "unknown": 0.3172278665733073
       }
     },
     "calculus": {
@@ -2694,18 +3238,19 @@
         }
       },
       "evidence": {
-        "count": 2,
+        "count": 3,
         "propagated": 0,
         "question_types": {
+          "application": 1,
           "diagnosis": 2
         },
-        "sharpness": 0.486582880967408
+        "sharpness": 0.6321205588285577
       },
       "level": {
-        "aware": 0.06082998345272169,
-        "deep": 0.5390223917432485,
-        "operable": 0.390166058968095,
-        "unknown": 0.009981565835934876
+        "aware": 0.008140822236817773,
+        "deep": 0.7721697554017686,
+        "operable": 0.21928279476342125,
+        "unknown": 0.00040662759799241346
       }
     },
     "data_augmentation": {
@@ -2825,16 +3370,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 2,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 2
+        },
+        "sharpness": 0.486582880967408
       },
       "level": {
-        "aware": 0.30892958321327857,
-        "deep": 0.11906840779383496,
-        "operable": 0.30720522338150485,
-        "unknown": 0.26479678561138165
+        "aware": 0.09079803886171814,
+        "deep": 0.44607376045006925,
+        "operable": 0.4439519806778419,
+        "unknown": 0.019176220010370684
       }
     },
     "data_poisoning": {
@@ -3445,16 +3992,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "application": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.32503299198335,
-        "deep": 0.1115918251505875,
-        "operable": 0.2847754754517625,
-        "unknown": 0.2785997074143
+        "aware": 0.36744302404309914,
+        "deep": 0.0,
+        "operable": 0.3151805140145607,
+        "unknown": 0.3173764619423402
       }
     },
     "expert_parallelism": {
@@ -3902,18 +4451,18 @@
         }
       },
       "evidence": {
-        "count": 2,
+        "count": 3,
         "propagated": 0,
         "question_types": {
-          "diagnosis": 2
+          "diagnosis": 3
         },
-        "sharpness": 0.486582880967408
+        "sharpness": 0.6321205588285577
       },
       "level": {
-        "aware": 0.001499700987546464,
-        "deep": 0.8770213834823744,
-        "operable": 0.1214643635104969,
-        "unknown": 1.4552019582262412e-05
+        "aware": 0.00015492509037852222,
+        "deep": 0.9481472424338143,
+        "operable": 0.05166576434890316,
+        "unknown": 3.2068126904066843e-05
       }
     },
     "gqa": {
@@ -4033,16 +4582,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.32537014999999997,
-        "deep": 0.11143528750000001,
-        "operable": 0.2843058625,
-        "unknown": 0.2788887
+        "aware": 0.32602984310456373,
+        "deep": 0.11076159485834994,
+        "operable": 0.28312899429776484,
+        "unknown": 0.28007956773932147
       }
     },
     "grpo": {
@@ -4910,19 +5461,20 @@
         }
       },
       "evidence": {
-        "count": 4,
+        "count": 7,
         "propagated": 1,
         "question_types": {
-          "application": 2,
-          "diagnosis": 2
+          "application": 3,
+          "diagnosis": 3,
+          "explanation": 1
         },
-        "sharpness": 0.7364028618842733
+        "sharpness": 0.9030280321355949
       },
       "level": {
-        "aware": 0.000872142689730693,
-        "deep": 0.9272796752661061,
-        "operable": 0.07097495662320813,
-        "unknown": 0.0008732254209550188
+        "aware": 0.0034787373978128343,
+        "deep": 0.0025859526885125468,
+        "operable": 0.9928430300677819,
+        "unknown": 0.0010922798458928033
       }
     },
     "latency": {
@@ -5010,16 +5562,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.3101855027133275,
-        "deep": 0.11848530231166937,
-        "operable": 0.3054559069350081,
-        "unknown": 0.265873288039995
+        "aware": 0.3141159027068119,
+        "deep": 0.114573567686358,
+        "operable": 0.2986276708984049,
+        "unknown": 0.27268285870842524
       }
     },
     "learning_rate_schedule": {
@@ -5042,16 +5596,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.32506830755,
-        "deep": 0.1115754286375,
-        "operable": 0.2847262859125,
-        "unknown": 0.2786299779
+        "aware": 0.32572819986947954,
+        "deep": 0.11090196908918243,
+        "operable": 0.2835499510936794,
+        "unknown": 0.27981987994765856
       }
     },
     "least_privilege": {
@@ -5330,16 +5886,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "explanation": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.3234970499075,
-        "deep": 0.112304941114375,
-        "operable": 0.286914823343125,
-        "unknown": 0.277283185635
+        "aware": 0.10180621901038531,
+        "deep": 0.4412050212879855,
+        "operable": 0.4343385133240595,
+        "unknown": 0.022650246377569735
       }
     },
     "matrix_multiplication": {
@@ -5753,16 +6311,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 3,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 3
+        },
+        "sharpness": 0.6321205588285577
       },
       "level": {
-        "aware": 0.3232917038174593,
-        "deep": 0.11240028037046532,
-        "operable": 0.28720084111139593,
-        "unknown": 0.2771071747006794
+        "aware": 0.09935854820590133,
+        "deep": 0.4431715907384519,
+        "operable": 0.4367709797554881,
+        "unknown": 0.020698881300158622
       }
     },
     "mixed_precision": {
@@ -5785,16 +6345,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "application": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.32506830755,
-        "deep": 0.1115754286375,
-        "operable": 0.2847262859125,
-        "unknown": 0.2786299779
+        "aware": 0.09895230634966072,
+        "deep": 0.4450197341010454,
+        "operable": 0.4353359275091914,
+        "unknown": 0.02069203204010243
       }
     },
     "mixture_of_experts": {
@@ -6011,16 +6573,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.32502886006205195,
-        "deep": 0.11159374354261875,
-        "operable": 0.2847812306278562,
-        "unknown": 0.2785961657674731
+        "aware": 0.3269055944143641,
+        "deep": 0.10967484152519597,
+        "operable": 0.28141968491034597,
+        "unknown": 0.2819998791500939
       }
     },
     "moe_dispatch": {
@@ -7576,16 +8140,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.3234970499075,
-        "deep": 0.112304941114375,
-        "operable": 0.286914823343125,
-        "unknown": 0.277283185635
+        "aware": 0.32537672575055615,
+        "deep": 0.11038935057382862,
+        "operable": 0.283560971758339,
+        "unknown": 0.28067295191727626
       }
     },
     "retrieval_evaluation": {
@@ -8360,16 +8926,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.3101855027133275,
-        "deep": 0.11848530231166937,
-        "operable": 0.3054559069350081,
-        "unknown": 0.265873288039995
+        "aware": 0.3108517118392626,
+        "deep": 0.11782427475145134,
+        "operable": 0.3043090392224918,
+        "unknown": 0.2670149741867943
       }
     },
     "softmax": {
@@ -8392,18 +8960,19 @@
         }
       },
       "evidence": {
-        "count": 1,
+        "count": 2,
         "propagated": 3,
         "question_types": {
+          "application": 1,
           "diagnosis": 1
         },
-        "sharpness": 0.28346868942621073
+        "sharpness": 0.486582880967408
       },
       "level": {
-        "aware": 0.2740480403468578,
-        "deep": 0.13636739316772503,
-        "operable": 0.35171338248464756,
-        "unknown": 0.2378711840007697
+        "aware": 0.07278621865675683,
+        "deep": 0.45720440015892483,
+        "operable": 0.4538333902260936,
+        "unknown": 0.01617599095822482
       }
     },
     "sparse_retrieval": {
@@ -9040,18 +9609,19 @@
         }
       },
       "evidence": {
-        "count": 1,
+        "count": 2,
         "propagated": 2,
         "question_types": {
-          "diagnosis": 1
+          "diagnosis": 1,
+          "explanation": 1
         },
-        "sharpness": 0.28346868942621073
+        "sharpness": 0.486582880967408
       },
       "level": {
-        "aware": 0.31532373868263536,
-        "deep": 0.11799937535032165,
-        "operable": 0.2956760487090205,
-        "unknown": 0.27100083725802254
+        "aware": 0.09662309199914217,
+        "deep": 0.44839309802762156,
+        "operable": 0.43325637448163523,
+        "unknown": 0.02172743549160106
       }
     },
     "tool_error_recovery": {
@@ -9999,16 +10569,18 @@
         }
       },
       "evidence": {
-        "count": 0,
+        "count": 1,
         "propagated": 0,
-        "question_types": {},
-        "sharpness": 0.0
+        "question_types": {
+          "diagnosis": 1
+        },
+        "sharpness": 0.28346868942621073
       },
       "level": {
-        "aware": 0.32537014999999997,
-        "deep": 0.11143528750000001,
-        "operable": 0.2843058625,
-        "unknown": 0.2788887
+        "aware": 0.3272461992885098,
+        "deep": 0.10951565571914637,
+        "operable": 0.2809426294018378,
+        "unknown": 0.28229551559050614
       }
     },
     "workflow_orchestration": {
