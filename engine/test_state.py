@@ -330,5 +330,108 @@ class RealDataTests(unittest.TestCase):
         self.assertFalse({c['scenario'] for c in again} & excluded)
 
 
+
+class ThreeStateTests(unittest.TestCase):
+    def setUp(self):
+        self.state = engine.initialize(GRAPH, SCENARIOS)
+
+    def apply(self, values, state=None, **kwargs):
+        target = self.state if state is None else state
+        engine.score(target, ['n0'], kwargs.pop('qtype', 'boundary'),
+                     dict(zip(engine.DIMS, values)), QUOTES, 'direct', **kwargs)
+        return target['nodes']['n0']
+
+    def test_mixed_states_accepted(self):
+        node = self.apply((3, 2, 'absent_asked', 'unverified'))
+        dims = node['evidence']['dimensions']
+        for d, status, value in [('identify', 'scored', 3),
+                                 ('application', 'absent_asked', None),
+                                 ('boundary', 'unverified', None)]:
+            self.assertEqual((dims[d]['status'], dims[d]['value']), (status, value))
+        self.assertEqual(dims['application']['count'], 0)
+        self.assertEqual(dims['application']['sharpness'], 0)
+        with self.assertRaises(ValueError):
+            engine.score(self.state, ['n0'], 'boundary', {'identify': 3}, {}, 'direct')
+
+    def test_absent_asked_weaker_than_zero(self):
+        other = copy.deepcopy(self.state)
+        absent = self.apply((3, 3, 3, 'absent_asked'))
+        zero = self.apply((3, 3, 3, 0), other)
+        self.assertGreater(engine.mastery(absent), engine.mastery(zero))
+        # Exactly half zero likelihood plus half marginalized likelihood.
+        neutral = copy.deepcopy(engine.initialize(GRAPH, SCENARIOS))
+        p = engine.distribution(neutral['nodes']['n0'])
+        rows = [engine.LIKELIHOOD_TABLE[6 + v] for v in range(4)]
+        mix = [.5 * rows[0][i] + .5 * sum(r[i] for r in rows) / 4 for i in range(4)]
+        for got, want in zip(engine.distribution(absent), engine.posterior(p, mix)):
+            self.assertAlmostEqual(got, want)
+
+    def test_unverified_dim_not_in_likelihood(self):
+        other = copy.deepcopy(self.state)
+        self.apply((3, 3, 3, 3))
+        self.apply((3, 3, 3, 3), other)
+        count = self.state['nodes']['n0']['evidence']['dimensions']['application']['count']
+        self.apply((3, 3, 'unverified', 3))
+        self.apply((3, 3, 3, 3), other, only=['identify', 'mechanism', 'boundary'])
+        self.assertEqual(self.state['nodes']['n0']['level'], other['nodes']['n0']['level'])
+        self.assertEqual(self.state['nodes']['n0']['evidence']['dimensions']['application']['count'], count)
+
+    def test_gate_ignores_non_scored_mechanism(self):
+        for mechanism in ('absent_asked', 'unverified'):
+            fresh = engine.initialize(GRAPH, SCENARIOS)
+            node = self.apply((3, mechanism, 3, 3), fresh)
+            self.assertGreater(node['level']['deep'], 0)
+            self.assertGreater(engine.mastery(node), 0)
+
+    def test_absent_asked_rejected_when_not_asked(self):
+        before = engine.dumps(self.state)
+        with self.assertRaisesRegex(ValueError, 'use unverified'):
+            self.apply((3, 'absent_asked', 3, 3), qtype='diagnosis')
+        self.assertEqual(engine.dumps(self.state), before)
+        self.apply((3, 'absent_asked', 3, 3), qtype='diagnosis', asks=['boundary'])
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'state.json'
+            fresh = engine.initialize(GRAPH, SCENARIOS)
+            fresh['scenarios'][0]['asks'] = ['boundary']
+            engine.save(path, fresh)
+            result = subprocess.run([sys.executable, str(HERE / 'state.py'), 'score',
+                # Use authored coverage, not an assumed fixture node (n0 is outside s0).
+                '--state', str(path), '--scenario', 's0', '--nodes', fresh['scenarios'][0]['instantiates'][0],
+                '--question-type', 'diagnosis', '--scores',
+                json.dumps(dict(zip(engine.DIMS, (3, 'absent_asked', 3, 3)))),
+                '--quotes', json.dumps(QUOTES), '--probe', 'direct'], capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_report_null_p_mastery_when_unscored(self):
+        self.assertIsNone(engine.report(self.state)['nodes']['n0']['p_mastery'])
+        before = copy.deepcopy(self.state['nodes']['n0']['level'])
+        self.apply(('unverified',) * 4)
+        self.assertEqual(self.state['nodes']['n0']['level'], before)
+        self.apply(('absent_asked',) * 4)
+        report = engine.report(self.state)
+        self.assertIsNone(report['nodes']['n0']['p_mastery'])
+        self.assertEqual(report['nodes']['n0']['status'], 'unverified')
+        self.assertIsNone(report['clusters'][self.state['nodes']['n0']['concept']['cluster']]['mean_p_mastery'])
+        self.apply((3, 'unverified', 'unverified', 'unverified'))
+        self.assertEqual(engine.report(self.state)['nodes']['n0']['status'], 'scored')
+
+    def test_legacy_integer_scores_equivalent(self):
+        for values in ((3, 3, 3, 3), (3, 0, 3, 3), (3, 2, 3, 0), (1, 1, 1, 1)):
+            a = engine.initialize(GRAPH, SCENARIOS)
+            b = copy.deepcopy(a)
+            integers = dict(zip(engine.DIMS, values))
+            explicit = {d: {'status': 'scored', 'value': v} for d, v in integers.items()}
+            for scores, target in ((integers, a), (explicit, b)):
+                engine.score(target, ['n0'], 'explanation', scores, QUOTES, 'direct')
+            self.assertEqual(engine.dumps(a), engine.dumps(b))
+
+    def test_determinism_with_three_states(self):
+        states = [copy.deepcopy(self.state) for _ in range(2)]
+        for state in states:
+            self.apply((3, 'absent_asked', 2, 'unverified'), state)
+        self.assertEqual(engine.dumps(states[0]), engine.dumps(states[1]))
+        self.assertEqual(engine.dumps(engine.report(states[0])), engine.dumps(engine.report(states[1])))
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

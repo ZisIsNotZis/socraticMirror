@@ -33,6 +33,10 @@ FAILURE_STRENGTH = .08  # ambiguous fusion failure barely moves any one node
 PARENT_LIFT = .18      # small noisy-OR prior lift, never prerequisite certainty
 PROPAGATION = .15      # one hop only; no recursive confidence amplification
 HIGH_ENTROPY = 1.2
+# Missing-but-asked uses a separate latent rubric kernel: half zero evidence,
+# half uniform (neutral/marginalized). Thus its likelihood is 0.5*L(0) +
+# 0.5*L(unverified), not a fabricated rubric score; existing rows stay intact.
+ABSENT_ZERO_WEIGHT = .5
 RECOVERY_FLOOR = .001  # gates are per-observation caps, not permanent impossibility
 
 
@@ -229,10 +233,31 @@ def fusion_model(state, coverage):
 
 
 def score(state, coverage, question_type, scores, quotes, probe, only=None,
-          restrict_updates=False):
-    if not isinstance(scores, dict) or set(scores) != set(DIMS) or any(type(scores[d]) is not int or
-                                       not 0 <= scores[d] <= 3 for d in DIMS):
-        raise ValueError('scores require four integer dimensions in 0..3')
+          restrict_updates=False, asks=()):
+    if not isinstance(scores, dict) or set(scores) != set(DIMS):
+        raise ValueError('scores require all four dimensions')
+    values, statuses = {}, {}
+    for d in DIMS:
+        v = scores[d]
+        if isinstance(v, dict) and set(v) == {'status', 'value'}:
+            status, v = v['status'], v['value']
+            if status != 'scored':
+                raise ValueError('explicit objects require scored integer value')
+        elif type(v) is int:
+            status = 'scored'
+        elif isinstance(v, str) and v in ('absent_asked', 'unverified'):
+            status = v
+        else:
+            raise ValueError('invalid dimension state: ' + d)
+        if status == 'scored' and (type(v) is not int or not 0 <= v <= 3):
+            raise ValueError('scored dimensions require integer 0..3')
+        statuses[d] = status
+        values[d] = v if status == 'scored' else None
+    if 'absent_asked' in statuses.values() and not (
+            question_type == 'boundary' or 'boundary' in asks):
+        raise ValueError('absent_asked requires boundary question/asks; use unverified')
+    # Normalize explicit scored objects to the legacy integer audit format.
+    scores = {d: values[d] if statuses[d] == 'scored' else statuses[d] for d in DIMS}
     selected = tuple(d for d in DIMS if only is None or d in only)
     if only is not None and (not selected or not set(only) <= set(DIMS)):
         raise ValueError('invalid --only dimensions')
@@ -241,6 +266,8 @@ def score(state, coverage, question_type, scores, quotes, probe, only=None,
     if question_type not in OFFSETS or probe not in ('direct', 'after_prompt'):
         raise ValueError('invalid question_type/probe')
     for d in DIMS:
+        if statuses[d] != 'scored':
+            continue
         quote = quotes.get(d)
         if not isinstance(quote, str) or not quote.strip():
             if d == 'boundary' and scores[d] == 0:
@@ -249,27 +276,38 @@ def score(state, coverage, question_type, scores, quotes, probe, only=None,
                 raise ValueError('missing quotation: ' + d)
     if not coverage or len(coverage) > 5 or not set(coverage) <= state['nodes'].keys():
         raise ValueError('invalid coverage')
-    total = sum(scores.values())
+    total = sum(v for v in values.values() if v is not None)
     row = max(0, min(11, total - 1 + OFFSETS[question_type]))
     # Marginalize absent dimensions with a uniform prior over rubric 0..3.
     # Average likelihoods, not normalized posteriors; retain existing rows.
-    missing = [d for d in DIMS if d not in selected]
+    observed = [d for d in selected if statuses[d] == 'scored']
+    missing = [d for d in DIMS if d not in observed]
     rows = []
-    for values in itertools.product(range(4), repeat=len(missing)):
-        latent_total = sum(scores[d] for d in selected) + sum(values)
+    for latent in itertools.product(range(4), repeat=len(missing)):
+        weight = 1.
+        for d, v in zip(missing, latent):
+            if d in selected and statuses[d] == 'absent_asked':
+                weight *= (1 - ABSENT_ZERO_WEIGHT) / 4 + (ABSENT_ZERO_WEIGHT if v == 0 else 0)
+            else:
+                weight *= .25
+        latent_total = sum(values[d] for d in observed) + sum(latent)
         latent_row = max(0, min(11, latent_total - 1 + OFFSETS[question_type]))
         likelihood = list(LIKELIHOOD_TABLE[latent_row])
         if latent_row < 6 and probe == 'direct':
             likelihood = [v ** .35 for v in likelihood]
-        rows.append((latent_row, likelihood))
-    cap = 1 if scores['mechanism'] == 0 else (2 if scores['boundary'] == 0 and
-                                             scores['mechanism'] <= 2 else 3)
+        rows.append((latent_row, likelihood, weight))
+    cap = 3
+    if statuses['mechanism'] == 'scored':
+        if values['mechanism'] == 0:
+            cap = 1
+        elif statuses['boundary'] == 'scored' and values['boundary'] == 0 and values['mechanism'] <= 2:
+            cap = 2
     before = {k: state['nodes'][k]['level'].copy() for k in coverage}
     _, positive, negative = fusion_model(state, coverage)
     for key in coverage:
         node = state['nodes'][key]
         alternatives = []
-        for latent_row, likelihood in rows:
+        for latent_row, likelihood, weight in rows:
             evidence_likelihood = likelihood
             if len(coverage) > 1:
                 if latent_row >= 7:
@@ -277,12 +315,16 @@ def score(state, coverage, question_type, scores, quotes, probe, only=None,
                 else:
                     strength = 3 if probe == 'after_prompt' else 1
                     evidence_likelihood = [v ** strength for v in negative[key]]
-            alternatives.append(evidence_likelihood)
-        evidence_likelihood = [sum(v[i] for v in alternatives) / len(alternatives)
+            alternatives.append([v * weight for v in evidence_likelihood])
+        evidence_likelihood = [sum(v[i] for v in alternatives)
                                for i in range(4)]
+        if all(statuses[d] == 'unverified' for d in selected):
+            evidence_likelihood = [1.] * 4
         # A previous hard gate must not make later demonstrated learning
         # mathematically impossible (Bayesian zero is otherwise absorbing).
-        prior = normalize([max(RECOVERY_FLOOR, v) for v in distribution(node)])
+        prior = (normalize([max(RECOVERY_FLOOR, v) for v in distribution(node)])
+                 if any(statuses[d] != 'unverified' for d in selected)
+                 else distribution(node))
         updated = posterior(prior, evidence_likelihood)
         # Gates cap support, not merely argmax; a strong prior cannot evade them.
         updated = normalize([v if i <= cap else 0. for i, v in enumerate(updated)])
@@ -292,14 +334,24 @@ def score(state, coverage, question_type, scores, quotes, probe, only=None,
             # Recover old-state dimensional counts from the audit trail.
             e['dimensions'] = {d: {'count': sum(
                 key in h['nodes'] and d in h.get('only', DIMS)
+                and type(h['scores'][d]) is int
                 for h in state['history']), 'sharpness': 0.} for d in DIMS}
-            for item in e['dimensions'].values():
+            for d, item in e['dimensions'].items():
                 item['sharpness'] = 1 - math.exp(-item['count'] / 3)
+                previous = [h['scores'][d] for h in state['history']
+                            if key in h['nodes'] and d in h.get('only', DIMS)]
+                last = previous[-1] if previous else 'unverified'
+                item['status'] = 'scored' if type(last) is int else last
+                item['value'] = last if type(last) is int else None
         for d in selected:
             item = e['dimensions'][d]
+            item['status'] = statuses[d]
+            item['value'] = values[d]
+            if statuses[d] != 'scored':
+                continue
             item['count'] += 1
             item['sharpness'] = 1 - math.exp(-item['count'] / 3)
-        e['count'] += 1
+        e['count'] += bool(observed)
         e['question_types'][question_type] = e['question_types'].get(question_type, 0) + 1
         e['sharpness'] = 1 - math.exp(-e['count'] / 3)
     # Only strong direct evidence lifts immediate prerequisites; never recurse.
@@ -373,11 +425,16 @@ def bisect(state, sid):
 def report(state):
     nodes, clusters = {}, {}
     for key, node in sorted(state['nodes'].items()):
-        nodes[key] = {'level': node['level'], 'evidence': node['evidence'],
-                      'p_mastery': mastery(node), 'entropy': entropy(distribution(node))}
+        dimensions = node['evidence'].get('dimensions')
+        scored = (any(v['count'] > 0 for v in dimensions.values()) if dimensions is not None
+                  else node['evidence']['count'] > 0)
+        nodes[key] = {'status': 'scored' if scored else 'unverified', 'level': node['level'], 'evidence': node['evidence'],
+                      'p_mastery': mastery(node) if scored else None, 'entropy': entropy(distribution(node))}
         cluster = node['concept']['cluster']
         clusters.setdefault(cluster, []).append(key)
-    summary = {c: {'nodes': keys, 'mean_p_mastery': sum(nodes[k]['p_mastery'] for k in keys) / len(keys),
+    summary = {c: {'nodes': keys, 'mean_p_mastery': (sum(nodes[k]['p_mastery'] for k in keys if nodes[k]['p_mastery'] is not None) /
+                        sum(nodes[k]['p_mastery'] is not None for k in keys)
+                        if any(nodes[k]['p_mastery'] is not None for k in keys) else None),
                    'tested': sum(state['nodes'][k]['evidence']['count'] > 0 for k in keys)}
                for c, keys in clusters.items()}
     # Kahn ordering, importance first among ready nodes; no dependent can jump a prerequisite.
@@ -385,7 +442,7 @@ def report(state):
     while pending:
         ready = [k for k in pending if not (set(state['nodes'][k]['concept']['requires']) & pending)]
         key = min(ready, key=lambda k: (-WEIGHTS[state['nodes'][k]['concept']['importance']],
-                                        nodes[k]['p_mastery'], k))
+                                        mastery(state['nodes'][k]), k))
         path.append(key)
         pending.remove(key)
     contaminated = sorted({k for h in state['history']
@@ -471,7 +528,8 @@ def main(argv=None):
                               file=sys.stderr)
                 score(state, coverage, args.question_type, json.loads(args.scores),
                       json.loads(args.quotes), args.probe, only,
-                      restrict_updates=args.nodes is not None)
+                      restrict_updates=args.nodes is not None,
+                      asks=item['asks'] if args.scenario else ())
                 observation = state['history'][-1]
                 observation['whole_coverage'] = bool(args.scenario and args.nodes is None)
                 if args.scenario:

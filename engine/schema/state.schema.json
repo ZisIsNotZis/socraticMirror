@@ -88,6 +88,30 @@
               "propagated": {
                 "type": "integer",
                 "minimum": 0
+              },
+              "dimensions": {
+                "type": "object",
+                "required": [
+                  "identify",
+                  "mechanism",
+                  "application",
+                  "boundary"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "identify": {
+                    "$ref": "#/$defs/dimensionEvidence"
+                  },
+                  "mechanism": {
+                    "$ref": "#/$defs/dimensionEvidence"
+                  },
+                  "application": {
+                    "$ref": "#/$defs/dimensionEvidence"
+                  },
+                  "boundary": {
+                    "$ref": "#/$defs/dimensionEvidence"
+                  }
+                }
               }
             },
             "additionalProperties": false
@@ -127,7 +151,76 @@
             "type": "string"
           },
           "scores": {
-            "type": "object"
+            "type": "object",
+            "required": [
+              "identify",
+              "mechanism",
+              "application",
+              "boundary"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "identify": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3
+                  },
+                  {
+                    "enum": [
+                      "absent_asked",
+                      "unverified"
+                    ]
+                  }
+                ]
+              },
+              "mechanism": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3
+                  },
+                  {
+                    "enum": [
+                      "absent_asked",
+                      "unverified"
+                    ]
+                  }
+                ]
+              },
+              "application": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3
+                  },
+                  {
+                    "enum": [
+                      "absent_asked",
+                      "unverified"
+                    ]
+                  }
+                ]
+              },
+              "boundary": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3
+                  },
+                  {
+                    "enum": [
+                      "absent_asked",
+                      "unverified"
+                    ]
+                  }
+                ]
+              }
+            }
           },
           "quotes": {
             "type": "object"
@@ -153,10 +246,91 @@
           },
           "after": {
             "type": "object"
-          }
+          },
+          "only": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "identify",
+                "mechanism",
+                "application",
+                "boundary"
+              ]
+            }
+          },
+          "whole_coverage": {
+            "type": "boolean"
+          },
+          "scenario": {
+            "type": "string"
+          },
+          "required_observables": {}
         },
         "additionalProperties": false
       }
+    }
+  },
+  "$defs": {
+    "dimensionEvidence": {
+      "type": "object",
+      "required": [
+        "count",
+        "sharpness",
+        "status",
+        "value"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sharpness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "status": {
+          "enum": [
+            "scored",
+            "absent_asked",
+            "unverified"
+          ]
+        },
+        "value": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 3
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "scored"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "integer"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "value": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }
