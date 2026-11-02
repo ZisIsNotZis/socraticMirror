@@ -1,0 +1,195 @@
+{
+  "purpose": "WP-9 dry run: false-negative control + two-session stability with a capable subagent as the examinee. Not a product session.",
+  "examinee_model": "github-copilot/claude-sonnet-5.5",
+  "preflight_model": "deepseek/deepseek-flash",
+  "sessions": {
+    "A": {
+      "state": "sessions/20261031-m2fn-a/state.json",
+      "probes": [
+        {
+          "id": "A1",
+          "scenario": "scen_attention_scale",
+          "S": [
+            "attn_scaled_dot_product",
+            "multihead_attention",
+            "softmax"
+          ],
+          "question_type": "diagnosis",
+          "fixture": true,
+          "question": "一个局部注意力单元：B=2、8 头、Q 长 128、KV 长 256、头维 64，bf16，未开 FlashAttention。Q/K 每个分量均值 0、方差 1；softmax 前 logits 标准差约 8、极值 ±40，一行内最大与次大差 16，最大权重 >0.999；padding 位置也分到了非零权重。这次改动不得改变有效 token 的语义。你打算怎么改这段注意力计算？给出具体改动、你怎么验证它、以及这个改动的代价。",
+          "expected": [
+            "点积方差随键维度增大，缩放 QKᵀ 或 logits",
+            "mask 无效位置为足够负值",
+            "整行 mask 的 NaN 风险；独立同分布假设不保证训练后 logits 正态"
+          ]
+        },
+        {
+          "id": "A2",
+          "scenario": "scen_wp1b_flash",
+          "S": [
+            "flash_attention",
+            "attn_scaled_dot_product"
+          ],
+          "question_type": "diagnosis",
+          "fixture": true,
+          "question": "7B 模型在 A100 上训练：32 层、宽 4096、32 头，B=1、序列长 8192、bf16，未开 checkpointing。普通注意力峰值显存 60GiB，换 FlashAttention 后 30GiB。相同的 QKV（含 padding、无 dropout）下，输出相对普通实现最大绝对差 1e-3，FP32 参考的容差是 2e-3。我只够跑一轮回归。你会不会替换？说明判断依据，以及这一轮回归具体要测什么。",
+          "expected": [
+            "分块与重算减少 HBM 访问，目标仍是精确注意力；1e-3 是浮点重排",
+            "比较 mask、dtype、梯度与显存，而不是只看前向输出",
+            "浮点误差不等于算法近似；长序列复杂度不自动线性"
+          ]
+        },
+        {
+          "id": "A3",
+          "scenario": "scen_ddp_small_batch",
+          "S": [
+            "allreduce",
+            "data_parallelism"
+          ],
+          "question_type": "diagnosis",
+          "fixture": true,
+          "question": "两卡 float32 训练 1 亿参数模型，每卡 batch 32，每步局部计算 20ms；梯度不做压缩、不与计算重叠，有效单向互联 10GB/s。实测同步步约 60ms。网络不能换，仍需优化同一个全局 batch 64 的均值损失。你会怎么改配置来提高有效吞吐？给出估算和验证方式。",
+          "expected": [
+            "梯度 400MB，allreduce 每卡约 40ms，60ms 量级吻合",
+            "梯度累积/重叠/通信压缩等，保持全局目标与 1/N 归约",
+            "下界不是精确用时；累积改变 BN 与随机性语义"
+          ]
+        },
+        {
+          "id": "A4",
+          "scenario": "scen_perplexity_tokens",
+          "S": [
+            "cross_entropy",
+            "perplexity"
+          ],
+          "question_type": "diagnosis",
+          "fixture": true,
+          "question": "同一个 10000 个 ASCII 字符的测试串（相同边界处理、无未知词），分词器 A 切成 5000 个 token，标出 PPL 18；分词器 B 切成 8000 个 token，PPL 12。现在只能用手上已存的逐 token logprob 出一份发布比较，不能重跑。你会怎么写这个比较结论？给出你要算的量和结论的措辞。",
+          "expected": [
+            "PPL 是平均 token 负对数似然的指数，分母随切分变",
+            "换统一单位：bits-per-byte 或每字符，披露边界符",
+            "低 PPL 不直接等于下游质量；支持集与未知词处理仍妨碍比较"
+          ]
+        },
+        {
+          "id": "A5",
+          "scenario": "scen_beam_translation",
+          "S": [
+            "beam_search",
+            "autoregressive_decoding",
+            "language_model"
+          ],
+          "question_type": "application",
+          "fixture": true,
+          "question": "本地离线翻译服务，输出最多 64 token，预算 200ms。同一批句子 beam=1 用 80ms、beam=8 用 260ms。beam=8 选出的短译文总 logprob=-8，完整译文=-12；参考长度约 40 词，短译文只有 10 词且漏掉否定句。你会怎么改解码目标和配置，让它在时延内不再漏译？给出改动与你怎么确认问题解决了。",
+          "expected": [
+            "自回归序列概率为条件概率乘积；直接求和 log 概率偏好短输出",
+            "长度归一化/核对 EOS 与长度处理，同时测质量与时延",
+            "更宽 beam 不保证指标提升；归一化改变目标函数"
+          ]
+        },
+        {
+          "id": "A6",
+          "scenario": "scen_wp1b_clip",
+          "S": [
+            "clip",
+            "visual_grounding"
+          ],
+          "question_type": "diagnosis",
+          "fixture": true,
+          "question": "本地离线仓储 50 类零件，CLIP 零样本检索在 100 张测试图上 80 张类别正确；当前接口只返回类别相似分，不返回坐标。新任务需要瑕疵框，现场只有 30 张带框图，且不得上云标注。设计一个最小可验收的瑕疵定位方案：你会怎么做、拿什么验收？",
+          "expected": [
+            "CLIP 对齐全局图文表示，不直接训练坐标预测",
+            "分开评估检索与定位，补区域监督或定位模型",
+            "高检索分不证明定位能力；相似类别/细小缺陷可能不可分"
+          ]
+        }
+      ]
+    },
+    "B": {
+      "state": "sessions/20261031-m2fn-b/state.json",
+      "probes": [
+        {
+          "id": "B1",
+          "scenario": "scen_vit_resolution",
+          "S": [
+            "multihead_attention"
+          ],
+          "question_type": "diagnosis",
+          "fixture": true,
+          "question": "本地 ViT-B/16 训练：12 层、宽 768、12 头，B=8、bf16，未开 checkpointing 与 FlashAttention。16GiB 卡上 224 输入峰值 5GiB，其中注意力分数相关张量约 0.2GiB。改成 448 后直接 CUDA OOM；patch 16 保持不变，任务仍要保留细粒度识别。给出一个能跑起来的单卡方案，说明你的显存账和在哪里验证。",
+          "expected": [
+            "token 数约 4 倍，完整注意力分数约 16 倍",
+            "核算 patch 数、位置编码适配与实际显存，选裁剪或省显存内核",
+            "FlashAttention 省 IO 不消除算术增长"
+          ]
+        },
+        {
+          "id": "B2",
+          "scenario": "scen_causal_mask",
+          "S": [
+            "attn_scaled_dot_product"
+          ],
+          "question_type": "diagnosis",
+          "fixture": true,
+          "question": "本地 decoder 训练：6 层、宽 512、8 头，B=4、长 1024、bf16，未开 checkpointing 与 FlashAttention；teacher-forced loss 0.02。自由续写时，模型在提示结束后逐字重复提示的最后一个词。固定前缀、只替换后半段，前半段对应的 logits 明显改变；同样的测试在正常训练的同结构模型上不变。只有现有 token 缓存，可以重训。设计修复流程并说明你怎么验证修好了。",
+          "expected": [
+            "未来扰动改变过去 logits 违反因果可见性；标签错位可共存",
+            "右移输入/标签 + 因果 mask，扰动未来检查过去 logits 不变",
+            "低 teacher-forced loss 不证明自由生成质量"
+          ]
+        },
+        {
+          "id": "B3",
+          "scenario": "scen_ddp_small_batch",
+          "S": [
+            "allreduce",
+            "data_parallelism"
+          ],
+          "question_type": "boundary",
+          "fixture": true,
+          "question": "两卡 float32 训练 1 亿参数模型，每卡 batch 32，每步局部计算 20ms；有效单向互联 10GB/s。目前梯度 allreduce 与计算串行，实测同步步约 60ms。网络不能换，全局 batch 64 的均值损失也不能改；梯度压缩、通信与计算重叠、bucket 化都允许改。你会先动哪一处、放弃什么？这个方案在什么条件下会失效？",
+          "expected": [
+            "全局 batch 目标与 1/N 归约",
+            "累积保留同步但改变步数/BN/随机性；异步引入陈旧梯度",
+            "失效条件：BN/学习率调度/收敛要求"
+          ],
+          "note": "初版把现状写成禁令，考生据此排除压缩/重叠；WP-9 发现后改写。初版作答不作为稳定性证据。"
+        },
+        {
+          "id": "B4",
+          "scenario": "scen_logistic_stability",
+          "S": [
+            "cross_entropy",
+            "softmax"
+          ],
+          "question_type": "application",
+          "fixture": true,
+          "question": "本地 7B 训练：32 层、宽 4096、B=1、长 512、FP16、checkpointing 开、FlashAttention 开，词表 128K。某一步 logits 一行最大值 100、次大 99、其余 ≤0，线性层输出本身有限；交叉熵却输出 NaN。FP32 稳定参考给出 loss 约 1.313（标签是次大项）。不能把全模型改成 FP32。你会怎么修这条交叉熵路径？给出具体做法与验证。",
+          "expected": [
+            "先减最大值与 logsumexp 避免指数溢出，混合精度关键归约要稳",
+            "比较稳定内核与 FP32 归约，查梯度与 loss scaling",
+            "loss scaling 不能修复前向已发生的溢出"
+          ]
+        },
+        {
+          "id": "B5",
+          "scenario": "scen_beam_translation",
+          "S": [
+            "beam_search",
+            "autoregressive_decoding",
+            "language_model"
+          ],
+          "question_type": "boundary",
+          "fixture": true,
+          "question": "本地离线翻译服务，输出最多 64 token，预算 200ms。同一批句子 beam=1 用 80ms、beam=8 用 260ms。beam=8 选出的短译文总 logprob=-8，完整译文=-12；参考长度约 40 词，短译文只有 10 词且漏掉否定句。你只准上线一种 beam 宽度。你在漏译与时延之间怎么取舍？说明这个取舍在什么条件下会失效。",
+          "expected": [
+            "beam 是近似搜索，宽 beam 不保证任务指标",
+            "长度归一化改变目标函数；EOS/最大长度处理",
+            "失效条件：时延预算、长尾长度、归一化偏差"
+          ]
+        }
+      ]
+    }
+  }
+}

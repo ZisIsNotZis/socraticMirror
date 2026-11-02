@@ -1,0 +1,391 @@
+{
+  "A1": {
+    "discussed": [
+      "attn_scaled_dot_product",
+      "softmax"
+    ],
+    "nodes": {
+      "attn_scaled_dot_product": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 3
+        },
+        "quotes": {
+          "identify": "少了 1/√d 缩放。d=64，Q/K 每分量方差 1，则 q·k 的方差 = 64，标准差 = 8。",
+          "mechanism": "你观测到 logits 标准差正好 ≈ 8，说明代码里算的是 q @ kᵀ，没有除 √64 = 8。",
+          "application": "logits = q @ kᵀ * (1/8) ... mask[i,j] = -inf（j 是 padding）",
+          "boundary": "若模型是在没有缩放的状态下训练、权重已经适应了这种近 one-hot 的分布，那么加缩放会改变有效 token 的行为 → 违反约束。"
+        },
+        "flags": []
+      },
+      "softmax": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 3
+        },
+        "quotes": {
+          "identify": "少了 padding mask。softmax 前没有把 padding 位置置为 -inf，所以 padding 也分到权重。",
+          "mechanism": "一行若所有 KV 都是 padding，则整行 logits 全 -inf，-inf - (-inf) 会出 NaN。",
+          "application": "Q/K/V 保持 bf16，matmul 用 fp32 累积；logits 上到 fp32 再做缩放 + 掩码 + softmax。",
+          "boundary": "掩码不改变有效 token 的相对语义 ... 缩放会改变有效 token 之间的相对权重（温度变了），这才是真正的语义变化点。"
+        },
+        "flags": []
+      }
+    },
+    "notes": "multihead_attention 出现在题面但回答未实际讨论，按 judge 契约记 unverified。"
+  },
+  "A2": {
+    "discussed": [
+      "flash_attention",
+      "attn_scaled_dot_product"
+    ],
+    "nodes": {
+      "flash_attention": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 3
+        },
+        "quotes": {
+          "identify": "FA 分块只保留每块 running max/sum，激活 O(N) 而非 O(N²)",
+          "mechanism": "FA 用 online softmax（tiling + running max + running sum 重缩放），内部 fp32 累加",
+          "application": "FA 对 FP32 参考的 max abs diff，逐层（32）×逐头（32）取最大，要求 ≤2e-3",
+          "boundary": "你给的 1e-3 是「FA 对普通 bf16 实现」的差，而 2e-3 是「实现对 FP32 参考」的容差——两个基准不一样。"
+        },
+        "flags": []
+      },
+      "attn_scaled_dot_product": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 2,
+          "boundary": 2
+        },
+        "quotes": {
+          "identify": "普通实现要物化 N×N 的 score 和 probability 矩阵",
+          "mechanism": "朴素实现是「算满 S → 行 softmax → P@V」",
+          "application": "固定 seed、同一份权重、同一批输入（必须是含 padding 的变长序列）",
+          "boundary": "如果 FA=2.2e-3 而普通=2.1e-3，那不是 FA 的退化，是 bf16 本身到不了 2e-3 以内"
+        },
+        "flags": []
+      }
+    },
+    "notes": "回答未提缩放因子与长序列复杂度不自动线性；后者属预期要点过宽，不归题面缺陷。"
+  },
+  "A3": {
+    "discussed": [
+      "allreduce",
+      "data_parallelism"
+    ],
+    "nodes": {
+      "allreduce": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 3
+        },
+        "quotes": {
+          "identify": "问题不在计算而在通信：反向只有 20ms，而梯度 allreduce 就吃掉约 40ms",
+          "mechanism": "两卡 allreduce（2 节点 ring 退化为互发再平均）：每卡发出 2·(N-1)/N·G = G = 400MB",
+          "application": "gradient_as_bucket_view=True ... 8-bit 逐块量化 + 误差反馈",
+          "boundary": "8-bit 量化有少量精度风险，需按任务实测验证（逐块 scale+随机取整+误差反馈可缓解）"
+        },
+        "flags": []
+      },
+      "data_parallelism": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 2
+        },
+        "quotes": {
+          "identify": "梯度累积、local SGD、异步 SGD 都不能用——它们会改变有效 batch 或引入有偏/陈旧梯度",
+          "mechanism": "为保持同一 batch-64 均值损失的收敛性，用随机取整（无偏量化）+ 误差反馈",
+          "application": "固定 seed、数据顺序、LR；比较压缩+EF 后 allreduce 出的有效梯度与基线梯度，余弦相似度 >0.99",
+          "boundary": "若上游允许放宽 batch 必须 = 64，梯度累积其实最简单 ... 但换的是目标函数。"
+        },
+        "flags": []
+      }
+    },
+    "notes": ""
+  },
+  "A4": {
+    "discussed": [
+      "cross_entropy",
+      "perplexity"
+    ],
+    "nodes": {
+      "cross_entropy": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 2
+        },
+        "quotes": {
+          "identify": "PPL 是按 token 平均的量，token 粒度不同（5000 vs 8000），平均的基数就不同，数值天然不可比。",
+          "mechanism": "关键在于分母 N（token 数）。分词器把同一个字符串切成不同数量的 token，于是平均的基数不同。",
+          "application": "BPC_A = 1.445/ln2 = 2.085 bit/char",
+          "boundary": "BPC 衡量的是模型 + 分词器的整体压缩质量，不能把模型能力和分词器好坏拆开归因。"
+        },
+        "flags": []
+      },
+      "perplexity": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 2
+        },
+        "quotes": {
+          "identify": "B 切分更细（token 更多、每个 token 更短、更可预测），所以它的 token 级 PPL 天然偏低。",
+          "mechanism": "PPL 不是 tokenizer 不变量，它同时混入了模型质量和切分粒度两个因素，单独看它无法归因。",
+          "application": "在该 10000 字符测试串上：分词器 A：token 级 PPL 18，BPC 2.09 bit/char；分词器 B：token 级 PPL 12，BPC 2.87 bit/char。",
+          "boundary": "只有 1 条测试串（n=1），统计意义有限，结论必须限定在该测试串上，不要外推到全域。"
+        },
+        "flags": []
+      }
+    },
+    "notes": "未讨论『低 PPL 不等于下游质量』，只给了归因与样本量边界。"
+  },
+  "A5": {
+    "discussed": [
+      "beam_search",
+      "autoregressive_decoding"
+    ],
+    "nodes": {
+      "beam_search": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 2
+        },
+        "quotes": {
+          "identify": "这不是模型觉得短句更好，而是解码排序目标错了 + 提前 EOS 截断。",
+          "mechanism": "beam search 按序列总 logprob 求和排序时存在长度偏置：每个 token 的条件 logprob 都是负值，序列越长，求和越负，所以短序列天然总分更高。",
+          "application": "num_beams=4, length_penalty=1.0, min_new_tokens=30, early_stopping=False",
+          "boundary": "长度归一化：零时延；副作用是可能偏向过长/啰嗦，α 太大或 min 太狠会诱发凑数、幻觉。"
+        },
+        "flags": []
+      },
+      "autoregressive_decoding": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 2
+        },
+        "quotes": {
+          "identify": "两层要同时修：排序目标错误（长度偏置）→ 改目标；提前 EOS 截断 → 加最小长度约束。",
+          "mechanism": "第一句之后 EOS 概率高，提前终止；而早停恰好也是更短 → 总分更高的受益者。",
+          "application": "min_new_tokens=30，在达到 min 之前把 EOS 的 logit 置 -inf。",
+          "boundary": "若目标语言的否定是词缀/助词而非独立否定词，否定规则校验需按该语言改写，否则规则会漏报。"
+        },
+        "flags": []
+      }
+    },
+    "notes": "language_model 未被真正讨论，按 judge 契约记 unverified，不随整组同分。"
+  },
+  "A6": {
+    "discussed": [
+      "clip",
+      "visual_grounding"
+    ],
+    "nodes": {
+      "clip": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 2
+        },
+        "quotes": {
+          "identify": "CLIP 分类 80/100 说明本地 vision encoder 是好的、缺陷和正常件在特征空间可分。优先复用这个 encoder，而不是从零训练任何检测器。",
+          "mechanism": "现有接口只给整图相似分，没有空间信息。要拿到坐标，本质是把全局相似分变成空间热度图。",
+          "application": "把每个 patch token 与瑕疵 prompt 的文本 embedding 做余弦相似度 → 一张 14×14（ViT-B/16）的 patch 级相似度图。",
+          "boundary": "30 图可能只覆盖了少数几种瑕疵形态，验收达标 ≠ 现场全类型达标。"
+        },
+        "flags": []
+      },
+      "visual_grounding": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 3
+        },
+        "quotes": {
+          "identify": "先做零样本定位（约半天，几乎零训练成本），用 30 图验收；不达标再上微调头。",
+          "mechanism": "冻结 CLIP vision encoder，取 patch 特征（ViT-B/16 输出 14×14×768），接一个小头。",
+          "application": "5 折平均 box IoU@0.5 ≥ 0.5 且瑕疵检出召回 ≥ 0.8，直接验收，不上微调。",
+          "boundary": "如果下游用途是给人工圈出大致区域复核，IoU@0.5 甚至 @0.3 就够；如果要自动量尺寸，那 30 图根本不够。"
+        },
+        "flags": []
+      }
+    },
+    "notes": "两节点都真正被讨论；边界维给出了验收口径依赖下游用途的取舍。"
+  },
+  "B5": {
+    "discussed": [
+      "beam_search",
+      "autoregressive_decoding"
+    ],
+    "nodes": {
+      "beam_search": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 3
+        },
+        "quotes": {
+          "identify": "真正的问题不在 beam 宽度，而在评分函数。先修打分（长度归一化 + 覆盖惩罚），beam 宽度才值得讨论。",
+          "mechanism": "每个 log p 都是负数，句子越长，累加越负。在没有长度归一化时，beam 排序天然偏爱短句。",
+          "application": "上线 beam=1，同时加长度归一化、coverage penalty、否定词硬约束与 minimum length。",
+          "boundary": "当两个候选的 logprob 差主要来自长度而非内容时（-8 vs -12 即如此）：用 raw logprob 选 beam 是无效打分，取舍所依赖的 beam 更准前提塌掉。"
+        }
+      },
+      "autoregressive_decoding": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 3
+        },
+        "quotes": {
+          "identify": "漏掉否定是致命错误，不是可接受的省略。",
+          "mechanism": "-8 和 -12 之间那 4 个单位的差距，几乎全部来自少 30 个词的长度红利，而不是内容更对。",
+          "application": "检测到源句含否定词时，候选必须包含对应否定 token，否则降权或直接淘汰。",
+          "boundary": "当 64-token 上限不足以装下 40 词时，完整译文本身无法表达，此时短译文可能是压缩而非漏译。"
+        }
+      }
+    },
+    "notes": "language_model 仅作概率分解背景，未真正讨论，按契约记 unverified。"
+  },
+  "B1": {
+    "discussed": [
+      "multihead_attention"
+    ],
+    "nodes": {
+      "multihead_attention": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 2,
+          "boundary": 3
+        },
+        "quotes": {
+          "identify": "448 直接 OOM 不是显存不够总体，而是注意力相关的二次项被放大 16 倍、线性激活被放大 4 倍。",
+          "mechanism": "二次项（12 层 attention score/probs，B×heads×n×n）：224 时 ~0.2 GiB → 448 时 ×16 ≈ 3.2 GiB",
+          "application": "位置编码插值 ... 注意力换成 FlashAttention-2 / SDPA ... 开 gradient checkpointing",
+          "boundary": "如果你的卡不是 Ampere 及以上 ... FlashAttention 用不了也没关系——checkpointing 单独就能救活"
+        }
+      }
+    },
+    "notes": "讨论了 head 维度对显存的放大，但未展开多头机制本身；应用维未给验证口径。"
+  },
+  "B4": {
+    "discussed": [
+      "cross_entropy",
+      "softmax"
+    ],
+    "nodes": {
+      "cross_entropy": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 3
+        },
+        "quotes": {
+          "identify": "NaN 的直接原因不是 FP16 本身，而是这条交叉熵路径没有做 max 减法（log-sum-exp 技巧）。",
+          "mechanism": "exp(100) ≈ 2.69e43 ... 即便升到 FP32，exp(100) 同样超过 FP32 上限 ... 所以 FP32 参考能得到 1.313，说明它做了减 max。",
+          "application": "F.cross_entropy(logits.float(), labels) ... 单行复现 ... abs(loss.item() - 1.313) < 1e-2",
+          "boundary": "logits 跑到 100 说明 lm_head 输出量级偏大，接近 FP16 安全域 ... 这只是上游稳定性问题。"
+        }
+      },
+      "softmax": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 3
+        },
+        "quotes": {
+          "identify": "softmax 里 exp(100) → inf，出现 inf/inf = NaN，或 log(0) = -inf 再被 one-hot 的 0 乘出 NaN。",
+          "mechanism": "减 max 后：[0, -1, ≤ -100] ... Σ exp = 1.36788，log(1.36788) = 0.31326",
+          "application": "一定要写成 -(z_label - m) + logsum，不要写成 -z_label + (m + logsum)。",
+          "boundary": "FP16 只是把爆点从 logit≈88.7 提前到 ≈11.1。若显存紧张，用 chunked/online logsumexp。"
+        }
+      }
+    },
+    "notes": "数值推导与参考 loss 对得上；应用维给了可执行修复与验证。"
+  },
+  "B2": {
+    "discussed": [
+      "attn_scaled_dot_product"
+    ],
+    "nodes": {
+      "attn_scaled_dot_product": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 3
+        },
+        "quotes": {
+          "identify": "在严格因果的解码器里，位置 i 的 logits 只由 x[1..i] 决定，替换后半段在数学上不可能改变前半段的 logits。",
+          "mechanism": "因果掩码失效：mask 没加 / 加了但被数值击穿 / 未来位置被 attend",
+          "application": "统一走 F.scaled_dot_product_attention(..., is_causal=True) ... 加断言 inputs[:, :-1] == targets[:, 1:]",
+          "boundary": "第 3 条无法用数据退化或目标没移位解释 ... 很可能同时存在两个 bug；若数据退化，光调模型修不了。"
+        }
+      }
+    },
+    "notes": "区分了掩码/移位/数据/数值/测试五类，并给出因果不变性单测。"
+  },
+  "B3": {
+    "discussed": [
+      "allreduce",
+      "data_parallelism"
+    ],
+    "nodes": {
+      "allreduce": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 3
+        },
+        "quotes": {
+          "identify": "通信是计算的 2 倍，瓶颈是通信，不是计算。",
+          "mechanism": "两卡 N=2 的 ring allreduce，每卡发送量 = 2(N−1)/N × M = 1.0 × 400MB = 400MB。",
+          "application": "先动 bucket 化 + 通信与计算重叠 ... 步进时间从 20+40=60ms 变成 max(20, 40)≈40ms",
+          "boundary": "如果 400MB 集中在极少数超大层 ... 那一层算完瞬间蹦出一大坨梯度，无法被切碎 ... 重叠退化成串行。"
+        }
+      },
+      "data_parallelism": {
+        "scores": {
+          "identify": 3,
+          "mechanism": 3,
+          "application": 3,
+          "boundary": 3
+        },
+        "quotes": {
+          "identify": "在损失逐 bit 不变 + 网络 10GB/s + 全局 batch 64 三重约束下，每卡必须把自身 400MB 梯度完整发出去一次。",
+          "mechanism": "每把一个 bucket 的梯度算完，就在独立 CUDA stream 上异步发起该 bucket 的 allreduce，同时 backward 继续往下算。",
+          "application": "PyTorch DDP（NCCL backend）默认做的那套——把参数切成若干个 bucket（默认 25MB）。",
+          "boundary": "有隐式同步点：优化器 step 跑在默认流、loss.item()、日志打印等，都会让异步实际变同步，overlap 静默失效。"
+        }
+      }
+    },
+    "notes": "初版题面把现状写成禁令，本版改写后重问；初版作答不计入。"
+  }
+}
